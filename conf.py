@@ -10,11 +10,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from misc.cyverse_sphinx_conf import *  # noqa
 
-project = 'YOUR QUICKSTART NAME HERE as topic_quick_start'
+project = 'CyVerse Container Camp 2019'
 copyright = '2020, CyVerse'
-author = 'your_name'
-version = '2.0'
-release = '2.0'
+author = 'CyVerse'
 
 epub_title = project
 epub_author = author
