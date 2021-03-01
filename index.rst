@@ -1,5 +1,12 @@
 .. include:: cyverse_rst_defined_substitutions.txt
-|cc-main|
+.. include:: ./cyverse_rst_defined_substitutions.txt
+
+|CyVerse_logo2|_
+
+|Home_Icon|_
+`Learning Center Home <http://learning.cyverse.org/>`_
+
+|cc-boat|
 
 **Container technologies** are letting researchers easily share, scale, and reuse tools and workflows for all types of computational analyses. CyVerse Container Camp is an intensive three day hands-on workshop to learn how to create, us, and deploy containers across a variety of compute systems (your computer, local HPC cloud compute environments, and national resources such as OSG).
 
@@ -18,14 +25,19 @@ Expected outcomes:
    :caption: Getting Started
 
    getting_started/main
+   getting_started/code_conduct
    getting_started/installation
+   getting_started/location
    getting_started/agenda
    getting_started/about_cyverse
+   getting_started/glossary
 
 .. toctree::
    :maxdepth: 1
    :caption: Workshop Topics
 
+   topics/reproducibility
+   topics/linux
    topics/train_docker
    topics/train_singularity
    topics/breakout_session
@@ -34,9 +46,9 @@ Expected outcomes:
    :maxdepth: 1
    :caption: Docker
 
+   docker/findingcontainers
    docker/dockerintro
    docker/dockeradvanced
-   docker/dockerhandson
 
 .. toctree::
    :maxdepth: 1
@@ -44,13 +56,13 @@ Expected outcomes:
 
    singularity/singularityintro
    singularity/singularityadvanced
+   singularity/singularityhpc
 
 .. toctree::
    :maxdepth: 1
    :caption: Breakout Sessions
 
    breakout/biocontainers
-   breakout/nvidia-docker
    breakout/workflows
    breakout/datascience
 
@@ -59,6 +71,7 @@ Expected outcomes:
    :caption: CyVerse Topics
 
    cyverse/boot
+   cyverse/tool_integration_app_building_DE
    cyverse/de_docker
    cyverse/vice_docker
 
@@ -77,5 +90,13 @@ Expected outcomes:
    instructions_reporting/instructors
    instructions_reporting/problems
 
-.. |cc-main| image:: ./img/cc-main.png
+.. |cc-boat| image:: ./img/cc-boat.png
   :width: 800
+
+.. |CyVerse_logo2| image:: ./img/cyverse_learning.png
+    :width: 500
+.. _CyVerse_logo2: http://learning.cyverse.org/
+
+.. |Home_Icon| image:: ./img/homeicon.png
+    :width: 25
+    :height: 25

@@ -11,5 +11,5 @@
 
 **Fix or improve this documentation**
 
-- On Github: `Repo link <https://cyverse-container-camp-workshop-2019.readthedocs-hosted.com/en/latest/>`_
+- On Github: `Repo link <https://cyverse-container-camp-workshop-2020.readthedocs-hosted.com/en/latest/>`_
 - Send feedback: `support@cyverse.org <support@cyverse.org>`_
