@@ -1,55 +1,15 @@
 **Advanced Docker**
 -------------------
 
-Now that we are *relatively* comfortable with Docker, lets look at some advanced Docker topics, such as: 
+Now that we are *relatively* comfortable with Docker, lets look at some advanced Docker topics, such as:
 
 - Registry
-- Porting a Docker image to a Registry & Repository (public and private) 
-- Managing data within containers 
+- Porting a Docker image to a Registry & Repository (public and private)
+- Managing data within containers
 - Deploying containers on cloud services
 
 1. Docker Registries
 ====================
-
-To demonstrate the portability of what we just created, let’s upload our built Docker image to a Docker Registry and then run it somewhere else (i.e. `CyVerse Atmosphere <https://atmo.cyverse.org>`_). 
-
-In this exercise, you'll learn how to push built containers to registries, pull those containers from registries, and run those containers on remote hosts (virtual machines). 
-
-This will benefit you when you want to deploy new containers to production environments where testing is not possible.
-
-.. important::
-
-	So what *EXACTLY* is a **Registry**?
-
-	A registry is a collection of Repositories, and a Repository is a collection of Images. A Docker Registry is sort of like a GitHub Repository, except the code is already compiled, in this case, into a container. You must have an account on a registry. You can create many repositories. The Docker CLI uses Docker’s public registry by default. You can even set up your own private registry using Docker Trusted Registry
-
-There are several things you can do with Docker registries:
-
-- Push images 
-- Find images
-- Pull images
-- Share images
-
-1.1 Popular Registries
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Some examples of public/private registries to consider for your research needs:
-
-- `Docker Cloud <https://cloud.docker.com/>`_
-- `Docker Hub <https://hub.docker.com/>`_ 
-- `Docker Trusted Registry <https://docs.docker.com/ee/dtr/>`_
-- `Amazon Elastic Container Registry <https://aws.amazon.com/ecr/>`_
-- `Google Container Registry <https://aws.amazon.com/ecr/>`_
-- `Azure Container Registry <https://azure.microsoft.com/en-us/services/container-registry/>`_
-- `NVIDIA GPU Cloud <https://ngc.nvidia.com/catalog/containers>`_
-- `Private Docker Registry <https://private-docker-registry.com/>`_ - not official Docker
-- `Gitlab Container Registry <https://docs.gitlab.com/ce/administration/container_registry.html>`_
-- `CoreOS Quay <https://quay.io/>`_
-- `TreeScale <https://treescale.com/>`_
-- `Canister <https://www.canister.io/>`_
-
-1.1.1 Log into a Registry with your Docker ID
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now that you've created and tested your image, you can push it to Docker cloud or Docker hub.
 
@@ -57,7 +17,7 @@ Now that you've created and tested your image, you can push it to Docker cloud o
 
 	If you don’t have an account, sign up for one at `Docker Cloud <https://cloud.docker.com/>`_ or `Docker Hub <https://hub.docker.com/>`_. Make note of your username. There are several advantages of registering to DockerHub which we will see later on in the session
 
-First, you have to login to your Docker Hub account. 
+First, you have to login to your Docker Hub account.
 
 If you want to authenticate to a different Registry, type the name of the registry after ``login``:
 
@@ -71,11 +31,11 @@ If you want to authenticate to a different Registry, type the name of the regist
 
 	Login Succeeded
 
-If it is your first time logging in you will be queried for your ``username`` and ``password``. 
+If it is your first time logging in you will be queried for your ``username`` and ``password``.
 
-Login with your Docker ID to push and pull images from Docker Hub or private registry. 
+Login with your Docker ID to push and pull images from Docker Hub or private registry.
 
-If you don't have a Docker ID, head over to https://hub.docker.com to create one.                
+If you don't have a Docker ID, head over to https://hub.docker.com to create one.
 
 1.1.2 Tagging images
 ^^^^^^^^^^^^^^^^^^^^
@@ -99,7 +59,7 @@ Upload your tagged image to the Dockerhub repository
 
 .. code-block:: bash
 
-	$ docker push $YOUR_DOCKERHUB_USERNAME/mynotebook:1.0	
+	$ docker push $YOUR_DOCKERHUB_USERNAME/mynotebook:1.0
 
 Once complete, the results of this upload are publicly available. If you log in to Docker Hub, you will see the new image there, with its pull command.
 
@@ -128,7 +88,7 @@ Now run the following command to run the docker image from Dockerhub
 
 	You don't have to run ``docker pull`` since if the image isn’t available locally on the machine, Docker will pull it from the repository.
 
-Head over to ``http://<vm-address>:8888`` and your app should be live. 
+Head over to ``http://<vm-address>:8888`` and your app should be live.
 
 1.2 Private repositories
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -178,12 +138,12 @@ Finally push the image to the local registry
 
 	$ docker push $REGISTRY/$(whoami)/mynotebook:1.0
 	The push refers to a repository [localhost:5000/julianp/mynotebook]
-	64436820c85c: Pushed 
-	831cff83ec9e: Pushed 
-	c3497b2669a8: Pushed 
-	1c5b16094682: Pushed 
-	c52044a91867: Pushed 
-	60ab55d3379d: Pushed 
+	64436820c85c: Pushed
+	831cff83ec9e: Pushed
+	c3497b2669a8: Pushed
+	1c5b16094682: Pushed
+	c52044a91867: Pushed
+	60ab55d3379d: Pushed
 	1.0: digest: sha256:5095dea8b2cf308c5866ef646a0e84d494a00ff0e9b2c8e8313a176424a230ce size: 1572
 
 1.2.3 Pull and run the image from the local repository
@@ -257,7 +217,7 @@ Let's create an automatic build for our container using the instructions below:
 
 	$ git init
 	Initialized empty Git repository in /home/julianp/mynotebook/.git/
-	
+
 	$ git status
 	On branch master
 
@@ -269,7 +229,7 @@ Let's create an automatic build for our container using the instructions below:
 		Dockerfile
 		model.py
 
-	nothing added to commit but untracked files present (use "git add" to track) 
+	nothing added to commit but untracked files present (use "git add" to track)
 
 	$ git add * && git commit -m "Add files and folders"
 	[master (root-commit) a4f732a] Add files and folders
@@ -306,7 +266,7 @@ Let's create an automatic build for our container using the instructions below:
 
 4.	Select ``Create`` > ``Create Automated Build`` from Docker Hub.
 
-- The system prompts you with a list of User/Organizations and code repositories. 
+- The system prompts you with a list of User/Organizations and code repositories.
 
 - For now select your GitHub account from the User/Organizations list on the left. The list of repositories change.
 
@@ -342,7 +302,7 @@ Specify which code branches or tags to build from. You can build by a code branc
 
 	The build process looks for a README.md in the same directory as your Dockerfile. If you have a README.md file in your repository, it is used in the repository as the full description. If you change the full description after a build, it’s overwritten the next time the Automated Build runs. To make changes, modify the README.md in your Git repository.
 
-.. warning:: 
+.. warning::
 
 	You can only trigger one build at a time and no more than one every five minutes. If you already have a build pending, or if you recently submitted a build request, Docker ignores new requests.
 
@@ -393,22 +353,22 @@ It is possible to store data within the writable layer of a container, but there
 
 - A container’s writable layer is tightly coupled to the host machine where the container is running. You can’t easily move the data somewhere else.
 
-- Its better to put your data into the container **AFTER** it is build - this keeps the container size smaller and easier to move across networks. 
+- Its better to put your data into the container **AFTER** it is build - this keeps the container size smaller and easier to move across networks.
 
-Docker offers three different ways to mount data into a container from the Docker host: 
+Docker offers three different ways to mount data into a container from the Docker host:
 
-  * **volumes**, 
+  * **volumes**,
 
-  * **bind mounts**, 
+  * **bind mounts**,
 
-  * **tmpfs volumes**. 
-  
+  * **tmpfs volumes**.
+
 When in doubt, volumes are almost always the right choice.
 
-3.1 Volumes 
+3.1 Volumes
 ~~~~~~~~~~~
 
-**Volumes** are created and managed by Docker. You can create a new volume explicitly using the ``docker volume create`` command, or Docker can create a volume in the container when the container is built. 
+**Volumes** are created and managed by Docker. You can create a new volume explicitly using the ``docker volume create`` command, or Docker can create a volume in the container when the container is built.
 
 |volumes|
 
@@ -451,8 +411,8 @@ When you run a container, you can bring a directory from the host system into th
   $ mkdir -p ~/local-data-folder
   $ echo "some data" >> ~/local-data-folder/data.txt
   $ docker run -v ${HOME}/local-data-folder:/data $YOUR_DOCKERHUB_USERNAME/mynotebook:latest cat /data/data.txt
-  
-In the example above, you can mount a folder from your localhost, in your home user directory into the container as a new directory named ``/data``. 
+
+In the example above, you can mount a folder from your localhost, in your home user directory into the container as a new directory named ``/data``.
 
 
 3.3 Create and manage volumes
@@ -460,13 +420,13 @@ In the example above, you can mount a folder from your localhost, in your home u
 
 Unlike a bind mount, you can create and manage volumes outside the scope of any container.
 
-A given volume can be mounted into multiple containers simultaneously. When no running container is using a volume, the volume is still available to Docker and is not removed automatically. You can remove unused volumes using ``docker volume prune`` command. 
+A given volume can be mounted into multiple containers simultaneously. When no running container is using a volume, the volume is still available to Docker and is not removed automatically. You can remove unused volumes using ``docker volume prune`` command.
 
-When you create a Docker volume, it is stored within a directory on the Docker Linux host (``/var/lib/docker/`` 
+When you create a Docker volume, it is stored within a directory on the Docker Linux host (``/var/lib/docker/``
 
 .. Note::
   File location on Mac OS X is a bit different: https://timonweb.com/posts/getting-path-and-accessing-persistent-volumes-in-docker-for-mac/
-  
+
 Let's create a volume
 
 .. code-block:: bash
@@ -518,7 +478,7 @@ This example starts an ``alpine`` container and populates the new volume ``outpu
 Use ``docker inspect output-vol`` to see where the volume data lives on your host, and then use ``cat`` to confirm that it contains the output created by the container.
 
 .. code-block:: bash
-	
+
 	docker volume inspect output-vol
 	sudo cat /var/lib/docker/volumes/output-vol/_data/container-env.txt
 
@@ -542,7 +502,7 @@ After running either of these examples, run the following commands to clean up t
 3.4 Bind mounts
 ~~~~~~~~~~~~~~~
 
-**Bind mounts:** When you use a bind mount, a file or directory on the host machine is mounted into a container. 
+**Bind mounts:** When you use a bind mount, a file or directory on the host machine is mounted into a container.
 
 .. tip::
 
@@ -550,7 +510,7 @@ After running either of these examples, run the following commands to clean up t
 
 |bind_mount|
 
-.. Warning:: 
+.. Warning::
 
 	One side effect of using bind mounts, for better or for worse, is that you can change the host filesystem via processes running in a container, including creating, modifying, or deleting important system files or directories. This is a powerful ability which can have security implications, including impacting non-Docker processes on the host system.
 
@@ -575,7 +535,7 @@ Run a container, mounting this directory inside the container, and the container
 Check that the output looks right.
 
 .. code-block:: bash
-	
+
 	cat ~/bind-data/container-env.txt
 
 
@@ -600,7 +560,7 @@ You should see an error message about not being able to write to a read-only fil
 4. Docker Compose for multi-container apps
 ==========================================
 
-**Docker Compose** is a tool for defining and running your multi-container Docker applications. 
+**Docker Compose** is a tool for defining and running your multi-container Docker applications.
 
 Main advantages of Docker compose include:
 
@@ -689,7 +649,7 @@ A brief explanation of ``docker-compose.yml`` is as below:
 	Docker for Mac and Docker Toolbox already include Compose along with other Docker apps, so Mac users do not need to install Compose separately.
 	Docker for Windows and Docker Toolbox already include Compose along with other Docker apps, so most Windows users do not need to install Compose separately.
 
-	For Linux users 
+	For Linux users
 
 	.. code-block:: bash
 
@@ -764,35 +724,35 @@ And that’s it! You should be able to see the Flask application running on ``ht
 
 .. code-block:: bash
 
-	$ cat output.txt 
+	$ cat output.txt
 	Prediction of DecisionTreeClassifier:['apple' 'orange' 'apple']
 
 .. |docker_image| image:: ../img/docker_image.png
   :width: 500
-  
+
 .. |dockerhub_create| image:: ../img/dockerhub_create.png
   :width: 800
-  
+
 .. |dockerhub_createrepo| image:: ../img/dockerhub_createrepo.png
   :width: 800
-  
+
 .. |dockerhub_autobuild| image:: ../img/dockerhub_autobuild.png
-  :width: 800  
+  :width: 800
 
 .. |dockerhub_autobuilds| image:: ../img/dockerhub_autobuilds.png
-  :width: 800 
-  
+  :width: 800
+
 .. |dockerhub_buildsettings| image:: ../img/dockerhub_buildsettings.png
-  :width: 800  
+  :width: 800
 
 .. |private_registry| image:: ../img/private_registry.png
   :width: 500
 
 .. |create_repo| image:: ../img/create_repo.png
-  :width: 500 
+  :width: 500
 
 .. |create_repo2| image:: ../img/create_repo2.png
-  :width: 500 
+  :width: 500
 
 .. |auto_build-1| image:: ../img/auto_build-1.png
   :width: 500
@@ -844,7 +804,7 @@ And that’s it! You should be able to see the Flask application running on ``ht
 
 .. |jn_login3| image:: ../img/jn_login3.png
   :width: 500
- 
+
 .. |jn_login4| image:: ../img/jn_login4.png
   :width: 500
 
@@ -853,6 +813,6 @@ And that’s it! You should be able to see the Flask application running on ``ht
 
 .. |rstudio_login2| image:: ../img/rstudio_login2.png
   :width: 500
- 
+
 .. |rstudio_login| image:: ../img/rstudio_login.png
   :width: 500

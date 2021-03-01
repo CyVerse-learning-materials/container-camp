@@ -8,25 +8,25 @@
 
 There are no specific skills needed beyond a basic comfort with the command line and using a text editor. Prior experience installing Linux applications could be helpful but is not required.
 
-.. Note:: 
-      
-      *Important*: `Singularity is compatible with Docker <https://www.sylabs.io/2018/04/singularity-compatibility-with-docker-containers/>`_, but they do have distinct differences. 
- 
+.. Note::
+
+      *Important*: `Singularity is compatible with Docker <https://www.sylabs.io/2018/04/singularity-compatibility-with-docker-containers/>`_, but they do have distinct differences.
+
    Key Differences:
- 
+
       **Docker**:
-      
+
       * Inside a Docker container the user has escalated privileges, effectively making them `root` on that host system. This privilege is not supported by *most* administrators of High Performance Computing (HPC) centers. Meaning that Docker is not, and will likely never be, installed natively on your HPC.
-      
+
       **Singularity**:
-         
+
       * Same user inside as outside the container
       * User only has root privileges if elevated with `sudo` when container is run
       * Can run (and modify!) existing Docker images and containers
 
-  These key differences allow Singularity to be installed on most HPC centers. Because you can run virtually all Docker containers in Singularity, you can effectively run Docker on an HPC. 
+  These key differences allow Singularity to be installed on most HPC centers. Because you can run virtually all Docker containers in Singularity, you can effectively run Docker on an HPC.
 
-Singularity uses a 'flow' whereby you (1) create and modify images on your dev system, (2) build containers using recipes or pulling from repositories, and (3) execute containers on production systems. 
+Singularity uses a 'flow' whereby you (1) create and modify images on your dev system, (2) build containers using recipes or pulling from repositories, and (3) execute containers on production systems.
 
 |singularityflow|
 
@@ -45,7 +45,7 @@ While Singularity is more likely to be used on a remote system, e.g. HPC or clou
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To Install Singularity on your laptop or desktop PC follow the instructions from Singularity: https://www.sylabs.io/guides/3.0/user-guide/installation.html#installation
-  
+
 2.2 HPC
 ~~~~~~~
 
@@ -112,7 +112,7 @@ The help command gives an overview of Singularity options and subcommands as fol
 .. code-block:: bash
 
 	$ singularity --help
-	
+
 	USAGE: singularity [global options...] <command> [command options...] ...
 
 	GLOBAL OPTIONS:
@@ -125,27 +125,27 @@ The help command gives an overview of Singularity options and subcommands as fol
 	    -x|--sh-debug Print shell wrapper debugging information
 
 	GENERAL COMMANDS:
-	    help       Show additional help for a command or container                  
-	    selftest   Run some self tests for singularity install                      
+	    help       Show additional help for a command or container
+	    selftest   Run some self tests for singularity install
 
 	CONTAINER USAGE COMMANDS:
-	    exec       Execute a command within container                               
-	    run        Launch a runscript within container                              
-	    shell      Run a Bourne shell within container                              
-	    test       Launch a testscript within container                             
+	    exec       Execute a command within container
+	    run        Launch a runscript within container
+	    shell      Run a Bourne shell within container
+	    test       Launch a testscript within container
 
 	CONTAINER MANAGEMENT COMMANDS:
-	    apps       List available apps within a container                           
-	    bootstrap  *Deprecated* use build instead                                   
-	    build      Build a new Singularity container                                
-	    check      Perform container lint checks                                    
-	    inspect    Display container's metadata                                     
-	    mount      Mount a Singularity container image                              
-	    pull       Pull a Singularity/Docker container to $PWD                      
+	    apps       List available apps within a container
+	    bootstrap  *Deprecated* use build instead
+	    build      Build a new Singularity container
+	    check      Perform container lint checks
+	    inspect    Display container's metadata
+	    mount      Mount a Singularity container image
+	    pull       Pull a Singularity/Docker container to $PWD
 
 	COMMAND GROUPS:
-	    image      Container image command group                                    
-	    instance   Persistent instance command group                                
+	    image      Container image command group
+	    instance   Persistent instance command group
 
 
 	CONTAINER USAGE OPTIONS:
@@ -173,7 +173,7 @@ Information about subcommand can also be viewed with the help command.
 
 	  docker: Pull an image from Docker Hub
 	      docker://user/image:tag
-	    
+
 	  shub: Pull an image from Singularity Hub to CWD
 	      shub://user/image:tag
 
@@ -202,14 +202,6 @@ Information about subcommand can also be viewed with the help command.
 
 3. Downloading pre-built images
 ================================
-
-The easiest way to use a Singularity is to ``pull`` an existing container from one of the Registries.
-
-You can use the ``pull`` command to download pre-built images from a number of Container Registries, here we'll be focusing on the `Singularity-Hub <https://www.singularity-hub.org>`_ or `DockerHub <https://hub.docker.com/>`_.
-
-Container Registries: 
-
-* `library` - images hosted on Sylabs Cloud
 * `shub` - images hosted on Singularity Hub
 * `docker` - images hosted on Docker Hub
 * `localimage` - images saved on your machine
@@ -231,7 +223,7 @@ Similar to previous example, in this example I am pulling a base Ubuntu containe
  	88.58 MiB / 88.58 MiB [===============================================================================================] 100.00% 31.86 MiB/s 2s
 
 You can rename the container using the `--name` flag:
-  
+
 .. code-block:: bash
 
     $ singularity pull --name ubuntu_test.simg shub://singularityhub/ubuntu
@@ -288,185 +280,6 @@ Let’s use an easy example of ``alpine.sif`` image from the `container library 
 
 4 Interact with images
 ======================
-
-You can interact with images in several ways such as ``shell``, ``exec`` and ``run``. 
-
-For these examples we will use a ``lolcow_latest.sif`` image that can be pulled from the Container Library like so.
-
-.. code-block:: bash
-
-	$ singularity pull library://sylabsed/examples/lolcow
-
-4.1 Shell
-~~~~~~~~~
-
-The ``shell`` command allows you to spawn a new shell within your container and interact with it as though it were a small virtual machine.
-
-.. code-block:: bash
-
-	$ singularity shell lolcow_latest.sif 
-	  Singularity lolcow_latest.sif:~>
-
-The change in prompt indicates that you have entered the container (though you should not rely on that to determine whether you are in container or not).
-
-Once inside of a Singularity container, you are the same user as you are on the host system.
-
-.. code-block:: bash
-
-	$ Singularity lolcow_latest.sif:~> whoami
-	upendra_35
-	Singularity lolcow_latest.sif:~> id
-	uid=14135(upendra_35) gid=10013(iplant-everyone) groups=10013(iplant-everyone),100(users),119(docker),10000(staff),10007,10054,10064(atmo-user),10075(myplant-users),10083(tito-admins),10084(tito-qa-admins),10092(geco-admins),10100(sciteam)
-
-.. Note::
-
-	``shell`` also works with the library://, docker://, and shub:// URIs. This creates an ephemeral container that disappears when the shell is exited.
-
-4.2 Executing commands
-~~~~~~~~~~~~~~~~~~~~~~
-
-The exec command allows you to execute a custom command within a container by specifying the image file. For instance, to execute the ``cowsay`` program within the lolcow_latest.sif container:
-
-.. code-block:: bash
-
-	$ singularity exec lolcow_latest.sif cowsay container camp rocks
- 	______________________
-	< container camp rocks >
-	 ----------------------
-	        \   ^__^
-	         \  (oo)\_______
-	            (__)\       )\/\
-	                ||----w |
-	                ||     ||
-
-.. Note::
-
-	``exec`` also works with the library://, docker://, and shub:// URIs. This creates an ephemeral container that executes a command and disappears.
-
-4.3 Running a container
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Singularity containers contain `runscripts <https://www.sylabs.io/guides/3.0/user-guide/definition_files.html#runscript>`_. These are user defined scripts that define the actions a container should perform when someone runs it. The runscript can be triggered with the ``run`` command, or simply by calling the container as though it were an executable.
-
-.. code-block:: bash
-
-	singularity run lolcow_latest.sif 
-	 _________________________________________
-	/  You will remember, Watson, how the     \
-	| dreadful business of the Abernetty      |
-	| family was first brought to my notice   |
-	| by the depth which the parsley had sunk |
-	| into the butter upon a hot day.         |
-	|                                         |
-	\ -- Sherlock Holmes                      /
-	 -----------------------------------------
-	        \   ^__^
-	         \  (oo)\_______
-	            (__)\       )\/\
-	                ||----w |
-	                ||     ||
-
-# Exercise - 1
-##############
-
-Now that you know how to run containers from Docker, I want you to run a Singular container from `simple-script` Docker image that you create on Day 1 of the workshop. 
-
-.. Note::
-
-	If you don't have ``simple-script`` you can use my image on docker hub - https://hub.docker.com/r/upendradevisetty/simple-script-auto
-
-Here are the brief steps:
-
-1. Go to `Docker hub <https://hub.docker.com/>`_ and look for the Dockerhub image that you built on Day 1
-
-2. Use ``singularity pull`` command to pull the Docker image onto your working directory on the Atmosphere
-
-3. Use ``singularity run`` command to launch a container from the Docker image and check to see if you get the same output that as you get from running ``docker run``
-
-4.3 Running a container on HPC
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-For running a container on HPC, you need to have Singularity module available on HPC. Let's first look to see if the Singularity module is available on HPC or not
-
-.. warning::
-
-	The following instructions are from running on UA HPC. It may or may not work on other HPC. Please refer to HPC documentation to find similar commands
-
-.. code-block :: bash
-
-	$ module avail singularity
-	---------------------------------------------------------- /cm/shared/uamodulefiles -----------------------------------------------------------
-	singularity/2/2.6.1  singularity/3/3.0.2  singularity/3/3.1  
-
-You can see that there are three different versions of Singularity are available. For this workshop, we will use ``singularity/3/3.1``. Let's load it now
-
-.. code-block:: bash
-
-	$ module load singularity/3/3.1
-
-4.3.1 Running fastqc
-
-Let's run fastqc on UA HPC 
-
-.. code-block:: bash
-
-	$ mkdir fastqc && cd fastqc
-
-	$ wget https://de.cyverse.org/dl/d/A48695A7-69A7-46C1-B6BB-E036F4922EB2/test.R1.fq.gz
-
-Write a pbs script (``fastqc_job.sh``) for job submission
-
-.. code-block:: bash
-
-	#!/bin/bash
-	# Your job will use 1 node, 1 core, and 1gb of memory total.
-	#PBS -q standard
-	#PBS -l select=1:ncpus=2:mem=1gb:pcmem=6gb
-
-	### Specify a name for the job
-	#PBS -N fastqc
-
-	### Specify the group name
-	#PBS -W group_list=nirav
-
-	### Used if job requires partial node only
-	#PBS -l place=pack:shared
-
-	### CPUtime required in hhh:mm:ss.
-	### Leading 0's can be omitted e.g 48:0:0 sets 48 hours
-	#PBS -l cput=0:15:0
-
-	### Walltime is created by cputime divided by total cores.
-	### This field can be overwritten by a longer time
-	#PBS -l walltime=0:15:0
-
-	date
-	module load singularity/3/3.1
-	cd /extra/upendradevisetty/fastqc
-	singularity pull docker://quay.io/biocontainers/fastqc:0.11.8--1
-	singularity exec fastqc_0.11.8--1.sif fastqc test.R1.fq.gz
-	date
-
-Submit the job now to UAHPC
-
-.. code-block:: bash
-
-	$ qsub fastqc_job.sh
-
-After the job is submitted, expect to get these outputs
-
-.. code-block:: bash
-
-	-rwxr-xr-x 1 upendradevisetty nirav 260M Mar  8 09:29 fastqc_0.11.8--1.sif
-	-rw------- 1 upendradevisetty nirav 3.4K Mar  8 09:30 fastqc.e1875372
-	-rw-r--r-- 1 upendradevisetty nirav 434K Mar  8 09:30 test.R1_fastqc.zip
-	-rw-r--r-- 1 upendradevisetty nirav 625K Mar  8 09:30 test.R1_fastqc.html
-	-rw------- 1 upendradevisetty nirav  241 Mar  8 09:30 fastqc.o1875372
-
-# Exercsise -2
-##############
-
-- For those of you, who have access to HPC, try to run the container from ``simple-script`` Dockerhub on HPC.
 
 .. |singularity| image:: ../img/singularity.png
   :height: 200
