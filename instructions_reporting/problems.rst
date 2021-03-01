@@ -9,6 +9,7 @@
 
 - If you have attended this workshop and have feedback, or if you want somebody to deliver that workshop at your conference or for your company: you can contact one of us!
 
-upendra at cyverse dot org
+**Fix or improve this documentation**
 
-Thank you!
+- On Github: `Repo link <https://cyverse-container-camp-workshop-2019.readthedocs-hosted.com/en/latest/>`_
+- Send feedback: `support@cyverse.org <support@cyverse.org>`_

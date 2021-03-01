@@ -7,3 +7,4 @@
 * `Family Spaces and Lactation Support <https://lifework.arizona.edu/cc/lactation_information>`_
 * `BIO5 Institute <http://www.bio5.org/>`_
 * `Transportation beyond BIO5 and UA campus <http://www.sunlinkstreetcar.com/>`_
+* `Banner UMC Cafeteria <https://www.yelp.com/biz/banner-university-medical-center-tucson-cafeteria-tucson/>`_

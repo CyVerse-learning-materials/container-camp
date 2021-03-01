@@ -11,10 +11,10 @@ enabling data-driven discovery. Our powerful extensible platforms
 provide data storage, bioinformatics tools, image analyses, cloud
 services, APIs, and more.
 
-While originally created with the name iPlant Collaborative to serve
-U.S. plant science communities, CyVerse cyberinfrastructure is germane
+Originally created as the iPlant Collaborative to serve
+U.S. plant science communities, the cyberinfrastructure we have built is germane
 to all life sciences disciplines and works equally well on data from
-plants, animals, or microbes. By democratizing access to supercomputing
+plants, animals, or microbes. Thus, iPlant was renamed CyVerse to reflect the broader community now served by our infrastructure. By democratizing access to supercomputing
 capabilities, we provide a crucial resource to enable scientists to find
 solutions for the future. CyVerse is of, by, and for the community, and community-driven needs
 shape our mission. We rely on your feedback to provide the
@@ -26,7 +26,7 @@ educational agenda.
 **Funding and Citations**
 
 CyVerse is funded entirely by the National Science Foundation under
-Award Numbers DBI-0735191 and DBI-1265383.
+Award Numbers DBI-0735191, DBI-1265383 and DBI-1743442.
 
 Please cite CyVerse appropriately when you make use of our resources,
 `CyVerse citation

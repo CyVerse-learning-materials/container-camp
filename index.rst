@@ -1,10 +1,21 @@
 .. include:: cyverse_rst_defined_substitutions.txt
-Table of Contents
------------------
+|cc-main|
+
+**Container technologies** are letting researchers easily share, scale, and reuse tools and workflows for all types of computational analyses. CyVerse Container Camp is an intensive three day hands-on workshop to learn how to create, us, and deploy containers across a variety of compute systems (your computer, local HPC cloud compute environments, and national resources such as OSG).
+
+In this 3-day workshop, users will blend practical theory and hands-on exercises where small groups deploy tools and workflows they bring to the workshop.
+
+Expected outcomes:
+------------------
+
+- How to containerize applications and workflows
+- How to use other containerized applications and workflows
+- How to build/deploy containerized applications and workflows
+- How to scale out your computation from laptop to cloud to HPC/OSG
 
 .. toctree::
    :maxdepth: 1
-   :caption: Container Camp Workshop
+   :caption: Getting Started
 
    getting_started/main
    getting_started/installation
@@ -17,14 +28,7 @@ Table of Contents
 
    topics/train_docker
    topics/train_singularity
-   topics/train_containerscaling
-   topics/train_biocontainers
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Atmosphere
-
-   atmosphere/boot
+   topics/breakout_session
 
 .. toctree::
    :maxdepth: 1
@@ -32,6 +36,7 @@ Table of Contents
 
    docker/dockerintro
    docker/dockeradvanced
+   docker/dockerhandson
 
 .. toctree::
    :maxdepth: 1
@@ -42,24 +47,20 @@ Table of Contents
 
 .. toctree::
    :maxdepth: 1
-   :caption: Deploying
+   :caption: Breakout Sessions
 
-   deploying_apps/de_docker
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Container Scaling
-
-   container_scaling/containerscaling_osg
-   container_scaling/containerscaling_pegasus
-   container_scaling/containerscaling_dc
+   breakout/biocontainers
+   breakout/nvidia-docker
+   breakout/workflows
+   breakout/datascience
 
 .. toctree::
    :maxdepth: 1
-   :caption: Biocontainers
+   :caption: CyVerse Topics
 
-   biocontainer/biocontainers
-   biocontainer/biocontainers_hpc
+   cyverse/boot
+   cyverse/de_docker
+   cyverse/vice_docker
 
 .. toctree::
    :maxdepth: 1
@@ -75,3 +76,6 @@ Table of Contents
 
    instructions_reporting/instructors
    instructions_reporting/problems
+
+.. |cc-main| image:: ./img/cc-main.png
+  :width: 800

@@ -1,13 +1,11 @@
 **Agenda**
 ==========
 
-Below are the schedule and classroom materials for Container Camp at The University of Arizona, which will run from March 7th to 9th, 2018. The workshop will take place in Drachman A116. Click this link to the building - https://goo.gl/7Yv4PA 
+Below are the schedule and classroom materials for Container Camp at The University of Arizona, which will run from March 6th to 8th, 2019. Container Camp will be held in U Arizona's Drachman Hall, Rm A116.  You can find a map of that location `here <https://goo.gl/7Yv4PA>`_. For nearest parking garage, it is the Highland Street Garage, where daily parking is $8/day; it's about a 2 block walk (east) to Drachman from the garage.
 
 This workshop runs under a `Code of Conduct <../getting_started/main.html>`_. Please respect it and be excellent to each other!
 
-Twitter hash tag: #cc2018
-
-We will use this for notetaking - https://goo.gl/6Bd9tX
+Twitter hash tag: #cc2019
 
 .. list-table::
     :header-rows: 1
@@ -16,131 +14,106 @@ We will use this for notetaking - https://goo.gl/6Bd9tX
       - Time
       - Topic/Activity
       - Notes/Links
-    * - 03/07/18 (Wednesday)
+    * - 03/06/19 (Wednesday)
       - 8:30-9:00
       - General introduction to CyVerse and Camp logistics (Nirav Merchant & Upendra Devisetty)
       - `Intro slides <https://docs.google.com/presentation/d/1shHJKmmLO8VfBfhhhm7cjFhD-5F1b-2fHWtRtaW-pIA/edit?usp=sharing>`_
-    * - 
+    * -
       - 9:00-9:30
       - General overview of container technology landscape (Nirav Merchant)
-      - `Intro slides <https://docs.google.com/presentation/d/1shHJKmmLO8VfBfhhhm7cjFhD-5F1b-2fHWtRtaW-pIA/edit?usp=sharing>`_
-    * - 
-      - 9:30-9:45
+      - `Container technology <https://docs.google.com/presentation/d/1shHJKmmLO8VfBfhhhm7cjFhD-5F1b-2fHWtRtaW-pIA/edit#slide=id.g34b8be3335_0_86>`_
+    * -
+      - 10:15-10:30
       - Coffee and snack break with networking
-      - served in A127-29 across the hall (pls no food/bev in A116)
-    * - 
-      - 9:45-11:00
-      - Introduction to Docker (Kapeel Chougule)
-      - - `Docker intro slides <https://docs.google.com/presentation/d/1OqEiVZRq9ibmVk8A0YyeXoNBXfm5JQAXWhow-P6_Iho/edit?usp=sharing>`_
-        - `Docker intro demo <../docker/dockerintro.html>`_
-    * - 
-      - 11:00-12.00
-      - Singularity (Vanessa Sochat)
-      - Remote talk
+      - Served in A127-29 across the hall (pls no food/bev in A116)
+    * -
+      - 10:30-12:00
+      - Introduction to Docker (Julian Pistorius)
+      - `Introduction to Docker <../docker/dockerintro.html>`_
     * -
       - 12:00-1:00
-      - Lunch break on your own
+      - Lunch break (on your own)
       -
-    * - 
-      - 1:00-2:30
-      - Advanced Docker (Upendra Devisetty)
-      - `Advanced docker <../docker/dockeradvanced.html>`_
-    * - 
-      - 2:30-3:00
-      - Coffee break (15 min) and afternoon session planning
-      - served in A127-29
-    * - 
-      - 3:00-5:00
-      - BYOD (Hands on Project)
-      -
-    * - 
+    * -
+      - 1:00-3:00
+      - Advanced Docker hands on (Tyson Swetnam)
+      - `Advanced Docker <../docker/dockeradvanced.html>`_
+    * -
+      - 3:00-3:30
+      - Coffee and snack break with networking
+      - Served in A127-29 across the hall (pls no food/bev in A116)
+    * -
+      - 3:30-5:00
+      - Docker hands-on exercises (CK Chan)
+      - `Docker hands-on exercises <../docker/dockerhandson.html>`_
+    * -
       - 5:00-6:00
-      - Catchup with instructors
-      - 
-    * - 03/08/18 (Thursday)
+      - Debriefing with instructors
+      -
+    * - 03/07/19 (Thursday)
       - 8:30-9:00
-      - Recap and planning day 2
-      -
-    * - 
+      - Containers in Astronomy: Presentation by CK Chan
+      - `Slides <http://fermi.myds.me/scratch/2019_CyVerse_Container_Camp.pdf>`_
+    * -
       - 9:00-9:30
-      - General overview of Singularity (John Fonner)
-      - `Singularity Overview Slides <https://docs.google.com/presentation/d/175QD_mm9aKbV-8WW7hKR04naR08UjTRcGc4CIhMMKKk/edit?usp=sharing>`_
-    * - 
-      - 9:30-10.00
-      - Singularity setup (Tyson Swetnam)
-      - `Singularity Introduction <../singularity/singularityintro.html>`_
-    * - 
-      - 10:00-10:30
-      - Coffee + snack break with networking
-      - served in A127-29
-    * - 
-      - 10:30-12.00
-      - Singularity basics (Tyson Swetnam)
-      - - `Gitpitch slides <https://gitpitch.com/tyson-swetnam/cc-camp#/>`_
-        - `University of Arizona High Performance Computing <https://docs.hpc.arizona.edu/>`_
-        - `Introduction to Singularity <../singularity/singularityintro.html>`_
-     
-    * - 
-      - 12:00-1:00
-      - Lunch break on your own
-      -  
-    * - 
-      - 1:00-2:30
-      - Advanced Singularity (John Fonner)
-      - `Advanced Singularity <../singularity/singularityadvanced.html>`_
-    * - 
-      - 2:30-3:00
-      - Coffee + snack break with networking
-      - served in A127-29
-    * - 
-      - 3:00-5:00
-      - BYOD (Hands on Project)
+      - Review Day 1 (Questions, Comments, suggestions etc.,)
       -
-    * - 
+    * -
+      - 9:30-12:00
+      - Project pitches (1 min) and BYOD/BYOA
+      - Coffee and snacks will be served in A127-29 across the hall (pls no food/bev in A116)
+    * -
+      - 12:00-1:00
+      - Lunch Break (on your own)
+      -
+    * -
+      - 1:00-1:30
+      - Deploying your containers in DE (Upendra Devisetty)
+      - - `Non-interactive apps in DE <https://learning.cyverse.org/projects/container_camp_workshop_2019/en/latest/cyverse/de_docker.html>`_
+        - `Interactive apps in DE <https://learning.cyverse.org/projects/container_camp_workshop_2019/en/latest/cyverse/vice_docker.html>`_
+    * -
+      - 1:30-4:00
+      - Breakout sessions
+      - `Breakout sessions <../topics/breakout_session.html>`_
+    * -
+      - 4:00-5:00
+      - Optional: Mirror Lab tour or UA HPC Facility tour
+      - - https://mirrorlab.arizona.edu
+        - https://it.arizona.edu/service/high-performance-computing
+    * -
       - 5:00-6:00
-      - Catchup with instructors
-      -  
-    * - 03/09/18 (Friday)
-      - 8:30-9:30
-      - Day 2 review and putting it all together
-      - 
-    * - 
-      - 9:30-10:00
-      - 500,000 containers a day? OSG Singularity Infrastructure (Mats Rynge)
-      - - `Slides <https://docs.google.com/presentation/d/1DOfnSYAWl7lqtowbb-T5xpUtnkfRBDg9_6wo_Y7hviI/edit?usp=sharing>`_
-        - `Exercises <../container_scaling/containerscaling_osg.html>`_
-    * - 
-      - 10.00-10:30
-      - Pegasus Workflows with Application Containers (Mats Rynge)
-      - - `Slides <https://docs.google.com/presentation/d/1SmmFizUvDmq5p4uNmqBrSsVWMOu89vAuUD-oDGLf4D4/edit?usp=sharing>`_
-        - `Exercises <../container_scaling/containerscaling_pegasus.html>`_
-    * - 
-      - 10:30-10:45
-      - Coffee + snack break with networking
-      - served in A127-29
-    * - 
-      - 10:45-11:30
-      - Distributed computing with containers (Nick Hazekamp & Kyle Sweeney **remotely**) 
-      - `Introduction to Container scaling <../container_scaling/containerscaling_dc.html>`_
-    * - 
-      - 11:30-12:30
-      - Lunch break
-      - CyVerse-hosted Food Truck - stay tuned for instructions
-    * - 
-      - 12:30-1:15
-      - Distributed computing with containers (Nick Hazekamp & Kyle Sweeney **remotely**) 
-      - `Introduction to Container scaling <../container_scaling/containerscaling_dc.html>`_
-    * - 
-      - 1:15-2:30
-      - Biocontainers (Upendra Devisetty & John Fonner)
-      - - `Bicontainers Slides <https://drive.google.com/file/d/1p3OOlwRIXXo6tlPmK2edRYuVSSE9CPOB/view?usp=sharing>`_
-        - `Biocontainers Hands-on <../biocontainer/biocontainers.html>`_
-        - `Biocontainers on HPC <../biocontainer/biocontainers_hpc.html>`_
-    * - 
+      - Debriefing with instructors
+      -
+    * - 03/08/19 (Friday)
+      - 8:30-9:00
+      - Review Day 2 (Questions, Comments)
+      -
+    * -
+      - 9:00-10:00
+      - 500k containers a day - Remote Presentation (Mats Rynge)
+      - `Slides <https://de.cyverse.org/dl/d/4A5BD9F9-FD69-4BD9-B320-F44F88FFC77D/500000_Containers_a_Day.pdf>`_
+    * -
+      - 10:00-10:30
+      - Coffee and snacks with networking
+      - Served in A127-29 across the hall (pls no food/bev in A116)
+    * -
+      - 10:30-12:00
+      - Introduction to Singularity with hands-on exercises (Upendra Devisetty)
+      - - `Singularity introduction slides <https://docs.google.com/presentation/d/1qcdR9-4gNhkcNaH7jXthZjgwS1p6RCvDRh5kEoy3v8s/edit?usp=sharing>`_
+        - `Singularity introduction <../singularity/singularityintro.html>`_
+    * -
+      - 12:00-1:00
+      - Lunch Break (on your own)
+      -
+    * -
+      - 1:00-2:30
+      - Advanced Singularity with hands-on exercises (Tyson Swetnam)
+      - `Advanced Singularity <../singularity/singularityadvanced.html>`_
+    * -
       - 2:30-3:00
-      - Coffee + snack break with networking
-      - served in A127-29
-    * - 
-      - 3:00-5:00
-      - BYOD (Hands on Project) and end of workshop
+      - Coffee and snacks with networking
+      - Served in A127-29 across the hall (pls no food/bev in A116)
+    * -
+      - 3:30-5:00
+      - Team presentations
       -
