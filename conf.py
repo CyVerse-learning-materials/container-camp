@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# Version 2.0, May 2020
 # -*- coding: utf-8 -*-
 #
 # General information about the project.
@@ -13,8 +12,10 @@ from misc.cyverse_sphinx_conf import *  # noqa
 project = 'CyVerse Container Camp 2021'
 copyright = '2021, CyVerse'
 author = 'CyVerse'
+version = '0.3.0'
+release = '0.3.0'
 
-epub_title = project
-epub_author = author
-epub_publisher = author
-epub_copyright = copyright
+epub_title = 'CyVerse Learning Institute - Container Camp 2020'
+epub_author = 'Amanda Cooksey, Upendra Devisetty, Sateesh Peri, Julian Pistorius, Tyson L. Swetnam, Reetu Tujeeta, Jason Williams'
+epub_publisher = 'CyVerse'
+epub_copyright = 'CC0 - Open Source'

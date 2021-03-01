@@ -1,11 +1,20 @@
+.. include:: ./cyverse_rst_defined_substitutions.txt
+
+|CyVerse_logo2|_
+
+|Home_Icon|_
+`Learning Center Home <http://learning.cyverse.org/>`_
+
 **Agenda**
 ==========
+
 
 Below are the schedule and classroom materials for Container Camp 2021.
 
 This workshop runs under a `Code of Conduct <../getting_started/main.html>`_. Please respect it and be excellent to each other!
 
 Twitter hash tag: #cc2021
+
 
 .. list-table::
     :header-rows: 1
@@ -19,33 +28,53 @@ Twitter hash tag: #cc2021
       - General introduction to CyVerse and Camp logistics (Nirav Merchant & Upendra Devisetty)
       - `Intro slides <https://docs.google.com/presentation/d/1shHJKmmLO8VfBfhhhm7cjFhD-5F1b-2fHWtRtaW-pIA/edit?usp=sharing>`_
     * -
-      - 9:00-9:30
+      - 12:15-1:00
       - General overview of container technology landscape (Nirav Merchant)
-      - `Container technology <https://docs.google.com/presentation/d/1shHJKmmLO8VfBfhhhm7cjFhD-5F1b-2fHWtRtaW-pIA/edit#slide=id.g34b8be3335_0_86>`_
+      - |Container technology|
     * -
-      - 10:15-10:30
-      - Coffee and snack break with networking
-      - Served in A127-29 across the hall (pls no food/bev in A116)
+      - 1:00-2:10
+      - What is a container? (Tyson Swetnam)
+      - Basics & why you might use a container image for research
     * -
-      - 10:30-12:00
-      - Introduction to Docker (Julian Pistorius)
-      - `Introduction to Docker <../docker/dockerintro.html>`_
+      - 2:10-2:30
+      - Break
+      - time to talk and network
     * -
-      - 12:00-1:00
-      - Lunch break (on your own)
+      - 2:30-3:00
+      - Searching Image Registries (Tyson Swetnam)
+      - Finding the right image, downloading (pulling)
+    * -
+      - 3:00-5:00
+      - `Running a container <../docker/dockerintro.html>`_ (Tyson Swetnam)
+      - Start a container, add a volume, opening ports, monitor, clean up
+    * -
+      - 5:00-5:30
+      - Debriefing with instructors
+      -
+
+.. list-table::
+    :header-rows: 1
+
+    * - Day
+      - Time
+      - Topic/Activity
+      - Notes/Links
+    * - 03/11/20 (Wednesday)
+      - 8:00-8:30
+      - Instructor Briefing
       -
     * -
-      - 1:00-3:00
-      - Advanced Docker hands on (Tyson Swetnam)
-      - `Advanced Docker <../docker/dockeradvanced.html>`_
+      - 8:30-8:45
+      - Review Day 1
+      - time for questions, comments, suggestions
     * -
-      - 3:00-3:30
-      - Coffee and snack break with networking
-      - Served in A127-29 across the hall (pls no food/bev in A116)
+      - 8:45-9:45
+      - |Containers in Distributed Computing| (Mats Rynge)
+      - Containers used at scale
     * -
-      - 3:30-5:00
-      - Docker hands-on exercises (CK Chan)
-      - `Docker hands-on exercises <../docker/dockerhandson.html>`_
+      - 9:45-10:10
+      - `Make your own container <../docker/dockeradvanced.html>`_: (Tyson Swetnam)
+      - Customizing base images, setting up Docker-Compose
     * -
       - 5:00-6:00
       - Debriefing with instructors
@@ -55,33 +84,23 @@ Twitter hash tag: #cc2021
       - Containers in Astronomy: Presentation by CK Chan
       - `Slides <http://fermi.myds.me/scratch/2019_CyVerse_Container_Camp.pdf>`_
     * -
-      - 9:00-9:30
-      - Review Day 1 (Questions, Comments, suggestions etc.,)
-      -
+      - 10:30-11:15
+      - Continuous Integration with GitHub (TBA)
+      - Building your images with CI/CD for automation and scaling
     * -
-      - 9:30-12:00
-      - Project pitches (1 min) and BYOD/BYOA
-      - Coffee and snacks will be served in A127-29 across the hall (pls no food/bev in A116)
+      - 11:15-12:00
+      - Bringing your container image to CyVerse (Amanda Cooksey)
+      - Tool integration in the DE (interactive, executable, & OpenScienceGrid)
     * -
       - 12:00-1:00
       - Lunch Break (on your own)
       -
     * -
-      - 1:00-1:30
-      - Deploying your containers in DE (Upendra Devisetty)
-      - - `Non-interactive apps in DE <https://learning.cyverse.org/projects/container_camp_workshop_2019/en/latest/cyverse/de_docker.html>`_
-        - `Interactive apps in DE <https://learning.cyverse.org/projects/container_camp_workshop_2019/en/latest/cyverse/vice_docker.html>`_
-    * -
-      - 1:30-4:00
+      - 1:00-5:00
       - Breakout sessions
       - `Breakout sessions <../topics/breakout_session.html>`_
     * -
-      - 4:00-5:00
-      - Optional: Mirror Lab tour or UA HPC Facility tour
-      - - https://mirrorlab.arizona.edu
-        - https://it.arizona.edu/service/high-performance-computing
-    * -
-      - 5:00-6:00
+      - 5:00-5:30
       - Debriefing with instructors
       -
     * - 03/17/21 (Wednesday)
@@ -89,31 +108,96 @@ Twitter hash tag: #cc2021
       - Review Day 2 (Questions, Comments)
       -
     * -
-      - 9:00-10:00
-      - 500k containers a day - Remote Presentation (Mats Rynge)
-      - `Slides <https://de.cyverse.org/dl/d/4A5BD9F9-FD69-4BD9-B320-F44F88FFC77D/500000_Containers_a_Day.pdf>`_
+      - 8:45-10:10
+      - Introduction to Singularity (Tyson Swetnam)
+      - Using Docker on HPC
     * -
-      - 10:00-10:30
-      - Coffee and snacks with networking
-      - Served in A127-29 across the hall (pls no food/bev in A116)
+      - 10:10-10:30
+      - Break
+      - time to talk and network
     * -
       - 10:30-12:00
-      - Introduction to Singularity with hands-on exercises (Upendra Devisetty)
-      - - `Singularity introduction slides <https://docs.google.com/presentation/d/1qcdR9-4gNhkcNaH7jXthZjgwS1p6RCvDRh5kEoy3v8s/edit?usp=sharing>`_
-        - `Singularity introduction <../singularity/singularityintro.html>`_
+      - Singularity and High Performance Computing (John Fonner)
+      - `Singularity for MPI and GPU workloads <../singularity/singularityhpc.html>`_
     * -
       - 12:00-1:00
       - Lunch Break (on your own)
       -
     * -
-      - 1:00-2:30
-      - Advanced Singularity with hands-on exercises (Tyson Swetnam)
-      - `Advanced Singularity <../singularity/singularityadvanced.html>`_
-    * -
-      - 2:30-3:00
-      - Coffee and snacks with networking
-      - Served in A127-29 across the hall (pls no food/bev in A116)
-    * -
-      - 3:30-5:00
-      - Team presentations
+      - 1:00-1:15
+      - Project pitches (2 min) and BYOD/BYOA
       -
+    * -
+      - 1:15-3:10
+      - Project Time
+      - Bring Your Own Data (BYOD) & Bring your Own Analyses (BYOA)
+    * -
+      - 3:10-3:30
+      - Break
+      - time to talk and network
+    * -
+      - 3:30-5:0
+      - Project Time
+      - BYOD & BYOA
+    * -
+      - 5:00-5:30
+      - Debriefing with instructors
+      -
+
+.. list-table::
+    :header-rows: 1
+
+    * - Day
+      - Time
+      - Topic/Activity
+      - Notes/Links
+    * - 03/13/20 (Friday)
+      - 8:30-8:45
+      - Review Day 3
+      - time for questions, comments, suggestions
+    * -
+      - 8:45-9:45
+      - Finalize Projects
+      - BYOD & BYOA
+    * -
+      - 9:45-10:10
+      - Project Presentations
+      -
+    * -
+      - 10:10-10:30
+      - Break
+      - time to talk and network
+    * -
+      - 10:30-11:30
+      - Presentations
+      -
+    * -
+      - 11:30-12:00
+      - Course Evaluations
+      -
+    * -
+      - 12:00
+      - Dismissal
+      -
+    * -
+      - 12:00-1:00
+      - Instructor Post Mortem
+      -
+
+.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
+    :width: 500
+.. _CyVerse_logo2: http://learning.cyverse.org/
+
+.. |Home_Icon| image:: ../img/homeicon.png
+    :width: 25
+    :height: 25
+
+.. _Home_Icon: http://learning.cyverse.org/
+
+.. |Containers in Distributed Computing| raw:: html
+
+    <a href="https://docs.google.com/presentation/d/1qotXod2o_XEW2g7NN4eAlThlBjtdftv_efYJmuOHrVs/edit?usp=sharing" target="blank">Containers in Distributed Computing</a>
+
+.. |Container technology| raw:: html
+
+    <a href="https://arizona.box.com/s/iy0gop36ppi8ui9349dgbt8eug5b578y" target="blank">Container technology</a>

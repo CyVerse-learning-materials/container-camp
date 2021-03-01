@@ -1,13 +1,18 @@
-|CyVerse logo|_
+.. include:: ./cyverse_rst_defined_substitutions.txt
+
+|CyVerse_logo2|_
+
+|Home_Icon|_
+`Learning Center Home <http://learning.cyverse.org/>`_
 
 **Booting a CyVerse Atmosphere instance**
 =========================================
 
-In this session, we will walk through how to start up a running computer (an "instance") on the CyVerse Atmosphere Cloud service. Here is the `Atmosphere manual <https://wiki.cyverse.org/wiki/display/atmman/Atmosphere+Manual+Table+of+Contents>`_ if you are interested in learning more about CyVerse Atmosphere 
+In this session, we will walk through how to start up a running computer (an "instance") on the CyVerse Atmosphere Cloud service. Here is the `Atmosphere manual <https://wiki.cyverse.org/wiki/display/atmman/Atmosphere+Manual+Table+of+Contents>`_ if you are interested in learning more about CyVerse Atmosphere
 
-Below, we've provided screenshots of the whole process. You can click on them to zoom in a bit. The important areas to fill in are highlighted. 
+Below, we've provided screenshots of the whole process. You can click on them to zoom in a bit. The important areas to fill in are highlighted.
 
-First, go to the `Atmosphere <https://atmo.cyverse.org>`_ application and then click **login** 
+First, go to the `Atmosphere <https://atmo.cyverse.org>`_ application and then click **login**
 
 .. important::
 
@@ -18,7 +23,7 @@ First, go to the `Atmosphere <https://atmo.cyverse.org>`_ application and then c
 Fill in the username, which is your CyVerse username, and then enter the password which is your CyVerse password.
 
 |atmo-1.1|
-           
+
 2. Select Projects and **Create New Project**
 
 - Now, this is something you only need to do once.
@@ -34,7 +39,7 @@ Fill in the username, which is your CyVerse username, and then enter the passwor
 3. Select the newly created project
 
 - Click on your newly created project!
-           
+
 - Now, click **New** and then **Instance** from the dropdown menu to start up a new virtual machine.
 
 |atmo_launch0|
@@ -61,7 +66,7 @@ Fill in the username, which is your CyVerse username, and then enter the passwor
 
 **Deleting your instance**
 
-- To completely remove your instance, you can select the **Delete** buttom from the instance Actions page. 
+- To completely remove your instance, you can select the **Delete** buttom from the instance Actions page.
 
 - This will open up a dialogue window. Select the **Yes, delete this instance** button.
 
@@ -71,7 +76,7 @@ Fill in the username, which is your CyVerse username, and then enter the passwor
 
 Before deleting an instance make sure you backup your data, once the instance is deleted, there is no way you can get the data back. It is recommended to `attach the volume to the instance <https://wiki.cyverse.org/wiki/display/atmman/Attaching+and+Detaching+Volumes>`_ and do your analysis there.
 
-- It may take Atmosphere a few minutes to process your request. The instance should disappear from the project when it has been successfully deleted. 
+- It may take Atmosphere a few minutes to process your request. The instance should disappear from the project when it has been successfully deleted.
 
 |atmo-9|
 
@@ -79,9 +84,9 @@ Before deleting an instance make sure you backup your data, once the instance is
 
   It is advisable to delete the machine if you are not planning to use it in future to save valuable resources. However if you want to use it in future, you can suspend it.
 
-.. |CyVerse logo| image:: ../img/cyverse_rgb.png
+.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
     :width: 500
-.. _CyVerse logo: http://learning.cyverse.org/
+.. _CyVerse_logo2: http://learning.cyverse.org/
 
 .. |atmo-1.1| image:: ../img/atmo-1.1.png
   :width: 700
