@@ -8,7 +8,12 @@
 **Agenda**
 ==========
 
-Below are the schedule and classroom materials for Container Camp at The University of Arizona, which will run from March 10th to 13th, 2020.
+
+Below are the schedule and classroom materials for Container Camp 2021.
+
+This workshop runs under a `Code of Conduct <../getting_started/main.html>`_. Please respect it and be excellent to each other!
+
+Twitter hash tag: #cc2021
 
 
 .. list-table::
@@ -17,19 +22,11 @@ Below are the schedule and classroom materials for Container Camp at The Univers
     * - Day
       - Time
       - Topic/Activity
-      - Objectives
-    * - 03/10/20 (Tuesday)
-      - 11:00-12:00
-      - Laptop check and pre-installation checklist
-      - Final check to make sure you're ready
-    * -
-      - 11:30-12:00
-      - Instructor briefing
-      -
-    * -
-      - 12:00-12:15
-      - Welcome & Logistics (Tyson Swetnam)
-      - Cover Expectations for CC
+      - Notes/Links
+    * - 03/15/21 (Monday)
+      - 9:00-11:00
+      - General introduction to CyVerse and Camp logistics (Nirav Merchant & Upendra Devisetty)
+      - `Intro slides <https://docs.google.com/presentation/d/1shHJKmmLO8VfBfhhhm7cjFhD-5F1b-2fHWtRtaW-pIA/edit?usp=sharing>`_
     * -
       - 12:15-1:00
       - General overview of container technology landscape (Nirav Merchant)
@@ -79,9 +76,13 @@ Below are the schedule and classroom materials for Container Camp at The Univers
       - `Make your own container <../docker/dockeradvanced.html>`_: (Tyson Swetnam)
       - Customizing base images, setting up Docker-Compose
     * -
-      - 10:10-10:30
-      - Break
-      - time to talk and network
+      - 5:00-6:00
+      - Debriefing with instructors
+      -
+    * - 03/16/21 (Tuesday)
+      - 8:30-9:00
+      - Containers in Astronomy: Presentation by CK Chan
+      - `Slides <http://fermi.myds.me/scratch/2019_CyVerse_Container_Camp.pdf>`_
     * -
       - 10:30-11:15
       - Continuous Integration with GitHub (TBA)
@@ -102,18 +103,10 @@ Below are the schedule and classroom materials for Container Camp at The Univers
       - 5:00-5:30
       - Debriefing with instructors
       -
-
-.. list-table::
-    :header-rows: 1
-
-    * - Day
-      - Time
-      - Topic/Activity
-      - Notes/Links
-    * - 03/12/20 (Thursday)
-      - 8:30-8:45
-      - Review Day 2
-      - time for questions, comments, suggestions
+    * - 03/17/21 (Wednesday)
+      - 8:30-9:00
+      - Review Day 2 (Questions, Comments)
+      -
     * -
       - 8:45-10:10
       - Introduction to Singularity (Tyson Swetnam)

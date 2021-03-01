@@ -9,8 +9,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from misc.cyverse_sphinx_conf import *  # noqa
 
-project = 'CyVerse Learning Institute - Container Camp 2020'
-copyright = '2020, CyVerse'
+project = 'CyVerse Container Camp 2021'
+copyright = '2021, CyVerse'
 author = 'CyVerse'
 version = '0.3.0'
 release = '0.3.0'
