@@ -1,11 +1,11 @@
-|CyVerse logo|_
+|CyVerse_logo2|_
 
 **Deploying apps in CyVerse Discovery Environment**
 ---------------------------------------------------
 
 The CyVerse `Discovery Environment (DE) <https://de.cyverse.org>`_ provides a simple yet powerful web portal for managing data, analyses, and workflows. The DE uses containers (both Docker and Singularity) to support customizable, non-interactive, interactive reproducible workflows using data stored in the CyVerse Data Store.
 
-This `paper <https://f1000research.com/articles/5-1442/v3>`_ will guide you to bring your dockerized tools into CyVerse DE. 
+This `paper <https://f1000research.com/articles/5-1442/v3>`_ will guide you to bring your dockerized tools into CyVerse DE.
 
 |f1000|
 
@@ -27,20 +27,20 @@ Here are the basic steps for deploying Docker images as apps in DE. For this tut
 
 .. warning::
 
-	If you already have your own Docker image or a Docker image of interest is already hosted on a public registry(s) (Dockerhub or quay.io or some other public repository), then you can skip to Step 3 
+	If you already have your own Docker image or a Docker image of interest is already hosted on a public registry(s) (Dockerhub or quay.io or some other public repository), then you can skip to Step 3
 
 .. _Build and test your Docker images:
 
 **1. Build and test your Docker images**
 
-The first step is to dockerize your tool or software of interest. Detailed steps of how to dockerize your tool and test your dockerized images can be found in sections `intro to docker <../docker/dockerintro.html>`_ and `advanced docker <../docker/dockeradvanced.html>`_. 
+The first step is to dockerize your tool or software of interest. Detailed steps of how to dockerize your tool and test your dockerized images can be found in sections `intro to docker <../docker/dockerintro.html>`_ and `advanced docker <../docker/dockeradvanced.html>`_.
 
-For this tutorial I will use the ``tensorflow image classifier`` docker image that I built using this `code <https://github.com/upendrak/tensorflow_image_classifier>`_. 
+For this tutorial I will use the ``tensorflow image classifier`` docker image that I built using this `code <https://github.com/upendrak/tensorflow_image_classifier>`_.
 
 **Building the Docker image from the Dockerfile**
 
 .. code-block:: bash
-	
+
 	$ git clone https://github.com/upendrak/tensorflow_image_classifier && cd tensorflow_image_classifier
 
 	$ docker build -t tensorflow_up:1.0 .
@@ -51,7 +51,7 @@ For this tutorial I will use the ``tensorflow image classifier`` docker image th
 
 	$ docker run --rm -v $(pwd):/data -w /data tensorflow_up:1.0 sample_data/16401288243_36112bd52f_m.jpg
 
-This generates a file called `16401288243_36112bd52f_m.out` that consits of classification percentages such as 
+This generates a file called `16401288243_36112bd52f_m.out` that consits of classification percentages such as
 
 .. code-block :: bash
 
@@ -65,7 +65,7 @@ This generates a file called `16401288243_36112bd52f_m.out` that consits of clas
 
 **2. Push your Docker image to public repositories**
 
-Once the Docker image works as expected then either you set-up an automated build (recommended) or directly push the build Docker image to `dockerhub <http://hub.docker.com>`_. Here are the brief steps for automated build. See `Advanced Docker <../docker/dockeradvanced.html>`_ section for more details. 
+Once the Docker image works as expected then either you set-up an automated build (recommended) or directly push the build Docker image to `dockerhub <http://hub.docker.com>`_. Here are the brief steps for automated build. See `Advanced Docker <../docker/dockeradvanced.html>`_ section for more details.
 
 **2.1.** Login to hub.docker.com and select Create Repository
 
@@ -105,14 +105,14 @@ If the tool is not available in DE then do the following:
 
 - Click open the ``Tools`` tab in ``Manage Tools`` window and then click ``Add tools`` button
 
-- Then enter the fields about your tool and then click "Ok". 
-	
+- Then enter the fields about your tool and then click "Ok".
+
 	- Tool Name: It should be the name of the tool. For example "tensorflow_image_classifier".
 	- Description: A short Description about the tool. For example "Tensorflow image classifier".
 	- Version: What is the version number of the tool. For example "1.0".
 	- Image name: Name of the Docker image on dockerhub or quay.io. For example "upendradevisetty/tensorflow_image_classifier".
 	- Tag: What is the tag of your Docker image. This is optional but is highly recommended. If non specified, it will pull the default tag ``latest``. If the ``latest`` tag is not avaiable the tool integration will fail. For example "1.0"
-	- Entrypoint: Do you want a entrypoint for your Docker image? This optional. 
+	- Entrypoint: Do you want a entrypoint for your Docker image? This optional.
 	- Docker Hub URL: URL of the Dockerhub docker image. Option but is recommended. In this example "".
 
 |img_building_1|
@@ -134,7 +134,7 @@ Once the Dockerized tool is added, you can create the app UI for the tool. The `
 
 .. Note::
 
-	Creating a new app interface requires that you know how to use the tool. With that knowledge, you create the interface according to how you want options to be displayed to a user. 
+	Creating a new app interface requires that you know how to use the tool. With that knowledge, you create the interface according to how you want options to be displayed to a user.
 
 Here is an example of the ``Tensorflow image classifier - 1.0`` app UI in DE
 
@@ -167,9 +167,9 @@ Congrats!!! It works. The image classifier correctly predicts that the image is 
 - If your app works the way you expect it to you can share your app or make the app public
 - If your app doesn't work, then you may need to make changes to the app UI or you need to make changes to your Docker image. If you make changes to the Docker image, then you don't need to create a new app UI again as the Docker image updates will be propagated automatically.
 
-.. |CyVerse logo| image:: ../img/cyverse_rgb.png
+.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
     :width: 500
-.. _CyVerse logo: http://learning.cyverse.org/
+.. _CyVerse_logo2: http://learning.cyverse.org/
 
 .. |f1000| image:: ../img/f1000.png
   :width: 700

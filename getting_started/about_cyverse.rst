@@ -1,3 +1,10 @@
+.. include:: ./cyverse_rst_defined_substitutions.txt
+
+|CyVerse_logo2|_
+
+|Home_Icon|_
+`Learning Center Home <http://learning.cyverse.org/>`_
+
 **About CyVerse**
 =================
 
@@ -31,3 +38,13 @@ Award Numbers DBI-0735191, DBI-1265383 and DBI-1743442.
 Please cite CyVerse appropriately when you make use of our resources,
 `CyVerse citation
 policy <http://www.cyverse.org/acknowledge-and-cite-cyverse>`__
+
+.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
+    :width: 500
+.. _CyVerse_logo2: http://learning.cyverse.org/
+
+.. |Home_Icon| image:: ../img/homeicon.png
+    :width: 25
+    :height: 25
+
+.. _Home_Icon: http://learning.cyverse.org/

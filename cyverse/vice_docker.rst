@@ -14,7 +14,7 @@ First log-in `CyVerse DE <https://de.cyverse.org/de/>`_
 1. Search JupyterLab App
 ========================
 
-After you login to DE, open the Apps window and search the JupyterLab with key word `JupyterLab`. 
+After you login to DE, open the Apps window and search the JupyterLab with key word `JupyterLab`.
 
 |jupyter1-1|
 
@@ -29,7 +29,7 @@ Launch the JupyterLab app by clicking **launch analysis**. Before you launch, yo
 
 .. Note::
 
-	The first two steps of launching apps are same as with other DE apps. 
+	The first two steps of launching apps are same as with other DE apps.
 
 3. Navigate to JupyterLab url
 ==============================
@@ -53,7 +53,7 @@ Jupyter notebooks are documents that combine live runnable code with narrative t
 
 If you want to create a notebook, you can do so by clicking the ``+`` button in the file browser and then selecting a kernel in the new Launcher tab. Currently there are 3 different notebooks available - Python3, Julia and R. Click on `Python 3` under Notebook section in the JupyterLab Interface, which will open a new Jupyter Notebook. A new file is created with a default name. Rename a file by right-clicking on its name in the file browser and selecting “Rename” from the context menu.
 
-To know more about notebooks in JupyterLab click `here <https://jupyterlab.readthedocs.io/en/stable/user/notebook.html>`_ 
+To know more about notebooks in JupyterLab click `here <https://jupyterlab.readthedocs.io/en/stable/user/notebook.html>`_
 
 .. Tip::
 
