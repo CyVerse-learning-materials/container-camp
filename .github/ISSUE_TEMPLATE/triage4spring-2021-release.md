@@ -2,7 +2,7 @@
 name: Triage for Release
 about: Describe this issue template's purpose here.
 title: Triage for [Project Title] Release [X.X.X]
-labels: 2.0 Release
+labels: Spring 2021
 assignees: ''
 
 ---
