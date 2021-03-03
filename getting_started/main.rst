@@ -7,23 +7,19 @@
 **Learning objectives**
 ======================
 
-Participants will learn key containerization concepts for developing reproducible analysis pipelines, with emphasis on container lifecycle management from design to execution and scaling.
-
-The workshop will cover key concepts about containers such as defining the architecture of containers, building images and pushing them to public and private repositories as well as how to scale your analysis from laptop to cloud and to HPC systems using containers.
-
-.. raw:: html
-
-    <div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://www.lucidchart.com/documents/embeddedchart/804daeb6-7e77-489d-8958-d87e7ed44f8c" id="~c5EjACWeQ6f"></iframe></div>
+- Understand what containers are and their role in reproducible science
+- Find and deploy existing containers using CyVerse VICE (Visual Interactive Compute Environment)
+- Learn to create Docker containers using your own data and/or analyses for reproducible analysis
+- Know the role of the Dockerfile in the build
+- Apply Linux command line skills to write Docker files
 
 
-**FAIR Data principles**
-=======================
 
-Container Camp supports FAIR data principles by providing services that help make data Findable, Accessible, Interoperable, and Reusable. Participants will get an introduction to containers and learn how to create and manage containers, enabling interoperability and reusability of data.
+.. **FAIR Data principles** commented out for intro to container camp
+.. =======================
 
-**Container Camp Goes Green**
+.. Container Camp supports FAIR data principles by providing services that help make data Findable, Accessible, Interoperable, and Reusable. Participants will get an introduction to containers and learn how to create and manage containers, enabling interoperability and reusability of data.
 
-This year, we encourage all Container Camp participants to help minimize our waste footprint. If possible, bring your own reusable beverage containers, such as coffee mugs and water bottles, to use during snack breaks. Thanks in advance!
 
 **Who should attend?**
 
@@ -33,7 +29,7 @@ Faculty, researchers, postdocs, and graduate students who use and analyze data o
 
 This workshop is focused on beginner-level users with little to no previous container experience.
 
-Intermediate and advanced users who attend will gain a better understanding of and ability with container capabilities  and resources, including deploying their own tools and extending these analyses into Cloud and HPC.
+.. Intermediate and advanced users who attend will gain a better understanding of and ability with container capabilities  and resources, including deploying their own tools and extending these analyses into Cloud and HPC.
 
 **Need help?**
 
