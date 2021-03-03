@@ -39,7 +39,7 @@ Couldn't find what you were looking for?
 
 - Chat with us on Slack.
 
-- Post an issue on the documentation `issue tracker <https://github.com/CyVerse-learning-materials/container_camp_workshop_2019/issues>`_ on GitHub
+- Post an issue on the documentation `issue tracker <https://github.com/CyVerse-learning-materials/container-camp/issues>`_ on GitHub
 
 .. |CyVerse_logo2| image:: ../img/cyverse_learning.png
     :width: 500
