@@ -27,7 +27,7 @@ Expected outcomes:
    getting_started/main
    getting_started/code_conduct
    getting_started/installation
-   getting_started/location
+   .. getting_started/location
    getting_started/agenda
    getting_started/about_cyverse
    getting_started/glossary
@@ -38,9 +38,9 @@ Expected outcomes:
 
    topics/reproducibility
    topics/linux
-   topics/train_docker
-   topics/train_singularity
-   topics/breakout_session
+   .. topics/train_docker
+   .. topics/train_singularity
+   .. topics/breakout_session
 
 .. toctree::
    :maxdepth: 1
@@ -48,9 +48,10 @@ Expected outcomes:
 
    docker/findingcontainers
    docker/dockerintro
-   docker/dockeradvanced
+   .. docker/dockeradvanced
 
-.. toctree::
+.. commented out for intro container camp
+  .. toctree::
    :maxdepth: 1
    :caption: Singularity
 
@@ -58,7 +59,8 @@ Expected outcomes:
    singularity/singularityadvanced
    singularity/singularityhpc
 
-.. toctree::
+..   commented out for intro container camp
+ .. toctree::
    :maxdepth: 1
    :caption: Breakout Sessions
 
@@ -80,7 +82,8 @@ Expected outcomes:
    :caption: Useful Resources
 
    useful_resources/usefulresources_docker
-   useful_resources/usefulresources_singularity
+   .. commented out for intro container camp
+   .. useful_resources/usefulresources_singularity
    useful_resources/usefulresources_other
 
 .. toctree::
@@ -90,13 +93,13 @@ Expected outcomes:
    instructions_reporting/instructors
    instructions_reporting/problems
 
-.. |cc-boat| image:: ./img/cc-boat.png
+.. |cc-boat| image:: ../img/cc-boat.png
   :width: 800
 
-.. |CyVerse_logo2| image:: ./img/cyverse_learning.png
+.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
     :width: 500
 .. _CyVerse_logo2: http://learning.cyverse.org/
 
-.. |Home_Icon| image:: ./img/homeicon.png
+.. |Home_Icon| image:: ../img/homeicon.png
     :width: 25
     :height: 25
