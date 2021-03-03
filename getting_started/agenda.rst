@@ -9,7 +9,7 @@
 ==========
 
 March 15–17, 2021
-9:00AM–1:00PM US Pacific Time (11:00AM–3:00PM US Eastern Time)
+9:00AM–1:00PM US Pacific Time (12:00PM–4:00PM US Eastern Time)
 
 
 .. IMPORTANT::
