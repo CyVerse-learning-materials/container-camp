@@ -90,6 +90,18 @@ reproducibility a foundation of all of your research.
 
 ----
 
+.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
+    :width: 500
+.. _CyVerse_logo2: http://learning.cyverse.org/
+
+.. _CyVerse_logo: https://cyverse.org
+
+.. |Home_Icon| image:: ../img/homeicon.png
+    :width: 25
+    :height: 25
+
+.. _Home_Icon: http://learning.cyverse.org/
+
 .. |spectrum| image:: ../img/reproducibility-spectrum.png
     :width: 600
     :height: 200
