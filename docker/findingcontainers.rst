@@ -2,8 +2,7 @@
 
 |CyVerse_logo2|_
 
-|Home_Icon2|_
-`Learning Center Home <http://learning.cyverse.org/>`_
+|Home_Icon|_ `Learning Center Home <http://learning.cyverse.org/>`_
 
 **Finding the perfect container** 
 ============================
@@ -238,6 +237,19 @@ Use 'docker images' to see all the images on your computer:
 - Send feedback: `Tutorials@CyVerse.org <Tutorials@CyVerse.org>`_
 
 ----
+
+.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
+    :width: 500
+.. _CyVerse_logo2: http://learning.cyverse.org/
+
+.. _CyVerse_logo: https://cyverse.org
+
+.. |Home_Icon| image:: ../img/homeicon.png
+    :width: 25
+    :height: 25
+
+.. _Home_Icon: http://learning.cyverse.org/
+
 
 .. |Github Repo Link|  raw:: html
 
