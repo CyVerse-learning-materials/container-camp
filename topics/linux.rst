@@ -82,6 +82,18 @@ Packages can be installed on the command line, or in graphic UI.
       <a href="REPLACE_THIS_WITH_URL" target="blank">Replace_with_text</a>
 
 
+.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
+    :width: 500
+.. _CyVerse_logo2: http://learning.cyverse.org/
+
+.. _CyVerse_logo: https://cyverse.org
+
+.. |Home_Icon| image:: ../img/homeicon.png
+    :width: 25
+    :height: 25
+
+.. _Home_Icon: http://learning.cyverse.org/
+
 .. |Github Repo Link|  raw:: html
 
-   <a href="https://github.com/CyVerse-learning-materials/cc-2020/tree/master/software_essentials/websites.rst" target="blank">Github Repo Link</a>
+   <a href="../software_essentials/websites.rst" target="blank">Github Repo Link</a>
