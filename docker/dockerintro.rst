@@ -1,3 +1,9 @@
+.. include:: ../cyverse_rst_defined_substitutions.txt
+
+|CyVerse_logo2|_
+
+|Home_Icon|_ `Learning Center Home <http://learning.cyverse.org/>`_
+
 **Introduction to Docker**
 --------------------------
 
@@ -561,9 +567,20 @@ You don't have to install anything to use PWD. Just open ``https://labs.play-wit
 .. |portainer_demo| image:: ../img/portainer_demo.png
   :width: 500
 
-
 .. |pwd| image:: ../img/pwd.png
   :width: 500
 
 .. |catpic| image:: ../img/catpic-1.png
   :width: 500
+
+.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
+    :width: 500
+.. _CyVerse_logo2: http://learning.cyverse.org/
+
+.. _CyVerse_logo: https://cyverse.org
+
+.. |Home_Icon| image:: ../img/homeicon.png
+    :width: 25
+    :height: 25
+
+.. _Home_Icon: http://learning.cyverse.org/
