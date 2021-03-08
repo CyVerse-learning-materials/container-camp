@@ -2,7 +2,7 @@
 
 |CyVerse_logo2|_
 
-|Home_Icon2|_ `Learning Center Home <http://learning.cyverse.org/>`_
+|Home_Icon|_ `Learning Center Home <http://learning.cyverse.org/>`_
 
 **Tool integration in the Discovery Environment (DE)**
 ======================================================
@@ -141,6 +141,14 @@ Additional resources
 .. |myappsdev| image:: ../img/toolintegration9.png
   :width: 750
 
+.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
+    :width: 500
+.. _CyVerse_logo2: http://learning.cyverse.org/
+
+.. _CyVerse_logo: https://cyverse.org
+
 .. |Home_Icon| image:: ../img/homeicon.png
     :width: 25
-.. _Home_Icon: http://learning.cyverse.org/    
+    :height: 25
+
+.. _Home_Icon: http://learning.cyverse.org/

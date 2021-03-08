@@ -127,7 +127,7 @@ NVIDIA is one of the leading makers of graphic processing units (GPU). GPU were 
 
 NVIDIA have created their own set of Docker containers and Registries for running on CPU-GPU enabled systems.
 
-`NVIDIA-Docker <xhttps://github.com/NVIDIA/nvidia-docker>`_ runs atop the NVIDIA graphics drivers on the host system, the NVIDIA drivers are imported to the container at runtime.
+`NVIDIA-Docker <https://github.com/NVIDIA/nvidia-docker>`_ runs atop the NVIDIA graphics drivers on the host system, the NVIDIA drivers are imported to the container at runtime.
 
 `NVIDIA Docker Hub <https://hub.docker.com/u/nvidia>`_ hosts numerous NVIDIA Docker containers, from which you can build your own images.
 
@@ -295,7 +295,7 @@ Use 'docker images' to see all the images on your computer:
 .. |docker| image:: ../img/docker.png
   :width: 250
 
-.. |biocontainerlogo| image:: ../img/biocontainers5a.png
+.. |biocontainerlogo| image:: https://avatars.githubusercontent.com/u/8040690
   :width: 300
 
 .. |hubfind1| image:: ../img/hubfind1.png
