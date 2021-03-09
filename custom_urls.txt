@@ -8,3 +8,101 @@
     :width: 125
     :height: 20
     :target: https://de.cyverse.org/de/  target="_blank"
+
+.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
+    :width: 500
+
+.. _CyVerse_logo2: http://learning.cyverse.org/
+
+.. _CyVerse_logo: https://cyverse.org
+
+.. |Home_Icon| image:: ../img/homeicon.png
+    :width: 25
+    :height: 25
+
+.. _Home_Icon: http://learning.cyverse.org/
+
+
+.. |CyVerse Learning Center| raw:: html
+
+   <a href="http://learning.cyverse.org" target="blank">CyVerse Learning Center</a>
+
+.. |Github Repo Link|  raw:: html
+
+   <a href="https://github.com/CyVerse-learning-materials/container-camp" target="blank">Github Repo Link</a>
+
+.. |dockerhub|  raw:: html
+
+   <a href="https://hub.docker.com" target="blank">Docker Hub</a>
+
+.. |quayio|  raw:: html
+
+   <a href="https://quay.io/" target="blank">Quay</a>
+
+.. |biocontainerreg|  raw:: html
+
+   <a href="https://biocontainers.pro/#/registry" target="blank">BioContainers Registry</a>
+
+.. |biocontainerlogo| image:: https://avatars.githubusercontent.com/u/8040690
+  :width: 100
+
+.. |NVIDIA-docker-diagram| image:: https://cloud.githubusercontent.com/assets/3028125/12213714/5b208976-b632-11e5-8406-38d379ec46aa.png  
+    :width: 800
+
+.. |Intercom| image:: ../img/intercom.png
+    :width: 25
+    :height: 25
+
+.. |Docker Hub| raw:: html
+
+   <a href="https://hub.docker.com" target="blank">Docker Hub</a>
+
+
+.. |Amazon Elastic Container Registry| raw:: html
+
+   <a href="https://aws.amazon.com/ecr/" target="blank">Amazon Elastic Container Registry</a>
+
+
+.. |Google Container Registry| raw:: html
+
+   <a href="https://cloud.google.com/container-registry/docs" target="blank">Google Container Registry</a>
+
+
+.. |Azure Container Registry| raw:: html
+
+   <a href="https://azure.microsoft.com/en-us/services/container-registry/" target="blank">Azure Container Registry</a>
+
+
+.. |NVIDIA GPU Cloud| raw:: html
+
+   <a href="https://ngc.nvidia.com/catalog/containers" target="blank">NVIDIA GPU Cloud</a>
+
+.. |Private Docker Registry| raw:: html
+
+   <a href="https://private-docker-registry.com/" target="blank">Private Docker Registry</a>
+
+
+.. |Gitlab Container Registry| raw:: html
+
+   <a href="https://docs.gitlab.com/ee/administration/packages/container_registry.html" target="blank">Gitlab Container Registry</a>
+
+
+.. |Quay| raw:: html
+
+   <a href="https://quay.io/" target="blank">Quay</a>
+
+
+.. |TreeScale| raw:: html
+
+   <a href="https://treescale.com/" target="blank">TreeScale</a>
+
+
+.. |Canister| raw:: html
+
+   <a href="https://www.canister.io/" target="blank">Canister</a>
+
+.. |BioContainers Registry| raw:: html
+
+   <a href="https://biocontainers.pro/#/registry" target="blank">BioContainers Registry</a>
+
+
