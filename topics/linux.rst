@@ -1,4 +1,5 @@
 .. include:: ../cyverse_rst_defined_substitutions.txt
+.. include:: custom_urls.txt
 
 |CyVerse_logo2|_
 
@@ -98,4 +99,4 @@ Packages can be installed on the command line, or in graphic UI.
 
 .. |Github Repo Link|  raw:: html
 
-   <a href="../software_essentials/websites.rst" target="blank">Github Repo Link</a>
+   <a href="https://github.com/CyVerse-learning-materials/container-camp/blob/main/topics/linux.rst" target="blank">Github Repo Link</a>
