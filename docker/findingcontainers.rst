@@ -1,8 +1,12 @@
 .. include:: ../cyverse_rst_defined_substitutions.txt
 
+.. include:: ../custom_urls.txt
+
 |CyVerse_logo2|_
 
-|Home_Icon|_ `Learning Center Home <http://learning.cyverse.org/>`_
+|Home_Icon|_
+`Learning Center Home <http://learning.cyverse.org/>`_
+
 
 **Finding the perfect container** 
 ============================
@@ -75,18 +79,18 @@ The Docker command line interface uses the `Docker Hub <https://hub.docker.com/>
 
 Some examples of public/private registries to consider for your research needs:
 
-- `Docker Hub <https://hub.docker.com/>`_ 
-- `Docker Trusted Registry <https://docs.docker.com/ee/dtr/>`_
-- `Amazon Elastic Container Registry <https://aws.amazon.com/ecr/>`_
-- `Google Container Registry <https://cloud.google.com/container-registry/docs>`_
-- `Azure Container Registry <https://azure.microsoft.com/en-us/services/container-registry/>`_
-- `NVIDIA GPU Cloud <https://ngc.nvidia.com/catalog/containers>`_
-- `Private Docker Registry <https://private-docker-registry.com/>`_ - not official Docker
-- `Gitlab Container Registry <https://docs.gitlab.com/ce/administration/container_registry.html>`_
-- `Quay <https://quay.io/>`_
-- `TreeScale <https://treescale.com/>`_
-- `Canister <https://www.canister.io/>`_
-- `BioContainers Registry <https://biocontainers.pro/#/registry>`_
+- |Docker Hub|
+
+- |Amazon Elastic Container Registry|
+- |Google Container Registry|
+- |Azure Container Registry|
+- |NVIDIA GPU Cloud|
+- |Private Docker Registry| - not official Docker
+- |Gitlab Container Registry|
+- |Quay|
+- |TreeScale|
+- |Canister|
+- |BioContainers Registry|
 
 |dockerhub|
 -------------
@@ -145,170 +149,19 @@ Programs which leverage 3D applications include `VirtualGL <https://www.virtualg
 
 An example application of a graphics-enabled remote desktop is the use of `Blender <https://www.blender.org/>`_ for creating high level of detail images or animations.
 
-**Pull an image from a registry**
-----------------------------------
-
-To run your container you will need a computer with Docker installed. 
-We will use an Atmosphere cloud instance today but this can be done on any computer.
-
-Open an Atmosphere instance
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Go to `Atmosphere <https://atmo.cyverse.org/>`_ and log in with your CyVerse credentials.
- 
-2. Click on 'projects' tab at the top of the page.
-
-3. You should have a project called 'Conatainer Camp 2020'; click on that tile.
-
-4. You should already have a running instance called **Ubuntu 18_04 GUI XFCE Base**. To confirm this look for a green dot and the word 'Active' under 'status'.
-
- |atmoactive|
-
-5. Copy the IP address for your instance
-
-6. Open a terminal on your computer
-
-7. Connect to your Atmoshere instance via ssh **using the IP address you copied**
-
-.. code-block:: bash
-
-    $ ssh 128.196.142.89
-
-8. You will be asked if you are sure you want to continue--say **yes**.
-
-   |atmoauth|
-
-9. If you see something like this (below) then you have successfully logged into your Atmophere instance.
-
-   |atmosuccess|
- 
-Install Docker
-^^^^^^^^^^^^^^^^^^^^^
-
-Installing Docker on your computer takes a little time but it is reasonably straight forward and it is a one-time setup. |How to install Docker|. 
-
-Docker installation is much easier on an Atmosphere instance with the 'ezd' command.
-
-.. code-block:: bash
-
-    $ ezd
-    
-Use 'docker pull' to get the image
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Go to |dockerhub| and search for 'hello-world' in the search bar at the top of the page. 
-
-|hubfind1|
-
-Click on the 'tag' tab to see all the available 'hello-world' images. 
-
-Click the 'copy' icon at the right to copy the docker pull command that we will need on the command line.
 
 
-Now you will need to pull the image from the registry onto your computer. Use the 'docker pull' command you copied from the registry above. 
+**Fix or improve this documentation**
 
-.. Note:: 
-    If you are working on a system for which you don't have root permissions you will need to use 'sudo' and provide your password. Like this:
-
-.. code-block:: bash
-
-   $ sudo docker pull hello-world:latest
-
-Now list the files in your current working directory
-
-.. code-block:: bash
-
-   $ ls -l
-
-Where is the image you just pulled? 
-Docker saves container images to the Docker directory (where Docker is installed). You won't ever see them in your working directory.
-
-Use 'docker images' to see all the images on your computer:
-
-.. code-block:: bash
-
-   $ sudo docker images
-
-----
-
-**Fix or improve this documentation:**
-
-- On Github: |Github Repo Link|
+- Search for an answer:
+  |CyVerse Learning Center|
+- Ask us for help:
+  click |Intercom| on the lower right-hand side of the page
+- Report an issue or submit a change:
+  |Github Repo Link|
 - Send feedback: `Tutorials@CyVerse.org <Tutorials@CyVerse.org>`_
 
-----
-
-.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
-    :width: 500
-.. _CyVerse_logo2: http://learning.cyverse.org/
-
-.. _CyVerse_logo: https://cyverse.org
-
-.. |Home_Icon| image:: ../img/homeicon.png
-    :width: 25
-    :height: 25
-
-.. _Home_Icon: http://learning.cyverse.org/
 
 
-.. |Github Repo Link|  raw:: html
-
-   <a href="https://github.com/CyVerse-learning-materials/foss-2019/tree/master/Containers/biocontainers.rst" target="blank">Github Repo Link</a>
-
-.. |dockerdocs|  raw:: html
-
-   <a href="https://docs.docker.com" target="blank">Docker</a>
 
 
-.. |dockerhub|  raw:: html
-
-   <a href="https://hub.docker.com" target="blank">Docker Hub</a>
-
-.. |quayio|  raw:: html
-
-   <a href="https://quay.io/" target="blank">Quay</a>
-
-.. |biocontainerreg|  raw:: html
-
-   <a href="https://biocontainers.pro/#/registry" target="blank">BioContainers Registry</a>
-
-.. |How to install Docker|  raw:: html
-
-   <a href="https://learning.cyverse.org/projects/container_camp_workshop_2019/en/latest/docker/dockerintro.html" target="blank">How to install Docker</a>
-
-.. |linuxdocker|  raw:: html
-
-   <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu" target="blank">Linux platforms</a>
-
-.. |builddocker|  raw:: html
-
-   <a href="https://cyverse-creating-docker-containers-quickstart.readthedocs-hosted.com/en/latest/step3.html" target="blank">More information on building Docker images</a>
-
-.. |macdocker|  raw:: html
-
-   <a href="https://docs.docker.com/docker-for-mac/install" target="blank">Mac</a>
-
-.. |windowsdocker|  raw:: html
-
-   <a href="https://docs.docker.com/docker-for-windows/install" target="blank">Windows</a>
-   
-.. |docker| image:: ../img/docker.png
-  :width: 250
-
-.. |biocontainerlogo| image:: https://avatars.githubusercontent.com/u/8040690
-  :width: 300
-
-.. |hubfind1| image:: ../img/hubfind1.png
-  :width: 650
-
-.. |atmoactive| image:: ../img/atmoactive.png
-  :width: 650
-
-.. |atmoauth| image:: ../img/atmoauth.png
-  :width: 650
-
-.. |atmosuccess| image:: ../img/atmosuccess.png
-  :width: 650
-
-.. |NVIDIA-docker-diagram| image:: https://cloud.githubusercontent.com/assets/3028125/12213714/5b208976-b632-11e5-8406-38d379ec46aa.png  
-    :width: 800

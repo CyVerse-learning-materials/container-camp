@@ -1,8 +1,10 @@
 .. include:: ../cyverse_rst_defined_substitutions.txt
+.. include:: ../custom_urls.txt
 
 |CyVerse_logo2|_
 
-|Home_Icon|_ `Learning Center Home <http://learning.cyverse.org/>`_
+|Home_Icon|_
+`Learning Center Home <http://learning.cyverse.org/>`_
 
 **Introduction to Docker**
 --------------------------
@@ -14,17 +16,105 @@ Prerequisites
 
 There are no specific skills needed for this tutorial beyond a basic comfort with the command line and using a text editor.
 
-* Install Docker on your laptop:
+..
+	* Install Docker on your laptop:
+..
+	- `Mac <https://docs.docker.com/docker-for-mac/>`_
+	- `Windows <https://docs.docker.com/docker-for-windows/>`_
+	- `Ubuntu <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_
+..
+	* Install Docker on a featured Atmosphere image:
+..
+	.. code-block:: bash
+..
+	$ ezd
 
-  - `Mac <https://docs.docker.com/docker-for-mac/>`_
-  - `Windows <https://docs.docker.com/docker-for-windows/>`_
-  - `Ubuntu <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_
+**Pull an image from a registry**
+----------------------------------
 
-* Install Docker on a featured Atmosphere image:
+To run your container you will need a computer with Docker installed. 
+We will use an Atmosphere cloud instance today but this can be done on any computer.
+
+Open an Atmosphere instance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Go to |Atmosphere| and log in with your CyVerse credentials.
+ 
+2. Click on 'projects' tab at the top of the page.
+
+3. You should have a project called 'Conatainer Camp 2021'; click on that tile.
+
+4. You should already have a running instance called **Ubuntu 18_04 GUI XFCE Base**. To confirm this look for a green dot and the word 'Active' under 'status'.
+
+ |atmoactive|
+
+5. Copy the IP address for your instance
+
+6. Open a terminal on your computer
+
+7. Connect to your Atmoshere instance via ssh **using the IP address you copied**
 
 .. code-block:: bash
 
-	$ ezd
+    $ ssh 128.196.142.89
+
+8. You will be asked if you are sure you want to continue--say **yes**.
+
+   |atmoauth|
+
+9. If you see something like this (below) then you have successfully logged into your Atmophere instance.
+
+   |atmosuccess|
+ 
+.. Note::
+
+	Install Docker
+	^^^^^^^^^^^^^^^^^^^^^
+	Installing Docker on your computer takes a little time but it is reasonably straight forward and it is a one-time setup. |How to install Docker|. 
+
+	Docker installation is much easier on an Atmosphere instance with the 'ezd' command.
+..
+	.. code-block:: bash
+..
+    	$ ezd
+    
+Use 'docker pull' to get the image
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Go to |dockerhub| and search for 'hello-world' in the search bar at the top of the page. 
+
+|hubfind1|
+
+Click on the 'tag' tab to see all the available 'hello-world' images. 
+
+Click the 'copy' icon at the right to copy the docker pull command that we will need on the command line.
+
+
+Now you will need to pull the image from the registry onto your computer. Use the 'docker pull' command you copied from the registry above. 
+
+.. Note:: 
+    If you are working on a system for which you don't have root permissions you will need to use 'sudo' and provide your password. Like this:
+
+.. code-block:: bash
+
+   $ sudo docker pull hello-world:latest
+
+Now list the files in your current working directory
+
+.. code-block:: bash
+
+   $ ls -l
+
+Where is the image you just pulled? 
+Docker saves container images to the Docker directory (where Docker is installed). You won't ever see them in your working directory.
+
+Use 'docker images' to see all the images on your computer:
+
+.. code-block:: bash
+
+   $ sudo docker images
+
+----
 
 1.0 Docker Run
 ==============
@@ -501,57 +591,70 @@ Getting more help with Docker
    # shows options and summaries for a particular command
 
 - Learn `more about docker <https://docs.docker.com/get-started/>`_
-4. Extra Demos
-==============
-
-4.1 Portainer
-~~~~~~~~~~~~~
-
-`Portainer <https://portainer.io/>`_ is an open-source lightweight managment UI which allows you to easily manage your Docker hosts or Swarm cluster.
-
-- Simple to use: It has never been so easy to manage Docker. Portainer provides a detailed overview of Docker and allows you to manage containers, images, networks and volumes. It is also really easy to deploy, you are just one Docker command away from running Portainer anywhere.
-
-- Made for Docker: Portainer is meant to be plugged on top of the Docker API. It has support for the latest versions of Docker, Docker Swarm and Swarm mode.
-
-4.1.1 Installation
-^^^^^^^^^^^^^^^^^^
-
-Use the following Docker commands to deploy Portainer. Now the second line of command should be familiar to you by now. We will talk about first line of command in the Advanced Docker session.
-
-.. code-block:: bash
-
+.. 
+ 4. Extra Demos
+ ==============
+..
+ 4.1 Portainer
+ ~~~~~~~~~~~~~
+..
+ `Portainer <https://portainer.io/>`_ is an open-source lightweight managment UI which allows you to easily manage your Docker hosts or Swarm cluster.
+..
+ - Simple to use: It has never been so easy to manage Docker. Portainer provides a detailed overview of Docker and allows you to manage containers, images, networks and volumes. It is also really easy to deploy, you are just one Docker command away from running Portainer anywhere.
+..
+ - Made for Docker: Portainer is meant to be plugged on top of the Docker API. It has support for the latest versions of Docker, Docker Swarm and Swarm mode.
+..
+ 4.1.1 Installation
+ ^^^^^^^^^^^^^^^^^^
+..
+ Use the following Docker commands to deploy Portainer. Now the second line of command should be familiar to you by now. We will talk about first line of command in the Advanced Docker session.
+..
+ .. code-block:: bash
+..
 	# on CyVerse Atmosphere:
 	$ ezd -p
-
+..
 	$ docker volume create portainer_data
-
+..
 	$ docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
-
-- If you are on mac, you'll just need to access the port 9000 (http://localhost:9000) of the Docker engine where portainer is running using username ``admin`` and password ``tryportainer``
-
-- If you are running Docker on Atmosphere/Jetstream or on any other cloud, you can open ``ipaddress:9000``. For my case this is ``http://128.196.142.26:9000``
-
-.. Note::
-
+..
+ - If you are on mac, you'll just need to access the port 9000 (http://localhost:9000) of the Docker engine where portainer is running using username ``admin`` and   password ``tryportainer``
+..
+ - If you are running Docker on Atmosphere/Jetstream or on any other cloud, you can open ``ipaddress:9000``. For my case this is ``http://128.196.142.26:9000``
+..
+ .. Note::
+..
 	The ``-v /var/run/docker.sock:/var/run/docker.sock`` option can be used in Mac/Linux environments only.
-
-|portainer_demo|
-
-4.2 Play-with-docker (PWD)
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`PWD <https://labs.play-with-docker.com/>`_ is a Docker playground which allows users to run Docker commands in a matter of seconds. It gives the experience of having a free Alpine Linux Virtual Machine in browser, where you can build and run Docker containers and even create clusters in `Docker Swarm Mode <https://docs.docker.com/engine/swarm/>`_. Under the hood, Docker-in-Docker (DinD) is used to give the effect of multiple VMs/PCs. In addition to the playground, PWD also includes a training site composed of a large set of Docker labs and quizzes from beginner to advanced level available at `training.play-with-docker.com <https://training.play-with-docker.com/>`_.
-
-4.2.1 Installation
-^^^^^^^^^^^^^^^^^^
-
-You don't have to install anything to use PWD. Just open ``https://labs.play-with-docker.com/`` <https://labs.play-with-docker.com/>`_ and start using PWD
-
-.. Note::
-
+..
+ |portainer_demo|
+..
+ 4.2 Play-with-docker (PWD)
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+..
+ `PWD <https://labs.play-with-docker.com/>`_ is a Docker playground which allows users to run Docker commands in a matter of seconds. It gives the experience of having a free Alpine Linux Virtual Machine in browser, where you can build and run Docker containers and even create clusters in `Docker Swarm Mode <https://docs.docker.com/engine/swarm/>`_. Under the hood, Docker-in-Docker (DinD) is used to give the effect of multiple VMs/PCs. In addition to the playground, PWD also includes a training site composed of a large set of Docker labs and quizzes from beginner to advanced level available at `training.play-with-docker.com <https://training.play-with-docker.com/>`_.
+..
+ 4.2.1 Installation
+ ^^^^^^^^^^^^^^^^^^
+..
+ You don't have to install anything to use PWD. Just open ``https://labs.play-with-docker.com/`` <https://labs.play-with-docker.com/>`_ and start using PWD
+..
+ .. Note::
+..
 	You can use your Dockerhub credentials to log-in to PWD
+..
+ |pwd|
 
-|pwd|
+**Fix or improve this documentation**
+
+- Search for an answer:
+   |CyVerse Learning Center|
+- Ask us for help:
+  click |Intercom| on the lower right-hand side of the page
+- Report an issue or submit a change:
+  |Github Repo Link|
+- Send feedback: `Tutorials@CyVerse.org <Tutorials@CyVerse.org>`_
+
+===================================================================
 
 .. |docker| image:: ../img/docker.png
   :width: 250
@@ -577,10 +680,38 @@ You don't have to install anything to use PWD. Just open ``https://labs.play-wit
     :width: 500
 .. _CyVerse_logo2: http://learning.cyverse.org/
 
-.. _CyVerse_logo: https://cyverse.org
-
 .. |Home_Icon| image:: ../img/homeicon.png
     :width: 25
     :height: 25
 
 .. _Home_Icon: http://learning.cyverse.org/
+
+.. |atmoactive| image:: ../imag/atmoactive.png
+    :width: 500
+
+.. |atmoauth| image:: ../imag/atmoauth.png
+    :width: 500
+
+.. |atmosuccess| image:: ../imag/atmosuccess.png
+    :width: 500
+   
+.. |docker| image:: ../img/docker.png
+  :width: 250
+
+.. |hubfind1| image:: ../img/hubfind1.png
+  :width: 650
+
+.. |atmoactive| image:: ../img/atmoactive.png
+  :width: 650
+
+.. |atmoauth| image:: ../img/atmoauth.png
+  :width: 650
+
+.. |atmosuccess| image:: ../img/atmosuccess.png
+  :width: 650
+
+.. |volumes| image:: ../img/volumes.png
+    :width: 500
+
+
+
