@@ -656,6 +656,9 @@ Getting more help with Docker
 
 ===================================================================
 
+.. |Github Repo Link| raw:: html
+	 <a href="https://github.com/CyVerse-learning-materials/container-camp/blob/main/docker/dockerintro.rst" target="blank">Github Repo Link</a>
+
 .. |docker| image:: ../img/docker.png
   :width: 250
 
