@@ -686,13 +686,13 @@ Getting more help with Docker
 
 .. _Home_Icon: http://learning.cyverse.org/
 
-.. |atmoactive| image:: ../imag/atmoactive.png
+.. |atmoactive| image:: ../img/atmoactive.png
     :width: 500
 
-.. |atmoauth| image:: ../imag/atmoauth.png
+.. |atmoauth| image:: ../img/atmoauth.png
     :width: 500
 
-.. |atmosuccess| image:: ../imag/atmosuccess.png
+.. |atmosuccess| image:: ../img/atmosuccess.png
     :width: 500
    
 .. |docker| image:: ../img/docker.png
