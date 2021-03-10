@@ -106,3 +106,27 @@
    <a href="https://biocontainers.pro/#/registry" target="blank">BioContainers Registry</a>
 
 
+.. |How to install Docker|  raw:: html
+
+   <a href="https://learning.cyverse.org/projects/container_camp_workshop_2019/en/latest/docker/dockerintro.html" target="blank">How to install Docker</a>
+
+.. |linuxdocker|  raw:: html
+
+   <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu" target="blank">Linux platforms</a>
+
+.. |builddocker|  raw:: html
+
+   <a href="https://cyverse-creating-docker-containers-quickstart.readthedocs-hosted.com/en/latest/step3.html" target="blank">More information on building Docker images</a>
+
+.. |macdocker|  raw:: html
+
+   <a href="https://docs.docker.com/docker-for-mac/install" target="blank">Mac</a>
+
+.. |windowsdocker|  raw:: html
+
+   <a href="https://docs.docker.com/docker-for-windows/install" target="blank">Windows</a>
+
+.. |alwaysrestart|  raw:: html
+
+   <a href="https://docs.docker.com/config/containers/start-containers-automatically/" target="blank">always restart</a>
+
