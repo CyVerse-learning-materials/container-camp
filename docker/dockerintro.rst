@@ -29,11 +29,6 @@ There are no specific skills needed for this tutorial beyond a basic comfort wit
 ..
 	$ ezd
 
-**Pull an image from a registry**
-----------------------------------
-
-To run your container you will need a computer with Docker installed. 
-We will use an Atmosphere cloud instance today but this can be done on any computer.
 
 Open an Atmosphere instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -44,7 +39,7 @@ Open an Atmosphere instance
 
 3. You should have a project called 'Conatainer Camp 2021'; click on that tile.
 
-4. You should already have a running instance called **Ubuntu 18_04 GUI XFCE Base**. To confirm this look for a green dot and the word 'Active' under 'status'.
+4. You should already have a running instance called **Ubuntu 18_04 NoDesktop Base**. To confirm this look for a green dot and the word 'Active' under 'status'.
 
  |atmoactive|
 
@@ -78,7 +73,7 @@ Open an Atmosphere instance
 ..
     	$ ezd
     
-Use 'docker pull' to get the image
+Docker pull
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Go to |dockerhub| and search for 'hello-world' in the search bar at the top of the page. 
@@ -92,12 +87,23 @@ Click the 'copy' icon at the right to copy the docker pull command that we will 
 
 Now you will need to pull the image from the registry onto your computer. Use the 'docker pull' command you copied from the registry above. 
 
-.. Note:: 
-    If you are working on a system for which you don't have root permissions you will need to use 'sudo' and provide your password. Like this:
+.. Note::
+
+	Depending on how and where you've installed Docker, you may see a ``permission denied`` error after running the ``$ docker run helo-world`` command. If you're on Linux, you may need to prefix your Docker commands with ``sudo``. Alternatively to run docker command without ``sudo``, you need to add your user name (who has root privileges) to the docker "group".
+
+	Create the docker group::
+
+	$ sudo groupadd docker
+
+	Add your user to the docker group::
+
+	$ sudo usermod -aG docker $USER
+
+	Log out or close terminal and log back in and your group membership will be initiated
 
 .. code-block:: bash
 
-   $ sudo docker pull hello-world:latest
+   $ docker pull hello-world:latest
 
 Now list the files in your current working directory
 
@@ -112,11 +118,11 @@ Use 'docker images' to see all the images on your computer:
 
 .. code-block:: bash
 
-   $ sudo docker images
+   $ docker images
 
 ----
 
-1.0 Docker Run
+Docker Run
 ==============
 
 As we covered in the `previous section <./findingcontainers.html>`_, containers can be found in "registries" (such as the Docker Hub). You can also build your own container, but we'll cover that tomorrow (See `Advanced Section <./dockeradvanced.html>`_).
@@ -153,19 +159,7 @@ When you're looking for the right container, you can search for images within a 
 	  ossobv/ubuntu                                          Custom ubuntu image from scratch (based on o…   0
 	  1and1internet/ubuntu-16-sshd                           ubuntu-16-sshd                                  0                                       [OK]
 
-.. Note::
 
-	Depending on how and where you've installed Docker, you may see a ``permission denied`` error after running the ``$ docker run helo-world`` command. If you're on Linux, you may need to prefix your Docker commands with ``sudo``. Alternatively to run docker command without ``sudo``, you need to add your user name (who has root privileges) to the docker "group".
-
-	Create the docker group::
-
-	$ sudo groupadd docker
-
-	Add your user to the docker group::
-
-	$ sudo usermod -aG docker $USER
-
-	Log out or close terminal and log back in and your group membership will be initiated
 
 The single most common command that you'll use with Docker is ``docker run`` (`help manual <https://docs.docker.com/engine/reference/commandline/run/>`_).
 
