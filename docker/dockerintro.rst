@@ -480,7 +480,7 @@ Note, that your terminal is still active and you can use it to launch more conta
 	What if we want a Docker container to `always (re)start <https://docs.docker.com/config/containers/start-containers-automatically/>`_, even after we reboot our machine?
 ..
 	.. code-block:: bash
-
+..
 	$ docker run --restart always
 
 Managing Data in Docker
@@ -504,7 +504,7 @@ Docker offers three different ways to mount data into a container from the Docke
 
 When in doubt, volumes are almost always the right choice.
 
-3.1 Volumes
+Volumes
 ~~~~~~~~~~~
 
 |volumes|
@@ -516,36 +516,70 @@ Volumes are often a better choice than persisting data in a container’s writab
 - Volumes work on both Linux and Windows containers.
 - Volumes can be more safely shared among multiple containers.
 - A new volume’s contents can be pre-populated by a container.
-
-.. Note::
-
+..
+	.. Note::
+..
 	If your container generates non-persistent state data, consider using a ``tmpfs`` mount to avoid storing the data anywhere permanently, and to increase the container’s performance by avoiding writing into the container’s writable layer.
 
-3.1.1 Choose the -v or –mount flag for mounting volumes
+First we need to get some data on our local machine (Atmosphere).
+
+.. code-block:: bash
+
+    $ iinit
+
+    Enter the host name (DNS) of the server to connect to: **data.cyverse.org**
+    Enter the port number: **1247**
+    Enter your irods user name: **your_cyverse_username**
+    Enter your irods zone: **iplant**
+
+
+    $ iget -r /iplant/home/shared/iplant_training/read_cleanup
+
+    $ ls -l 
+
+Choose the -v flag for mounting volumes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``-v`` or ``--volume``: Consists of three fields, separated by colon characters (:). The fields must be in the correct order, and the meaning of each field is not immediately obvious.
 
-- In the case of named volumes, the first field is the name of the volume, and is unique on a given host machine.
+- The first field is the path on your local machine that where the data are.
 - The second field is the path where the file or directory are mounted in the container.
 - The third field is optional, and is a comma-separated list of options, such as ``ro``.
 
 .. code-block:: bash
 
-   -v /home/username/your_data_folder:/data
+   -v /home/username/your_data_folder:/container_folder
 
-.. Note::
+.. code-block:: bash
 
+    $ docker run -v /home/amcooksey/read_cleanup:/work alpine:latest ls -l /work
+
+
+So what if we wanted to work interactively inside the container?
+
+.. code-block:: bash
+
+    $ docker run -it -v /home/amcooksey/read_cleanup:/work alpine:latest sh
+
+.. code-block:: bash
+
+    $ ls -l 
+
+    $ ls -l work
+
+..
+	.. Note::
+..
 	Originally, the ``-v`` or ``--volume`` flag was used for standalone containers and the ``--mount`` flag was used for swarm services. However, starting with Docker 17.06, you can also use ``--mount`` with standalone containers. In general, ``--mount`` is more explicit and verbose. The biggest difference is that the ``-v`` syntax combines all the options together in one field, while the ``--mount`` syntax separates them. Here is a comparison of the syntax for each flag.
-
-.. code-block:: bash
-
+..
+	.. code-block:: bash
+..
 	$docker run --rm -v $(pwd):/work -p 8787:8787 -e PASSWORD=cc2020 rocker/rstudio
-
-In the Jupyter Lab example, we use the ``-e`` environmental flag to re-direct the URL of the container at the localhost
-
-.. code-block:: bash
-
+..
+	In the Jupyter Lab example, we use the ``-e`` environmental flag to re-direct the URL of the container at the localhost
+..
+	.. code-block:: bash
+..
 	$docker run --rm -v $(pwd):/work -p 8888:8888 -e REDIRECT_URL=http://localhost:8888 jupyter/base-notebook
 
 Once you're in the container, you will see that the ``/work`` directory is mounted in the working directory.
