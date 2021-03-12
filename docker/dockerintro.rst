@@ -171,7 +171,7 @@ In the demo above, you used the ``docker pull`` command to download the ``hello-
 	drwxr-xr-x    2 root     root          4096 Dec 26  2016 home
 	drwxr-xr-x    5 root     root          4096 Dec 26  2016 lib
 	drwxr-xr-x    5 root     root          4096 Dec 26  2016 media
-
+        .........
 
 When you executed the command ``docker run alpine``, Docker looked for the image, did not find it, and then ran a ``docker pull`` behind the scenes to download the ``alpine`` image with the ``:latest`` tag.
 
