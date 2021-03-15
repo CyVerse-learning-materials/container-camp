@@ -30,8 +30,7 @@ Day 1, Monday March 15  - Introduction to Containers and Docker
 **Activity:**
 
 - Guest Speaker (Nirav Merchant)
-- Use github to browse Dockerfiles
-- Hands on exercise using Docker
+- Hands on exercise using Docker in Atmosphere
 
 **Content:**
 
@@ -41,7 +40,6 @@ Introduction to Docker and its uses in reproducible science. What are the uses o
 **Goals:**
 
 #. Introduction to containers & where to find them
-#. Introduction to what Dockerfiles are and what you use them for
 #. Command line containers with CyVerse atmosphere (optional: run locally)
 
 **Optional Homework:**
@@ -53,6 +51,7 @@ Day 2, Tuesday March 16  - Docker on CyVerse
 
 **Activity:**
 
+- Use github to browse Dockerfiles
 - Explore CyVerse Discovery environment
 - Find official CyVerse Docker images
 - Tour of how containers work on CyVerse (including brief introduction to nginx & gomplate)
@@ -63,6 +62,7 @@ Introduction to the CyVerse discovery environment. Demonstration of how Docker c
 
 **Goals:**
 
+#. Introduction to what Dockerfiles are and what you use them for
 #. Understand apps on CyVerse are referencing Docker containers
 #. Know how to navigate CyVerse Discovery Environment
 #. Start thinking about how to modify an official CyVerse image
