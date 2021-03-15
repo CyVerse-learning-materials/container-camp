@@ -29,11 +29,6 @@ There are no specific skills needed for this tutorial beyond a basic comfort wit
 ..
 	$ ezd
 
-**Pull an image from a registry**
-----------------------------------
-
-To run your container you will need a computer with Docker installed. 
-We will use an Atmosphere cloud instance today but this can be done on any computer.
 
 Open an Atmosphere instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -44,7 +39,7 @@ Open an Atmosphere instance
 
 3. You should have a project called 'Conatainer Camp 2021'; click on that tile.
 
-4. You should already have a running instance called **Ubuntu 18_04 GUI XFCE Base**. To confirm this look for a green dot and the word 'Active' under 'status'.
+4. You should already have a running instance called **Ubuntu 18_04 NoDesktop Base**. To confirm this look for a green dot and the word 'Active' under 'status'.
 
  |atmoactive|
 
@@ -78,7 +73,7 @@ Open an Atmosphere instance
 ..
     	$ ezd
     
-Use 'docker pull' to get the image
+Docker pull
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Go to |dockerhub| and search for 'hello-world' in the search bar at the top of the page. 
@@ -92,12 +87,23 @@ Click the 'copy' icon at the right to copy the docker pull command that we will 
 
 Now you will need to pull the image from the registry onto your computer. Use the 'docker pull' command you copied from the registry above. 
 
-.. Note:: 
-    If you are working on a system for which you don't have root permissions you will need to use 'sudo' and provide your password. Like this:
+.. Note::
+
+	Depending on how and where you've installed Docker, you may see a ``permission denied`` error after running the ``$ docker run helo-world`` command. If you're on Linux, you may need to prefix your Docker commands with ``sudo``. Alternatively to run docker command without ``sudo``, you need to add your user name (who has root privileges) to the docker "group".
+
+	Create the docker group::
+
+	$ sudo groupadd docker
+
+	Add your user to the docker group::
+
+	$ sudo usermod -aG docker $USER
+
+	Log out or close terminal and log back in and your group membership will be initiated
 
 .. code-block:: bash
 
-   $ sudo docker pull hello-world:latest
+   $ docker pull hello-world:latest
 
 Now list the files in your current working directory
 
@@ -112,19 +118,81 @@ Use 'docker images' to see all the images on your computer:
 
 .. code-block:: bash
 
-   $ sudo docker images
+   $ docker images
 
 ----
 
-1.0 Docker Run
+Docker Run
 ==============
 
-As we covered in the `previous section <./findingcontainers.html>`_, containers can be found in "registries" (such as the Docker Hub). You can also build your own container, but we'll cover that tomorrow (See `Advanced Section <./dockeradvanced.html>`_).
+The single most common command that you'll use with Docker is ``docker run`` (`help manual <https://docs.docker.com/engine/reference/commandline/run/>`_).
 
-When you're looking for the right container, you can search for images within a given registry directly from the command line using ``docker search`` (after you've logged into that registry).
+``docker run`` starts a container and executes the default entrypoint, or any other command line statement that follows ``run``.
+
+.. code-block:: bash
+ 
+    $ docker run hello-world:latest
+
+    Hello from Docker!
+    This message shows that your installation appears to be working correctly.
+
+    To generate this message, Docker took the following steps:
+     1. The Docker client contacted the Docker daemon.
+     2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+     3. The Docker daemon created a new container from that image which runs the
+     executable that produces the output you are currently reading.
+     4. The Docker daemon streamed that output to the Docker client, which sent it
+     to your terminal.
+
+    To try something more ambitious, you can run an Ubuntu container with:
+     $ docker run -it ubuntu bash
+
+    Share images, automate workflows, and more with a free Docker ID:
+     https://hub.docker.com/
+
+    For more examples and ideas, visit:
+     https://docs.docker.com/get-started/
+
+.. Note::
+
+	To find out more about a Docker images, run ``docker inspect hello-world``.
+
+In the demo above, you used the ``docker pull`` command to download the ``hello-world`` image first.
+
 
 .. code-block:: bash
 
+	$ docker run alpine:latest ls -l
+	total 52
+	drwxr-xr-x    2 root     root          4096 Dec 26  2016 bin
+	drwxr-xr-x    5 root     root           340 Jan 28 09:52 dev
+	drwxr-xr-x   14 root     root          4096 Jan 28 09:52 etc
+	drwxr-xr-x    2 root     root          4096 Dec 26  2016 home
+	drwxr-xr-x    5 root     root          4096 Dec 26  2016 lib
+	drwxr-xr-x    5 root     root          4096 Dec 26  2016 media
+        .........
+
+When you executed the command ``docker run alpine``, Docker looked for the image, did not find it, and then ran a ``docker pull`` behind the scenes to download the ``alpine`` image with the ``:latest`` tag.
+
+When you run ``docker run alpine``, you provided a command ``ls -l``, so Docker started the command specified and you saw the listing of the alpine file system.
+
+You can use the ``docker images`` command to see a list of all the cached images on your system:
+
+.. code-block:: bash
+
+	$ docker images
+	REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+	alpine                 	latest              c51f86c28340        4 weeks ago         1.109 MB
+	hello-world             latest              690ed74de00f        5 months ago        960 B
+
+..
+	As we covered in the `previous section <./findingcontainers.html>`_, containers can be found in "registries" (such as the Docker Hub). You can also build your own container, but we'll cover that tomorrow (See `Advanced Section <./dockeradvanced.html>`_).
+..
+	When you're looking for the right container, you can search for images within a given registry directly from the command line using ``docker search`` (after you've logged into that registry).
+..
+	.. code-block:: bash
+..
 	$ docker search ubuntu
 	  NAME                                                   DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
 	  ubuntu                                                 Ubuntu is a Debian-based Linux operating sys…   7310                [OK]
@@ -153,54 +221,8 @@ When you're looking for the right container, you can search for images within a 
 	  ossobv/ubuntu                                          Custom ubuntu image from scratch (based on o…   0
 	  1and1internet/ubuntu-16-sshd                           ubuntu-16-sshd                                  0                                       [OK]
 
-.. Note::
 
-	Depending on how and where you've installed Docker, you may see a ``permission denied`` error after running the ``$ docker run helo-world`` command. If you're on Linux, you may need to prefix your Docker commands with ``sudo``. Alternatively to run docker command without ``sudo``, you need to add your user name (who has root privileges) to the docker "group".
 
-	Create the docker group::
-
-	$ sudo groupadd docker
-
-	Add your user to the docker group::
-
-	$ sudo usermod -aG docker $USER
-
-	Log out or close terminal and log back in and your group membership will be initiated
-
-The single most common command that you'll use with Docker is ``docker run`` (`help manual <https://docs.docker.com/engine/reference/commandline/run/>`_).
-
-``docker run`` starts a container and executes the default entrypoint, or any other command line statement that follows ``run``.
-
-.. code-block:: bash
-
-	$ docker run alpine ls -l
-	total 52
-	drwxr-xr-x    2 root     root          4096 Dec 26  2016 bin
-	drwxr-xr-x    5 root     root           340 Jan 28 09:52 dev
-	drwxr-xr-x   14 root     root          4096 Jan 28 09:52 etc
-	drwxr-xr-x    2 root     root          4096 Dec 26  2016 home
-	drwxr-xr-x    5 root     root          4096 Dec 26  2016 lib
-	drwxr-xr-x    5 root     root          4096 Dec 26  2016 media
-	........
-
-.. Note::
-
-	To find out more about a Docker images, run ``docker inspect hello-world``.
-
-In the demo above, you could have used the ``docker pull`` command to download the ``hello-world`` image first.
-
-When you executed the command ``docker run alpine``, Docker looked for the image, did not find it, and then ran a ``docker pull`` behind the scenes to download the ``alpine`` image with the ``:latest`` tag.
-
-When you run ``docker run alpine``, you provided a command ``ls -l``, so Docker started the command specified and you saw the listing of the alpine file system.
-
-You can use the ``docker images`` command to see a list of all the cached images on your system:
-
-.. code-block:: bash
-
-	$ docker images
-	REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-	alpine                 	latest              c51f86c28340        4 weeks ago         1.109 MB
-	hello-world             latest              690ed74de00f        5 months ago        960 B
 
 Images need to have an ``ENTRYPOINT`` set in their Dockerfile recipe in order for them to return a result when they are run. The ``hello-world`` image echos out the statement that it is present when it executes.
 
@@ -237,7 +259,7 @@ Try another command, this time to access the container as a shell:
 
 .. code-block:: bash
 
-	$ docker run alpine sh
+	$ docker run alpine:latest sh
 
 Wait, nothing happened! Is that a bug? Well, no.
 
@@ -246,7 +268,7 @@ The container will exit after running any scripted commands such as ``sh``, unle
 
 .. code-block:: bash
 
-	$ docker run -it alpine sh
+	$ docker run -it alpine:latest sh
 	/ # ls
 	bin    dev    etc    home   lib    media  mnt    proc   root   run    sbin   srv    sys    tmp    usr    var
 	/ # uname -a
@@ -267,18 +289,18 @@ Exit out of the container by giving the ``exit`` command.
 		$ docker ps --latest
 		CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                          PORTS                    NAMES
 		de4bbc3eeaec        alpine                "/bin/sh"                3 minutes ago       Exited (0) About a minute ago                            pensive_leavitt
-
+..
 	If you want to keep the container active, then you can use keys ``ctrl +p`` ``ctrl +q``. To make sure that it is not exited run the same ``docker ps --latest`` command again::
-
+..
 		$ docker ps --latest
 		CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                         PORTS                    NAMES
 		0db38ea51a48        alpine                "sh"                     3 minutes ago       Up 3 minutes                                            elastic_lewin
-
+..
 	Now if you want to get back into that container, then you can type ``docker attach <container id>``. This way you can save your container::
-
+..
 		$ docker attach 0db38ea51a48
 
-1.1 House Keeping and Cleaning Up
+House Keeping and Cleaning Up
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Docker images are cached on your machine in the location where Docker was installed. These image files are not visible in the same directory where you might have used ``docker pull <imagename>``.
@@ -324,7 +346,7 @@ This is where it becomes important to differentiate between *images*, *container
 
 If you add the ``-af`` flag it will remove "all" ``-a`` dangling images, empty containers, AND ALL CACHED IMAGES with "force" ``-f``.
 
-2.0  Managing Docker images
+Managing Docker images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the previous example, you pulled the ``alpine`` image from the registry and asked the Docker client to run a container based on that image. To see the list of images that are available locally on your system, run the ``docker images`` command.
@@ -342,15 +364,16 @@ Above is a list of images that I've pulled from the registry and those I've crea
 
 For simplicity, you can think of an image akin to a Git repository - images can be committed with changes and have multiple versions. When you do not provide a specific version number, the client defaults to latest.
 
-2.1 Pulling and Running a JupyterLab or RStudio-Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In this section, let's find a Docker image which can run a Jupyter Notebook
-
-Search for official images on Docker Hub which contain the string 'jupyter'
-
-.. code-block:: bash
-
+..
+	Pulling and Running a JupyterLab or RStudio-Server
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..
+	In this section, let's find a Docker image which can run a Jupyter Notebook
+..
+	Search for official images on Docker Hub which contain the string 'jupyter'
+..
+	.. code-block:: bash
+..
 	$ docker search jupyter
 	NAME                                    DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
 	jupyter/datascience-notebook            Jupyter Notebook Data Science Stack from htt…   611
@@ -372,13 +395,13 @@ Search for official images on Docker Hub which contain the string 'jupyter'
 	jupyter/repo2docker                     Turn git repositories into Jupyter enabled D…   7
 	jupyterhub/configurable-http-proxy      node-http-proxy + REST API                      5                                       [OK]
 	...
-
-Search for images on Docker Hub which contain the string 'rstudio'
-
-.. code-block:: bash
-
+..
+	Search for images on Docker Hub which contain the string 'rstudio'
+..
+	.. code-block:: bash
+..
 	$ docker search rstudio
-
+..
 	NAME                                      DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
 	rocker/rstudio                            RStudio Server image                            289                                     [OK]
 	opencpu/rstudio                           OpenCPU stable release with rstudio-server (…   29                                      [OK]
@@ -393,22 +416,22 @@ Search for images on Docker Hub which contain the string 'rstudio'
 	mobilizingcs/rstudio                      RStudio container with mz packages pre-insta…   1                                       [OK]
 	calpolydatascience/rstudio-notebook       RStudio notebook                                1                                       [OK]
 	...
-
-2.2 Interactive Containers
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Let's go ahead and run some basic Integraded Development Environment images from "trusted" organizations on the Docker Hub registry.
-
-When we want to run a container that runs on the open internet, we need to add a `TCP or UDP port number <https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers>`_ from which we can access the application in a browser using the machine's IP (Internet Protocol) address or DNS (Domain Name Service) location.
-
-Here are some examples to run basic RStudio and Jupyter Lab:
-
-.. code-block:: bash
-
+..
+	Interactive Containers
+	^^^^^^^^^^^^^^^^^^^^^^^^^^
+..
+	Let's go ahead and run some basic Integraded Development Environment images from "trusted" organizations on the Docker Hub registry.
+..
+	When we want to run a container that runs on the open internet, we need to add a `TCP or UDP port number <https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers>`_ from which we can access the application in a browser using the machine's IP (Internet Protocol) address or DNS (Domain Name Service) location.
+..
+	Here are some examples to run basic RStudio and Jupyter Lab:
+..
+	.. code-block:: bash
+..
 	$docker run --rm -p 8787:8787 -e PASSWORD=cc2020 rocker/rstudio
-
-.. code-block:: bash
-
+..
+	.. code-block:: bash
+..
 	$docker run --rm -p 8888:888 jupyter/base-notebook
 
 .. Note::
@@ -416,13 +439,13 @@ Here are some examples to run basic RStudio and Jupyter Lab:
 	We've added the ``--rm`` flag, which means the container will automatically removed from the cache when the container is exited.
 
 	When you start an IDE in a terminal, the terminal connection must stay active to keep the container alive.
-
-If we want to keep our window in the foreground  we can use the ``-d`` - the *detached* flag will run the container as a background process, rather than in the foreground. When you run a container with this flag, it will start, run, telling you the container ID:
-
-.. code-block:: bash
-
+..
+	If we want to keep our window in the foreground  we can use the ``-d`` - the *detached* flag will run the container as a background process, rather than in the foreground. When you run a container with this flag, it will start, run, telling you the container ID:
+..
+	.. code-block:: bash
+..
 	$ docker run --rm -d -p 8888:8888 jupyter/base-notebook
-
+..
 	Unable to find image 'jupyter/base-notebook:latest' locally
 	latest: Pulling from jupyter/base-notebook
 	5c939e3a4d10: Pull complete
@@ -453,14 +476,14 @@ Note, that your terminal is still active and you can use it to launch more conta
 	$ docker ps
 	CONTAINER ID        IMAGE                   COMMAND                  CREATED              STATUS              PORTS                             NAMES
 	561016e4e69e        jupyter/base-notebook   "tini -g -- start-no…"   About a minute ago   Up About a minute   8888/tcp, 0.0.0.0:8888->888/tcp   affectionate_banzai
-
-What if we want a Docker container to `always (re)start <https://docs.docker.com/config/containers/start-containers-automatically/>`_, even after we reboot our machine?
-
-.. code-block:: bash
-
+..
+	What if we want a Docker container to `always (re)start <https://docs.docker.com/config/containers/start-containers-automatically/>`_, even after we reboot our machine?
+..
+	.. code-block:: bash
+..
 	$ docker run --restart always
 
-3. Managing Data in Docker
+Managing Data in Docker
 ==========================
 
 It is possible to store data within the writable layer of a container, but there are some limitations:
@@ -481,7 +504,7 @@ Docker offers three different ways to mount data into a container from the Docke
 
 When in doubt, volumes are almost always the right choice.
 
-3.1 Volumes
+Volumes
 ~~~~~~~~~~~
 
 |volumes|
@@ -493,36 +516,70 @@ Volumes are often a better choice than persisting data in a container’s writab
 - Volumes work on both Linux and Windows containers.
 - Volumes can be more safely shared among multiple containers.
 - A new volume’s contents can be pre-populated by a container.
-
-.. Note::
-
+..
+	.. Note::
+..
 	If your container generates non-persistent state data, consider using a ``tmpfs`` mount to avoid storing the data anywhere permanently, and to increase the container’s performance by avoiding writing into the container’s writable layer.
 
-3.1.1 Choose the -v or –mount flag for mounting volumes
+First we need to get some data on our local machine (Atmosphere).
+
+.. code-block:: bash
+
+    $ iinit
+
+    Enter the host name (DNS) of the server to connect to: **data.cyverse.org**
+    Enter the port number: **1247**
+    Enter your irods user name: **your_cyverse_username**
+    Enter your irods zone: **iplant**
+
+
+    $ iget -r /iplant/home/shared/iplant_training/read_cleanup
+
+    $ ls -l 
+
+Choose the -v flag for mounting volumes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``-v`` or ``--volume``: Consists of three fields, separated by colon characters (:). The fields must be in the correct order, and the meaning of each field is not immediately obvious.
 
-- In the case of named volumes, the first field is the name of the volume, and is unique on a given host machine.
+- The first field is the path on your local machine that where the data are.
 - The second field is the path where the file or directory are mounted in the container.
 - The third field is optional, and is a comma-separated list of options, such as ``ro``.
 
 .. code-block:: bash
 
-   -v /home/username/your_data_folder:/data
+   -v /home/username/your_data_folder:/container_folder
 
-.. Note::
+.. code-block:: bash
 
+    $ docker run -v /home/amcooksey/read_cleanup:/work alpine:latest ls -l /work
+
+
+So what if we wanted to work interactively inside the container?
+
+.. code-block:: bash
+
+    $ docker run -it -v /home/amcooksey/read_cleanup:/work alpine:latest sh
+
+.. code-block:: bash
+
+    $ ls -l 
+
+    $ ls -l work
+
+..
+	.. Note::
+..
 	Originally, the ``-v`` or ``--volume`` flag was used for standalone containers and the ``--mount`` flag was used for swarm services. However, starting with Docker 17.06, you can also use ``--mount`` with standalone containers. In general, ``--mount`` is more explicit and verbose. The biggest difference is that the ``-v`` syntax combines all the options together in one field, while the ``--mount`` syntax separates them. Here is a comparison of the syntax for each flag.
-
-.. code-block:: bash
-
+..
+	.. code-block:: bash
+..
 	$docker run --rm -v $(pwd):/work -p 8787:8787 -e PASSWORD=cc2020 rocker/rstudio
-
-In the Jupyter Lab example, we use the ``-e`` environmental flag to re-direct the URL of the container at the localhost
-
-.. code-block:: bash
-
+..
+	In the Jupyter Lab example, we use the ``-e`` environmental flag to re-direct the URL of the container at the localhost
+..
+	.. code-block:: bash
+..
 	$docker run --rm -v $(pwd):/work -p 8888:8888 -e REDIRECT_URL=http://localhost:8888 jupyter/base-notebook
 
 Once you're in the container, you will see that the ``/work`` directory is mounted in the working directory.
