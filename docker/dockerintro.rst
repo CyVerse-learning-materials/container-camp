@@ -51,7 +51,7 @@ Open an Atmosphere instance
 
 .. code-block:: bash
 
-    $ ssh 128.196.142.89
+    $ ssh <cyverse_username>@128.196.142.89
 
 8. You will be asked if you are sure you want to continue--say **yes**.
 
