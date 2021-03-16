@@ -527,10 +527,10 @@ First we need to get some data on our local machine (Atmosphere).
 
     $ iinit
 
-    Enter the host name (DNS) of the server to connect to: **data.cyverse.org**
-    Enter the port number: **1247**
-    Enter your irods user name: **your_cyverse_username**
-    Enter your irods zone: **iplant**
+    Enter the host name (DNS) of the server to connect to: data.cyverse.org
+    Enter the port number: 1247
+    Enter your irods user name: your_cyverse_username
+    Enter your irods zone: iplant
 
 
     $ iget -r /iplant/home/shared/iplant_training/read_cleanup
