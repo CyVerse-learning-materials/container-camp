@@ -46,7 +46,7 @@ Expected outcomes:
 
    docker/findingcontainers
    docker/dockerintro
-   .. docker/dockeradvanced
+   docker/dockeradvanced
 
 .. commented out for intro container camp
   .. toctree::
