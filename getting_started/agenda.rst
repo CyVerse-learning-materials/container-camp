@@ -8,7 +8,7 @@
 **Agenda**
 ==========
 
-March 15–17, 2021
+Workshop Days are at the following times: 
 9:00AM–1:00PM US Pacific Time (12:00PM–4:00PM US Eastern Time)
 
 
@@ -24,8 +24,8 @@ Please respect it and be excellent to each other!
 
 Twitter hash tag: #cc2021
 
-Day 1, Monday March 15  - Introduction to Containers and Docker
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Day 1  - Introduction to Containers and Docker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Activity:**
 
@@ -46,8 +46,8 @@ Introduction to Docker and its uses in reproducible science. What are the uses o
 
 Test other Docker container images on Atmosphere or locally
 
-Day 2, Tuesday March 16  - Docker on CyVerse
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Day 2 - Docker on CyVerse
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Activity:**
 
@@ -67,8 +67,8 @@ Introduction to the CyVerse discovery environment. Demonstration of how Docker c
 #. Know how to navigate CyVerse Discovery Environment
 #. Start thinking about how to modify an official CyVerse image
 
-Day 3, Wednesday March 17 - Integrating Docker Containers onto CyVerse
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Day 3 - Integrating Docker Containers onto CyVerse
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Activity:**
 
