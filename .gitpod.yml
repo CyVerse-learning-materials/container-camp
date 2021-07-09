@@ -1,0 +1,21 @@
+---
+# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
+tasks:
+  - init: echo 'init script' # runs during prebuild
+    command: echo 'start script'
+  - name: Make sure pip is up-to-date
+    command: /home/gitpod/.pyenv/versions/3.8.10/bin/python3.8 -m pip install --upgrade pip
+  - name: Check pip install
+    command: pip install -r requirements.txt
+# Vscode extensions
+vscode:
+  extensions:
+  - lextudio.restructuredtext
+
+  - ms-python.python
+
+
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 3000
+    onOpen: open-preview
