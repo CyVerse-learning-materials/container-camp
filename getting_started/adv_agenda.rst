@@ -8,7 +8,7 @@
 **Agenda**
 ==========
 
-Workshop Days are at the following times: 
+Advanced Workshop Days are at the following times: 
 9:00AM–1:00PM US Pacific Time (12:00PM–4:00PM US Eastern Time)
 
 
@@ -24,41 +24,38 @@ Please respect it and be excellent to each other!
 
 Twitter hash tag: #cc2021
 
-Day 1  - Introduction to Containers and Docker
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Day 1  - From the OS up Docker Image Builds
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Activity:**
 
-- Guest Speaker (Nirav Merchant)
-- Hands on exercise using Docker in Atmosphere
+- Introduction to GitPod on GitHub
+- Hands on exercise using base OS images in GitPod
 
 **Content:**
 
-Introduction to Docker and its uses in reproducible science. What are the uses of Dockerfiles. Using the docker commandline.
-
+Introduction to Docker builds from OS base images and when to pursue this. 
 
 **Goals:**
 
-#. Introduction to containers & where to find them
-#. Command line containers with CyVerse atmosphere (optional: run locally)
+#. Use cases for building from the OS up
+#. Understand base images like Alpine linux and their portability/size
 
 **Optional Homework:**
 
-Test other Docker container images on Atmosphere or locally
+Scratch Build with Alpine Linux to perform a task
 
-Day 2 - Docker on CyVerse
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Day 2 - Accelerating Your Analyses
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Activity:**
 
-- Use github to browse Dockerfiles
-- Explore CyVerse Discovery environment
-- Find official CyVerse Docker images
-- Tour of how containers work on CyVerse (including brief introduction to nginx & gomplate)
+- Use OpenScienceGrid to scale
+- NVIDIA GPU acceleration discussion 
 
 **Content:**
 
-Introduction to the CyVerse discovery environment. Demonstration of how Docker containers are applications. Planning how attendees may use these containers in their work.
+Introduction to OpenScienceGrid. 
 
 **Goals:**
 

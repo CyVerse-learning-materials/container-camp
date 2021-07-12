@@ -26,7 +26,7 @@ Expected outcomes:
    getting_started/code_conduct
    getting_started/installation
    .. getting_started/location
-   getting_started/agenda
+   getting_started/intro_agenda
    getting_started/about_cyverse
    getting_started/glossary
 
@@ -48,8 +48,7 @@ Expected outcomes:
    docker/dockerintro
    docker/dockeradvanced
 
-.. commented out for intro container camp
-  .. toctree::
+.. toctree::
    :maxdepth: 1
    :caption: Singularity
 
@@ -57,8 +56,7 @@ Expected outcomes:
    singularity/singularityadvanced
    singularity/singularityhpc
 
-..   commented out for intro container camp
- .. toctree::
+.. toctree::
    :maxdepth: 1
    :caption: Breakout Sessions
 
