@@ -27,6 +27,7 @@ Expected outcomes:
    getting_started/installation
    .. getting_started/location
    getting_started/intro_agenda
+   getting_started/adv_agenda
    getting_started/about_cyverse
    getting_started/glossary
 
