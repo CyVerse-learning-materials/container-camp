@@ -55,34 +55,29 @@ Day 2 - Accelerating Your Analyses
 
 **Content:**
 
-Introduction to OpenScienceGrid. 
+Introduction to OpenScienceGrid. Introduction to GPU acceleration with official NVIDIA images and special considerations for Docker run statements.
 
 **Goals:**
 
-#. Introduction to what Dockerfiles are and what you use them for
-#. Understand apps on CyVerse are referencing Docker containers
-#. Know how to navigate CyVerse Discovery Environment
-#. Start thinking about how to modify an official CyVerse image
+#. Introduction to OpenScienceGrid (OSG)
+#. Understand OSG applications on CyVerse
+#. Know where to look for NVIDIA images
+#. Define use cases for OSG and/or NVIDIA acceleration of analyses 
 
-Day 3 - Integrating Docker Containers onto CyVerse
+Day 3 - Breakout Sessions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Activity:**
 
-- Modifying official CyVerse Dockerfiles
-- App integration into the Discovery environment
-- Discuss challenges associated with "containerization"
+- Breakout into domain specific and special topic sections
 
 **Content:**
 
-Modification of official CyVerse images. Discuss how containers integrate onto CyVerse. Problems associated with containers.
+Domain science breakout sessions. Examples: bioinformatics, geospatial analysis, deep learning.
 
 **Goals:**
 
-#. Understand how to modify Dockerfiles and best practices (for CyVerse and beyond)
-#. Learn to integrate docker applications into CyVerse & where to get help
-#. Be able to list the limitations and challenges associated with containerized analyses
-
+Dependent on breakout section topics.
 
 .. |CyVerse_logo2| image:: ../img/cyverse_learning.png
     :width: 500
