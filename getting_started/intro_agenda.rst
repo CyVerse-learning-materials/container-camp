@@ -5,8 +5,8 @@
 |Home_Icon|_
 `Learning Center Home <http://learning.cyverse.org/>`_
 
-**Agenda**
-==========
+**Intro to Containers Agenda**
+==============================
 
 Intro Workshop Days are at the following times: 
 9:00AM–1:00PM US Pacific Time (12:00PM–4:00PM US Eastern Time)
