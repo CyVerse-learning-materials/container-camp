@@ -26,8 +26,8 @@ Expected outcomes:
    getting_started/code_conduct
    getting_started/installation
    .. getting_started/location
-   getting_started/intro_agenda
-   getting_started/adv_agenda
+   getting_started/intro_schedule
+   getting_started/adv_schedule
    getting_started/about_cyverse
    getting_started/glossary
 

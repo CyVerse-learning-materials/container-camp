@@ -5,7 +5,7 @@
 |Home_Icon|_
 `Learning Center Home <http://learning.cyverse.org/>`_
 
-**Intro to Containers Agenda**
+**Container Basics Schedule**
 ==============================
 
 Intro Workshop Days are at the following times: 

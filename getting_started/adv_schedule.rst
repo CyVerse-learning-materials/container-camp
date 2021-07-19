@@ -5,8 +5,8 @@
 |Home_Icon|_
 `Learning Center Home <http://learning.cyverse.org/>`_
 
-**Advanced Container Camp Agenda**
-==================================
+**Advanced Container Camp Schedule**
+====================================
 
 Advanced Workshop Days are at the following times: 
 9:00AM–1:00PM US Pacific Time (12:00PM–4:00PM US Eastern Time)
