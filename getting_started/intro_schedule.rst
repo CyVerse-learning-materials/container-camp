@@ -30,7 +30,7 @@ Day 1  - Introduction to Containers and Docker
 **Activity:**
 
 - Guest Speaker (Nirav Merchant)
-- Hands on exercise using Docker in |Atmosphere|_
+- Hands on exercise using Docker in |Atmosphere|
 
 **Content:**
 
@@ -39,11 +39,11 @@ Introduction to Docker and its uses in reproducible science. What are Dockerfile
 **Goals:**
 
 #. Introduction to containers & where to find them
-#. Command line containers with CyVerse |Atmosphere|_ (optional: run locally)
+#. Command line containers with CyVerse |Atmosphere| (optional: run locally)
 
 **Optional Homework:**
 
-Test other Docker container images on |Atmosphere|_ or locally
+Test other Docker container images on |Atmosphere| or locally
 
 Day 2 - Docker on CyVerse
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -51,19 +51,19 @@ Day 2 - Docker on CyVerse
 **Activity:**
 
 - Use GitHub to browse for public Dockerfiles
-- Explore CyVerse |Discovery Environment|_
+- Explore CyVerse |Discovery Environment|
 - Find official CyVerse Docker images
 - Tour of how containers work on CyVerse (including brief introduction to nginx & gomplate)
 
 **Content:**
 
-Introduction to the CyVerse |Discovery Environment|_. Demonstration of how Docker containers are applications. Planning how attendees may use these containers in their work.
+Introduction to the CyVerse |Discovery Environment|. Demonstration of how Docker containers are applications. Planning how attendees may use these containers in their work.
 
 **Goals:**
 
 #. Introduction to what Dockerfiles are and what you use them for
 #. Understand apps on CyVerse are referencing Docker containers
-#. Know how to navigate CyVerse |Discovery Environment|_
+#. Know how to navigate CyVerse |Discovery Environment|
 #. Start thinking about how to modify an official CyVerse image
 
 Day 3 - Integrating Docker Containers onto CyVerse
@@ -72,7 +72,7 @@ Day 3 - Integrating Docker Containers onto CyVerse
 **Activity:**
 
 - Modifying official CyVerse Dockerfiles
-- App integration into the |Discovery Environment|_
+- App integration into the |Discovery Environment|
 - Discuss challenges associated with "containerization"
 
 **Content:**
