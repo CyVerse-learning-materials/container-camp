@@ -30,41 +30,40 @@ Day 1  - Introduction to Containers and Docker
 **Activity:**
 
 - Guest Speaker (Nirav Merchant)
-- Hands on exercise using Docker in Atmosphere
+- Hands on exercise using Docker in |Atmosphere|_
 
 **Content:**
 
-Introduction to Docker and its uses in reproducible science. What are the uses of Dockerfiles. Using the docker commandline.
-
+Introduction to Docker and its uses in reproducible science. What are Dockerfiles. Using Docker on the commandline.
 
 **Goals:**
 
 #. Introduction to containers & where to find them
-#. Command line containers with CyVerse atmosphere (optional: run locally)
+#. Command line containers with CyVerse |Atmosphere|_ (optional: run locally)
 
 **Optional Homework:**
 
-Test other Docker container images on Atmosphere or locally
+Test other Docker container images on |Atmosphere|_ or locally
 
 Day 2 - Docker on CyVerse
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Activity:**
 
-- Use github to browse Dockerfiles
-- Explore CyVerse Discovery environment
+- Use GitHub to browse for public Dockerfiles
+- Explore CyVerse |Discovery Environment|_
 - Find official CyVerse Docker images
 - Tour of how containers work on CyVerse (including brief introduction to nginx & gomplate)
 
 **Content:**
 
-Introduction to the CyVerse discovery environment. Demonstration of how Docker containers are applications. Planning how attendees may use these containers in their work.
+Introduction to the CyVerse |Discovery Environment|_. Demonstration of how Docker containers are applications. Planning how attendees may use these containers in their work.
 
 **Goals:**
 
 #. Introduction to what Dockerfiles are and what you use them for
 #. Understand apps on CyVerse are referencing Docker containers
-#. Know how to navigate CyVerse Discovery Environment
+#. Know how to navigate CyVerse |Discovery Environment|_
 #. Start thinking about how to modify an official CyVerse image
 
 Day 3 - Integrating Docker Containers onto CyVerse
@@ -73,7 +72,7 @@ Day 3 - Integrating Docker Containers onto CyVerse
 **Activity:**
 
 - Modifying official CyVerse Dockerfiles
-- App integration into the Discovery environment
+- App integration into the |Discovery Environment|_
 - Discuss challenges associated with "containerization"
 
 **Content:**
@@ -83,7 +82,7 @@ Modification of official CyVerse images. Discuss how containers integrate onto C
 **Goals:**
 
 #. Understand how to modify Dockerfiles and best practices (for CyVerse and beyond)
-#. Learn to integrate docker applications into CyVerse & where to get help
+#. Learn to integrate your own Docker images into CyVerse & where to get help
 #. Be able to list the limitations and challenges associated with containerized analyses
 
 
