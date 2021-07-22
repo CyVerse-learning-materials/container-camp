@@ -492,7 +492,7 @@ It is possible to store data within the writable layer of a container, but there
 
 - A container’s writable layer is tightly coupled to the host machine where the container is running. You can’t easily move the data somewhere else.
 
-- Its better to put your data into the container **AFTER** it is build - this keeps the container size smaller and easier to move across networks.
+- Its better to put your data into the container **AFTER** it is built - this keeps the container size smaller and easier to move across networks.
 
 Docker offers three different ways to mount data into a container from the Docker host:
 
