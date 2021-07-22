@@ -331,7 +331,7 @@ To remove images that you no longer need, type:
 
 	$ docker system prune --help
 
-This is where it becomes important to differentiate between *images*, *containers*, and *volumes* (which we'll get to more in a bit). You can take care of all of the dangling images and containers on your system. Note, that ``prune`` will not removed your cached *images*
+This is where it becomes important to differentiate between *images*, *containers*, and *volumes* (which we'll get to more in a bit). You can take care of all of the dangling images and containers on your system. Note, that ``prune`` will not remove your cached *images*
 
 .. code-block:: bash
 
