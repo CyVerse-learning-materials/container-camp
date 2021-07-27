@@ -50,49 +50,43 @@ You can build an app for any tool that:
 
     It is a good idea to check to see if the tool you want is already integrated before you start. The tool my be there already and you can build an app using it.
 
-In the 'Manage Tools' window search for 'porechop' in the search bar at the top of the window. Select the porechop public tool and choose 'Use in App' from the 'Tools' menu
+In the hamburger menu on the left side, open the 'Apps' then 'Tools' 
 
-|useinapp|
+|detool1|
 
-This will open the 'Create App' window. The tool to use will be pre-populated. Choose an informative app name and description (eg. tool name and version). Apps features can be added by dragging the feature from the left pane into the center pane. 
+In the Apps window, on the upper right select the 'More Actions' option. 
 
-|draglefttocenter|
+|detool2|
 
-You can edit the details of an app feature by selecting it in the center pane and editing in the right pane. Divide the app into sections appropriate for that tool (input, options and output are usually sufficient sections for simple apps).
+Then select the 'Add Tool' option. This will open the Tool integration feature. 
 
-|adddetailright|
+|detool3|
 
-For each option you add, you will need to specify what the option is, the flag (if there is one) and whether that option is required. If an option is not required be sure to check the 'exclude if nothing is entered' box. For tools that have positional agruments (no flags, eg. -z) you can modify the order of the commands by clicking the 'command line order' at the top of the window.  
+Tools are essentially Docker images which are hosted on the internet from public registries like the DockerHub, Quay.io, Biocontainers, etc.
 
-|commandlineorder|
+|detool4|
 
-As you add options to your app you will see in the bottom pane (command line view) what the command would look like on the command line.
+You can populate the Tool fields with the information about your container, and whether it is an 'executable' 'interactive' or 'osg' type application. Executable tools/apps are containers that typically are run from the command line interface. Interactive tools/apps include anything with a graphic user interface (GUI) or integrated development environment (IDE). 'osg' tools/apps are run on the OpenScienceGrid high throughput computing framework.
 
-|commandlineexp|
+|detool5|
 
-Although it is best to add all of the options for your tool, as it makes the app the most useful, you can expose as many or as few options as you like (as long as you add all the required options). Once you have finished adding options click save and close your app. 
+Each tool requires that you give it a 'Name' and 'Version' -- these are specific to the Discovery Environment search feature and will be used when you design your 'App' interface. 
 
-Now test your app with appropriate data. Your app can now be found in the 'My apps in development' category of the 'Apps' window (which displays by default). 
+The 'Container Image' is the Docker image from a public registry. You select an 'Image Name' using the `registry/repository/container` - note: the `Tag` is entered below. Optionally, you can provide a link to the public registry URL.
 
-|myappsdev|
+|detool6|
 
-Once you know your app works correctly you can share or publish it as you wish.
-Public apps must have example data located in an appropriately named folder here:
+The new container can be provided with or without an 'Entrypoint', 'Working Directory', and 'UID. You can update or modify the Container Image by updating these in the fields provided, these will overwrite whatever is in the base image.
 
-.. code-block:: bash
+If your container runs on open ports, e.g., interactive GUI like RStudio and Jupyter run on ports `8787` or `8888` - these must be provided in the 'Container Ports' field.
 
-    /iplant/home/shared/iplantcollaborative/example_data
+|detool7|
 
-All public apps also have a brief documentation page on the `CyVerse Wiki <https://wiki.cyverse.org/wiki/display/DEapps/List+of+Applications>`_
+You can also set the maximum size limitations for your app. These are typically useful for containers that are used for teaching and may not need larger resources. You can leave these fields empty by default.
 
-To publish your app click on 'Share' at the top of the 'Apps' window and select 'Make public'. You will need to supply a:
+Once you're sure that you've set these features correctly, click 'Save' and exit the screen.
 
-- Topic (eg. genomics) 
-- Operation (eg. assembly) 
-- location of the example data
-- brief description of inputs, required options and outputs
-- link to CyVerse Wiki documentation page
-- link to docmentation for the tool (provided by the developers)
+Your next step is to create a new 'App' interface.
 
 Additional resources
 --------------------
@@ -121,26 +115,35 @@ Additional resources
 
 .. |Github Repo Link|  raw:: html
 
-   <a href="https://github.com/CyVerse-learning-materials/foss-2020/tree/master/CyVerse/tool_integration_app_building_DE.rst" target="blank">Github Repo Link</a>
+   <a href="https://github.com/CyVerse-learning-materials/container-camp/blob/main/cyverse/tool_integration_app_building_DE.rst" target="blank">Github Repo Link</a>
 
-.. |useinapp| image:: ../img/toolintegration3.png
+.. |detool1| image:: ../img/de_tool1.png
   :width: 750
 
-.. |draglefttocenter|  image:: ../img/toolintegration14.png
-  :width: 750
 
-.. |adddetailright| image:: ../img/toolintegration13.png
+.. |detool2| image:: ../img/de_tool2.png
   :width: 750
-
-.. |commandlineorder| image:: ../img/toolintegration17.png
+  
+  
+.. |detool3| image:: ../img/de_tool3.png
   :width: 750
-
-.. |commandlineexp|  image:: ../img/toolintegration18.png
+  
+  
+.. |detool4| image:: ../img/de_tool4.png
   :width: 750
-
-.. |myappsdev| image:: ../img/toolintegration9.png
+  
+  
+.. |detool5| image:: ../img/de_tool5.png
   :width: 750
-
+  
+  
+.. |detool6| image:: ../img/de_tool6.png
+  :width: 750
+  
+  
+.. |detool7| image:: ../img/de_tool7.png
+  :width: 750
+  
 .. |CyVerse_logo2| image:: ../img/cyverse_learning.png
     :width: 500
 .. _CyVerse_logo2: http://learning.cyverse.org/
