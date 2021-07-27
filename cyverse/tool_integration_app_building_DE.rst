@@ -35,8 +35,6 @@
 
 The (containerized) tool must be integrated into the Cyverse DE first. Then an app (interface) can be built for that tool.
 
-|Toolintegration|
----------------------
 
 **Building an App for Your Tool**
 ---------------------------------
@@ -95,6 +93,7 @@ Additional resources
  - `DE Manual <https://wiki.cyverse.org/wiki/display/DEmanual/Table+of+Contents>`_
  - `VICE Manual <https://learning.cyverse.org/projects/vice/en/latest/>`_
  - `Using CyVerse for a shared project <https://learning.cyverse.org/projects/cyverse-group-project-quickstart/en/latest/index.html?highlight=group%20project>`_
+
 ----
 
 **Fix or improve this documentation:**
@@ -103,6 +102,7 @@ Additional resources
 - Send feedback: `Tutorials@CyVerse.org <Tutorials@CyVerse.org>`_
 
 ----
+
 .. Comment: Place URLS Below This Line
 
    .. |Substitution| raw:: html # Place this anywhere in the text you want a hyperlink
@@ -147,8 +147,6 @@ Additional resources
 .. |CyVerse_logo2| image:: ../img/cyverse_learning.png
     :width: 500
 .. _CyVerse_logo2: http://learning.cyverse.org/
-
-.. _CyVerse_logo: https://cyverse.org
 
 .. |Home_Icon| image:: ../img/homeicon.png
     :width: 25

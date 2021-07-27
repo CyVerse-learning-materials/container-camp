@@ -71,8 +71,8 @@ Expected outcomes:
 
    cyverse/boot
    cyverse/tool_integration_app_building_DE
-   cyverse/de_docker
-   cyverse/vice_docker
+   .. cyverse/de_docker
+   .. cyverse/vice_docker
 
 .. toctree::
    :maxdepth: 1
@@ -80,7 +80,7 @@ Expected outcomes:
 
    useful_resources/usefulresources_docker
    .. commented out for intro container camp
-   .. useful_resources/usefulresources_singularity
+   useful_resources/usefulresources_singularity
    useful_resources/usefulresources_other
 
 .. toctree::
