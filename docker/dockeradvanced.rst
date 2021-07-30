@@ -5,7 +5,7 @@
 -------------------
 
 4.0 Automated Docker image building from GitHub
-==============================================
+===============================================
 
 An automated build is a Docker image build that is triggered by a code change in a GitHub or Bitbucket repository. By linking a remote code repository to a Dockerhub automated build repository, you can build a new Docker image every time a code change is pushed to your code repository.
 
