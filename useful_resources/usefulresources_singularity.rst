@@ -12,7 +12,7 @@
 
 `University of Arizona Singularity Tutorial <https://public.confluence.arizona.edu/display/UAHPC/Containers>`_
 
-`TACC HPC Singularity Introduction <https://containers-at-tacc.readthedocs.io/en/latest/singularity/01.singularity_basics.html>`-
+`TACC HPC Singularity Introduction <https://containers-at-tacc.readthedocs.io/en/latest/singularity/01.singularity_basics.html>`_
 
 `TACC Containers .pdf <https://frontera-portal.tacc.utexas.edu/user-guide/docs/containers-at-tacc.pdf>`_
 
