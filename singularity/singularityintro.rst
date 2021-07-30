@@ -1,4 +1,4 @@
-**Introduction to Singularity**
+**Introduction to SingularityCE**
 -------------------------------
 
 |singularity|
@@ -10,7 +10,7 @@ There are no specific skills needed beyond a basic comfort with the command line
 
 .. Note::
 
-      *Important*: `Singularity is compatible with Docker <https://www.sylabs.io/2018/04/singularity-compatibility-with-docker-containers/>`_, but they do have distinct differences.
+      *Important*: `Singularity is compatible with Docker <https://sylabs.io/guides/3.8/user-guide/singularity_and_docker.html>`_, but they do have distinct differences.
 
    Key Differences:
 
@@ -18,7 +18,7 @@ There are no specific skills needed beyond a basic comfort with the command line
 
       * Inside a Docker container the user has escalated privileges, effectively making them `root` on that host system. This privilege is not supported by *most* administrators of High Performance Computing (HPC) centers. Meaning that Docker is not, and will likely never be, installed natively on your HPC.
 
-      **Singularity**:
+      **SingularityCE**:
 
       * Same user inside as outside the container
       * User only has root privileges if elevated with `sudo` when container is run
@@ -26,24 +26,24 @@ There are no specific skills needed beyond a basic comfort with the command line
 
   These key differences allow Singularity to be installed on most HPC centers. Because you can run virtually all Docker containers in Singularity, you can effectively run Docker on an HPC.
 
-2. Singularity Installation
+2. SingularityCE Installation
 ===========================
 
-Sylabs Singularity homepage: `https://www.sylabs.io/docs/ <https://www.sylabs.io/docs/>`_
+Sylabs Singularity Community Edition (CE) homepage: `https://www.sylabs.io/docs/ <https://www.sylabs.io/docs/>`_
 
-Singularity is more likely to be used on a remote system that you don't have control of (e.g. HPC).
+SingularityCE is more likely to be used on a remote system that you don't have control of (i.e. HPC & HTC).
 
 2.1 Install Singularity on Laptop
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To Install Singularity on your laptop or desktop PC follow the instructions from Singularity: https://www.sylabs.io/guides/3.5/user-guide/installation.html#installation
+To Install SingularityCE follow the instructions for your specific OS: https://sylabs.io/guides/3.8/user-guide/quick_start.html
 
 2.2 HPC
 ~~~~~~~
 
-Load the Singularity module on a HPC
+Load the SingularityCE module on HPC
 
-If you are interested in working on HPC, you may need to contact your systems administrator and request they install `Singularity  <https://www.sylabs.io/guides/3.5/user-guide/installation.html#installation>`_. Because singularity ideally needs setuid, your admins may have some qualms about giving Singularity this privilege. If that is the case, you might consider forwarding `this letter <https://www.sylabs.io/guides/3.5/user-guide/installation.html#singularity-on-a-shared-resource>`_ to your admins.
+If you are interested in working on HPC, you may need to contact your systems administrator and request they install `Singularity  <https://sylabs.io/guides/3.8/user-guide/quick_start.html#installation-request>`_. Because singularity ideally needs setuid, your admins may have some qualms about giving Singularity this privilege. If that is the case, you might consider forwarding `this letter <https://sylabs.io/guides/3.8/user-guide/quick_start.html#singularityce-on-a-shared-resource>`_ to your admins.
 
 Most HPC systems are running Environment Modules with the simple command `module`.
 
@@ -57,7 +57,7 @@ If Singularity is installed, load a specific version:
 
 .. code-block:: bash
 
-	$ module load singularity/3/3.5
+	$ module load singularity/3/3.7.2
 
 2.3 Atmosphere Cloud
 ~~~~~~~~~~~~~~~~~~~~~
@@ -70,8 +70,8 @@ Type in the following in a web shell or ``ssh`` terminal.
 
 .. code-block:: bash
 
-	$ ezs -r 3.5.1
-	DEBUG: set version to 3.5.1
+	$ ezs -r 3.8.1
+	DEBUG: set version to 3.8.1
 
 	* Updating ez singularity and installing singularity (this may take a few minutes, coffee break!)
 	Cloning into '/opt/cyverse-ez-singularity'...
@@ -375,17 +375,11 @@ Singularity containers contain `runscripts <https://www.sylabs.io/guides/3.0/use
 # Exercise - 1
 ##############
 
-Now that you know how to run containers from Docker, I want you to run a Singular container from `simple-script` Docker image that you create on Day 1 of the workshop.
-
-.. Note::
-
-	If you don't have ``simple-script`` you can use my image on docker hub - https://hub.docker.com/r/upendradevisetty/simple-script-auto
-
 Here are the brief steps:
 
-1. Go to `Docker hub <https://hub.docker.com/>`_ and look for the Dockerhub image that you built on Day 1
+1. Go to `Docker hub <https://hub.docker.com/>`_ and look for a Dockerhub image 
 
-2. Use ``singularity pull`` command to pull the Docker image onto your working directory on the Atmosphere
+2. Use ``singularity pull`` command to pull the Docker image and convert it to .sif
 
 3. Use ``singularity run`` command to launch a container from the Docker image and check to see if you get the same output that as you get from running ``docker run``
 
@@ -404,15 +398,12 @@ For running a container on HPC, you need to have Singularity module available on
 	------------------------------------------ /cm/shared/uamodulefiles -------------------------------------------
 	singularity/2/2.6.1  singularity/3/3.2  singularity/3/3.2.1  singularity/3/3.4.2  singularity/3/3.5.3
 
-You can see that there are three different versions of Singularity are available. For this workshop, we will use ``singularity/3/3.1``. Let's load it now
+You can see that there are three different versions of Singularity are available. For this workshop, we will use ``singularity/3/3.5.3``. Let's load it now
 
 .. code-block:: bash
 
-	$ module load singularity/3/3.1
+	$ module load singularity/3/3.5.3
 
 .. |singularity| image:: ../img/singularity.png
   :height: 200
   :width: 200
-
-.. |singularityflow| image:: http://singularity.lbl.gov/assets/img/diagram/singularity-2.4-flow.png
-  :width: 800
