@@ -4,8 +4,8 @@
 **Advanced Docker**
 -------------------
 
-4.0 Automated Docker image building from GitHub
-===============================================
+Automated Docker image building from GitHub
+============================================
 
 An automated build is a Docker image build that is triggered by a code change in a GitHub or Bitbucket repository. By linking a remote code repository to a Dockerhub automated build repository, you can build a new Docker image every time a code change is pushed to your code repository.
 
@@ -18,8 +18,8 @@ Automated Builds have several advantages:
 - Your repository is kept up-to-date with code changes automatically.
 - Automated Builds are supported for both public and private repositories on both GitHub and Bitbucket.
 
-4.1 Prerequisites
-~~~~~~~~~~~~~~~~~
+Prerequisites
+~~~~~~~~~~~~~~
 
 To use automated builds, you first must have an account on `Docker Hub <https://hub.docker.com>`_ and on the hosted repository provider (`GitHub <https://github.com/>`_ or `Bitbucket <https://bitbucket.org/>`_). While Docker Hub supports linking both GitHub and Bitbucket repositories, here we will use a GitHub repository. If you don't already have one, make sure you have a GitHub account. A basic account is free
 
@@ -29,8 +29,8 @@ To use automated builds, you first must have an account on `Docker Hub <https://
 
 	- Building Windows containers is not supported.
 
-4.2 Link your Docker Hub account to GitHub
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Link your Docker Hub account to GitHub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.	Log into Docker Hub.
 
@@ -53,8 +53,8 @@ After you grant access to your code repository, the system returns you to Docker
 
 |dockerhub_autobuild|
 
-4.3 Automated Container Builds
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Automated Container Builds
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Automated build repositories rely on the integration with a version control system (GitHub or Gitlab) where your ``Dockerfile`` is kept.
 
@@ -194,11 +194,11 @@ Exercise 1 (5-10 mins): Updating and automated building
 - Run the instance to make sure it works
 
 
-5.0 Volumes Continued
-=====================
+Volumes Continued
+=================
 
-5.1 Bind mounts
-^^^^^^^^^^^^^^^
+Bind mounts
+^^^^^^^^^^^^
 
 When you run a container, you can bring a directory from the host system into the container, and give it a new name and location using the ``-v`` or ``--volume`` flag.
 
@@ -211,8 +211,8 @@ When you run a container, you can bring a directory from the host system into th
 In the example above, you can mount a folder from your localhost, in your home user directory into the container as a new directory named ``/data``.
 
 
-5.2 Create and manage volumes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Create and manage volumes
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Unlike a bind mount, you can create and manage volumes outside the scope of any container.
 
@@ -295,8 +295,8 @@ After running either of these examples, run the following commands to clean up t
 	docker rm data-app
 	docker volume rm output-vol
 
-5.3 Bind mounts
-~~~~~~~~~~~~~~~
+Bind mounts
+~~~~~~~~~~~
 
 **Bind mounts:** When you use a bind mount, a file or directory on the host machine is mounted into a container.
 
@@ -353,8 +353,8 @@ You should see an error message about not being able to write to a read-only fil
 	sh: can't create /data/container-env.txt: Read-only file system
 
 
-6.0 Docker Compose for multi-container apps
-=========================================
+Docker Compose for multi-container apps
+========================================
 
 `Docker Compose <https://docs.docker.com/compose/>`_ is a tool for defining and running multi-container Docker applications. It requires you to have a ``docker-compose.yml`` file.
 
