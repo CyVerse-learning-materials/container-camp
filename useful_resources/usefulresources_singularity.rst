@@ -20,6 +20,6 @@
 
 
 **Singularity Talks**
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 Gregory Kurtzer, creator of Sylabs and Singularity has given public talks about the technology: `Singularity Container Workflows for Compute <https://www.youtube.com/watch?v=ryXjk56DSr8>`_
