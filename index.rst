@@ -47,6 +47,7 @@ Expected outcomes:
 
    docker/findingcontainers
    docker/dockerintro
+   docker/dockerbuild
    docker/dockeradvanced
 
 .. toctree::
