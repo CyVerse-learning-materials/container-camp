@@ -12,8 +12,8 @@ Snakemake is designed specifically for computationally intensive and/or complex 
 
 See Snakemake Slides `here <https://slides.com/johanneskoester/snakemake-tutorial#/>`_ and `pdf <https://github.com/CyVerse-learning-materials/container_camp_workshop_2020/blob/master/breakout/snakemake.pdf>`_.
 
-SETUP
------
+**Setup**
+---------
 
 .. Note::
 
