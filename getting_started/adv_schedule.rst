@@ -31,6 +31,8 @@ Day 1  - From the OS up Docker Image Builds
 
 - Introduction to GitPod on GitHub
 - Hands on exercise using base OS images in GitPod
+- Continuous Integration in GitHub
+- Guest Speakers from autamus.io
 
 **Content:**
 
@@ -40,6 +42,7 @@ Introduction to Docker builds from OS base images and when to pursue this.
 
 #. Use cases for building from the OS up
 #. Understand base images like Alpine linux and their portability/size
+#. Setup GitHub Actions for continuous integration of Docker builds
 
 **Optional Homework:**
 
@@ -50,7 +53,8 @@ Day 2 - Accelerating Your Analyses
 
 **Activity:**
 
-- Use OpenScienceGrid to scale
+- Use OpenScienceGrid (OSG) to scale
+- Demo from OSG
 - NVIDIA GPU acceleration discussion 
 
 **Content:**
@@ -73,7 +77,7 @@ Day 3 - Breakout Sessions
 
 **Content:**
 
-Domain science breakout sessions. Examples: bioinformatics, geospatial analysis, deep learning.
+Domain science breakout sessions. Examples: bioinformatics, geospatial analysis, deep learning, edge computing, information security, etc.
 
 **Goals:**
 
