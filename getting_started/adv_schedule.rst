@@ -53,16 +53,17 @@ Day 2 - Accelerating Your Analyses
 
 **Activity:**
 
-- Use OpenScienceGrid (OSG) to scale
-- Demo from OSG
-- NVIDIA GPU acceleration discussion 
+- Singularity containers on HPC / HTC / Cloud
+- Guest Speaker `Mats Rynge <https://github.com/rynge>`_ from `Information Sciences Institute @USC <https://www.isi.edu/>`_ on the OpenScienceGrid (OSG) 
+- NVIDIA GPU Cloud 
 
 **Content:**
 
-Introduction to OpenScienceGrid. Introduction to GPU acceleration with official NVIDIA images and special considerations for Docker run statements.
+Hands on with Singularity. Introduction to distributed computing on the OpenScienceGrid. Introduction to GPU acceleration in containers with official NVIDIA Docker images.
 
 **Goals:**
 
+#. Introduction to Singularity
 #. Introduction to OpenScienceGrid (OSG)
 #. Understand OSG applications on CyVerse
 #. Know where to look for NVIDIA images
