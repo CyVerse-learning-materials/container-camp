@@ -70,8 +70,8 @@ Type in the following in a web shell or ``ssh`` terminal.
 
 .. code-block:: bash
 
-	$ ezs -r 3.8.1
-	DEBUG: set version to 3.8.1
+	$ ezs -r 3.7.3
+	DEBUG: set version to 3.7.3
 
 	* Updating ez singularity and installing singularity (this may take a few minutes, coffee break!)
 	Cloning into '/opt/cyverse-ez-singularity'...
