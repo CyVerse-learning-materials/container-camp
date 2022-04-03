@@ -1,0 +1,137 @@
+docs_dir: docs/
+repo_name: 'CyVerse-learning-materials/container-camp'
+repo_url: 'https://github.com/CyVerse-learning-materials/container-camp'
+
+site_name: 'CyVerse Container Camp Home'
+site_description: 'Documentation for CyVerse Platforms and Education'
+site_author: 'CyVerse Science Team'
+site_url: 'https://learning.cyverse.org/container-camp/'
+
+edit_uri: edit/main/docs
+
+# Copyright
+copyright: 'Copyright &copy; 2022 CyVerse'
+
+# Navigation Page
+
+nav:
+  - 'Home': 
+    - index.md 
+  - 'Getting Started': 
+    - 'Code of Conduct' getting_started/code_conduct.md
+    - 'Logistics': getting_started/logistics.md
+    - 'Schedule': getting_started/schedule.md
+    - 'Setup': getting_started/setup.md
+  - 'Docker':
+    - 'Introduction to Docker': docker/intro.md
+    - 'Finding the right container': docker/registry.md
+    - 'Building Docker Containers': docker/build.md
+    - 'Advanced use of Docker': docker/advanced.md
+  - 'Singularity':
+    - 'Introduction to Singularity': singularity/intro.md
+    - 'Advanced use of Singularity': singularity/advanced.md
+    - 'Using Singularity on HPC/HTC': singularity/hpc.md
+  - 'Orchestration':
+    - 'Introduction to Kubernetes': orchestration/kubernetes.md
+    - 'Introduction to CyVerse CACAO': orchestration/cacao.md
+  - 'Cloud Services':
+    - 'Jetstream-2': cloud/js2.md
+    - 'GitHub CodeSpaces': cloud/codespaces.md
+    - 'GitPod': cloud/gitpod.md
+  - 'Useful Resources':
+    - 'Docker':  useful_resources/docker.md
+    - 'Singularity': userful_resource/singularity.md
+
+# JavaScript for Intercom Widget
+extra_javascript:
+  - javascripts/intercom-learning.js
+  
+# Set theme to `readthedocs`
+# must also set Action to use `@nomaterial` branch instead of `@master` for material
+theme:
+  name: material
+# setting features for the navigation tab
+  features:
+    - navigation.instant
+      #- navigation.expand
+    - navigation.tracking
+      #- navigation.sections
+    - navigation.indexes
+    - toc.integrate
+    - toc.follow
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  palette: 
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Regular
+  favicon: assets/favicon.png
+  icon:
+    logo: material/rocket
+
+# Options
+extra:
+  social:
+    - icon: fontawesome/brands/orcid
+      link: https://orcid.org/
+    - icon: fontawesome/brands/github
+      link: https://github.com/cyverse-learning-material/
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/cyverseorg
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/cyverse.org
+    - icon: fontawesome/brands/docker
+      link: https://harbor.cyverse.org/
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/c/CyverseOrgProject
+  analytics:
+    provider: google
+    property: UA-72224033-6
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde

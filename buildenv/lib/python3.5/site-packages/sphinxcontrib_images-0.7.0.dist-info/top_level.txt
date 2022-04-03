@@ -1,2 +1,0 @@
-sphinxcontrib_images_lightbox2
-sphinxcontrib
