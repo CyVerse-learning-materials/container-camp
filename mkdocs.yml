@@ -37,7 +37,6 @@ nav:
   - 'Cloud Services':
     - 'Jetstream-2': cloud/js2.md
     - 'GitHub CodeSpaces': cloud/codespaces.md
-    - 'GitPod': cloud/gitpod.md
   - 'Useful Resources':
     - 'Docker':  useful_resources/docker.md
     - 'Singularity': userful_resource/singularity.md
@@ -117,7 +116,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
@@ -126,6 +126,7 @@ markdown_extensions:
       repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

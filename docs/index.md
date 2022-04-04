@@ -4,15 +4,46 @@
 
 Welcome to [CyVerse](https://cyverse.org) Spring Container Camp 2022!
 
-This year, we're focusing on two camp experiences:
+![people](assets/people_science.png){ width="600" }
+
+This year, we're focusing on:
+
+## :material-docker: Docker Containers
+
+### Basic Usage
+
+[:octicons-container-16: Introduction to Docker](docker/intro.md)
+
+[:octicons-container-16: Finding the right container](docker/registry.md)
+
+### Advanced Applications
+
+[:octicons-container-16: Extending Docker](docker/advanced.md)
+
+[:octicons-container-16: Building your own containers](docker/build.md)
+
+## Containers on High Performance and High Throughput Computing
 
 ### Basic
 
+[:octicons-container-16: Introduction to Singularity]()
 
+[:octicons-container-16: Using Singularity on HPC and HTC]()
 
 ### Advanced
 
-![people](assets/people_science.png){ width="600" }
+[:octicons-container-16: Building Singularity Containers]()
+
+## :material-cloud-braces: Cloud & Container Orchestration
+
+[:material-cloud-braces: Introduction to Jetstream-2]()
+
+[:material-microsoft-visual-studio-code: Building Containers with Development Environments]()
+
+[:material-kubernetes: Introduction to Kubernetes]()
+
+[:chocolate_bar: Introduction to CyVerse CACAO]()
+
 
 -----------------------------------------------------------------------
 

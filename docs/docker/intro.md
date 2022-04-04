@@ -1,46 +1,57 @@
-# Introduction to Docker
+# Introduction to Docker :material-docker:
 
-![docker](../assets/docker/docker.png){ width="600" }
+[![docker](../assets/docker/docker.png){ width="400" }]((https://hub.docker.com){target=_blank})
 
 ### Prerequisites
 
-In order to complete these exercises we HIGHLY recommend that you set up a personal [GitHub](https://github.com){target=_blank} and [DockerHub](https://hub.docker.com) account. These are free, but do have options for paid subscriptions and added services.
+In order to complete these exercises we **STRONGLY** recommend that you set up a personal [:material-github: GitHub](https://github.com){target=_blank} and [:material-docker: DockerHub](https://hub.docker.com){target=_blank} account. 
 
-There are no specific skills needed for this tutorial beyond a basic comfort with the command line and using a text editor.
+These are free accounts.
 
-??? Note "Installing Docker on your personal computer"
+There are no specific skills needed for this tutorial beyond a basic comfort with the command line and using a text editor. 
 
-    We are going to be using virtual machines on the cloud, but there may be a time when you want to run this on your own computer.
-
-    Installing Docker takes a little time but it is reasonably straight forward and it is a one-time setup.
-
-    Installation instructions from Docker Official docs
-
-	- [Mac OS X](https://docs.docker.com/docker-for-mac/){target=_blank}
-	- [Windows](https://docs.docker.com/docker-for-windows){target=_blank}
-	- [Ubuntu Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/){target=_blank}
-
-
-We are going to be using [GitHub CodeSpaces](https://github.com/features/codespaces) for the hands on portion of the workshop. 
+We are going to be using [:material-github: GitHub CodeSpaces](https://github.com/features/codespaces){target=_blank} for the hands on portion of the workshop, which features [:material-microsoft-visual-studio-code: VS Code](https://code.visualstudio.com/){target=_blank} as a fully enabled development environment with Docker already installed. 
 
 CodeSpaces is a featured product from GitHub and requires a paid subscription or Academic account for access. Your account will temporarily be integrated with the course GitHub Organization for the next steps in the workshop.
 
+Our instructions on starting a new CodeSpace are [here](../cloud/codespaces.md) 
 
-## Basic Docker Commands
+??? Info "Installing Docker on your personal computer"
 
-All Docker based commands on the terminal use the prefix `docker`
+    We are going to be using virtual machines on the cloud for this course, and we will explain why this is a good thing, but there may be a time when you want to run Docker on your own computer.
 
-### help
+    Installing Docker takes a little time but it is reasonably straight forward and it is a one-time setup.
+
+    Installation instructions from Docker Official Docs for common OS and chip architectures:
+
+	- [:fontawesome-brands-apple: Mac OS X](https://docs.docker.com/docker-for-mac/){target=_blank}
+	- [:fontawesome-brands-windows: Windows](https://docs.docker.com/docker-for-windows){target=_blank}
+	- [:fontawesome-brands-ubuntu: Ubuntu Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/){target=_blank}
+
+??? Failure "Never used a terminal before?"
+    
+    That is  :100:  OK! (This person never used a terminal until after their terminal degree, and now they actually PREFER to work in it for writing code) 
+    
+    Don't be afraid or ashamed, but be ready to learn some new skills -- we promise it will be worth your while and even FUN! 
+    
+    Before venturing much further, you should review the [Software Carpentry](https://software-carpentry.org/lessons/){target=_blank} lessons on "The Unix Shell" and "Version Control with Git" -- these are great introductory lessons related to the skills we're teaching here.
+
+    You've given up on ever using a terminal? No problem, Docker can be used from graphic interfaces, like [Docker Desktop](https://www.docker.com/products/docker-desktop/){target=_blank}, or platforms like [Portainer](https://www.portainer.io/){target=_blank}. We suggest you read through their documentation on how to use Docker.
+
+## Basic Docker Commands :octicons-terminal-16: 
+
+Docker commands in the terminal use the prefix `docker`
+
+### :material-docker: help
 
 Like many other command line applications the most helpful flag is the `help` command which can be used with the Management Commands:
 
-```
+``` 
 $ docker 
-$
 $ docker --help
 ```
 
-### search
+### :material-docker: search
 
 We talk about the concept of [Docker Registries](registry.md) in the next section, but you can search the public list of registeries by using the `docker search` command to find public containers on the Official [Docker Hub Registry](https://hub.docker/com){target=_blank} 
 
@@ -48,13 +59,7 @@ We talk about the concept of [Docker Registries](registry.md) in the next sectio
 $ docker search  
 ```
 
-### list
-
-```
-$ docker list 
-```
-
-### pull
+### :material-docker: pull
 
 Go to the [Docker Hub](https://hub.docker.com){target=_blank} and type `hello-world` in the search bar at the top of the page. 
 
@@ -118,7 +123,7 @@ $ ls -l
 
 	Log out or close terminal and log back in and your group membership will be initiated
 
-### run
+### :material-docker: run
 
 The single most common command that you'll use with Docker is `docker run` ([see official help manual](https://docs.docker.com/engine/reference/commandline/run/){target=_blank} for more details.
 
@@ -127,11 +132,6 @@ The single most common command that you'll use with Docker is `docker run` ([see
 ```
 $ docker run hello-world:latest
 ```
-
-??? Tip "Inspecting your containers"
-
-	To find out more about a Docker images, run `docker inspect hello-world:latest`.
-
 
 In the demo above, you used the `docker pull` command to download the `hello-world:latest` image.
 
@@ -146,6 +146,8 @@ When you executed the command `docker run alpine:latest`, Docker first looked fo
 
 When you ran `docker run alpine:latest`, you provided a command `ls -l`, so Docker started the command specified and you saw the listing of the alpine file system (not your host system, this was insice the container!).
 
+### :material-docker: images
+
 You can now use the `docker images` command to see a list of all the cached images on your system:
 
 ```
@@ -155,19 +157,11 @@ alpine                 	latest              c51f86c28340        4 weeks ago     
 hello-world             latest              690ed74de00f        5 months ago        960 B
 ```
 
-You can change the entrypoint of a container by making any statement after the `registry/containername:tagname`:
+??? Info "Inspecting your containers"
 
-```
-$ docker run alpine echo "Hello world"
-```
+	To find out more about a Docker images, run `docker inspect hello-world:latest`
 
-In this case, the Docker client dutifully ran the ``echo`` command in our ``alpine`` container and then exited. If you've noticed, all of that happened pretty quickly. 
-
-Imagine booting up a virtual machine, running a command and then killing it. 
-
-Now you know why they say containers are fast!
-
-### ps
+### :material-docker: ps
 
 Now it's time to see the `docker ps` command which shows you all containers that are currently running on your machine.
 
@@ -191,6 +185,21 @@ $ docker ps --all
 What you see above is a list of all containers that you have ran. 
 
 Notice that the `STATUS` column shows that these containers exited a few minutes ago.
+
+
+## Entrypoints
+
+You can change the entrypoint of a container by making any statement after the `registry/containername:tagname`:
+
+```
+$ docker run alpine echo "Hello world"
+```
+
+In this case, the Docker client dutifully ran the ``echo`` command in our ``alpine`` container and then exited. If you've noticed, all of that happened pretty quickly. 
+
+Imagine booting up a virtual machine, running a command and then killing it. 
+
+Now you know why they say containers are fast!
 
 ## Interactive Commands with Containers
 
@@ -226,7 +235,7 @@ Exit out of the container by giving the `exit` command.
 / # exit
 ```
 
-??? Tip "Making sure you've exited the container"
+??? Warning "Making sure you've exited the container"
 
 	If you type ``exit`` your **container** will exit and is no longer active. To check that, try the following:
 
@@ -250,13 +259,13 @@ Exit out of the container by giving the `exit` command.
     $ docker attach 0db38ea51a48
     ```
 
-## House Keeping and Cleaning Up exited containers
+## :material-home: House Keeping and :material-broom: Cleaning Up exited containers
 
 IMPORTANT: Docker images are cached on your machine in the location where Docker was installed. These image files are not visible in the same directory where you might have used `docker pull <imagename>`.
 
 Some Docker images can be large. Especially data science images with many scientific programming libraries and packages pre-installed.
 
-??? Tip "Checking your system cache"
+??? Warning "Checking your system cache"
 
 	Pulling many images from the Docker Registries may fill up your hard disk!
 
@@ -298,7 +307,7 @@ Some Docker images can be large. Especially data science images with many scient
 
     If you added the `-af` flag it will remove "all" `-a` dangling images, empty containers, AND ALL CACHED IMAGES with "force" `-f`.
 
-### Managing Docker images
+### Managing Docker Images
 
 In the previous example, you pulled the `alpine` image from the registry and asked the Docker client to run a container based on that image. To see the list of images that are available locally on your system, run the ``docker images`` command.
 
@@ -319,7 +328,7 @@ For simplicity, you can think of an image akin to a Git repository - images can 
 
 Let's go ahead and run some basic Integrated Development Environment images from "trusted" organizations on the Docker Hub Registry.
 
-### Jupyter Lab or RStudio-Server IDE
+### Jupyter Lab :material-language-python: or RStudio-Server :material-language-r: IDE
 	
 In this section, let's find a Docker image which can run a Jupyter Notebook
 
@@ -371,6 +380,11 @@ rstudio/rstudio-package-manager                Default Docker image for RStudio 
 rstudio/shinyapps-package-dependencies         Docker images used to test the install scrip…   1                    
 rstudio/rstudio-workbench-preview                                                              1                    
 ```
+
+??? Warning "Untrusted community images"
+
+    An important thing to note: None of these Jupyter or RStudio images are 'official' Docker images, meaning they could be trojans for spyware, malware, or other nasty warez.
+
 
 ## Understanding PORTS
 
