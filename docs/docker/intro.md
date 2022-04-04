@@ -84,7 +84,7 @@ Now try to list the files in your current working directory
 $ ls -l
 ```
 
-?? Question "Where is the image you just pulled?"
+??? Question "Where is the image you just pulled?"
 
     Docker saves container images to the Docker directory (where Docker is installed). 
     
@@ -96,7 +96,7 @@ $ ls -l
     $ docker images
     ```
 
-?? Tip "adding yourself to the Docker group on Linux"
+??? Tip "adding yourself to the Docker group on Linux"
 
 	Depending on how and where you've installed Docker, you may see a `permission denied` error after running `$ docker run helo-world` command.
     
@@ -128,7 +128,7 @@ The single most common command that you'll use with Docker is `docker run` ([see
 $ docker run hello-world:latest
 ```
 
-?? Tip "Inspecting your containers"
+??? Tip "Inspecting your containers"
 
 	To find out more about a Docker images, run `docker inspect hello-world:latest`.
 
@@ -226,7 +226,7 @@ Exit out of the container by giving the `exit` command.
 / # exit
 ```
 
-?? Tip "Making sure you've exited the container"
+??? Tip "Making sure you've exited the container"
 
 	If you type ``exit`` your **container** will exit and is no longer active. To check that, try the following:
 
@@ -256,7 +256,7 @@ IMPORTANT: Docker images are cached on your machine in the location where Docker
 
 Some Docker images can be large. Especially data science images with many scientific programming libraries and packages pre-installed.
 
-?? Tip "Checking your system cache"
+??? Tip "Checking your system cache"
 
 	Pulling many images from the Docker Registries may fill up your hard disk!
 
@@ -315,7 +315,11 @@ Above is a list of images that I've pulled from the registry and those I've crea
 
 For simplicity, you can think of an image akin to a Git repository - images can be committed with changes and have multiple versions. When you do not provide a specific version number, the client defaults to latest.
 
-## Jupyter Lab or RStudio-Server IDE
+## Working with Interactive Containers
+
+Let's go ahead and run some basic Integrated Development Environment images from "trusted" organizations on the Docker Hub Registry.
+
+### Jupyter Lab or RStudio-Server IDE
 	
 In this section, let's find a Docker image which can run a Jupyter Notebook
 
@@ -368,9 +372,7 @@ rstudio/shinyapps-package-dependencies         Docker images used to test the in
 rstudio/rstudio-workbench-preview                                                              1                    
 ```
 
-## Working with Interactive Containers
-
-Let's go ahead and run some basic Integraded Development Environment images from "trusted" organizations on the Docker Hub Registry.
+## Understanding PORTS
 
 When we want to run a container that runs on the open internet, we need to add a [TCP or UDP port number](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers){target=_blank} from which we can access the application in a browser using the machine's IP (Internet Protocol) address or DNS (Domain Name Service) location.
 
@@ -378,7 +380,7 @@ To do this, we need to access the container over a separate port address on the 
 
 Docker uses the flag `--port` or `-p` for short followed by two sets of port numbers. 
 
-?? Note "Exposing Ports"
+??? Note "Exposing Ports"
 
     Docker can in fact expose all ports to a container using the capital `-P` flag
 
@@ -398,7 +400,7 @@ $docker run --rm -p 8787:8787 -e PASSWORD=cc2022 rocker/rstudio
 $docker run --rm -p 8888:8888 jupyter/base-notebook
 ```
 
-?? Note "preempting stale containers from your cache"
+??? Note "preempting stale containers from your cache"
 
 	We've added the `--rm` flag, which means the container will automatically removed from the cache when the container is exited.
 
@@ -406,7 +408,9 @@ $docker run --rm -p 8888:8888 jupyter/base-notebook
 
 ### Detaching your container while it is running
 
-If we want to keep our window in the foreground  we can use the `-d` - the *detached* flag will run the container as a background process, rather than in the foreground. When you run a container with this flag, it will start, run, telling you the container ID:
+If we want to keep our window in the foreground  we can use the `-d` - the *detached* flag will run the container as a background process, rather than in the foreground. 
+
+When you run a container with this flag, it will start, run, telling you the container ID:
 
 ```
 $ docker run --rm -d -p 8888:8888 jupyter/base-notebook
@@ -446,7 +450,7 @@ Volumes are often a better choice than persisting data in a container’s writab
 - A new volume’s contents can be pre-populated by a container.
 
 
-?? Tip "using Temporary File System mounts"
+??? Tip "using Temporary File System mounts"
 
 	If your container generates non-persistent state data, consider using a ``tmpfs`` mount to avoid storing the data anywhere permanently, and to increase the container’s performance by avoiding writing into the container’s writable layer.
 
@@ -466,8 +470,8 @@ First we need to get some data on our local machine (Atmosphere).
 
     $ ls -l 
 
-Choose the -v flag for mounting volumes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Choose the `-v` flag for mounting volumes
+
 
 ``-v`` or ``--volume``: Consists of three fields, separated by colon characters (:). The fields must be in the correct order, and the meaning of each field is not immediately obvious.
 
