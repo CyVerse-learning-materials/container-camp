@@ -2,11 +2,13 @@
 
 # Spring Container Camp 2022
 
-Welcome to [CyVerse](https://cyverse.org) Container Camp!
+Welcome to [CyVerse](https://cyverse.org) Spring Container Camp 2022!
 
 This year, we're focusing on two camp experiences:
 
 ### Basic
+
+
 
 ### Advanced
 

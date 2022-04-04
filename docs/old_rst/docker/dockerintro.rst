@@ -713,65 +713,6 @@ Getting more help with Docker
 
 ===================================================================
 
-.. |Github Repo Link| raw:: html
-	 <a href="https://github.com/CyVerse-learning-materials/container-camp/blob/main/docker/dockerintro.rst" target="blank">Github Repo Link</a>
-
-.. |docker| image:: ../img/docker.png
-  :width: 250
-
-
-.. |static_site_docker| image:: ../img/static_site_docker.png
-  :width: 500
-
-
-.. |static_site_docker1| image:: ../img/static_site_docker1.png
-  :width: 500
-
-.. |portainer_demo| image:: ../img/portainer_demo.png
-  :width: 500
-
-.. |pwd| image:: ../img/pwd.png
-  :width: 500
-
-.. |catpic| image:: ../img/catpic-1.png
-  :width: 500
-
-.. |CyVerse_logo2| image:: ../img/cyverse_learning.png
-    :width: 500
-.. _CyVerse_logo2: http://learning.cyverse.org/
-
-.. |Home_Icon| image:: ../img/homeicon.png
-    :width: 25
-    :height: 25
-
-.. _Home_Icon: http://learning.cyverse.org/
-
-.. |atmoactive| image:: ../img/atmoactive.png
-    :width: 500
-
-.. |atmoauth| image:: ../img/atmoauth.png
-    :width: 500
-
-.. |atmosuccess| image:: ../img/atmosuccess.png
-    :width: 500
-   
-.. |docker| image:: ../img/docker.png
-  :width: 250
-
-.. |hubfind1| image:: ../img/hubfind1.png
-  :width: 650
-
-.. |atmoactive| image:: ../img/atmoactive.png
-  :width: 650
-
-.. |atmoauth| image:: ../img/atmoauth.png
-  :width: 650
-
-.. |atmosuccess| image:: ../img/atmosuccess.png
-  :width: 650
-
-.. |volumes| image:: ../img/volumes.png
-    :width: 500
 
 
 

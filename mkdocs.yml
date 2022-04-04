@@ -18,7 +18,7 @@ nav:
   - 'Home': 
     - index.md 
   - 'Getting Started': 
-    - 'Code of Conduct' getting_started/code_conduct.md
+    - 'Code of Conduct': getting_started/code_conduct.md
     - 'Logistics': getting_started/logistics.md
     - 'Schedule': getting_started/schedule.md
     - 'Setup': getting_started/setup.md
