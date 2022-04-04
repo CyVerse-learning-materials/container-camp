@@ -186,6 +186,15 @@ What you see above is a list of all containers that you have ran.
 
 Notice that the `STATUS` column shows that these containers exited a few minutes ago.
 
+### :material-docker: stop
+
+
+### :material-docker: rm
+
+### :material-docker: rmi
+
+### :material-docker: system
+
 
 ## Entrypoints
 
@@ -468,194 +477,77 @@ Volumes are often a better choice than persisting data in a container’s writab
 
 	If your container generates non-persistent state data, consider using a ``tmpfs`` mount to avoid storing the data anywhere permanently, and to increase the container’s performance by avoiding writing into the container’s writable layer.
 
-First we need to get some data on our local machine (Atmosphere).
-
-.. code-block:: bash
-
-    $ iinit
-
-    Enter the host name (DNS) of the server to connect to: data.cyverse.org
-    Enter the port number: 1247
-    Enter your irods user name: your_cyverse_username
-    Enter your irods zone: iplant
-
-
-    $ iget -r /iplant/home/shared/iplant_training/read_cleanup
-
-    $ ls -l 
-
 Choose the `-v` flag for mounting volumes
 
+`-v` or `--volume`: Consists of three fields, separated by colon characters (:). 
 
-``-v`` or ``--volume``: Consists of three fields, separated by colon characters (:). The fields must be in the correct order, and the meaning of each field is not immediately obvious.
+The fields must be in the correct order, and the meaning of each field is not immediately obvious.
 
 - The first field is the path on your local machine that where the data are.
 - The second field is the path where the file or directory are mounted in the container.
 - The third field is optional, and is a comma-separated list of options, such as ``ro``.
 
-.. code-block:: bash
+```
+-v /home/username/your_data_folder:/container_folder
+```
 
-   -v /home/username/your_data_folder:/container_folder
-
-.. code-block:: bash
-
-    $ docker run -v /home/amcooksey/read_cleanup:/work alpine:latest ls -l /work
-
+```
+$ docker run -v /home/$USER/read_cleanup:/work alpine:latest ls -l /work
+```
 
 So what if we wanted to work interactively inside the container?
 
-.. code-block:: bash
+```
+$ docker run -it -v /home/$USER/read_cleanup:/work alpine:latest sh
+```
 
-    $ docker run -it -v /home/amcooksey/read_cleanup:/work alpine:latest sh
-
-.. code-block:: bash
-
-    $ ls -l 
-
-    $ ls -l work
-
-..
-	.. Note::
-..
-	Originally, the ``-v`` or ``--volume`` flag was used for standalone containers and the ``--mount`` flag was used for swarm services. However, starting with Docker 17.06, you can also use ``--mount`` with standalone containers. In general, ``--mount`` is more explicit and verbose. The biggest difference is that the ``-v`` syntax combines all the options together in one field, while the ``--mount`` syntax separates them. Here is a comparison of the syntax for each flag.
-..
-	.. code-block:: bash
-..
-	$docker run --rm -v $(pwd):/work -p 8787:8787 -e PASSWORD=cc2020 rocker/rstudio
-..
-	In the Jupyter Lab example, we use the ``-e`` environmental flag to re-direct the URL of the container at the localhost
-..
-	.. code-block:: bash
-..
-	$docker run --rm -v $(pwd):/work -p 8888:8888 -e REDIRECT_URL=http://localhost:8888 jupyter/base-notebook
+```
+$ ls -l 
+$ ls -l work
+```
 
 Once you're in the container, you will see that the ``/work`` directory is mounted in the working directory.
 
 Any data that you add to that folder outside the container will appear INSIDE the container. And any work you do inside the container saved in that folder will be saved OUTSIDE the container as well.
 
+??? Info " Mounts vs Volumes"
+
+	The `-v` or `--volume` flag was used for standalone containers and the `--mount` flag was used for swarm services. 
+    
+    However, starting with Docker 17.06, you can also use `--mount` with standalone containers. In general, `--mount` is more explicit and verbose. 
+    
+    The biggest difference is that the `-v` syntax combines all the options together in one field, while the `--mount` syntax separates them. 
+    
+    Here is a comparison of the syntax for each flag.
+
+    ```
+	$docker run --rm -v $(pwd):/work -p 8787:8787 -e PASSWORD=cc2022 rocker/verse:4.1.3
+    ```
+
+	In the Jupyter Lab example, we use the `-e` environmental flag to re-direct the URL of the container at the localhost
+
+    ```
+	$docker run --rm -v $(pwd):/work -p 8888:8888 -e REDIRECT_URL=http://localhost:8888 jupyter/base-notebook
+    ```
+
+
+
 Docker Commands
 ===============
 
-+----------------+------------------------------------------------+
-| Command        |          Usage                                 |
-+================+================================================+
-| docker pull    |  Download an image from Docker Hub             |
-+----------------+------------------------------------------------+
-| docker run     |  *Usage:* ``docker run -it user/image:tag``    |
-|                |  starts a container with an entrypoint         |
-+----------------+------------------------------------------------+
-| docker build   | *Usage:* ``docker build -t user/image:tag .``  |
-|                |  Builds a docker image from a Dockerfile in    |
-|                |  current working directory. ``-t`` for tagname |
-+----------------+------------------------------------------------+
-| docker images  |  List all images on the local machine          |
-+----------------+------------------------------------------------+
-| docker tag     |  Add a new tag to an image                     |
-+----------------+------------------------------------------------+
-| docker login   |  Authenticate to the Docker Hub                |
-|                |  requires username and password                |
-+----------------+------------------------------------------------+
-| docker push    |  *Usage:* ``docker push user/image:tag``       |
-|                |  Upload an image to Docker Hub                 |
-+----------------+------------------------------------------------+
-| docker inspect |  *Usage:* ``docker inspect containerID``       |
-|                |  Provide detailed information on constructs    |
-|                |  controlled by Docker                          |
-+----------------+------------------------------------------------+
-| docker ps -a   |  List all containers on your system            |
-+----------------+------------------------------------------------+
-| docker rm      |  *Usage:* ``docker rm -f <container>``         |
-|                |  Deletes a *container*                         |
-|                |  ``-f`` remove running container               |
-+----------------+------------------------------------------------+
-| docker rmi     |  Deletes an *image*                            |
-+----------------+------------------------------------------------+
-| docker stop    |  *Usage:* ``docker stop <container>``          |
-|                |  Stop a running container                      |
-+----------------+------------------------------------------------+
-| docker system  |  *Usage:* ``docker system prune``		  |
-|                |  Remove old images and cached layers		  |
-|                |  *Usage:* ``docker system df``		  |
-|                |  View system details (cache size)              |
-+----------------+------------------------------------------------+
 
-Getting more help with Docker
-=============================
-
-- The command line tools are very well documented:
-
-.. code-block:: bash
-
-   $ docker --help
-   # shows all docker options and summaries
-
-.. code-block:: bash
-
-   $ docker COMMAND --help
-   # shows options and summaries for a particular command
-
-- Learn `more about docker <https://docs.docker.com/get-started/>`_
-.. 
- 4. Extra Demos
- ==============
-..
- 4.1 Portainer
- ~~~~~~~~~~~~~
-..
- `Portainer <https://portainer.io/>`_ is an open-source lightweight managment UI which allows you to easily manage your Docker hosts or Swarm cluster.
-..
- - Simple to use: It has never been so easy to manage Docker. Portainer provides a detailed overview of Docker and allows you to manage containers, images, networks and volumes. It is also really easy to deploy, you are just one Docker command away from running Portainer anywhere.
-..
- - Made for Docker: Portainer is meant to be plugged on top of the Docker API. It has support for the latest versions of Docker, Docker Swarm and Swarm mode.
-..
- 4.1.1 Installation
- ^^^^^^^^^^^^^^^^^^
-..
- Use the following Docker commands to deploy Portainer. Now the second line of command should be familiar to you by now. We will talk about first line of command in the Advanced Docker session.
-..
- .. code-block:: bash
-..
-	# on CyVerse Atmosphere:
-	$ ezd -p
-..
-	$ docker volume create portainer_data
-..
-	$ docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
-..
- - If you are on mac, you'll just need to access the port 9000 (http://localhost:9000) of the Docker engine where portainer is running using username ``admin`` and   password ``tryportainer``
-..
- - If you are running Docker on Atmosphere/Jetstream or on any other cloud, you can open ``ipaddress:9000``. For my case this is ``http://128.196.142.26:9000``
-..
- .. Note::
-..
-	The ``-v /var/run/docker.sock:/var/run/docker.sock`` option can be used in Mac/Linux environments only.
-..
- |portainer_demo|
-..
- 4.2 Play-with-docker (PWD)
- ~~~~~~~~~~~~~~~~~~~~~~~~~~
-..
- `PWD <https://labs.play-with-docker.com/>`_ is a Docker playground which allows users to run Docker commands in a matter of seconds. It gives the experience of having a free Alpine Linux Virtual Machine in browser, where you can build and run Docker containers and even create clusters in `Docker Swarm Mode <https://docs.docker.com/engine/swarm/>`_. Under the hood, Docker-in-Docker (DinD) is used to give the effect of multiple VMs/PCs. In addition to the playground, PWD also includes a training site composed of a large set of Docker labs and quizzes from beginner to advanced level available at `training.play-with-docker.com <https://training.play-with-docker.com/>`_.
-..
- 4.2.1 Installation
- ^^^^^^^^^^^^^^^^^^
-..
- You don't have to install anything to use PWD. Just open ``https://labs.play-with-docker.com/`` <https://labs.play-with-docker.com/>`_ and start using PWD
-..
- .. Note::
-..
-	You can use your Dockerhub credentials to log-in to PWD
-..
- |pwd|
-
-**Fix or improve this documentation**
-
-- Search for an answer:
-   |CyVerse Learning Center|
-- Ask us for help:
-  click |Intercom| on the lower right-hand side of the page
-- Report an issue or submit a change:
-  |Github Repo Link|
-- Send feedback: `Tutorials@CyVerse.org <Tutorials@CyVerse.org>`_
-
-===================================================================
+| Command | Usage | Example |
+|---------|-------|---------|
+| `pull` | Downloads an image from Docker Hub | `docker pull hello-world:latest |
+| `run`  | runs a container with entrypoint | `docker run -it user/image:tag` | 
+| `build` | Builds a docker image from a Dockerfile in current working directory | `docker build -t user/image:tag .` |
+| `images` |  List all images on the local machine  | `docker images list` |
+| `tag` |  Adds a different tag name to an image | `docker tag hello-world:latest hello-world:new-tag-name` |
+| `login` | Authenticate to the Docker Hub (requires username and password) | `docker login` |
+| `push` | Upload your new image to the Docker Hub | `docker push user/image:tag` |
+| `inspect` | Provide detailed information on constructs controlled by Docker | `docker inspect containerID` |
+| `ps`  | List all containers on your system  | `docker ps -a` |
+| `rm` | Delete a stopped or running container |`docker rm -f <container ID>` |
+| `rmi` | Delete an *image* from your cache |  `docker rmi hello-world:latest`  |
+| `stop` | Stop a running container | `docker stop alpine:latest` |
+| `system` | View system details, remove old images and containers with `prune` |`docker system prune` |
