@@ -1,4 +1,4 @@
-# Introduction to SingularityCE
+# Introduction to Singularity
 
 ## 1. Prerequisites
 
@@ -7,7 +7,6 @@ command line and using a text editor. Prior experience installing Linux
 applications could be helpful but is not required.
 
 !!! Note
-
   *Important*: [Singularity is compatible with
   Docker](https://sylabs.io/guides/3.8/user-guide/singularity_and_docker.html),
   but they do have distinct differences.
@@ -22,7 +21,7 @@ applications could be helpful but is not required.
       Computing (HPC) centers. Meaning that Docker is not, and will
       likely never be, installed natively on your HPC.
 
-  **SingularityCE**:
+  **Singularity**:
 
   -   Same user inside as outside the container
   -   User only has root privileges if elevated with sudo when
@@ -33,30 +32,29 @@ These key differences allow Singularity to be installed on most HPC
 centers. Because you can run virtually all Docker containers in
 Singularity, you can effectively run Docker on an HPC.
 
-## 2. SingularityCE Installation
+## 2. Singularity Installation
 
 Sylabs Singularity Community Edition (CE) homepage:
 [<https://www.sylabs.io/docs/>](https://www.sylabs.io/docs/)
 
-SingularityCE is more likely to be used on a remote system that you
+Singularity is more likely to be used on a remote system that you
 don't have control of (i.e. HPC & HTC).
 
 ### 2.1 Install Singularity on Laptop
 
-
-To Install SingularityCE follow the instructions for your specific OS:
+To Install Singularity follow the instructions for your specific OS:
 <https://sylabs.io/guides/3.8/user-guide/quick_start.html>
 
 ### 2.2 HPC
 
-Load the SingularityCE module on HPC
+Load the Singularity module on HPC
 
 If you are interested in working on HPC, you may need to contact your
 systems administrator and request they install
 [Singularity](https://sylabs.io/guides/3.8/user-guide/quick_start.html#installation-request).
 Because singularity ideally needs setuid, your admins may have some
 qualms about giving Singularity this privilege. If that is the case, you
-might consider forwarding [this letter](https://sylabs.io/guides/3.8/user-guide/quick_start.html#singularityce-on-a-shared-resource)
+might consider forwarding [this letter](https://sylabs.io/guides/3.8/user-guide/quick_start.html#Singularity-on-a-shared-resource)
 to your admins.
 
 Most HPC systems are running Environment Modules with the simple command
@@ -82,8 +80,7 @@ installation which includes
 This command only requires you to type a short line of code to install
 an entire software stack with all of its dependencies.
 
-Start any *Featured* instance on
-Atmosphere ../cyverse/boot.html
+Start any *Featured* instance on Atmosphere `../cyverse/boot.html`
 
 Type in the following in a web shell or `ssh` terminal.
 
@@ -288,7 +285,6 @@ INFO:    Build complete: ubuntu_20.04.sif
 ```
 
 !!! Warning
-
   Pulling Docker images reduces reproducibility. If you were to pull a
   Docker image today and then wait six months and pull again, you are not
   guaranteed to get the same image. If any of the source layers has
@@ -356,7 +352,6 @@ tswetnam
 ```
 
 !!! Warning
-
   `shell` also works with the library://, docker://, and shub:// URIs.
   This creates an ephemeral container that disappears when the shell is
   exited.
@@ -381,7 +376,6 @@ ______________________
 ```
 
 !!! Note
-
   `exec` also works with the library://, docker://, and shub:// URIs. This
   creates an ephemeral container that executes a command and disappears.
 
@@ -431,7 +425,6 @@ available on HPC. Let's first look to see if the Singularity module is
 available on HPC or not
 
 !!! Warning
-
   The following instructions are from running on UA HPC. It may or may not
   work on other HPC. Please refer to HPC documentation to find similar
   commands
