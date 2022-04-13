@@ -73,7 +73,7 @@ $ sudo singularity build ubuntu-latest.sif ubuntu-latest/
 ```
 
 !!! Warning
-   Why is creating containers in this way a **bad** idea?
+      Why is creating containers in this way a **bad** idea?
 
 #### 5.2.1: Exercise (~30 minutes): Create a Singularity file
 
