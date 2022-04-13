@@ -7,9 +7,9 @@ command line and using a text editor. Prior experience installing Linux
 applications could be helpful but is not required.
 
 !!! Note
-  *Important*: [Singularity is compatible with
-  Docker](https://sylabs.io/guides/3.8/user-guide/singularity_and_docker.html),
-  but they do have distinct differences.
+    *Important*: [Singularity is compatible with
+    Docker](https://sylabs.io/guides/3.8/user-guide/singularity_and_docker.html),
+    but they do have distinct differences.
 
   Key Differences:
 
@@ -285,21 +285,20 @@ INFO:    Build complete: ubuntu_20.04.sif
 ```
 
 !!! Warning
-  Pulling Docker images reduces reproducibility. If you were to pull a
-  Docker image today and then wait six months and pull again, you are not
-  guaranteed to get the same image. If any of the source layers has
-  changed the image will be altered. If reproducibility is a priority for
-  you, try building your images from the Container Library.
+    Pulling Docker images reduces reproducibility. If you were to pull a
+    Docker image today and then wait six months and pull again, you are not
+    guaranteed to get the same image. If any of the source layers has
+    changed the image will be altered. If reproducibility is a priority for
+    you, try building your images from the Container Library.
 
 ### 3.3 Pulling an image from Sylabs cloud library
 
 Let’s use an easy example of `alpine.sif` image from the [container
 library](https://cloud.sylabs.io/library/)
 
-!!! Warning: Tip
-
-  You can use `singularity search <name>` command to locate groups,
-  collections, and containers of interest on the Container Library
+!!! Tip
+    You can use `singularity search <name>` command to locate groups,
+    collections, and containers of interest on the Container Library
 
 ## 4. Interact with images
 
@@ -352,9 +351,9 @@ tswetnam
 ```
 
 !!! Warning
-  `shell` also works with the library://, docker://, and shub:// URIs.
-  This creates an ephemeral container that disappears when the shell is
-  exited.
+    `shell` also works with the library://, docker://, and shub:// URIs.
+    This creates an ephemeral container that disappears when the shell is
+    exited.
 
 
 ### 4.2 Executing commands
@@ -376,8 +375,8 @@ ______________________
 ```
 
 !!! Note
-  `exec` also works with the library://, docker://, and shub:// URIs. This
-  creates an ephemeral container that executes a command and disappears.
+    `exec` also works with the library://, docker://, and shub:// URIs. This
+    creates an ephemeral container that executes a command and disappears.
 
 ### 4.3 Running a container
 

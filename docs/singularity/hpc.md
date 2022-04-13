@@ -52,12 +52,11 @@ It is usually possible to get an interactive session as well, by using
 an interactive flag, -i.
 
 !!! Warning
-
-    Every HPC cluster is a little different, but they almost universally
-    have a "User's Guide" that serves both as a quick reference for helpful
-    commands and contains guidelines for how to be a "good citizen" while
-    using the system. For TACC's Stampede2 system, see the [user guide](https://portal.tacc.utexas.edu/user-guides/stampede2). For The
-    University of Arizona, see the [user guide](https://docs.hpc.arizona.edu/).
+        Every HPC cluster is a little different, but they almost universally
+        have a "User's Guide" that serves both as a quick reference for helpful
+        commands and contains guidelines for how to be a "good citizen" while
+        using the system. For TACC's Stampede2 system, see the [user guide](https://portal.tacc.utexas.edu/user-guides/stampede2). For The
+        University of Arizona, see the [user guide](https://docs.hpc.arizona.edu/).
 
 ## How do HPC systems fit into the development workflow?
 
@@ -98,13 +97,12 @@ difficult with Singularity, but it comes at the cost of additional
 requirements for the host system.
 
 !!! Warning
-
-    Many HPC Systems, like Stampede2 at TACC and Ocelote at UAHPC, have
-    high-speed, low-latency networks that have special drivers. Infiniband,
-    Ares, and OmniPath are three different specs for these types of
-    networks. When running MPI jobs, if the container doesn't have the right
-    libraries, it won't be able to use those special interconnects to
-    communicate between nodes.
+        Many HPC Systems, like Stampede2 at TACC and Ocelote at UAHPC, have
+        high-speed, low-latency networks that have special drivers. Infiniband,
+        Ares, and OmniPath are three different specs for these types of
+        networks. When running MPI jobs, if the container doesn't have the right
+        libraries, it won't be able to use those special interconnects to
+        communicate between nodes.
 
 ## Base Docker images
 
@@ -211,10 +209,9 @@ time ibrun singularity exec pi-estimator_0.1-mpi.sif pi-mpi.py 10000000
 ```
 
 !!! Warning
-
-    TACC uses a command called `ibrun` on all of its systems that
-    configures MPI to use the high-speed, low-latency network. If you are
-    familiar with MPI, this is the functional equivalent to `mpirun`
+        TACC uses a command called `ibrun` on all of its systems that
+        configures MPI to use the high-speed, low-latency network. If you are
+        familiar with MPI, this is the functional equivalent to `mpirun`
 
 The first `singularity exec pi-estimator_0.1-mpi.sif pi-mpi.py 10000000`
 command will use 1 CPU core to sample ten million times. The second

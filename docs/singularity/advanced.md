@@ -139,56 +139,56 @@ The container registries which Singularity uses are listed in the
 
 The additional sections of a Singularity file include:
 
--   %help - create text for a help menu associated with your container
--   %setup - executed on the host system outside of the container, after
+-   help - create text for a help menu associated with your container
+-   setup - executed on the host system outside of the container, after
     the base OS has been installed.
--   %files - copy files from your host system into the container
--   %labels - store metadata in the container
--   %environment - loads environment variables at the time the container
+-   files - copy files from your host system into the container
+-   labels - store metadata in the container
+-   environment - loads environment variables at the time the container
     is run (not built)
--   %post - set environment variables during the build
--   %runscript - executes a script when the container runs
--   %test - runs a test on the build of the container
+-   post - set environment variables during the build
+-   runscript - executes a script when the container runs
+-   test - runs a test on the build of the container
 
 **Setting up Singularity file system**
 
 - **Help**
 
-%help section can be as verbose as you want
+help section can be as verbose as you want
 
 ```
 Bootstrap: docker
 From: ubuntu
 
-%help
+help
 This is the container help section.
 ```
 
 - **Setup**
 
-%setup commands are executed on the localhost system outside of the
+setup commands are executed on the localhost system outside of the
 container - these files could include necessary build dependencies. We
-can copy files to the \$SINGULARITY\_ROOTFS file system can be done
-during %setup
+can copy files to the `$SINGULARITY_ROOTFS` file system can be done
+during setup
 
 - **Files**
 
-%files include any files that you want to copy from your localhost into
+files include any files that you want to copy from your localhost into
 the container.
 
 - **Post**
 
-%post includes all of the environment variables and dependencies that
+post includes all of the environment variables and dependencies that
 you want to see installed into the container at build time.
 
 - **Environment**
 
-%environment includes the environment variables which we want to be run
+environment includes the environment variables which we want to be run
 when we start the container
 
 - **Runscript**
 
-%runscript does what it says, it executes a set of commands when the
+runscript does what it says, it executes a set of commands when the
 container is run.
 
 **Example Singularity file**
@@ -200,18 +200,18 @@ Example Singularity file bootstrapping a
 BootStrap: docker
 From: ubuntu:18.04
 
-%post
+post
    apt-get -y update
    apt-get -y install fortune cowsay lolcat
 
-%environment
+environment
    export LC_ALL=C
    export PATH=/usr/games:$PATH
 
-%runscript
+runscript
    fortune | cowsay | lolcat
 
-%labels
+labels
    Maintainer Tyson Swetnam
    Version v0.1
 ```
