@@ -1,44 +1,39 @@
-**Introduction to SingularityCE** -------------------------------
+# Introduction to SingularityCE
 
-![singularity](../img/singularity.png)
-
-1. Prerequisites
-================
+## 1. Prerequisites
 
 There are no specific skills needed beyond a basic comfort with the
 command line and using a text editor. Prior experience installing Linux
 applications could be helpful but is not required.
 
-<div class="admonition note">
+!!! Note
 
-*Important*: [Singularity is compatible with
-Docker](https://sylabs.io/guides/3.8/user-guide/singularity_and_docker.html),
-but they do have distinct differences.
+  *Important*: [Singularity is compatible with
+  Docker](https://sylabs.io/guides/3.8/user-guide/singularity_and_docker.html),
+  but they do have distinct differences.
 
-</div>
+  Key Differences:
 
-> Key Differences:
->
-> > **Docker**:
-> >
-> > -   Inside a Docker container the user has escalated privileges,
-> >     effectively making them root on that host system. This privilege
-> >     is not supported by *most* administrators of High Performance
-> >     Computing (HPC) centers. Meaning that Docker is not, and will
-> >     likely never be, installed natively on your HPC.
-> >
-> > **SingularityCE**:
-> >
-> > -   Same user inside as outside the container
-> > -   User only has root privileges if elevated with sudo when
-> >     container is run
-> > -   Can run (and modify!) existing Docker images and containers
+  **Docker**:
 
-> These key differences allow Singularity to be installed on most HPC
-> centers. Because you can run virtually all Docker containers in
-> Singularity, you can effectively run Docker on an HPC.
+  -   Inside a Docker container the user has escalated privileges,
+      effectively making them root on that host system. This privilege
+      is not supported by *most* administrators of High Performance
+      Computing (HPC) centers. Meaning that Docker is not, and will
+      likely never be, installed natively on your HPC.
 
-2\. SingularityCE Installation ===========================
+  **SingularityCE**:
+
+  -   Same user inside as outside the container
+  -   User only has root privileges if elevated with sudo when
+      container is run
+  -   Can run (and modify!) existing Docker images and containers
+
+These key differences allow Singularity to be installed on most HPC
+centers. Because you can run virtually all Docker containers in
+Singularity, you can effectively run Docker on an HPC.
+
+## 2. SingularityCE Installation
 
 Sylabs Singularity Community Edition (CE) homepage:
 [<https://www.sylabs.io/docs/>](https://www.sylabs.io/docs/)
@@ -46,14 +41,13 @@ Sylabs Singularity Community Edition (CE) homepage:
 SingularityCE is more likely to be used on a remote system that you
 don't have control of (i.e. HPC & HTC).
 
-2.1 Install Singularity on Laptop
----------------------------------
+### 2.1 Install Singularity on Laptop
+
 
 To Install SingularityCE follow the instructions for your specific OS:
 <https://sylabs.io/guides/3.8/user-guide/quick_start.html>
 
-2.2 HPC
--------
+### 2.2 HPC
 
 Load the SingularityCE module on HPC
 
@@ -62,8 +56,7 @@ systems administrator and request they install
 [Singularity](https://sylabs.io/guides/3.8/user-guide/quick_start.html#installation-request).
 Because singularity ideally needs setuid, your admins may have some
 qualms about giving Singularity this privilege. If that is the case, you
-might consider forwarding [this
-letter](https://sylabs.io/guides/3.8/user-guide/quick_start.html#singularityce-on-a-shared-resource)
+might consider forwarding [this letter](https://sylabs.io/guides/3.8/user-guide/quick_start.html#singularityce-on-a-shared-resource)
 to your admins.
 
 Most HPC systems are running Environment Modules with the simple command
@@ -71,18 +64,17 @@ module.
 
 You can check to see what is available:
 
-``` {.sourceCode .bash}
+```
 $ module avail singularity
 ```
 
 If Singularity is installed, load a specific version:
 
-``` {.sourceCode .bash}
+```
 $ module load singularity/3/3.7.2
 ```
 
-2.3 Atmosphere Cloud
---------------------
+### 2.3 Atmosphere Cloud
 
 CyVerse staff have deployed an Ansible playbook called `ez` for software
 installation which includes
@@ -91,11 +83,11 @@ This command only requires you to type a short line of code to install
 an entire software stack with all of its dependencies.
 
 Start any *Featured* instance on
-Atmosphere &lt;../cyverse/boot.html&gt;\_.
+Atmosphere ../cyverse/boot.html
 
 Type in the following in a web shell or `ssh` terminal.
 
-``` {.sourceCode .bash}
+```
 $ ezs -r 3.7.3
 DEBUG: set version to 3.7.3
 
@@ -110,13 +102,12 @@ To test singularity, type: singularity run shub://vsoch/hello-world
 Hint: it should output "RaawwWWWWWRRRR!!")
 ```
 
-2.4 Check Installation
-----------------------
+### 2.4 Check Installation
 
 Singularity should now be installed on your laptop or VM, or loaded on
 the HPC, you can check the installation with:
 
-``` {.sourceCode .bash}
+```
 $ singularity pull shub://vsoch/hello-world
 INFO:    Downloading shub image
  59.75 MiB / 59.75 MiB [=====================================================================================================] 100.00% 49.24 MiB/s 1s
@@ -133,7 +124,7 @@ host system from within a container.
 The help command gives an overview of Singularity options and
 subcommands as follows:
 
-``` {.sourceCode .bash}
+```
 $ singularity
 Usage:
   singularity [global options...] <command>
@@ -168,7 +159,7 @@ Run 'singularity --help' for more detailed usage information.
 
 Information about subcommand can also be viewed with the help command.
 
-``` {.sourceCode .bash}
+```
 $ singularity help pull
 Pull an image from a URI
 
@@ -227,8 +218,7 @@ Examples:
 For additional help or support, please visit https://www.sylabs.io/docs/
 ```
 
-3. Downloading pre-built images
-===============================
+## 3. Downloading pre-built images
 
 The easiest way to use a Singularity is to `pull` an existing container
 from one of the Registries.
@@ -250,13 +240,12 @@ Container Registries:
 -   busybox - BusyBox
 -   zypper - zypper based systems such as Suse and OpenSuse
 
-3.1 Pulling an image from Singularity Hub
------------------------------------------
+### 3.1 Pulling an image from Singularity Hub
 
 Similar to previous example, in this example I am pulling a base Ubuntu
 container from Singularity-Hub:
 
-``` {.sourceCode .bash}
+```
 $ singularity pull shub://singularityhub/ubuntu
 WARNING: Authentication token file not found : Only pulls of public images will succeed
 88.58 MiB / 88.58 MiB [===============================================================================================] 100.00% 31.86 MiB/s 2s
@@ -264,7 +253,7 @@ WARNING: Authentication token file not found : Only pulls of public images will 
 
 You can rename the container using the --name flag:
 
-``` {.sourceCode .bash}
+```
 $ singularity pull --name ubuntu_test.simg shub://singularityhub/ubuntu
 WARNING: Authentication token file not found : Only pulls of public images will succeed
 88.58 MiB / 88.58 MiB [===============================================================================================] 100.00% 35.12 MiB/s 2s
@@ -273,13 +262,12 @@ WARNING: Authentication token file not found : Only pulls of public images will 
 The above command will save the alpine image from the Container Library
 as `alpine.sif`
 
-3.2 Pulling an image from Docker Hub
-------------------------------------
+### 3.2 Pulling an image from Docker Hub
 
 This example pulls an `ubuntu:16.04` image from DockerHub and saves it
 to the working directory.
 
-``` {.sourceCode .bash}
+```
 $ singularity pull docker://ubuntu:20.04
 INFO:    Converting OCI blobs to SIF format
 INFO:    Starting build...
@@ -299,31 +287,25 @@ INFO:    Creating SIF file...
 INFO:    Build complete: ubuntu_20.04.sif
 ```
 
-<div class="admonition warning">
+!!! Warning
 
-Pulling Docker images reduces reproducibility. If you were to pull a
-Docker image today and then wait six months and pull again, you are not
-guaranteed to get the same image. If any of the source layers has
-changed the image will be altered. If reproducibility is a priority for
-you, try building your images from the Container Library.
+  Pulling Docker images reduces reproducibility. If you were to pull a
+  Docker image today and then wait six months and pull again, you are not
+  guaranteed to get the same image. If any of the source layers has
+  changed the image will be altered. If reproducibility is a priority for
+  you, try building your images from the Container Library.
 
-</div>
-
-3.3 Pulling an image from Sylabs cloud library
-----------------------------------------------
+### 3.3 Pulling an image from Sylabs cloud library
 
 Let’s use an easy example of `alpine.sif` image from the [container
 library](https://cloud.sylabs.io/library/)
 
-<div class="admonition tip">
+!!! Warning: Tip
 
-You can use `singularity search <name>` command to locate groups,
-collections, and containers of interest on the Container Library
+  You can use `singularity search <name>` command to locate groups,
+  collections, and containers of interest on the Container Library
 
-</div>
-
-4 Interact with images
-======================
+## 4. Interact with images
 
 You can interact with images in several ways such as `shell`, `exec` and
 `run`.
@@ -331,7 +313,7 @@ You can interact with images in several ways such as `shell`, `exec` and
 For these examples we will use a `cowsay_latest.sif` image that can be
 pulled from the Container Library like so.
 
-``` {.sourceCode .bash}
+```
 $ singularity pull library://tyson-swetnam/default/cowsay
 INFO:    Downloading library image
  67.00 MiB / 67.00 MiB [=====================================================================================================] 100.00% 5.45 MiB/s 12s
@@ -350,14 +332,13 @@ tswetnam@tysons-box:~$ singularity run cowsay_latest.sif
         ||     ||
 ```
 
-4.1 Shell
----------
+### 4.1 Shell
 
 The `shell` command allows you to spawn a new shell within your
 container and interact with it as though it were a small virtual
 machine.
 
-``` {.sourceCode .bash}
+```
 $ singularity shell cowsay_latest.sif
   Singularity cowsay_latest.sif:~>
 ```
@@ -369,27 +350,25 @@ container or not).
 Once inside of a Singularity container, you are the same user as you are
 on the host system.
 
-``` {.sourceCode .bash}
+```
 $ Singularity cowsay_latest.sif:~> whoami
 tswetnam
 ```
 
-<div class="admonition note">
+!!! Warning
 
-`shell` also works with the library://, docker://, and shub:// URIs.
-This creates an ephemeral container that disappears when the shell is
-exited.
+  `shell` also works with the library://, docker://, and shub:// URIs.
+  This creates an ephemeral container that disappears when the shell is
+  exited.
 
-</div>
 
-4.2 Executing commands
-----------------------
+### 4.2 Executing commands
 
 The exec command allows you to execute a custom command within a
 container by specifying the image file. For instance, to execute the
 `cowsay` program within the cowsay\_latest.sif container:
 
-``` {.sourceCode .bash}
+```
 $ singularity exec cowsay_latest.sif cowsay container camp rocks
 ______________________
 < container camp rocks >
@@ -401,15 +380,12 @@ ______________________
                 ||     ||
 ```
 
-<div class="admonition note">
+!!! Note
 
-`exec` also works with the library://, docker://, and shub:// URIs. This
-creates an ephemeral container that executes a command and disappears.
+  `exec` also works with the library://, docker://, and shub:// URIs. This
+  creates an ephemeral container that executes a command and disappears.
 
-</div>
-
-4.3 Running a container
------------------------
+### 4.3 Running a container
 
 Singularity containers contain
 [runscripts](https://www.sylabs.io/guides/3.0/user-guide/definition_files.html#runscript).
@@ -418,7 +394,7 @@ should perform when someone runs it. The runscript can be triggered with
 the `run` command, or simply by calling the container as though it were
 an executable.
 
-``` {.sourceCode .bash}
+```
 singularity run lolcow_latest.sif
  _________________________________________
 /  You will remember, Watson, how the     \
@@ -436,7 +412,7 @@ singularity run lolcow_latest.sif
                 ||     ||
 ```
 
-### \# Exercise - 1
+#### Exercise - 1
 
 Here are the brief steps:
 
@@ -448,35 +424,22 @@ Here are the brief steps:
     image and check to see if you get the same output that as you get
     from running `docker run`
 
-4.3 Running a container on HPC
-------------------------------
+### 4.3 Running a container on HPC
 
 For running a container on HPC, you need to have Singularity module
 available on HPC. Let's first look to see if the Singularity module is
 available on HPC or not
 
-<div class="admonition warning">
+!!! Warning
 
-The following instructions are from running on UA HPC. It may or may not
-work on other HPC. Please refer to HPC documentation to find similar
-commands
-
-</div>
+  The following instructions are from running on UA HPC. It may or may not
+  work on other HPC. Please refer to HPC documentation to find similar
+  commands
 
 You can see that there are three different versions of Singularity are
 available. For this workshop, we will use `singularity/3/3.5.3`. Let's
 load it now
 
-``` {.sourceCode .bash}
+```
 $ module load singularity/3/3.5.3
 ```
-
-> height
->
-> :   200
->
-> width
->
-> :   200
->
-

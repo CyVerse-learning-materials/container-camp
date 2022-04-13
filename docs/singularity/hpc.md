@@ -1,5 +1,4 @@
-**Singularity and High Performance Computing**
-==============================================
+# Singularity and High Performance Computing
 
 High Performance Computing resources fill an important role in research
 computing and can support container execution through runtimes such as
@@ -23,7 +22,7 @@ very large, or very long, you may never make it out of the queue.
 
 For example, on a VM if you run the command:
 
-``` {.sourceCode .bash}
+```
 singularity exec docker://python:latest /usr/local/bin/python
 ```
 
@@ -31,7 +30,7 @@ The container will immediately start.
 
 On an HPC system, your job submission script would look something like:
 
-``` {.sourceCode .bash}
+```
 #!/bin/bash
 #
 #SBATCH -J myjob                      # Job name
@@ -52,20 +51,15 @@ those lines to know what resources to reserve for you.
 It is usually possible to get an interactive session as well, by using
 an interactive flag, -i.
 
-<div class="admonition note">
+!!! Warning
 
-Every HPC cluster is a little different, but they almost universally
-have a "User's Guide" that serves both as a quick reference for helpful
-commands and contains guidelines for how to be a "good citizen" while
-using the system. For TACC's Stampede2 system, see the [user
-guide](https://portal.tacc.utexas.edu/user-guides/stampede2). For The
-University of Arizona, see the [user
-guide](https://docs.hpc.arizona.edu/).
+    Every HPC cluster is a little different, but they almost universally
+    have a "User's Guide" that serves both as a quick reference for helpful
+    commands and contains guidelines for how to be a "good citizen" while
+    using the system. For TACC's Stampede2 system, see the [user guide](https://portal.tacc.utexas.edu/user-guides/stampede2). For The
+    University of Arizona, see the [user guide](https://docs.hpc.arizona.edu/).
 
-</div>
-
-How do HPC systems fit into the development workflow?
------------------------------------------------------
+## How do HPC systems fit into the development workflow?
 
 A few things to consider when using HPC systems:
 
@@ -85,8 +79,7 @@ environment. We usually recommend your local laptop or a VM as a
 development environment where you can iterate on your code rapidly and
 test container building and execution.
 
-Singularity and MPI
--------------------
+## Singularity and MPI
 
 Singularity supports MPI fairly well. Since (by default) the network is
 the same insde and outside the container, the communication between
@@ -104,19 +97,16 @@ and you are right. Containerizing MPI applications is not terribly
 difficult with Singularity, but it comes at the cost of additional
 requirements for the host system.
 
-<div class="admonition note">
+!!! Warning
 
-Many HPC Systems, like Stampede2 at TACC and Ocelote at UAHPC, have
-high-speed, low-latency networks that have special drivers. Infiniband,
-Ares, and OmniPath are three different specs for these types of
-networks. When running MPI jobs, if the container doesn't have the right
-libraries, it won't be able to use those special interconnects to
-communicate between nodes.
+    Many HPC Systems, like Stampede2 at TACC and Ocelote at UAHPC, have
+    high-speed, low-latency networks that have special drivers. Infiniband,
+    Ares, and OmniPath are three different specs for these types of
+    networks. When running MPI jobs, if the container doesn't have the right
+    libraries, it won't be able to use those special interconnects to
+    communicate between nodes.
 
-</div>
-
-Base Docker images
-------------------
+## Base Docker images
 
 Depending on the system you will use, you may have to build your own MPI
 enabled Singularity images (to get the versions to match).
@@ -133,9 +123,6 @@ Stampede2.
 Because you may have to build your own MPI enabled Singularity images
 (to get the versions to match), here is a 3.1 compatible example of what
 it may look like:
-
-``` {.sourceCode .bash}
-```
 
 > BootStrap: debootstrap OSVersion: xenial MirrorURL:
 > <http://us.archive.ubuntu.com/ubuntu/>
@@ -162,7 +149,7 @@ to Singularity at the end.
 Once you have a working MPI container, invoking it would look something
 like:
 
-``` {.sourceCode .bash}
+```
 mpirun -np 4 singularity exec ./mycontainer.sif /app.py arg1 arg2
 ```
 
@@ -172,12 +159,11 @@ assuming the image has what it needs, can work across many nodes.
 For a single node, you can also use the **container MPI** to run in
 parallel (usually you don't want this)
 
-``` {.sourceCode .bash}
+```
 singularity exec ./mycontainer.sif mpirun -np 4 /app.py arg1 arg2
 ```
 
-Example Containerized MPI App
------------------------------
+## Example Containerized MPI App
 
 In your Docker development environment, make a new directory in which to
 build up a new image and download (or copy and paste) two files in that
@@ -194,7 +180,7 @@ to satisfy all the MPI requirements on Stampede2.
 
 Next, try building the new container.
 
-``` {.sourceCode .bash}
+```
 $ docker build -t USERNAME/pi-estimator:0.1-mpi -f Dockerfile.mpi .
 ```
 
@@ -203,21 +189,20 @@ Don't forget to change USERNAME to your DockerHub username.
 Once you have successfully built an image, push it up to DockerHub with
 the `docker push` command so that we can pull it back down on Stampede2.
 
-Running an MPI Container on Stampede2
--------------------------------------
+## Running an MPI Container on Stampede2
 
 To test, we can grab an interactive session that has two nodes. That way
 we can see if we can make the two nodes work together. On TACC systems,
 the "idev" command will start an interactive session on a compute node:
 
-``` {.sourceCode .bash}
+```
 $ idev -m 60 -p normal -N 2 -n 128
 ```
 
 Once you have nodes at your disposal and a container on DockerHub,
 invoking it would look something like:
 
-``` {.sourceCode .bash}
+```
 module load tacc-singularity
 cd $WORK
 singularity pull docker://USERNAME/pi-estimator:0.1-mpi
@@ -225,13 +210,11 @@ time singularity exec pi-estimator_0.1-mpi.sif pi-mpi.py 10000000
 time ibrun singularity exec pi-estimator_0.1-mpi.sif pi-mpi.py 10000000
 ```
 
-<div class="admonition note">
+!!! Warning
 
-</div>
-
-> TACC uses a command called `ibrun` on all of its systems that
-> configures MPI to use the high-speed, low-latency network. If you are
-> familiar with MPI, this is the functional equivalent to `mpirun`
+    TACC uses a command called `ibrun` on all of its systems that
+    configures MPI to use the high-speed, low-latency network. If you are
+    familiar with MPI, this is the functional equivalent to `mpirun`
 
 The first `singularity exec pi-estimator_0.1-mpi.sif pi-mpi.py 10000000`
 command will use 1 CPU core to sample ten million times. The second
@@ -248,8 +231,7 @@ run in parallel (but usually you don't want this).
 When you are don with your interactive session, don't forget to `exit`
 to end the session and go back to the login node.
 
-Singularity and GPU Computing
------------------------------
+## Singularity and GPU Computing
 
 GPU support in Singularity is very good.
 
@@ -258,7 +240,7 @@ to utilize GPUs for machine learning code like TensorFlow. We will not
 do this as a hands-on exercise, but in general the procedule is as
 follows.
 
-``` {.sourceCode .bash}
+```
 # Load the singularity module
 module load singularity/3/3.1
 
@@ -271,7 +253,7 @@ singularity exec --nv caffe-latest.sif caffe device_query -gpu 0
 Please note that the --nv flag specifically passes the GPU drivers into
 the container. If you leave it out, the GPU will not be detected.
 
-``` {.sourceCode .bash}
+```
 # this is missing the --nv flag and will not work
 singularity exec caffe-latest.sif caffe device_query -gpu 0
 ```
@@ -284,7 +266,7 @@ needs to use CUDA 10 internally.
 For TensorFlow, you can directly pull their latest GPU image and utilize
 it as follows.
 
-``` {.sourceCode .bash}
+```
 # Change to your $WORK directory
 cd $WORK
 #Get the software
@@ -295,5 +277,4 @@ singularity pull docker://tensorflow/tensorflow:latest-gpu
 singularity exec --nv tensorflow-latest-gpu.sif python $HOME/models/tutorials/image/mnist/convolutional.py
 ```
 
-The University of Arizona HPS [Singularity
-examples](https://docs.hpc.arizona.edu/display/UAHPC/Containers).
+The University of Arizona HPS [Singularity examples](https://docs.hpc.arizona.edu/display/UAHPC/Containers).
