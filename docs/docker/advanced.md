@@ -44,11 +44,11 @@ is free
 1.  Log into Docker Hub.
 2.  Click "Create Repository+"
 
-![dockerhub_create](../assets/docker/docker/dockerhub_create.png)
+![dockerhub_create](../assets/docker/dockerhub_create.png)
 
 3\.  Click the Build Settings and select `GitHub`.
 
-![dockerhub_createrepo](../assets/docker/docker/dockerhub_createrepo.png)
+![dockerhub_createrepo](../assets/docker/dockerhub_createrepo.png)
 
 The system prompts you to choose between **Public and Private** and
 **Limited Access**. The **Public** and **Private** connection type is
@@ -416,25 +416,20 @@ sh: can't create /data/container-env.txt: Read-only file system
 defining and running multi-container Docker applications. It requires
 you to have a `docker-compose.yml` file.
 
-::: note
-::: title
-Note
-:::
+!!! Note
+        Docker for Mac and Docker Toolbox already include Compose along with
+        other Docker apps, so Mac users do not need to install Compose
+        separately. Docker for Windows and Docker Toolbox already include
+        Compose along with other Docker apps, so most Windows users do not need
+        to install Compose separately.
 
-Docker for Mac and Docker Toolbox already include Compose along with
-other Docker apps, so Mac users do not need to install Compose
-separately. Docker for Windows and Docker Toolbox already include
-Compose along with other Docker apps, so most Windows users do not need
-to install Compose separately.
+        For Linux users
 
-For Linux users
+        ``` bash
+        sudo curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
-``` bash
-sudo curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-
-sudo chmod +x /usr/local/bin/docker-compose
-```
-:::
+        sudo chmod +x /usr/local/bin/docker-compose
+        ```
 
 Main advantages of Docker compose include:
 
@@ -444,7 +439,7 @@ Main advantages of Docker compose include:
     rather than dealing with starting individual containers
     (simplicity).
 
-Let\'s now create a Docker Compose `.yml` that calls Jupyter Lab SciPy
+Let's now create a Docker Compose `.yml` that calls Jupyter Lab SciPy
 
 1.  Copy or create the `jupyter_compose` directory
 
@@ -460,7 +455,7 @@ $ mkdir jupyter_compose/data
 $ mkdir jupyter_compose/notebooks
 ```
 
-2.  Copy or create a `entry.sh` and a `jupyter_notebook_config.json` in
+2\.  Copy or create a `entry.sh` and a `jupyter_notebook_config.json` in
     the `jupyter_compose/` directory
 
 `entry.sh` creates an iRODS environment JSON with the user\'s name and
@@ -515,25 +510,20 @@ services:
     Advanced Section 1.0)
 5.  Build the container with `docker-compose` instead of `docker build`
 
-::: note
-::: title
-Note
-:::
+!!! Note
+        Handling containers with Docker Compose is fairly simple
 
-Handling containers with Docker Compose is fairly simple
+        ``` bash
+        docker-compose up
+        ```
 
-``` bash
-docker-compose up
-```
+        mounts the directory and starts the container
 
-mounts the directory and starts the container
+        ``` bash
+        docker-compose down
+        ```
 
-``` bash
-docker-compose down
-```
-
-destroys the container
-:::
+        destroys the container
 
 A brief explanation of `docker-compose.yml` is as below:
 
@@ -544,7 +534,7 @@ A brief explanation of `docker-compose.yml` is as below:
     image).
 -   `restart: always` means that it will restart whenever it fails.
 
-5.  Run the container
+6\.  Run the container
 
 ``` bash
 $ docker-compose up -d
@@ -552,3 +542,5 @@ $ docker-compose up -d
 
 And that's it! You should be able to see the application running on
 `http://localhost:8888` or `<ipaddress>:8888`
+
+[docker_compose](../assets/docker/dc-1.png)
