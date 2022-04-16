@@ -212,11 +212,9 @@ Press `Trigger` button and finally click `Save Changes`.
 
 The Build Details page shows a log of your build systems:
 
-Navigate to the `Build Details` page.
-
-Wait until your image build is done.
-
-You may have to manually refresh the page and your build may take
+- Navigate to the `Build Details` page.
+- Wait until your image build is done.
+- You may have to manually refresh the page and your build may take
 several minutes to complete.
 
 ![autobuild7](../assets/docker/auto_build-7.png)
@@ -345,9 +343,9 @@ docker volume rm output-vol
 host machine is mounted into a container.
 
 ??? Tip
-        If you are developing new Docker applications, consider using named
-        **volumes** instead. You can't use Docker CLI commands to directly
-        manage bind mounts.
+    If you are developing new Docker applications, consider using named
+    **volumes** instead. You can't use Docker CLI commands to directly
+    manage bind mounts.
 
 ![bind_mount](../assets/docker/bind_mount.png)
 
