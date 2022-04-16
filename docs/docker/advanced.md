@@ -1,4 +1,4 @@
-# **Advanced Docker**
+# Advanced Docker
 
 ## Automated Docker image building from GitHub
 
@@ -31,45 +31,49 @@ repositories, here we will use a GitHub repository. If you don\'t
 already have one, make sure you have a GitHub account. A basic account
 is free
 
-::: note
-::: title
-Note
-:::
+!!! Note
+        -   If you have previously linked your Github or Bitbucket account, you
+            must have chosen the Public and Private connection type. To view
+            your current connection settings, log in to Docker Hub and choose
+            Profile > Settings > Linked Accounts & Services.
+        -   Building Windows containers is not supported.
 
--   If you have previously linked your Github or Bitbucket account, you
-    must have chosen the Public and Private connection type. To view
-    your current connection settings, log in to Docker Hub and choose
-    Profile \> Settings \> Linked Accounts & Services.
--   Building Windows containers is not supported.
-:::
 
 ### Link your Docker Hub account to GitHub
 
 1.  Log into Docker Hub.
-2.  Click \"Create Repository+\"
+2.  Click "Create Repository+"
 
-3.  Click the Build Settings and select `GitHub`.
+[dockerhub_create](../assets/docker/docker/dockerhub_create.png)
+
+3\.  Click the Build Settings and select `GitHub`.
+
+[dockerhub_createrepo](../assets/docker/docker/dockerhub_createrepo.png)
 
 The system prompts you to choose between **Public and Private** and
 **Limited Access**. The **Public** and **Private** connection type is
 required if you want to use the Automated Builds.
 
-4.  Press `Select` under **Public and Private** connection type. If you
+4\.  Press `Select` under **Public and Private** connection type. If you
     are not logged into GitHub, the system prompts you to enter GitHub
     credentials before prompting you to grant access. After you grant
     access to your code repository, the system returns you to Docker Hub
     and the link is complete.
 
+[dockerhub_buildsettings](../assets/docker/dockerhub_buildsettings.png)
+
 After you grant access to your code repository, the system returns you
 to Docker Hub and the link is complete. For example, github linked
 hosted repository looks like this:
+
+[dockerhub_autobuild](../assets/docker/dockerhub_autobuild.png)
 
 ### Automated Container Builds
 
 Automated build repositories rely on the integration with a version
 control system (GitHub or Gitlab) where your `Dockerfile` is kept.
 
-Let\'s create an automatic build for our container using the
+Let's create an automatic build for our container using the
 instructions below:
 
 1.  Initialize git repository for the [mynotebook]{.title-ref} directory
@@ -99,18 +103,17 @@ $ git add * && git commit -m "Add files and folders"
  create mode 100644 model.py
 ```
 
-2.  Create a new repository on github by navigating to this URL -
+2\.  Create a new repository on github by navigating to this URL -
     <https://github.com/new>
 
-::: note
-::: title
-Note
-:::
+[create_repo](../assets/docker/create_repo.png)
 
-Don\'t initialize the repository with a README and don\'t add a license.
-:::
+!!! Note
+        Don't initialize the repository with a README and don\'t add a license.
 
-3.  Push the repository to github
+[create_repo2](../assets/docker/create_repo2.png)
+
+3].  Push the repository to github
 
 ``` bash
 $ git remote add origin https://github.com/<your-github-username>/mynotebook.git
@@ -126,7 +129,7 @@ To https://github.com/<your-github-username>/mynotebook.git
 Branch master set up to track remote branch master from origin.
 ```
 
-4.  Select `Create` \> `Create Automated Build` from Docker Hub.
+4\.  Select `Create` > `Create Automated Build` from Docker Hub.
 
 -   The system prompts you with a list of User/Organizations and code
     repositories.
@@ -138,19 +141,18 @@ Branch master set up to track remote branch master from origin.
     to restrict the list. After you select the project, the system
     displays the Create Automated Build dialog.
 
-::: note
-::: title
-Note
-:::
+[dockerhub_autobuilds](../assets/docker/dockerhub_autobuilds.png)
 
-The dialog assumes some defaults which you can customize. By default,
-Docker builds images for each branch in your repository. It assumes the
-Dockerfile lives at the root of your source. When it builds an image,
-Docker tags it with the branch name.
-:::
+!!! Note
+        The dialog assumes some defaults which you can customize. By default,
+        Docker builds images for each branch in your repository. It assumes the
+        Dockerfile lives at the root of your source. When it builds an image,
+        Docker tags it with the branch name.
 
-5.  Customize the automated build by pressing the
+5\.  Customize the automated build by pressing the
     `Click here to customize` behavior link.
+
+[autobuild2.1](../assets/docker/auto_build-2.1.png)
 
 Specify which code branches or tags to build from. You can build by a
 code branch or by an image tag. You can enter a specific value or use a
@@ -162,41 +164,31 @@ Show More link on the right of the page.
 -   Recall the file is in the root of your code repository.
 -   Specify `1.0` for the Tag Name.
 
-6.  Click `Create`.
+6\.  Click `Create`.
 
-::: important
-::: title
-Important
-:::
+!!! Warning "Important"
+        During the build process, Docker copies the contents of your Dockerfile
+        to Docker Hub. The Docker community (for public repositories) or
+        approved team members/orgs (for private repositories) can then view the
+        Dockerfile on your repository page.
 
-During the build process, Docker copies the contents of your Dockerfile
-to Docker Hub. The Docker community (for public repositories) or
-approved team members/orgs (for private repositories) can then view the
-Dockerfile on your repository page.
+        The build process looks for a README.md in the same directory as your
+        Dockerfile. If you have a README.md file in your repository, it is used
+        in the repository as the full description. If you change the full
+        description after a build, it's overwritten the next time the Automated
+        Build runs. To make changes, modify the README.md in your Git
+        repository.
 
-The build process looks for a README.md in the same directory as your
-Dockerfile. If you have a README.md file in your repository, it is used
-in the repository as the full description. If you change the full
-description after a build, it's overwritten the next time the Automated
-Build runs. To make changes, modify the README.md in your Git
-repository.
-:::
-
-::: warning
-::: title
-Warning
-:::
-
-You can only trigger one build at a time and no more than one every five
-minutes. If you already have a build pending, or if you recently
-submitted a build request, Docker ignores new requests.
-:::
+!!! Warning
+        You can only trigger one build at a time and no more than one every five
+        minutes. If you already have a build pending, or if you recently
+        submitted a build request, Docker ignores new requests.
 
 It can take a few minutes for your automated build job to be created.
 When the system is finished, it places you in the detail page for your
 Automated Build repository.
 
-7.  Manually Trigger a Build
+7\.  Manually Trigger a Build
 
 Before you trigger an automated build by pushing to your GitHub
 `mynotebook` repo, you\'ll trigger a manual build. Triggering a manual
@@ -204,21 +196,20 @@ build ensures everything is working correctly.
 
 From your automated build page choose `Build Settings`
 
+[autobuild5](../assets/docker/auto_build-5.png)
+
 Press `Trigger` button and finally click `Save Changes`.
 
-::: note
-::: title
-Note
-:::
+!!! Note
+        Docker builds everything listed whenever a push is made to the code
+        repository. If you specify a particular branch or tag, you can manually
+        build that image by pressing the Trigger. If you use a regular
+        expression syntax (regex) to define your build branch or tag, Docker
+        does not give you the option to manually build.
 
-Docker builds everything listed whenever a push is made to the code
-repository. If you specify a particular branch or tag, you can manually
-build that image by pressing the Trigger. If you use a regular
-expression syntax (regex) to define your build branch or tag, Docker
-does not give you the option to manually build.
-:::
+[autobuild6](../assets/docker/auto_build-6.png)
 
-8.  Review the build results
+8\.  Review the build results
 
 The Build Details page shows a log of your build systems:
 
@@ -228,6 +219,8 @@ Wait until your image build is done.
 
 You may have to manually refresh the page and your build may take
 several minutes to complete.
+
+[autobuild7](../assets/docker/auto_build-7.png)
 
 ### Exercise 1 (5-10 mins): Updating and automated building
 
