@@ -38,7 +38,6 @@ is free
             Profile > Settings > Linked Accounts & Services.
         -   Building Windows containers is not supported.
 
-
 ### Link your Docker Hub account to GitHub
 
 1.  Log into Docker Hub.
@@ -350,7 +349,7 @@ host machine is mounted into a container.
         **volumes** instead. You can't use Docker CLI commands to directly
         manage bind mounts.
 
-[bind_mount](../assets/docker/bind_mount.png)
+![bind_mount](../assets/docker/bind_mount.png)
 
 !!! Warning
         One side effect of using bind mounts, for better or for worse, is that
@@ -485,9 +484,9 @@ to add the token:
 }
 ```
 
-3.  create your `docker-compose.yml` in the same directory
+3\.  create your `docker-compose.yml` in the same directory
     `jupyter_compose/`
-4.  Edit the contents of your `docker-compose.yml`
+4\.  Edit the contents of your `docker-compose.yml`
 
 ``` bash
 version: "3"
@@ -506,9 +505,9 @@ services:
      restart: always
 ```
 
-4.  Create a Dockerfile (use the same Jupyter SciPy Notebook as in
+4\.  Create a Dockerfile (use the same Jupyter SciPy Notebook as in
     Advanced Section 1.0)
-5.  Build the container with `docker-compose` instead of `docker build`
+5\.  Build the container with `docker-compose` instead of `docker build`
 
 !!! Note
         Handling containers with Docker Compose is fairly simple
@@ -543,4 +542,4 @@ $ docker-compose up -d
 And that's it! You should be able to see the application running on
 `http://localhost:8888` or `<ipaddress>:8888`
 
-[docker_compose](../assets/docker/dc-1.png)
+![docker_compose](../assets/docker/dc-1.png)
