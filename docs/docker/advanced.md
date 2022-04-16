@@ -44,11 +44,11 @@ is free
 1.  Log into Docker Hub.
 2.  Click "Create Repository+"
 
-[dockerhub_create](../assets/docker/docker/dockerhub_create.png)
+![dockerhub_create](../assets/docker/docker/dockerhub_create.png)
 
 3\.  Click the Build Settings and select `GitHub`.
 
-[dockerhub_createrepo](../assets/docker/docker/dockerhub_createrepo.png)
+![dockerhub_createrepo](../assets/docker/docker/dockerhub_createrepo.png)
 
 The system prompts you to choose between **Public and Private** and
 **Limited Access**. The **Public** and **Private** connection type is
@@ -60,13 +60,13 @@ required if you want to use the Automated Builds.
     access to your code repository, the system returns you to Docker Hub
     and the link is complete.
 
-[dockerhub_buildsettings](../assets/docker/dockerhub_buildsettings.png)
+![dockerhub_buildsettings](../assets/docker/dockerhub_buildsettings.png)
 
 After you grant access to your code repository, the system returns you
 to Docker Hub and the link is complete. For example, github linked
 hosted repository looks like this:
 
-[dockerhub_autobuild](../assets/docker/dockerhub_autobuild.png)
+![dockerhub_autobuild](../assets/docker/dockerhub_autobuild.png)
 
 ### Automated Container Builds
 
@@ -106,14 +106,14 @@ $ git add * && git commit -m "Add files and folders"
 2\.  Create a new repository on github by navigating to this URL -
     <https://github.com/new>
 
-[create_repo](../assets/docker/create_repo.png)
+![create_repo](../assets/docker/create_repo.png)
 
 !!! Note
         Don't initialize the repository with a README and don\'t add a license.
 
-[create_repo2](../assets/docker/create_repo2.png)
+![create_repo2](../assets/docker/create_repo2.png)
 
-3].  Push the repository to github
+3\.  Push the repository to github
 
 ``` bash
 $ git remote add origin https://github.com/<your-github-username>/mynotebook.git
@@ -141,7 +141,7 @@ Branch master set up to track remote branch master from origin.
     to restrict the list. After you select the project, the system
     displays the Create Automated Build dialog.
 
-[dockerhub_autobuilds](../assets/docker/dockerhub_autobuilds.png)
+![dockerhub_autobuilds](../assets/docker/dockerhub_autobuilds.png)
 
 !!! Note
         The dialog assumes some defaults which you can customize. By default,
@@ -152,7 +152,7 @@ Branch master set up to track remote branch master from origin.
 5\.  Customize the automated build by pressing the
     `Click here to customize` behavior link.
 
-[autobuild2.1](../assets/docker/auto_build-2.1.png)
+![autobuild2.1](../assets/docker/auto_build-2.1.png)
 
 Specify which code branches or tags to build from. You can build by a
 code branch or by an image tag. You can enter a specific value or use a
@@ -196,7 +196,7 @@ build ensures everything is working correctly.
 
 From your automated build page choose `Build Settings`
 
-[autobuild5](../assets/docker/auto_build-5.png)
+![autobuild5](../assets/docker/auto_build-5.png)
 
 Press `Trigger` button and finally click `Save Changes`.
 
@@ -207,7 +207,7 @@ Press `Trigger` button and finally click `Save Changes`.
         expression syntax (regex) to define your build branch or tag, Docker
         does not give you the option to manually build.
 
-[autobuild6](../assets/docker/auto_build-6.png)
+![autobuild6](../assets/docker/auto_build-6.png)
 
 8\.  Review the build results
 
@@ -220,7 +220,7 @@ Wait until your image build is done.
 You may have to manually refresh the page and your build may take
 several minutes to complete.
 
-[autobuild7](../assets/docker/auto_build-7.png)
+![autobuild7](../assets/docker/auto_build-7.png)
 
 ### Exercise 1 (5-10 mins): Updating and automated building
 
@@ -229,9 +229,11 @@ several minutes to complete.
 -   Pull your Docker image from Docker Hub to a new location.
 -   Run the instance to make sure it works
 
+---
+
 ## Volumes Continued
 
-#### Bind mounts
+### Bind mounts
 
 When you run a container, you can bring a directory from the host system
 into the container, and give it a new name and location using the `-v`
@@ -247,7 +249,7 @@ In the example above, you can mount a folder from your localhost, in
 your home user directory into the container as a new directory named
 `/data`.
 
-#### Create and manage volumes
+### Create and manage volumes
 
 Unlike a bind mount, you can create and manage volumes outside the scope
 of any container.
@@ -258,18 +260,13 @@ available to Docker and is not removed automatically. You can remove
 unused volumes using `docker volume prune` command.
 
 When you create a Docker volume, it is stored within a directory on the
-Docker Linux host (`/var/lib/docker/`
+Docker Linux host (`/var/lib/docker/`).
 
-::: note
-::: title
-Note
-:::
+!!! Note
+        File location on Mac OS X is a bit different:
+        <https://timonweb.com/posts/getting-path-and-accessing-persistent-volumes-in-docker-for-mac/>
 
-File location on Mac OS X is a bit different:
-<https://timonweb.com/posts/getting-path-and-accessing-persistent-volumes-in-docker-for-mac/>
-:::
-
-Let\'s create a volume
+Let's create a volume
 
 ``` bash
 $ docker volume create my-vol
@@ -283,8 +280,7 @@ $ docker volume ls
 local               my-vol
 ```
 
-Inspect a volume by looking at the Mount section in the [docker volume
-inspect]{.title-ref}
+Inspect a volume by looking at the Mount section in the `docker volume inspect`
 
 ``` bash
 $ docker volume inspect my-vol
@@ -307,7 +303,7 @@ $ docker volume rm my-vol
 $ docker volume ls
 ```
 
-#### Populate a volume using a container
+### Populate a volume using a container
 
 This example starts an `alpine` container and populates the new volume
 `output-vol` with the some output created by the container.
@@ -349,32 +345,24 @@ docker volume rm output-vol
 **Bind mounts:** When you use a bind mount, a file or directory on the
 host machine is mounted into a container.
 
-::: tip
-::: title
-Tip
-:::
+??? Tip
+        If you are developing new Docker applications, consider using named
+        **volumes** instead. You can't use Docker CLI commands to directly
+        manage bind mounts.
 
-If you are developing new Docker applications, consider using named
-**volumes** instead. You can't use Docker CLI commands to directly
-manage bind mounts.
-:::
+[bind_mount](../assets/docker/bind_mount.png)
 
-::: warning
-::: title
-Warning
-:::
+!!! Warning
+        One side effect of using bind mounts, for better or for worse, is that
+        you can change the host filesystem via processes running in a container,
+        including creating, modifying, or deleting important system files or
+        directories. This is a powerful ability which can have security
+        implications, including impacting non-Docker processes on the host
+        system.
 
-One side effect of using bind mounts, for better or for worse, is that
-you can change the host filesystem via processes running in a container,
-including creating, modifying, or deleting important system files or
-directories. This is a powerful ability which can have security
-implications, including impacting non-Docker processes on the host
-system.
-
-If you use `--mount` to bind-mount a file or directory that does not yet
-exist on the Docker host, Docker does not automatically create it for
-you, but generates an error.
-:::
+        If you use `--mount` to bind-mount a file or directory that does not yet
+        exist on the Docker host, Docker does not automatically create it for
+        you, but generates an error.
 
 #### Start a container with a bind mount
 
@@ -419,6 +407,8 @@ read-only file system.
 ``` bash
 sh: can't create /data/container-env.txt: Read-only file system
 ```
+
+---
 
 ## Docker Compose for multi-container apps
 
