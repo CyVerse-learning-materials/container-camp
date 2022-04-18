@@ -32,7 +32,7 @@ nav:
     - 'Advanced use of Singularity': singularity/advanced.md
     - 'Using Singularity on HPC/HTC': singularity/hpc.md
   - 'Orchestration':
-    - 'Introduction to Kubernetes': orchestration/kubernetes.md
+    - 'Introduction to Kubernetes': orchestration/k8s.md
     - 'Introduction to CyVerse CACAO': orchestration/cacao.md
   - 'Cloud Services':
     - 'Jetstream-2': cloud/js2.md
