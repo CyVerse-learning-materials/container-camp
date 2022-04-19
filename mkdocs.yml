@@ -7,7 +7,7 @@ site_description: 'Documentation for CyVerse Platforms and Education'
 site_author: 'CyVerse Science Team'
 site_url: 'https://learning.cyverse.org/container-camp/'
 
-edit_uri: edit/main/docs
+edit_uri: edit/mkdocs/docs
 
 # Copyright
 copyright: 'Copyright &copy; 2022 CyVerse'
