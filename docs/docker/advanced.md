@@ -1,42 +1,29 @@
 # Advanced Docker
 
-## Automated Docker image building from GitHub
+## Automated Docker image builds
 
-An automated build is a Docker image build that is triggered by a code
-change in a GitHub or Bitbucket repository. By linking a remote code
-repository to a Dockerhub automated build repository, you can build a
-new Docker image every time a code change is pushed to your code
-repository.
+An automated build is a Docker image build that is triggered by a code change in a GitHub or Bitbucket repository. By linking a remote code repository to a Dockerhub automated build repository, you can build a new Docker image every time a code change is pushed to your code repository.
 
-A build context is a Dockerfile and any files at a specific location.
-For an automated build, the build context is a repository containing a
-Dockerfile.
+A build context is a Dockerfile and any files at a specific location. For an automated build, the build context is a repository containing a Dockerfile.
 
-Automated Builds have several advantages:
+!!! Tip
 
--   Images built in this way are built exactly as specified.
--   The Dockerfile is available to anyone with access to your Docker Hub
-    repository.
--   Your repository is kept up-to-date with code changes automatically.
--   Automated Builds are supported for both public and private
-    repositories on both GitHub and Bitbucket.
+    Automated Builds have several advantages:
+
+    -   Images built in this way are built exactly as specified.
+    -   The Dockerfile is available to anyone with access to your Docker Hub repository.
+    -   Your repository is kept up-to-date with code changes automatically.
+    -   Automated Builds are supported for both public and private repositories on both GitHub and Bitbucket.
 
 ### Prerequisites
 
-To use automated builds, you first must have an account on [Docker
-Hub](https://hub.docker.com) and on the hosted repository provider
-([GitHub](https://github.com/) or [Bitbucket](https://bitbucket.org/)).
-While Docker Hub supports linking both GitHub and Bitbucket
-repositories, here we will use a GitHub repository. If you don\'t
-already have one, make sure you have a GitHub account. A basic account
-is free
+To use automated builds, you first must have an account on [Docker Hub](https://hub.docker.com) and on the hosted repository provider
+([GitHub](https://github.com/) or [Bitbucket](https://bitbucket.org/)). While Docker Hub supports linking both GitHub and Bitbucket
+repositories, here we will use a GitHub repository. If you don't already have one, make sure you have a GitHub account. A basic account is free
 
 !!! Note
-        -   If you have previously linked your Github or Bitbucket account, you
-            must have chosen the Public and Private connection type. To view
-            your current connection settings, log in to Docker Hub and choose
-            Profile > Settings > Linked Accounts & Services.
-        -   Building Windows containers is not supported.
+    -   If you have previously linked your Github or Bitbucket account, you must have chosen the Public and Private connection type. To view your current connection settings, log in to Docker Hub and choose `Profile > Settings > Linked Accounts & Services`.
+    -   Building Windows containers is not supported.
 
 ### Link your Docker Hub account to GitHub
 

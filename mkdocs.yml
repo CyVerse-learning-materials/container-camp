@@ -2,7 +2,7 @@ docs_dir: docs/
 repo_name: 'CyVerse-learning-materials/container-camp'
 repo_url: 'https://github.com/CyVerse-learning-materials/container-camp'
 
-site_name: 'CyVerse Container Camp Home'
+site_name: 'Container Camp Spring 2022'
 site_description: 'Documentation for CyVerse Platforms and Education'
 site_author: 'CyVerse Science Team'
 site_url: 'https://learning.cyverse.org/container-camp/'
@@ -74,7 +74,7 @@ theme:
     code: Regular
   favicon: assets/favicon.png
   icon:
-    logo: material/rocket
+    logo: octicons/container-24 
 
 # Options
 extra:

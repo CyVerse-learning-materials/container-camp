@@ -1,48 +1,58 @@
 ![!CyVerse Learning Center](assets/de/logos/cyverse_logo_2022.png "CyVerse Learning Center"){ width="400" }
 
-# Spring Container Camp 2022
-
-Welcome to [CyVerse](https://cyverse.org) Spring Container Camp 2022!
+# Welcome to Spring Container Camp 2022 :octicons-container-24: :material-campfire: :material-tent:
 
 ![people](assets/people_science.png){ width="600" }
 
-This year, we're focusing on:
+## Getting Started
 
-## :material-docker: Docker Containers
+[:material-scale-balance: Code of Conduct](getting_started/code_conduct.md)
 
-### Basic Usage
+[:material-directions-fork: Logistics](getting_started/logistics.md)
+
+[:material-calendar: Schedule](getting_started/schedule.md)
+
+[:material-clipboard-check-multiple: Pre-Camp Setup](getting_started/setup.md)
+
+## What you learn
+
+### :material-docker: Docker Containers for scientific research
+
+#### Basics
 
 [:octicons-container-16: Introduction to Docker](docker/intro.md)
 
 [:octicons-container-16: Finding the right container](docker/registry.md)
 
-### Advanced Applications
+#### Advanced
 
 [:octicons-container-16: Extending Docker](docker/advanced.md)
 
 [:octicons-container-16: Building your own containers](docker/build.md)
 
-## Containers on High Performance and High Throughput Computing
+### Run Containers on High Performance and High Throughput Computing
 
-### Basic
+#### Basics
 
-[:octicons-container-16: Introduction to Singularity]()
+[:octicons-container-16: Basics of Singularity](singularity/intro.md)
 
-[:octicons-container-16: Using Singularity on HPC and HTC]()
+[:octicons-container-16: Using Singularity on HPC and HTC](singularity/advanced.md)
 
-### Advanced
+#### Advanced
 
-[:octicons-container-16: Building Singularity Containers]()
+[:octicons-container-16: Build Singularity Containers](singularity/advanced.md)
 
-## :material-cloud-braces: Cloud & Container Orchestration
+### :material-cloud-braces: Run Containers on Cloud and with Orchestration
 
-[:material-cloud-braces: Introduction to Jetstream-2]()
+#### Advanced
 
-[:material-microsoft-visual-studio-code: Building Containers with Development Environments]()
+[:material-cloud-braces: Introduction to Jetstream-2](cloud/js2.md)
 
-[:material-kubernetes: Introduction to Kubernetes]()
+[:material-microsoft-visual-studio-code: Building Containers with Development Environments](cloud/codespaces.md)
 
-[:chocolate_bar: Introduction to CyVerse CACAO]()
+[:material-kubernetes: Introduction to Kubernetes](orchestration/k8s.md)
+
+[:chocolate_bar: Introduction to CyVerse CACAO](orchestration/cacao.md)
 
 
 -----------------------------------------------------------------------

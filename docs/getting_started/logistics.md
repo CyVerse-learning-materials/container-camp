@@ -1,6 +1,6 @@
-# Logistics
+# :material-directions-fork: Logistics
 
-## Location
+## :octicons-location-24: Location
 
 Basics Camp will be held virtually, a Zoom URL will be sent to registered participants.
 
@@ -10,13 +10,13 @@ Advanced Camp will be hosted in the Health Sciences Innovation Building (HSIB) o
 
 Room # TBA
 
-## Transportation
+## :material-bus-stop: Transportation
 
 [:material-parking: Visitor Parking Interactive Map](http://uarrive.arizona.edu/){target=_blank} -- Parking is available around campus in designated lots: [https://parking.arizona.edu/parking/](https://parking.arizona.edu/parking/){target=_blank}  
 
 [:fontawesome-solid-van-shuttle: Cat Tran Shuttle](https://parking.arizona.edu/cattran/){target=_blank} service drops off near the HSIB.
 
-## Hotels
+## :fontawesome-solid-hotel: Hotels
 
 Campus hotels with transportation:
 
@@ -26,6 +26,6 @@ Campus hotels with transportation:
 
 [Tucson Marriot University Park](https://goo.gl/maps/vLPQXt1nMUucudpy8){target=_blank}
 
-## Emergency Medicine
+## :material-hospital: Emergency Medicine
 
 HSIB is adjacent the [Banner University Medical Center](https://goo.gl/maps/keGVhKWCeTT2AYq98){target=_blank}. In the event of a medical emergency, attendees may be transported to Banner, or to the [nearest urgent care facility](https://goo.gl/maps/sBQjW4pNKJUstRnHA){target=_blank}.

@@ -1,4 +1,4 @@
-# Camp Schedule
+# :material-calendar: Camp Schedule
 
 ## :octicons-container-16: Basics
 

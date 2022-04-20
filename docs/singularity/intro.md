@@ -1,13 +1,25 @@
 # Introduction to SingularityCE
 
-In this section we're going to be working with [Singularity Community Edition (CE)](https://sylabs.io/guides/3.9/user-guide/index.html){target=_blank}
+In this section we're going to be working with [Singularity Community Edition (CE)](https://sylabs.io/guides/3.9/user-guide/index.html){target=_blank} and with [Apptainer](https://apptainer.org/){target=_blank}
+
+??? Question "Wait, what's the difference between Singularity and Apptainer?"
+
+    Singularity has gone through rapid expansion, evolution, and now a split since it was created in 2017.
+
+    In a nutshell:
+
+    - Greg Kurtzer founded "Singularity" while at Lawrence Berkeley National Laboratory
+    - Kurtzer created [Sylabs](https://sylabs.io/){target=_blank}, a private company, around Singularity
+    - Kurtzer left Sylabs to focus on HPC-2.0 and moved Singularity to [HPCng](https://hpcng.org/){target=_blank} (a Community Org)
+    - [Sylabs forked Singularity](https://sylabs.io/singularityce-community-update/){target=_blank} for control and professionially licensed support
+    - HPCng gave the official project to Linux Foundation and renamed it '[Apptainer](https://apptainer.org/){target=_blank}'
 
 ## 1. Prerequisites
 
 There are no specific skills needed beyond a basic comfort with the command line and using a text editor. Prior experience installing Linux applications could be helpful but is not required.
 
 !!! info
-    *Important*: :material-open-source-initiative: SingularityCE is 100% compatible with :material-docker: Docker but they do have some distinct differences
+    *Important*: :material-open-source-initiative: Apptainer and Singularity are 100% compatible with Docker but they do have some distinct differences
 
     **:material-docker: Docker**:
 

@@ -1,4 +1,4 @@
-# Code of Conduct
+# :material-scale-balance: Code of Conduct
 
 All attendees, speakers, staff and volunteers at Container Camp are required to follow our code of conduct. 
 
