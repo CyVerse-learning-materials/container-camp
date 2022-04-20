@@ -38,8 +38,8 @@ nav:
     - 'Jetstream-2': cloud/js2.md
     - 'GitHub CodeSpaces': cloud/codespaces.md
   - 'Useful Resources':
-    - 'Docker':  useful_resources/docker.md
-    - 'Singularity': userful_resource/singularity.md
+    - 'Docker': resources/docker.md
+    - 'Singularity': resources/singularity.md
 
 # JavaScript for Intercom Widget
 extra_javascript:

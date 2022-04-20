@@ -60,7 +60,7 @@ Please respect it and be excellent to each other!
 
 ### *Day 0 (2022-05-16) Optional: Container Basics*
 
-*We will go repeat Container Basics course in-person upon request from participants the day before the Advanced Camp begins.*
+*We are offering the Container Basics course in-person on the day before the Advanced Camp begins. Registered Advanced Campers, please contact us if you are interested in attending this optional pre-session.*
 
 ### Day 1 (2022-05-17) Continuous Automation
 
@@ -74,7 +74,9 @@ Please respect it and be excellent to each other!
 **Content**
 
 - Introduction to Docker builds from OS base images and when to pursue this.
+- Introduction to Docker-Compose
 - Using containers on production servers and high performance / high throughput computing environments
+- Integration of containers and workflows onto CyVerse Discovery Environment and Jetstream-2
 
 **Goals**
 
