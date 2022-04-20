@@ -1,32 +1,26 @@
-# Introduction to Singularity
+# Introduction to SingularityCE
+
+In this section we're going to be working with [Singularity Community Edition (CE)](https://sylabs.io/guides/3.9/user-guide/index.html){target=_blank}
 
 ## 1. Prerequisites
 
-There are no specific skills needed beyond a basic comfort with the
-command line and using a text editor. Prior experience installing Linux
-applications could be helpful but is not required.
+There are no specific skills needed beyond a basic comfort with the command line and using a text editor. Prior experience installing Linux applications could be helpful but is not required.
 
-!!! Note
-    *Important*: [Singularity is compatible with
-    Docker](https://sylabs.io/guides/3.8/user-guide/singularity_and_docker.html),
-    but they do have distinct differences.
+!!! info
+    *Important*: :material-open-source-initiative: SingularityCE is 100% compatible with :material-docker: Docker but they do have some distinct differences
 
-  Key Differences:
+    **:material-docker: Docker**:
 
-  **Docker**:
+    :octicons-container-24:  Inside a Docker container the user has escalated privileges, effectively making them root on that host system. This privilege is not supported by *most* administrators of High Performance Computing (HPC) centers. Meaning that Docker is not, and will likely never be, installed natively on your HPC.
 
-  -   Inside a Docker container the user has escalated privileges,
-      effectively making them root on that host system. This privilege
-      is not supported by *most* administrators of High Performance
-      Computing (HPC) centers. Meaning that Docker is not, and will
-      likely never be, installed natively on your HPC.
+    **:material-open-source-initiative: SingularityCE**:
 
-  **Singularity**:
-
-  -   Same user inside as outside the container
-  -   User only has root privileges if elevated with sudo when
+    :octicons-container-24:  Same user inside as outside the container
+    
+    :octicons-container-24:  User only has root privileges if elevated with sudo when
       container is run
-  -   Can run (and modify!) existing Docker images and containers
+    
+    :octicons-container-24:  Can run and it can modify an existing Docker image
 
 These key differences allow Singularity to be installed on most HPC
 centers. Because you can run virtually all Docker containers in
@@ -72,31 +66,42 @@ If Singularity is installed, load a specific version:
 $ module load singularity/3/3.7.2
 ```
 
-### 2.3 Atmosphere Cloud
+### 2.3 CodeSpaces
 
-CyVerse staff have deployed an Ansible playbook called `ez` for software
-installation which includes
-[Singularity](https://cyverse-ez-quickstart.readthedocs-hosted.com/en/latest/#).
-This command only requires you to type a short line of code to install
-an entire software stack with all of its dependencies.
-
-Start any *Featured* instance on Atmosphere `../cyverse/boot.html`
+Follow the instructions for an Ubuntu installation: https://sylabs.io/guides/3.9/user-guide/quick_start.html#install-system-dependencies
 
 Type in the following in a web shell or `ssh` terminal.
 
 ```
-$ ezs -r 3.7.3
-DEBUG: set version to 3.7.3
+# Ensure repositories are up-to-date
+sudo apt-get update
+# Install debian packages for dependencies
+sudo apt-get install -y \
+   build-essential \
+   libseccomp-dev \
+   pkg-config \
+   squashfs-tools \
+   cryptsetup
+```
 
-* Updating ez singularity and installing singularity (this may take a few minutes, coffee break!)
-Cloning into '/opt/cyverse-ez-singularity'...
-remote: Enumerating objects: 24, done.
-remote: Total 24 (delta 0), reused 0 (delta 0), pack-reused 24
-Unpacking objects: 100% (24/24), done.
-* ez singularity or singularity itself may not have updated successfully, but you can probably try executing it
+`Go` lang is already installed on your CodeSpace, but you can check to be certain:
 
-To test singularity, type: singularity run shub://vsoch/hello-world
-Hint: it should output "RaawwWWWWWRRRR!!")
+```
+go --version
+```
+
+Install SingularityCE
+
+```
+export VERSION=3.9.5 && # adjust this as necessary \
+    wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-ce-${VERSION}.tar.gz && \
+    tar -xzf singularity-ce-${VERSION}.tar.gz && \
+    cd singularity-ce-${VERSION}
+
+# make build the installation
+./mconfig && \
+    make -C builddir && \
+    sudo make -C builddir install
 ```
 
 ### 2.4 Check Installation
@@ -122,42 +127,15 @@ The help command gives an overview of Singularity options and
 subcommands as follows:
 
 ```
-$ singularity
-Usage:
-  singularity [global options...] <command>
-
-Available Commands:
-  build       Build a Singularity image
-  cache       Manage the local cache
-  capability  Manage Linux capabilities for users and groups
-  config      Manage various singularity configuration (root user only)
-  delete      Deletes requested image from the library
-  exec        Run a command within a container
-  inspect     Show metadata for an image
-  instance    Manage containers running as services
-  key         Manage OpenPGP keys
-  oci         Manage OCI containers
-  plugin      Manage Singularity plugins
-  pull        Pull an image from a URI
-  push        Upload image to the provided URI
-  remote      Manage singularity remote endpoints
-  run         Run the user-defined default command within a container
-  run-help    Show the user-defined help for an image
-  search      Search a Container Library for images
-  shell       Run a shell within a container
-  sif         siftool is a program for Singularity Image Format (SIF) file manipulation
-  sign        Attach a cryptographic signature to an image
-  test        Run the user-defined tests within a container
-  verify      Verify cryptographic signatures attached to an image
-  version     Show the version for Singularity
-
-Run 'singularity --help' for more detailed usage information.
+./mconfig && \
+    make -C builddir && \
+    sudo make -C builddir install
 ```
 
 Information about subcommand can also be viewed with the help command.
 
 ```
-$ singularity help pull
+ $ singularity help pull
 Pull an image from a URI
 
 Usage:
@@ -170,13 +148,13 @@ Description:
   library: Pull an image from the currently configured library
       library://user/collection/container[:tag]
 
-  docker: Pull an image from Docker Hub
+  docker: Pull a Docker/OCI image from Docker Hub, or another OCI registry.
       docker://user/image:tag
-
+    
   shub: Pull an image from Singularity Hub
       shub://user/image:tag
 
-  oras: Pull a SIF image from a supporting OCI registry
+  oras: Pull a SIF image from an OCI registry that supports ORAS.
       oras://registry/namespace/image:tag
 
   http, https: Pull an image using the http(s?) protocol
@@ -190,12 +168,10 @@ Options:
   -F, --force            overwrite an image file if it exists
   -h, --help             help for pull
       --library string   download images from the provided library
-             (default "https://library.sylabs.io")
       --no-cleanup       do NOT clean up bundle after failed build, can be
-             helpul for debugging
-      --nohttps          do NOT use HTTPS with the docker:// transport
-             (useful for local docker registries without a
-             certificate)
+                         helpful for debugging
+      --no-https         use http instead of https for docker:// oras://
+                         and library://<hostname>/... URIs
 
 
 Examples:
@@ -227,15 +203,15 @@ number of Container Registries, here we'll be focusing on the
 
 Container Registries:
 
--   library - images hosted on Sylabs Cloud
--   shub - images hosted on Singularity Hub
--   docker - images hosted on Docker Hub
--   localimage - images saved on your machine
--   yum - yum based systems such as CentOS and Scientific Linux
--   debootstrap - apt based systems such as Debian and Ubuntu
--   arch - Arch Linux
--   busybox - BusyBox
--   zypper - zypper based systems such as Suse and OpenSuse
+-   `library://` - images hosted on Sylabs Cloud
+-   `shub://` - images hosted on Singularity Hub
+-   `docker://` - images hosted on Docker Hub
+-   `localimage://` - images saved on your machine
+-   `yum://` - yum based systems such as CentOS and Scientific Linux
+-   `debootstrap://` - apt based systems such as Debian and Ubuntu
+-   `arch://` - Arch Linux
+-   `busybox://` - BusyBox
+-   `zypper://` - zypper based systems such as Suse and OpenSuse
 
 ### 3.1 Pulling an image from Singularity Hub
 
@@ -417,7 +393,7 @@ Here are the brief steps:
     image and check to see if you get the same output that as you get
     from running `docker run`
 
-### 4.3 Running a container on HPC
+### 4.4 Running a container on HPC
 
 For running a container on HPC, you need to have Singularity module
 available on HPC. Let's first look to see if the Singularity module is
