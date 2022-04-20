@@ -27,6 +27,8 @@ nav:
     - 'Finding the right container': docker/registry.md
     - 'Building Docker Containers': docker/build.md
     - 'Advanced use of Docker': docker/advanced.md
+    - 'GitHub Actions and Docker': docker/actions.md
+    - 'Running multi-container Applications': docker/compose.md 
   - 'Singularity':
     - 'Introduction to Singularity': singularity/intro.md
     - 'Advanced use of Singularity': singularity/advanced.md
