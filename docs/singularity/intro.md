@@ -14,11 +14,14 @@ In this section we're going to be working with [Singularity Community Edition (C
     - [Sylabs forked Singularity](https://sylabs.io/singularityce-community-update/){target=_blank} for control and professionially licensed support
     - HPCng gave the official project to Linux Foundation and renamed it '[Apptainer](https://apptainer.org/){target=_blank}'
 
+    At this time, Apptainer and Singularity CE have highly similar functionality and will run containers built with one another
+
 ## 1. Prerequisites
 
 There are no specific skills needed beyond a basic comfort with the command line and using a text editor. Prior experience installing Linux applications could be helpful but is not required.
 
 !!! info
+
     *Important*: :material-open-source-initiative: Apptainer and Singularity are 100% compatible with Docker but they do have some distinct differences
 
     **:material-docker: Docker**:
@@ -34,37 +37,25 @@ There are no specific skills needed beyond a basic comfort with the command line
     
     :octicons-container-24:  Can run and it can modify an existing Docker image
 
-These key differences allow Singularity to be installed on most HPC
-centers. Because you can run virtually all Docker containers in
-Singularity, you can effectively run Docker on an HPC.
+    These key differences allow Singularity to be installed on most HPC centers. Because you can run virtually all Docker containers in Singularity, you can effectively run Docker on an HPC. 
 
 ## 2. Singularity Installation
 
-Sylabs Singularity Community Edition (CE) homepage:
-[<https://www.sylabs.io/docs/>](https://www.sylabs.io/docs/)
+Sylabs Singularity Community Edition (CE) homepage: [https://www.sylabs.io/docs/](https://www.sylabs.io/docs/){target=_blank}
 
-Singularity is more likely to be used on a remote system that you
-don't have control of (i.e. HPC & HTC).
+Apptainer Linux Foundation homepage: [https://apptainer.org/](https://apptainer.org/){target=_blank}
 
-### 2.1 Install Singularity on Laptop
+### 2.1 Install Singularity onto a Laptop
 
-To Install Singularity follow the instructions for your specific OS:
-<https://sylabs.io/guides/3.8/user-guide/quick_start.html>
+To Install Singularity follow the instructions for your specific OS: <https://sylabs.io/guides/3.9/user-guide/quick_start.html>{target=_blank}
 
 ### 2.2 HPC
 
 Load the Singularity module on HPC
 
-If you are interested in working on HPC, you may need to contact your
-systems administrator and request they install
-[Singularity](https://sylabs.io/guides/3.8/user-guide/quick_start.html#installation-request).
-Because singularity ideally needs setuid, your admins may have some
-qualms about giving Singularity this privilege. If that is the case, you
-might consider forwarding [this letter](https://sylabs.io/guides/3.8/user-guide/quick_start.html#Singularity-on-a-shared-resource)
-to your admins.
+If you are interested in working on HPC, you may need to contact your systems administrator and request they install [Singularity](https://sylabs.io/guides/3.9/user-guide/quick_start.html#installation-request){target=_blank}. Because singularity ideally needs setuid, your admins may have some qualms about giving Singularity this privilege. If that is the case, you might consider forwarding [this letter](https://sylabs.io/guides/3.9/user-guide/quick_start.html#Singularity-on-a-shared-resource){target=_blank} to your admins.
 
-Most HPC systems are running Environment Modules with the simple command
-module.
+Most HPC systems are running Environment Modules with the simple command module.
 
 You can check to see what is available:
 
@@ -72,7 +63,7 @@ You can check to see what is available:
 $ module avail singularity
 ```
 
-If Singularity is installed, load a specific version:
+If Singularity is installed, load a specific version, e.g.:
 
 ```
 $ module load singularity/3/3.7.2
@@ -273,6 +264,7 @@ INFO:    Build complete: ubuntu_20.04.sif
 ```
 
 !!! Warning
+
     Pulling Docker images reduces reproducibility. If you were to pull a
     Docker image today and then wait six months and pull again, you are not
     guaranteed to get the same image. If any of the source layers has
@@ -294,16 +286,16 @@ You can interact with images in several ways such as `shell`, `exec` and
 `run`.
 
 For these examples we will use a `cowsay_latest.sif` image that can be
-pulled from the Container Library like so.
+pulled from the Docker Hub.
 
 ```
-$ singularity pull library://tyson-swetnam/default/cowsay
+$ singularity pull docker://tswetnam/cowsay
 INFO:    Downloading library image
  67.00 MiB / 67.00 MiB [=====================================================================================================] 100.00% 5.45 MiB/s 12s
 WARNING: unable to verify container: cowsay_latest.sif
 WARNING: Skipping container verification
 
-tswetnam@tysons-box:~$ singularity run cowsay_latest.sif
+$ sudo singularity run cowsay_latest.sif
  ________________________________________
 / Expect a letter from a friend who will \
 \ ask a favor of you.                    /
@@ -397,13 +389,10 @@ singularity run lolcow_latest.sif
 
 Here are the brief steps:
 
-1.  Go to [Docker hub](https://hub.docker.com/) and look for a Dockerhub
-    image
-2.  Use `singularity pull` command to pull the Docker image and convert
-    it to .sif
-3.  Use `singularity run` command to launch a container from the Docker
-    image and check to see if you get the same output that as you get
-    from running `docker run`
+1.  Go to [Docker hub](https://hub.docker.com/) and look for a Dockerhub image
+2.  Use `singularity pull` command to pull the Docker image and convert it to .sif
+
+3.  Use `singularity run` command to launch a container from the Docker image and check to see if you get the same output that as you get from running `docker run`
 
 ### 4.4 Running a container on HPC
 
@@ -412,13 +401,10 @@ available on HPC. Let's first look to see if the Singularity module is
 available on HPC or not
 
 !!! Warning
-  The following instructions are from running on UA HPC. It may or may not
-  work on other HPC. Please refer to HPC documentation to find similar
-  commands
 
-You can see that there are three different versions of Singularity are
-available. For this workshop, we will use `singularity/3/3.5.3`. Let's
-load it now
+  The following instructions are from running on UA HPC. It may or may not work on other HPC. Please refer to HPC documentation to find similar commands
+
+You can see that there are three different versions of Singularity are available. For this workshop, we will use `singularity/3/3.5.3`. Let's load it now
 
 ```
 $ module load singularity/3/3.5.3

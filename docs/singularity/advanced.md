@@ -197,21 +197,21 @@ Example Singularity file bootstrapping a
 [Docker](https://hub.docker.com/_/ubuntu/) Ubuntu (16.04) image.
 
 ```
-BootStrap: docker
-From: ubuntu:18.04
+Bootstrap: docker
+From: ubuntu:20.04
 
-post
+%post
    apt-get -y update
    apt-get -y install fortune cowsay lolcat
 
-environment
+%environment
    export LC_ALL=C
    export PATH=/usr/games:$PATH
 
-runscript
+%runscript
    fortune | cowsay | lolcat
 
-labels
+%labels
    Maintainer Tyson Swetnam
    Version v0.1
 ```
