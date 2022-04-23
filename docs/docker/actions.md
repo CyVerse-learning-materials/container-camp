@@ -12,8 +12,8 @@ In this example we are going to creat a small GitHub repository that will create
 
 A Docker project on GitHub requires 2 folders:
 
-- a `.github/workflows` folder: containing required necessary `yml` files that build the containers through GitHub;
-- a `Dockerfile`: file necessary to build containers.
+- A `.github/workflows` folder: containing required necessary `yml` files that build the containers through GitHub;
+- A `Dockerfile`: file necessary to build containers.
 
 ### Prerequisites
 
@@ -24,27 +24,111 @@ A Docker project on GitHub requires 2 folders:
 
 To create a GitHub Repository:
 1. Navigate to your GitHub Account and select **New**;
-2. Give your repository a unique name;
-3. Click **Create Repository**.
 
-Navigate to your new Repository. Either use the `clone` your repository to your own machine (suggested), or work directly within GitHub.
+![Actions_01](../assets/docker/Actions_01.png)
+
+2\. Give your repository a unique name;
+
+??? Tip
+    It is also suggested to add `README` file as this will add structure to the repository
+
+![Actions_02](../assets/docker/Actions_02.png)
+
+3\. Click **Create Repository**.
+
+Navigate to your new Repository. Either `clone` your repository to your own machine (suggested), or work directly within GitHub.
 
 ### Linking your GitHub and Docker accounts
 
 Ensure you can access [Docker Hub](https://hub.docker.com/) from any workflows you create:
 
 1. Add your Docker ID as a secret to GitHub. Navigate to your GitHub repository and click **Settings > Secrets > New secret**.
-2. Create a new secret with the name `DOCKER_HUB_USERNAME` and your Docker ID as value.
-3. Create a new Personal Access Token (PAT). To create a new token, go to [Docker Hub Settings](https://hub.docker.com/settings/security) and then click **New Access Token**.
+
+![Actions_03](../assets/docker/Actions_03.png)
+
+2\. Create a new secret with the name `DOCKER_HUB_USERNAME` and your Docker ID as value.
+3\. On DockerHub, create a new Personal Access Token (PAT). To create a new token, go to [Docker Hub Settings](https://hub.docker.com/settings/security) and then click **New Access Token**. Name it, and copy the newly generated PAT.
+
+??? Tip
+    Name your Docker Hub Access token the same name as your GitHub repository, it will help with keeping track which GitHub repository is related to which Docker image.
+
+![Actions_04](../assets/docker/Actions_04.png)
+
+
+4. On GitHub, return to your repository secrets, and add the PAT as a secret with the name `DOCKER_HUB_ACCESS_TOKEN`.
+
+![Actions_05](../assets/docker/Actions_05.png)
 
 ---
 
 ## Setting up a GitHub Action Workflow
 
-1. Create the folder path `.github/workflows`
+Now that you have connected your GitHub repository with your Docker account, you are ready to add the necessary files to your repo.
 
-### Workflow Optimization
+!!! Note
+        In this example, we will use the existing Docker image Alpine.
 
---
+1\. In your GitHub repository, create a file and name in `Dockerfile`; In the first line of your `Dockerfile` paste:
 
-## Tagging and Pull Requests
+```
+FROM alpine:3.14
+```
+
+2\. Click the `Actions` tab and in the search bar, search for `docker`. Select the `docker image workflow` (as shown in the image below)
+
+!!! Note
+        This will create the `.github/workflows` repository and necessary `yml` file required for the GitHub actions.
+
+![Actions_06](../assets/docker/Actions_06.png)
+
+3\. You will be prompted to the `docker-image.yml` file; paste the following code, and `commit` your changes.
+
+```
+name: Docker Image Small Alpine
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      -
+        name: Checkout 
+        uses: actions/checkout@v2
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:latest
+```
+4\. Upon committing and pushing your changes, you can check your Workflows under the Actions tab on GitHub.
+
+!!! Note
+        Github will show you when a workflow is building:
+        - An orange dot next to your commit count means that the workflow is running;
+        - A crossed red circle means that your workflow has failed;
+        - A green check means your workflow ran successfully.
+
+![Actions_07](../assets/docker/Actions_07.png)
+
+5\. Navigate to your Docker Hub to see your GitHub Actions generated Docker image.
+
+![Actions_08](../assets/docker/Actions_08.png)
+
+![Actions_09](../assets/docker/Actions_09.png)
