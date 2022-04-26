@@ -34,8 +34,9 @@ nav:
     - 'Advanced use of Singularity': singularity/advanced.md
     - 'Using Singularity on HPC/HTC': singularity/hpc.md
   - 'Orchestration':
-    - 'Introduction to Kubernetes': orchestration/k8s.md
-    - 'Introduction to CyVerse CACAO': orchestration/cacao.md
+    - 'Kubernetes': orchestration/k8s.md
+    - 'CyVerse CACAO': orchestration/cacao.md
+    - 'Manage a private registry': orchestration/registry.md
   - 'Cloud Services':
     - 'Jetstream-2': cloud/js2.md
     - 'GitHub CodeSpaces': cloud/codespaces.md

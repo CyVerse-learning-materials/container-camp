@@ -16,6 +16,10 @@ Room # TBA
 
 [:fontawesome-solid-van-shuttle: Cat Tran Shuttle](https://parking.arizona.edu/cattran/){target=_blank} service drops off near the HSIB.
 
+[:material-tram-side: Sun Link StreetCar](https://www.suntran.com/routes-services/sunlink/) service drops off near HSIB and goes through Downtown. 
+
+[:material-airplane: Tucson International Airport](https://www.flytucson.com/){target=_blank} is located eight miles south of campus and downtown. Local ride-sharing services and public transit are available between campus and local hotels.
+
 ## :fontawesome-solid-hotel: Hotels
 
 Campus hotels with transportation:
@@ -25,6 +29,14 @@ Campus hotels with transportation:
 [The Graduate Tucson](https://goo.gl/maps/Ea8rYGz76ZDp3puc6){target=_blank}
 
 [Tucson Marriot University Park](https://goo.gl/maps/vLPQXt1nMUucudpy8){target=_blank}
+
+## :material-food: Meals
+
+Tucson is a [UNESCO World City of Gastronomy](https://tucson.cityofgastronomy.org/about){target=_blank}. There is no shortage of amazing local restaurants to explore near the University. 
+
+Advanced Container Campers will be able to access local food trucks and cafes in the immediate vicinity of the workshop classroom.
+
+Coffee, water, and snacks will be provided. 
 
 ## :material-hospital: Emergency Medicine
 
