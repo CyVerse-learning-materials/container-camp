@@ -1,25 +1,30 @@
-# :material-calendar: Camp Schedule
+## :material-calendar: Basics
 
-## :octicons-container-16: Basics
+**Dates**: May 12th and 13th 2022
 
-Intro Workshop Days are at the following times: 
+**Time**: 09:00AM–13:00PM  US Pacific Daylight Time (GMT-7)
 
-09:00AM–13:00PM  US Pacific Daylight Time (12:00PM–16:00PM US Eastern Daylight Time)
+**Location**: Virtual Zoom
 
-Below are the schedule and classroom materials for Container Camp 2022.
+### Day 1 - Introduction to Docker
 
-This workshop runs under a [Code of Conduct](code_conduct.md)
+!!! Example "Activities"
 
-Please respect it and be excellent to each other!
+    | Time (PDT)| Activity | Instructor | Notes | 
+    |-----------|----------|------------|-------|
+    | 09:00 | Welcome | All |
+    | 09:05 | Overview of Website | Michele | [Code of Conduct](../getting_started/code_conduct.md) |
+    | 09:10 | Why use Containers? | Michael | |
+    | 09:25 | [Start Dev Environment :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | 
+    | 09:30 | [Introduction to Docker :material-docker:](../docker/intro.md) | | |
+    | 09:55 | Break | |
+    | 10:00 | [Introduction to Docker :material-docker:](../docker/intro.md) | |
+    | 10:55 | Break | |
+    | 11:00 | [Introduction to Docker :material-docker:](../docker/intro.md) | |
+    | 11:55 | Break | | |
+    | 12:00 | | | 
+    | 12:55 | Conclude for the day | | |
 
-:material-twitter: Twitter hash tag: #cc2022
-
-### Day 1 (2022-05-12) - Introduction to Docker
-
-**Activity:**
-
-- [Introduction to Docker :material-docker:](../docker/intro.md)
-- Hands on exercise using Docker in [:material-microsoft-visual-studio-code: CodeSpaces](../cloud/codespaces.md)
 
 **Content:**
 
@@ -39,6 +44,23 @@ Please respect it and be excellent to each other!
 
 ### Day 2 (2022-05-13) - Building Docker Containers
 
+!!! Example "Activities"
+
+    | Time (PDT)| Activity | Instructor | Notes | 
+    |-----------|----------|------------|-------|
+    | 09:00 | Welcome back | All | |
+    | 09:05 | Discuss previous day, answer questions | | |
+    | 09:15 | [(re)start Dev Environment :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | |
+    | 09:20 | [Building Docker Images :material-docker:](../docker/build.md ) | | |
+    | 09:55 | Break | |
+    | 10:00 | [Building Docker Images :material-docker:](../docker/build.md )  | |
+    | 10:55 | Break | |
+    | 11:00 | [Introduction to Docker :material-docker:](../docker/intro.md) | |
+    | 11:55 | Break | | |
+    | 12:00 | [Integrating your containers into CyVerse](https://learning.cyverse.org/de/create_apps/){target=_blank} | | 
+    | 12:55 | Conclude | | |
+
+
 **Activity:**
 
 - [Introduction to Docker :material-docker:](../docker/intro.md) continued
@@ -56,7 +78,7 @@ Please respect it and be excellent to each other!
 - Introduction to what Dockerfiles are and what you use them for
 - Start thinking about how to modify them for your own applications
 
-## :octicons-container-16: Advanced
+## :material-calendar: Advanced
 
 ### *Day 0 (2022-05-16) Optional: Container Basics*
 
