@@ -141,6 +141,8 @@ And that's it! You should be able to see the application running on
 
 ![docker_compose](../assets/docker/dc-1.png)
 
+---
+
 ## Shutting down and restarting `docker-compose`
 
 To stop running a running `docker-compose` session, either press `CTRL + C` or use the command:
