@@ -143,14 +143,28 @@ And that's it! You should be able to see the application running on
 
 ## Shutting down and restarting `docker-compose`
 
+To stop running a running `docker-compose` session, either press `CTRL + C` or use the command:
+
+```
+docker-compose down
+```
+
+The above command removes containers, networks, volumes and images created by `docker-container up`.
+
+To restart a container, use the command 
+
+```
+docker-compose restart
+```
+
+`restart` will restart the docker-compose service *without* taking into account changes one may have made to the `yml` or environment.
+
 ---
 
-## Examples that use Docker-Compose
+## Example using Docker-Compose: WebODM
 
 !!! Warning
     For the purpose of these following examples it is not suggested to use GitHub Codespaces.
-
-### Example 1: WebODM
 
 [:material-quadcopter: Web Open Drone Map (WebODM)](https://github.com/OpenDroneMap/WebODM/#run-it-on-the-cloud-google-compute-amazon-aws)
 
@@ -183,7 +197,3 @@ To use WebODM:
 9\. A map will open; you can click on **3D** (bottom right) to see the 3D rendered model generated.
 
 ![webodm_3](../assets/docker/WebODM_03.png)
-
-### Example 2: OpenSearch
-
-[:material-search-web: OpenSearch](https://opensearch.org/downloads.html#docker-compose)
