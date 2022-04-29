@@ -147,6 +147,43 @@ And that's it! You should be able to see the application running on
 
 ## Examples that use Docker-Compose
 
-[:material-search-web: OpenSearch](https://opensearch.org/downloads.html#docker-compose){target=_blank}
+!!! Warning
+    For the purpose of these following examples it is not suggested to use GitHub Codespaces.
 
-[:material-quadcopter: Web Open Drone Map (WebODM)](https://github.com/OpenDroneMap/WebODM/#run-it-on-the-cloud-google-compute-amazon-aws){target=_blank}
+### Example 1: WebODM
+
+[:material-quadcopter: Web Open Drone Map (WebODM)](https://github.com/OpenDroneMap/WebODM/#run-it-on-the-cloud-google-compute-amazon-aws)
+
+OpenDroneMap is an open source photogrammetry toolkit to process aerial imagery into maps and 3D models running on command line. WebODM (Web OpenDroneMap) is an extension of ODM running on multiple Docker Containers provinding a user friendly web interface for easy visualization.
+
+To use WebODM:
+
+!!! Note "Prerequisites"
+    WebODM requires `docker`, `docker-compose` to function. Additionally, if you are on Windows, users will be required to have the [Docker Windows Application](https://docs.docker.com/desktop/windows/install/) installed as well as having the [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install) (Windows Subsystem for Linux) operational.
+    
+1. Ensure your machine is up to date: `sudo apt-get update && sudo apt-get upgrade -y`
+2. Clone the WebODM repository: `git clone https://github.com/OpenDroneMap/WebODM --config core.autocrlf=input --depth 1`
+3. Move into the WebODM folder: `cd WebODM`
+4. Run WebODM: `sudo ./webodm.sh start`
+5. The necessary docker images will be downloaded (~2 minutes) and WebODM will be accessible through http://localhost:8000/
+
+!!! Note
+    You will be asked to create an account as a formality. Add any *username* and a *password* and select **Create Account**.
+
+6\. Download example data: `clone https://github.com/OpenDroneMap/odm_data_aukerman.git`. This git repository contains 77 HD images usable for WebODM. For other examples refer to [ODMData](https://www.opendronemap.org/odm/datasets/).
+
+7\. In the WebODM portal, click on **Select Images and GCP**, navigate to `odm_data_aukerman/images` and select between 20-50 images (16 is the absolute minimum, whilst 32 is the suggested minimum).
+
+![webodm_1](../assets/docker/WebODM_01.png)
+
+8\. WebODM will process the uploaded images (~5-10 minutes); upon completion, click **View Map**.
+
+![webodm_2](../assets/docker/WebODM_02.png)
+
+9\. A map will open; you can click on **3D** (bottom right) to see the 3D rendered model generated.
+
+![webodm_3](../assets/docker/WebODM_03.png)
+
+### Example 2: OpenSearch
+
+[:material-search-web: OpenSearch](https://opensearch.org/downloads.html#docker-compose)
