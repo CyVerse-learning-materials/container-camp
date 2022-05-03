@@ -4,17 +4,15 @@
 
 ### Prerequisites
 
-In order to complete these exercises we **STRONGLY** recommend that you set up a personal [:material-github: GitHub](https://github.com){target=_blank} and [:material-docker: DockerHub](https://hub.docker.com){target=_blank} account. 
+In order to complete these exercises we **STRONGLY** recommend that you set up a personal [:material-github: GitHub](https://github.com){target=_blank} and [:material-docker: DockerHub](https://hub.docker.com){target=_blank} account (account creation for both services is free). 
 
-These are free accounts.
-
-There are no specific skills needed for this tutorial beyond a basic comfort with the command line and using a text editor. 
+There are no specific skills needed for this tutorial beyond elementary command line ability and using a text editor. 
 
 We are going to be using [:material-github: GitHub CodeSpaces](https://github.com/features/codespaces){target=_blank} for the hands on portion of the workshop, which features [:material-microsoft-visual-studio-code: VS Code](https://code.visualstudio.com/){target=_blank} as a fully enabled development environment with Docker already installed. 
 
 CodeSpaces is a featured product from GitHub and requires a paid subscription or Academic account for access. Your account will temporarily be integrated with the course GitHub Organization for the next steps in the workshop.
 
-Our instructions on starting a new CodeSpace are [here](../cloud/codespaces.md) 
+Our instructions on starting a new CodeSpace are [here](../cloud/codespaces.md). 
 
 ??? Info "Installing Docker on your personal computer"
 
@@ -40,7 +38,10 @@ Our instructions on starting a new CodeSpace are [here](../cloud/codespaces.md)
 
 ## Basic Docker Commands :octicons-terminal-16: 
 
-Docker commands in the terminal use the prefix `docker`
+Docker commands in the terminal use the prefix `docker`.
+
+!!! Note
+        For every command listed, the correct execution of the commands through the command line is by using `docker` in front of the command: for example `docker help` or `docker search`. Thus, every :material-docker: = `docker`. 
 
 ### :material-docker: help
 
@@ -53,7 +54,7 @@ $ docker --help
 
 ### :material-docker: search
 
-We talk about the concept of [Docker Registries](registry.md) in the next section, but you can search the public list of registeries by using the `docker search` command to find public containers on the Official [Docker Hub Registry](https://hub.docker/com){target=_blank} 
+We talk about the concept of [Docker Registries](registry.md) in the next section, but you can search the public list of registeries by using the `docker search` command to find public containers on the Official [Docker Hub Registry](https://hub.docker.com):
 
 ```
 $ docker search  
@@ -61,7 +62,7 @@ $ docker search
 
 ### :material-docker: pull
 
-Go to the [Docker Hub](https://hub.docker.com){target=_blank} and type `hello-world` in the search bar at the top of the page. 
+Go to the [Docker Hub](https://hub.docker.com) and type `hello-world` in the search bar at the top of the page. 
 
 Click on the 'tag' tab to see all the available 'hello-world' images. 
 
@@ -71,7 +72,8 @@ Click the 'copy' icon at the right to copy the `docker pull` command, or type it
 $ docker pull hello-world
 ```
 
-note: if you leave off the `:` and the tag name, it will by default pull the `latest` image
+!!! Note
+        If you leave off the `:` and the tag name, it will by default pull the `latest` image
 
 ```
 $ docker pull hello-world
@@ -83,7 +85,7 @@ Status: Downloaded newer image for hello-world:latest
 docker.io/library/hello-world:latest
 ```
 
-Now try to list the files in your current working directory
+Now try to list the files in your current working directory:
 
 ```
 $ ls -l
@@ -125,9 +127,13 @@ $ ls -l
 
 ### :material-docker: run
 
-The single most common command that you'll use with Docker is `docker run` ([see official help manual](https://docs.docker.com/engine/reference/commandline/run/){target=_blank} for more details.
+The single most common command that you'll use with Docker is `docker run` ([see official help manual](https://docs.docker.com/engine/reference/commandline/run/) for more details).
 
 `docker run` starts a container and executes the default "entrypoint", or any other "command" that follows `run` and any optional flags.
+
+??? Tip "What is an *entrypoint*?"
+
+    An entrypoint is the initial command(s) executed upon starting the Docker container. It is listed in the `Dockerfile` as `ENTRYPOINT` and can take 2 forms: as commands followed by parameters (ENTRYPOINT command param1 param2)  or as an executable (ENTRYPOINT [“executable”, “param1”, “param2”])
 
 ```
 $ docker run hello-world:latest
@@ -144,7 +150,7 @@ $ docker run alpine:latest ls -l
 
 When you executed the command `docker run alpine:latest`, Docker first looked for the cached image locally, but did not find it, it then ran a `docker pull` behind the scenes to download the `alpine:latest` image and then execute your command.
 
-When you ran `docker run alpine:latest`, you provided a command `ls -l`, so Docker started the command specified and you saw the listing of the alpine file system (not your host system, this was insice the container!).
+When you ran `docker run alpine:latest`, you provided a command `ls -l`, so Docker started the command specified and you saw the listing of the Alpine file system (not your host system, this was insice the container!).
 
 ### :material-docker: images
 
