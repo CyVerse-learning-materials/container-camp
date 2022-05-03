@@ -601,7 +601,7 @@ Any data that you add to that folder outside the container will appear INSIDE th
 
 ## Docker Commands
 
-Here is a compiled list of all fundamental Docker Commands:
+Here is a compiled list of fundamental Docker Commands:
 
 | Command | Usage | Example |
 |---------|-------|---------|
