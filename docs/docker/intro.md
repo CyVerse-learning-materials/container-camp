@@ -259,10 +259,6 @@ To remove all cached layers, images, and data you can use the `-af` flag for `al
 docker system prune -af
 ```
 
-#### Try it yourself!
-
-
-
 ---
 
 ## Entrypoints
@@ -404,6 +400,8 @@ In the previous example, you pulled the `alpine` image from the registry and ask
 Above is a list of images that I've pulled from the registry and those I've created myself (we'll shortly see how). You will have a different list of images on your machine. The **TAG** refers to a particular snapshot of the image and the **ID** is the corresponding unique identifier for that image.
 
 For simplicity, you can think of an image akin to a Git repository - images can be committed with changes and have multiple versions. When you do not provide a specific version number, the client defaults to latest.
+
+---
 
 ## Working with Interactive Containers
 
