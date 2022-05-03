@@ -36,7 +36,7 @@ Our instructions on starting a new CodeSpace are [here](../cloud/codespaces.md).
 
     You've given up on ever using a terminal? No problem, Docker can be used from graphic interfaces, like [Docker Desktop](https://www.docker.com/products/docker-desktop/){target=_blank}, or platforms like [Portainer](https://www.portainer.io/){target=_blank}. We suggest you read through their documentation on how to use Docker.
 
-## Basic Docker Commands :octicons-terminal-16: 
+## Fundamental Docker Commands :octicons-terminal-16: 
 
 Docker commands in the terminal use the prefix `docker`.
 
@@ -133,7 +133,7 @@ The single most common command that you'll use with Docker is `docker run` ([see
 
 ??? Tip "What is an *entrypoint*?"
 
-    An entrypoint is the initial command(s) executed upon starting the Docker container. It is listed in the `Dockerfile` as `ENTRYPOINT` and can take 2 forms: as commands followed by parameters (ENTRYPOINT command param1 param2)  or as an executable (ENTRYPOINT [“executable”, “param1”, “param2”])
+    An entrypoint is the initial command(s) executed upon starting the Docker container. It is listed in the `Dockerfile` as `ENTRYPOINT` and can take 2 forms: as commands followed by parameters (`ENTRYPOINT command param1 param2`)  or as an executable (`ENTRYPOINT [“executable”, “param1”, “param2”]`)
 
 ```
 $ docker run hello-world:latest
@@ -169,7 +169,7 @@ hello-world             latest              690ed74de00f        5 months ago    
 
 ### :material-docker: ps
 
-Now it's time to see the `docker ps` command which shows you all containers that are currently running on your machine.
+Now it's time to see the `docker ps` command which shows you all containers that are currently running on your machine. 
 
 ```
 docker ps
@@ -182,21 +182,27 @@ $ docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 ```
 
- Let's try a more useful variant: `docker ps --all`
+Let's try a more useful variant: `docker ps --all`
 
 ```
 $ docker ps --all
+CONTAINER ID   IMAGE                                            COMMAND                  CREATED          STATUS                      PORTS     NAMES
+a5eab9243a15   hello-world                                      "/hello"                 5 seconds ago    Exited (0) 3 seconds ago              loving_mcnulty
+3bb4e26d2e0c   alpine:latest                                    "/bin/sh"                17 seconds ago   Exited (0) 16 seconds ago             objective_meninsky
+192ffdf0cbae   opensearchproject/opensearch-dashboards:latest   "./opensearch-dashbo…"   3 days ago       Exited (0) 3 days ago                 opensearch-dashboards
+a10d47d3b6de   opensearchproject/opensearch:latest              "./opensearch-docker…"   3 days ago       Exited (0) 3 days ago                 opensearch-node1
+
 ```
 
 What you see above is a list of all containers that you have ran. 
 
-Notice that the `STATUS` column shows that these containers exited a few minutes ago.
+Notice that the `STATUS` column shows the current condition of the container: running, or as shown in the example, when the container was exited.
 
 ### :material-docker: stop
 
 The `stop` command is used for containers that are actively running, either as a foreground process or as a detached background one.
 
-You can find a running container using the `docker ps` command
+You can find a running container using the `docker ps` command.
 
 ### :material-docker: rm
 
@@ -215,7 +221,7 @@ Use the first few unique alphanumerics in the CONTAINER ID to remove the stopped
 0354
 ```
 
-Check to see that the container is gone using `ps -a` a second time
+Check to see that the container is gone using `ps -a` a second time (`-a` is shorthand for `--all`; the full command is `docker ps -a` or `docker ps --all`).
 
 ### :material-docker: rmi
 
@@ -241,14 +247,6 @@ Deleted: sha256:e07ee1baac5fae6a26f30cabfe54a36d3402f96afda318fe0a96cec4ca393359
 @user ➜ /workspaces (mkdocs ✗) $ 
 ```
 
-### :material-docker: ps
-
-The `ps` command will show you a list of all `-a` of the active containers running on your system.
-
-```
-docker ps -a
-```
-
 ### :material-docker: system
 
 The `system` command can be used to view information about containers on your cache, you can view your total disk usage, view events or info.
@@ -260,6 +258,8 @@ To remove all cached layers, images, and data you can use the `-af` flag for `al
 ```
 docker system prune -af
 ```
+
+---
 
 ## Entrypoints
 
@@ -274,6 +274,8 @@ In this case, the Docker client dutifully ran the ``echo`` command in our ``alpi
 Imagine booting up a virtual machine, running a command and then killing it. 
 
 Now you know why they say containers are fast!
+
+---
 
 ## Interactive Commands with Containers
 
@@ -333,6 +335,8 @@ Exit out of the container by giving the `exit` command.
     $ docker attach 0db38ea51a48
     ```
 
+---
+
 ## :material-home: House Keeping and :material-broom: Cleaning Up exited containers
 
 IMPORTANT: Docker images are cached on your machine in the location where Docker was installed. These image files are not visible in the same directory where you might have used `docker pull <imagename>`.
@@ -383,16 +387,15 @@ Some Docker images can be large. Especially data science images with many scient
 
 ### Managing Docker Images
 
-In the previous example, you pulled the `alpine` image from the registry and asked the Docker client to run a container based on that image. To see the list of images that are available locally on your system, run the ``docker images`` command.
+In the previous example, you pulled the `alpine` image from the registry and asked the Docker client to run a container based on that image. To see the list of images that are available locally on your system, run the `docker images` command.
 
-.. code-block:: bash
-
+```
 	$ docker images
 	REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
 	ubuntu                     bionic              47b19964fb50        4 weeks ago         88.1MB
 	alpine                     latest              caf27325b298        4 weeks ago         5.53MB
 	hello-world                latest              fce289e99eb9        2 months ago        1.84kB
-	.........
+```
 
 Above is a list of images that I've pulled from the registry and those I've created myself (we'll shortly see how). You will have a different list of images on your machine. The **TAG** refers to a particular snapshot of the image and the **ID** is the corresponding unique identifier for that image.
 
@@ -400,14 +403,13 @@ For simplicity, you can think of an image akin to a Git repository - images can 
 
 ## Working with Interactive Containers
 
-Let's go ahead and run some basic Integrated Development Environment images from "trusted" organizations on the Docker Hub Registry.
+Let's go ahead and run some Integrated Development Environment images from "trusted" organizations on the Docker Hub Registry.
 
 ### Jupyter Lab :material-language-python: or RStudio-Server :material-language-r: IDE
 	
 In this section, let's find a Docker image which can run a Jupyter Notebook
 
 Search for official images on Docker Hub which contain the string 'jupyter'
-
 
 ```
 $ docker search jupyter
@@ -459,6 +461,7 @@ rstudio/rstudio-workbench-preview                                               
 
     An important thing to note: None of these Jupyter or RStudio images are 'official' Docker images, meaning they could be trojans for spyware, malware, or other nasty warez.
 
+---
 
 ## Understanding PORTS
 
@@ -488,7 +491,7 @@ $docker run --rm -p 8787:8787 -e PASSWORD=cc2022 rocker/rstudio
 $docker run --rm -p 8888:8888 jupyter/base-notebook
 ```
 
-??? Note "preempting stale containers from your cache"
+??? Note "Preempting stale containers from your cache"
 
 	We've added the `--rm` flag, which means the container will automatically removed from the cache when the container is exited.
 
@@ -507,29 +510,27 @@ Note, that your terminal is still active and you can use it to launch more conta
 
 To view the running container, use the `docker ps` command
 
+---
+
 ## Managing Data in Docker
 
 It is possible to store data within the writable layer of a container, but there are some limitations:
 
 - The data doesn’t persist when that container is no longer running, and it can be difficult to get the data out of the container if another process needs it.
-
 - A container’s writable layer is tightly coupled to the host machine where the container is running. You can’t easily move the data somewhere else.
-
 - Its better to put your data into the container **AFTER** it is built - this keeps the container size smaller and easier to move across networks.
 
 Docker offers three different ways to mount data into a container from the Docker host:
 
-  * **volumes**
-
-  * **bind mounts**
-
-  * **tmpfs volumes**
+- **Volumes**
+- **Bind mounts**
+- **tmpfs volumes**
 
 When in doubt, volumes are almost always the right choice.
 
 ### Volumes
 
-Volumes are often a better choice than persisting data in a container’s writable layer, because using a volume does not increase the size of containers using it, and the volume’s contents exist outside the lifecycle of a given container. While bind mounts (which we will see later) are dependent on the directory structure of the host machine, volumes are completely managed by Docker. Volumes have several advantages over bind mounts:
+Volumes are often a better choice than persisting data in a container’s writable layer, because using a volume does not increase the size of containers using it, and the volume’s contents exist outside the lifecycle of a given container. While bind mounts (which we will see in the Advanced portion of the Camp) are dependent on the directory structure of the host machine, volumes are completely managed by Docker. Volumes have several advantages over bind mounts:
 
 - Volumes are easier to back up or migrate than bind mounts.
 - You can manage volumes using Docker CLI commands or the Docker API.
@@ -537,10 +538,9 @@ Volumes are often a better choice than persisting data in a container’s writab
 - Volumes can be more safely shared among multiple containers.
 - A new volume’s contents can be pre-populated by a container.
 
+??? Tip "Using Temporary File System mounts"
 
-??? Tip "using Temporary File System mounts"
-
-	If your container generates non-persistent state data, consider using a ``tmpfs`` mount to avoid storing the data anywhere permanently, and to increase the container’s performance by avoiding writing into the container’s writable layer.
+	If your container generates non-persistent state data, consider using a `tmpfs` mount to avoid storing the data anywhere permanently, and to increase the container’s performance by avoiding writing into the container’s writable layer.
 
 Choose the `-v` flag for mounting volumes
 
@@ -550,7 +550,7 @@ The fields must be in the correct order, and the meaning of each field is not im
 
 - The first field is the path on your local machine that where the data are.
 - The second field is the path where the file or directory are mounted in the container.
-- The third field is optional, and is a comma-separated list of options, such as ``ro``.
+- The third field is optional, and is a comma-separated list of options, such as `ro`.
 
 ```
 -v /home/username/your_data_folder:/container_folder
@@ -571,7 +571,7 @@ $ ls -l
 $ ls -l work
 ```
 
-Once you're in the container, you will see that the ``/work`` directory is mounted in the working directory.
+Once you're in the container, you will see that the `/work` directory is mounted in the working directory.
 
 Any data that you add to that folder outside the container will appear INSIDE the container. And any work you do inside the container saved in that folder will be saved OUTSIDE the container as well.
 
@@ -595,11 +595,11 @@ Any data that you add to that folder outside the container will appear INSIDE th
 	$docker run --rm -v $(pwd):/work -p 8888:8888 -e REDIRECT_URL=http://localhost:8888 jupyter/base-notebook
     ```
 
+---
 
+## Docker Commands
 
-Docker Commands
-===============
-
+Here is a compiled list of all fundamental Docker Commands:
 
 | Command | Usage | Example |
 |---------|-------|---------|
