@@ -259,6 +259,10 @@ To remove all cached layers, images, and data you can use the `-af` flag for `al
 docker system prune -af
 ```
 
+#### Try it yourself!
+
+
+
 ---
 
 ## Entrypoints
@@ -299,7 +303,7 @@ You can run them both in a single flag as ``-it``, which is the more common way 
 $ docker run -it alpine:latest sh
 ```
 
-The prompt should change to something more like `/ # ` -- 
+The prompt should change to something more like `/ # `.
 
 You are now running a shell inside the container! 
 
@@ -313,7 +317,7 @@ Exit out of the container by giving the `exit` command.
 
 ??? Warning "Making sure you've exited the container"
 
-	If you type ``exit`` your **container** will exit and is no longer active. To check that, try the following:
+	If you type `exit` your **container** will exit and is no longer active. To check that, try the following:
 
     ```
 	$ docker ps --latest
@@ -508,7 +512,7 @@ $ docker run --rm -d -p 8888:8888 jupyter/base-notebook
 ```
 Note, that your terminal is still active and you can use it to launch more containers. 
 
-To view the running container, use the `docker ps` command
+To view the running container, use the `docker ps` command.
 
 ---
 
