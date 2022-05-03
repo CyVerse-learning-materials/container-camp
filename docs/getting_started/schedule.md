@@ -10,20 +10,20 @@
 
 !!! Example "Activities"
 
-    | Time (PDT)| Activity | Instructor | Notes | 
+    | Time (PDT)| Activity | Instructor | Outcome | 
     |-----------|----------|------------|-------|
     | 09:00 | Welcome | All |
     | 09:05 | Overview of Website | Michele | [Code of Conduct](../getting_started/code_conduct.md) |
-    | 09:10 | Why use Containers? | Michael | |
-    | 09:25 | [Start Dev Environment :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | 
-    | 09:30 | [Introduction to Docker :material-docker:](../docker/intro.md) | | |
+    | 09:10 | Why use Containers? | Michael | What containers are used for in science |
+    | 09:25 | [Start CodeSpace :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | Using Dev Environments to create containers|
+    | 09:30 | [Introduction to Docker :material-docker:](../docker/intro.md) | Carlos | Basic command line use of Docker |
     | 09:55 | Break | |
-    | 10:00 | [Introduction to Docker :material-docker:](../docker/intro.md) | |
+    | 10:00 | [Introduction to Docker :material-docker:](../docker/intro.md) | Carlos & Tyson | Basic command line use of Docker | 
     | 10:55 | Break | |
-    | 11:00 | [Introduction to Docker :material-docker:](../docker/intro.md) | |
+    | 11:00 | [Introduction to Docker :material-docker:](../docker/intro.md) | Michele | Volumes and Interactive Use inside containers | 
     | 11:55 | Break | | |
-    | 12:00 | | | 
-    | 12:55 | Conclude for the day | | |
+    | 12:00 | [Introduction to Docker :material-docker:](../docker/intro.md)  | Michele & Tyson | | 
+    | 12:55 | Conclude for the day | All | push changes to your GitHub |
 
 
 **Content:**
@@ -51,13 +51,13 @@
     | 09:00 | Welcome back | All | |
     | 09:05 | Discuss previous day, answer questions | | |
     | 09:15 | [(re)start Dev Environment :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | |
-    | 09:20 | [Building Docker Images :material-docker:](../docker/build.md ) | | |
+    | 09:20 | [Finding the right container :material-docker:](../docker/registry.md ) | Tyson | |
     | 09:55 | Break | |
-    | 10:00 | [Building Docker Images :material-docker:](../docker/build.md )  | |
+    | 10:00 | [Building Docker Images :material-docker:](../docker/build.md )  | Carlos | |
     | 10:55 | Break | |
-    | 11:00 | [Introduction to Docker :material-docker:](../docker/intro.md) | |
+    | 11:00 | [Building Docker Images :material-docker:](../docker/build.md ) | Michele | | 
     | 11:55 | Break | | |
-    | 12:00 | [Integrating your containers into CyVerse](https://learning.cyverse.org/de/create_apps/){target=_blank} | | 
+    | 12:00 | [Integrating your containers into CyVerse](https://learning.cyverse.org/de/create_apps/){target=_blank} | Tyson | | 
     | 12:55 | Conclude | | |
 
 

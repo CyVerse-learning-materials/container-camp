@@ -188,13 +188,72 @@ Notice that the `STATUS` column shows that these containers exited a few minutes
 
 ### :material-docker: stop
 
+The `stop` command is used for containers that are actively running, either as a foreground process or as a detached background one.
+
+You can find a running container using the `docker ps` command
 
 ### :material-docker: rm
 
+You can remove individual stopped containers by using the `rm` command. Use the `ps` command to see all your stopped contiainers:
+
+```
+@user ➜ /workspaces $ docker ps -a
+CONTAINER ID   IMAGE                        COMMAND                  CREATED              STATUS                          PORTS     NAMES
+03542eaac9dc   hello-world                  "/hello"                 About a minute ago   Exited (0) About a minute ago             unruffled_nobel
+```
+
+Use the first few unique alphanumerics in the CONTAINER ID to remove the stopped container:
+
+```
+@user ➜ /workspaces (mkdocs ✗) $ docker rm 0354
+0354
+```
+
+Check to see that the container is gone using `ps -a` a second time
+
 ### :material-docker: rmi
+
+The `rmi` command is similar to `rm` but it will remove the cached images. Used in combination with `docker images` or `docker system df` you can clean up a full cache
+
+```
+docker rmi
+```
+
+```
+@user ➜ /workspaces/ (mkdocs ✗) $ docker images
+REPOSITORY                   TAG       IMAGE ID       CREATED        SIZE
+opendronemap/webodm_webapp   latest    e075d13aaf35   21 hours ago   1.62GB
+redis                        latest    a10f849e1540   5 days ago     117MB
+opendronemap/nodeodm         latest    b4c50165f838   6 days ago     1.77GB
+hello-world                  latest    feb5d9fea6a5   7 months ago   13.3kB
+opendronemap/webodm_db       latest    e40c0f274bba   8 months ago   695MB
+@user ➜ /workspaces (mkdocs ✗) $ docker rmi hello-world
+Untagged: hello-world:latest
+Untagged: hello-world@sha256:10d7d58d5ebd2a652f4d93fdd86da8f265f5318c6a73cc5b6a9798ff6d2b2e67
+Deleted: sha256:feb5d9fea6a5e9606aa995e879d862b825965ba48de054caab5ef356dc6b3412
+Deleted: sha256:e07ee1baac5fae6a26f30cabfe54a36d3402f96afda318fe0a96cec4ca393359
+@user ➜ /workspaces (mkdocs ✗) $ 
+```
+
+### :material-docker: ps
+
+The `ps` command will show you a list of all `-a` of the active containers running on your system.
+
+```
+docker ps -a
+```
 
 ### :material-docker: system
 
+The `system` command can be used to view information about containers on your cache, you can view your total disk usage, view events or info.
+
+You can also use it to `prune` unused data and image layers.
+
+To remove all cached layers, images, and data you can use the `-af` flag for `all` and `force`
+
+```
+docker system prune -af
+```
 
 ## Entrypoints
 
