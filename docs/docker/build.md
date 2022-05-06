@@ -1,23 +1,25 @@
 # Building Docker Images
 
-Now that we are relatively comfortable with running Docker, lets look at some advanced Docker topics, such as:
+Now that we are relatively comfortable with running Docker, we can look at some advanced Docker topics, such as:
 
 - Building our own Docker images from the `Dockerfile`
 - Modify an existing Dockerfile and create a new image
 - Push an image to a Registry
 
-## Clone our example repository with pre-written Dockerfiles
+## Example Requirement
 
-From your CodeSpace, we are going to copy a second GitHub repository onto our VM. If you are working locally, make sure that you change directories away from any other Git repository that you may have been working in.
+Clone our example repository with pre-written Dockerfiles From your CodeSpace, we are going to copy a second GitHub repository onto our VM. If you are working locally, make sure that you change directories away from any other Git repository that you may have been working in.
 
 ```
 $ cd /workspaces
 
 $ git clone https://github.com/cyverse-education/intro2docker
 
-$ cd intro2docker
+$ cd intro2docker/
 
 ```
+
+---
 
 ## Writing a Dockerfile
 
@@ -35,7 +37,7 @@ $ touch Dockerfile
 
     We use a code line escape character `\` to allow single line scripts to be written on multiple lines in the Dockerfile.
 
-    We also use the double characters `&&` which essentially mean “if true, then do this” while executing the code. The `&&` can come at the beginning of a line or the end when used with `\`
+    We also use the double characters `&&` which essentially mean “if true, then do this” while executing the code. The `&&` can come at the beginning of a line or the end when used with `\`.
 
 ### ARG
 

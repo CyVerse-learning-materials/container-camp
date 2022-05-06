@@ -24,13 +24,13 @@ First, you will need to know where to look for existing images. Docker images ar
 
 ## Docker Registries
 
-Docker uses the concept of "Registries", online libraries where container images are cached for public utilization.
+Docker uses the concept of **Registries**, online libraries where container **images** are cached for public utilization.
 
 ??? Question "What *EXACTLY* is a Container Registry?"
 
     A Registry is a storage and distribution system for named Docker images
             
-    Organized by owners into "repositories" with compiled *images* that users can download and run 
+    Organized by owners into **repositories** with compiled **images** that users can download and run 
             
 Things you can do with registries:
 
@@ -47,7 +47,7 @@ You must have an account on each registry in order to create repositories and to
 
 ---
 
-## Search image registries
+## Search Image Registries
 
 !!! Warning 
 
