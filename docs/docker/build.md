@@ -6,7 +6,7 @@ Now that we are relatively comfortable with running Docker, we can look at some 
 - Modify an existing Dockerfile and create a new image
 - Push an image to a Registry
 
-## Example Requirement
+## Requirements
 
 Clone our example repository with pre-written Dockerfiles From your CodeSpace, we are going to copy a second GitHub repository onto our VM. If you are working locally, make sure that you change directories away from any other Git repository that you may have been working in.
 
@@ -38,6 +38,10 @@ $ touch Dockerfile
     We use a code line escape character `\` to allow single line scripts to be written on multiple lines in the Dockerfile.
 
     We also use the double characters `&&` which essentially mean “if true, then do this” while executing the code. The `&&` can come at the beginning of a line or the end when used with `\`.
+
+The `Dockerfile` contains **Instructions**: a series of commands that Docker executes during the creation and execution of a container.
+
+----
 
 ### ARG
 
@@ -126,9 +130,9 @@ RUN apt-get update && apt-get install -y fortune cowsay lolcat
 
 Here we've installed `fortune` `cowsay` and `lolcat` as new programs into our base image.
 
-!!! warning "Best practices for building new layers
+!!! Warning "Best practices for building new layers"
 
-    Ever time you use the `RUN` command it is a good idea to use the `apt-get update` or `apt update` command to make sure your layer is up-to-date. This can become a problem though if you have a very large container with a large number of `RUN` layers. 
+        Ever time you use the `RUN` command it is a good idea to use the `apt-get update` or `apt update` command to make sure your layer is up-to-date. This can become a problem though if you have a very large container with a large number of `RUN` layers. 
 
 ### ENV
 
@@ -142,7 +146,7 @@ ENV LC_ALL=C
 
 Here we are adding the `/usr/games` directory to the `PATH` so that when we run the new container it will find our newly installed game commands
 
-We are also updating the "[locales](https://www.tecmint.com/set-system-locales-in-linux/){target=_blank" to set the language of the container.
+We are also updating the "[locales](https://www.tecmint.com/set-system-locales-in-linux/)" to set the language of the container.
 
 ### COPY
 
@@ -152,7 +156,7 @@ The `COPY` command will copy files from the directory where `Dockerfile` is kept
 COPY . /app
 ```
 
-??? question "When to use `COPY` vs `ADD`
+??? question "When to use `COPY` vs `ADD`"
 
     `COPY` is more basic and is good for files
 
@@ -208,7 +212,32 @@ RUN useradd ubuntu && \
 USER ubuntu
 ```
 
-
 ### EXPOSE
 
-You can open ports using the `EXPOSE` command.
+You can open [ports](intro.md/#understanding-ports) using the `EXPOSE` command.
+
+```
+EXPOSE 8888
+```
+
+The above command will expose port 8888.
+
+!!! Note
+        Running multiple containers using the same port is not trivial and would require the usage of a web server such as [NGINX](https://www.nginx.com/). However, you can have multiple containers interact with each other using [Docker Compose](compose.md).
+
+---
+
+## Summary of Instructions
+
+| Instruction Command | Description |
+| --- | --- | 
+| `ARG` | Sets environmental variables during image building |
+| `FROM` | Instructs to use a specific Docker image |
+| `LABEL` | Adds metadata to the image |
+| `RUN` | Executes a specific command |
+| `ENV` | Sets environmental variables |
+| `COPY` | Copies a file from a specified location to the image |
+| `CMD` | Sets a command to be executed when running a container |
+| `ENTRYPOINT` | Configures and run a container as an executable |
+| `USER` | Used to set User specific information |
+| `EXPOSE` |  exposes a specific port |
