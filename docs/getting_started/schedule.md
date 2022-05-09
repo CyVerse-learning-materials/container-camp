@@ -16,13 +16,13 @@
     | 09:05 | Overview of Website | Michele | [Code of Conduct](../getting_started/code_conduct.md) |
     | 09:10 | Why use Containers? | Michael | What containers are used for in science |
     | 09:25 | [Start CodeSpace :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | Using Dev Environments to create containers|
-    | 09:30 | [Introduction to Docker :material-docker:](../docker/intro.md) | Carlos | Basic command line use of Docker |
+    | 09:30 | [:material-docker: Docker Commands and Execution](../docker/intro.md#fundamental-docker-commands) | Carlos | Basic command line use of Docker |
     | 09:55 | Break | |
-    | 10:00 | [Introduction to Docker :material-docker:](../docker/intro.md) | Carlos & Tyson | Basic command line use of Docker | 
+    | 10:00 | [:material-docker: Docker Commands and Execution](../docker/intro.md#fundamental-docker-commands) | Carlos & Tyson | Basic command line use of Docker | 
     | 10:55 | Break | |
-    | 11:00 | [Introduction to Docker :material-docker:](../docker/intro.md) | Michele | Volumes and Interactive Use inside containers | 
+    | 11:00 | [:material-docker: Managing Docker and Data](../docker/intro.md#managing-data-in-docker) | Michele | Volumes and Interactive Use inside containers | 
     | 11:55 | Break | | |
-    | 12:00 | [Introduction to Docker :material-docker:](../docker/intro.md)  | Michele & Tyson | | 
+    | 12:00 | [:material-docker: Managing Docker and Data](../docker/intro.md)  | Michele & Tyson | | 
     | 12:55 | Conclude for the day | All | push changes to your GitHub |
 
 
