@@ -214,7 +214,7 @@ USER ubuntu
 
 ### EXPOSE
 
-You can open [ports](intro.md/#understanding-ports) using the `EXPOSE` command.
+You can open [ports](intro.md#understanding-ports) using the `EXPOSE` command.
 
 ```
 EXPOSE 8888
