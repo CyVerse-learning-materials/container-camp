@@ -486,11 +486,11 @@ The port has two sides `left:right` separated by a colon. The left side port num
 Here are some examples to run basic RStudio and Jupyter Lab:
 
 ```
-$docker run --rm -p 8787:8787 -e PASSWORD=cc2022 rocker/rstudio
+$ docker run --rm -p 8787:8787 -e PASSWORD=cc2022 rocker/rstudio
 ```
 
 ```
-$docker run --rm -p 8888:8888 jupyter/base-notebook
+$ docker run --rm -p 8888:8888 jupyter/base-notebook
 ```
 
 ??? Note "Preempting stale containers from your cache"
@@ -605,7 +605,7 @@ Here is a compiled list of fundamental Docker Commands:
 
 | Command | Usage | Example |
 |---------|-------|---------|
-| `pull` | Downloads an image from Docker Hub | `docker pull hello-world:latest |
+| `pull` | Downloads an image from Docker Hub | `docker pull hello-world:latest` |
 | `run`  | runs a container with entrypoint | `docker run -it user/image:tag` | 
 | `build` | Builds a docker image from a Dockerfile in current working directory | `docker build -t user/image:tag .` |
 | `images` |  List all images on the local machine  | `docker images list` |
