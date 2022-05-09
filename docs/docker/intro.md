@@ -357,13 +357,13 @@ Some Docker images can be large. Especially data science images with many scient
     To find out how many images are on your machine, type:
 
     ```
-	$ docker images --help
+	$ docker images
     ```
 
     To remove images that you no longer need, type:
 
     ```
-	$ docker system prune --help
+	$ docker system prune
     ```
 
     This is where it becomes important to differentiate between *images*, *containers*, and *volumes* (which we'll get to more in a bit). 
