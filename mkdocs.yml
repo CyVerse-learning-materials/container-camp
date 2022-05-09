@@ -60,7 +60,6 @@ theme:
     - navigation.tracking
       #- navigation.sections
     - navigation.indexes
-    - toc.integrate
     - toc.follow
   # Default values, taken from mkdocs_theme.yml
   language: en
