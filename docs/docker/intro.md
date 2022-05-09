@@ -194,7 +194,7 @@ a10d47d3b6de   opensearchproject/opensearch:latest              "./opensearch-do
 
 ```
 
-What you see above is a list of all containers that you have ran. 
+What you see above is a list of all containers that you have run. 
 
 Notice that the `STATUS` column shows the current condition of the container: running, or as shown in the example, when the container was exited.
 
