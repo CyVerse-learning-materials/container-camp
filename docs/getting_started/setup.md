@@ -15,5 +15,3 @@ Before attending Advanced Container Camp please do the following:
 [Create a XSEDE profile](https://portal.xsede.org){target=_blank}
 
 [Create a Texas Advanced Computing Center (TACC) profile](https://portal.tacc.utexas.edu/home){target=_blank}
-
-[Create an Open Science Grid (OSG) profile](https://www.osgconnect.net/){target=_blank}
