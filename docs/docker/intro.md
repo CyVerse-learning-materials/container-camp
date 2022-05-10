@@ -337,53 +337,7 @@ Exit out of the container by giving the `exit` command.
 
 ---
 
-## :material-home: House Keeping and :material-broom: Cleaning Up exited containers
-
-IMPORTANT: Docker images are cached on your machine in the location where Docker was installed. These image files are not visible in the same directory where you might have used `docker pull <imagename>`.
-
-Some Docker images can be large. Especially data science images with many scientific programming libraries and packages pre-installed.
-
-??? Warning "Checking your system cache"
-
-	Pulling many images from the Docker Registries may fill up your hard disk!
-
-    To inspect your system and disk use:
-
-    ```
-	$ docker system info
-	$ docker system df
-    ```
-
-    To find out how many images are on your machine, type:
-
-    ```
-	$ docker images
-    ```
-
-    To remove images that you no longer need, type:
-
-    ```
-	$ docker system prune
-    ```
-
-    This is where it becomes important to differentiate between *images*, *containers*, and *volumes* (which we'll get to more in a bit). 
-
-    You can take care of all of the dangling images and containers on your system. 
-
-    Note, that `prune` will not remove your cached *images* 
-
-    ```
-	$ docker system prune
-    	WARNING! This will remove:
-	     - all stopped containers
-	     - all networks not used by at least one container
-	     - all dangling images
-	     - all dangling build cache
-
-	Are you sure you want to continue? [y/N]
-    ```
-
-    If you added the `-af` flag it will remove "all" `-a` dangling images, empty containers, AND ALL CACHED IMAGES with "force" `-f`.
+## :material-home: House Keeping and :material-broom: Cleaning Up Exited Containers
 
 ### Managing Docker Images
 
@@ -401,6 +355,54 @@ Above is a list of images that I've pulled from the registry and those I've crea
 
 For simplicity, you can think of an image akin to a Git repository - images can be committed with changes and have multiple versions. When you do not provide a specific version number, the client defaults to latest.
 
+### Clutter and Cache
+
+Docker images are **cached** on your machine in the location where Docker was installed. These image files are not visible in the same directory where you might have used `docker pull <imagename>`.
+
+Some Docker images can be large. Especially data science images with many scientific programming libraries and packages pre-installed.
+
+!!! Warning "Checking your system cache"
+
+        Pulling many images from the Docker Registries may fill up your hard disk!
+
+        To inspect your system and disk use:
+
+        ```
+        $ docker system info
+        $ docker system df
+        ```
+
+        To find out how many images are on your machine, type:
+
+        ```
+        $ docker images
+        ```
+
+        To remove images that you no longer need, type:
+
+        ```
+        $ docker system prune
+        ```
+
+        This is where it becomes important to differentiate between *images*, *containers*, and *volumes* (which we'll get to more in a bit). 
+
+        You can take care of all of the dangling images and containers on your system. 
+
+        Note, that `prune` will not remove your cached *images* 
+
+        ```
+        $ docker system prune
+            WARNING! This will remove:
+            - all stopped containers
+            - all networks not used by at least one container
+            - all dangling images
+            - all dangling build cache
+
+        Are you sure you want to continue? [y/N]
+        ```
+
+        If you added the `-af` flag it will remove "all" `-a` dangling images, empty containers, AND ALL CACHED IMAGES with "force" `-f`.
+
 ---
 
 ## Managing Data in Docker
@@ -414,8 +416,8 @@ It is possible to store data within the writable layer of a container, but there
 Docker offers three different ways to mount data into a container from the Docker host:
 
 - **Volumes**
+- **tmpfs mounts**
 - **Bind mounts**
-- **tmpfs volumes**
 
 When in doubt, volumes are almost always the right choice.
 
@@ -425,13 +427,13 @@ Volumes are often a better choice than persisting data in a container’s writab
 
 - Volumes are easier to back up or migrate than bind mounts.
 - You can manage volumes using Docker CLI commands or the Docker API.
-- Volumes work on both Linux and Windows containers.
+- Volumes work on both UNIX and Windows containers.
 - Volumes can be more safely shared among multiple containers.
 - A new volume’s contents can be pre-populated by a container.
 
-??? Tip "Using Temporary File System mounts"
+??? Tip "When Should I Use the Temporary File System mount?"
 
-	If your container generates non-persistent state data, consider using a `tmpfs` mount to avoid storing the data anywhere permanently, and to increase the container’s performance by avoiding writing into the container’s writable layer.
+	If your container generates non-persistent state data, consider using a `tmpfs` mount to avoid storing the data anywhere permanently, and to increase the container’s performance by avoiding writing into the container’s writable layer. The data is written to the host's memory instead of a volume; When the container stops, the `tmpfs` mount is removed, and files written there will not be kept.
 
 Choose the `-v` flag for mounting volumes
 
@@ -439,9 +441,9 @@ Choose the `-v` flag for mounting volumes
 
 The fields must be in the correct order, and the meaning of each field is not immediately obvious.
 
-- The first field is the path on your local machine that where the data are.
-- The second field is the path where the file or directory are mounted in the container.
-- The third field is optional, and is a comma-separated list of options, such as `ro`.
+- The **first** field is the path on your **local machine** that where the data are.
+- The **second** field is the path where the file or directory are **mounted in the container**.
+- The third field is optional, and is a comma-separated list of options, such as `ro` (read only).
 
 ```
 -v /home/username/your_data_folder:/container_folder
@@ -468,7 +470,7 @@ Any data that you add to that folder outside the container will appear INSIDE th
 
 ??? Info " Mounts vs Volumes"
 
-	The `-v` or `--volume` flag was used for standalone containers and the `--mount` flag was used for swarm services. 
+	The `-v` or `--volume` flag was used for standalone containers and the `--mount` flag was used for *swarm* services. 
     
     However, starting with Docker 17.06, you can also use `--mount` with standalone containers. In general, `--mount` is more explicit and verbose. 
     
