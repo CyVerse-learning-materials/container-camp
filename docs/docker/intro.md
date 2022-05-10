@@ -403,6 +403,91 @@ For simplicity, you can think of an image akin to a Git repository - images can 
 
 ---
 
+## Managing Data in Docker
+
+It is possible to store data within the writable layer of a container, but there are some limitations:
+
+- The data doesn’t persist when that container is no longer running, and it can be difficult to get the data out of the container if another process needs it.
+- A container’s writable layer is tightly coupled to the host machine where the container is running. You can’t easily move the data somewhere else.
+- Its better to put your data into the container **AFTER** it is built - this keeps the container size smaller and easier to move across networks.
+
+Docker offers three different ways to mount data into a container from the Docker host:
+
+- **Volumes**
+- **Bind mounts**
+- **tmpfs volumes**
+
+When in doubt, volumes are almost always the right choice.
+
+### Volumes
+
+Volumes are often a better choice than persisting data in a container’s writable layer, because using a volume does not increase the size of containers using it, and the volume’s contents exist outside the lifecycle of a given container. While bind mounts (which we will see in the Advanced portion of the Camp) are dependent on the directory structure of the host machine, volumes are completely managed by Docker. Volumes have several advantages over bind mounts:
+
+- Volumes are easier to back up or migrate than bind mounts.
+- You can manage volumes using Docker CLI commands or the Docker API.
+- Volumes work on both Linux and Windows containers.
+- Volumes can be more safely shared among multiple containers.
+- A new volume’s contents can be pre-populated by a container.
+
+??? Tip "Using Temporary File System mounts"
+
+	If your container generates non-persistent state data, consider using a `tmpfs` mount to avoid storing the data anywhere permanently, and to increase the container’s performance by avoiding writing into the container’s writable layer.
+
+Choose the `-v` flag for mounting volumes
+
+`-v` or `--volume`: Consists of three fields, separated by colon characters (:). 
+
+The fields must be in the correct order, and the meaning of each field is not immediately obvious.
+
+- The first field is the path on your local machine that where the data are.
+- The second field is the path where the file or directory are mounted in the container.
+- The third field is optional, and is a comma-separated list of options, such as `ro`.
+
+```
+-v /home/username/your_data_folder:/container_folder
+```
+
+```
+$ docker run -v /home/$USER/read_cleanup:/work alpine:latest ls -l /work
+```
+
+So what if we wanted to work interactively inside the container?
+
+```
+$ docker run -it -v /home/$USER/read_cleanup:/work alpine:latest sh
+```
+
+```
+$ ls -l 
+$ ls -l work
+```
+
+Once you're in the container, you will see that the `/work` directory is mounted in the working directory.
+
+Any data that you add to that folder outside the container will appear INSIDE the container. And any work you do inside the container saved in that folder will be saved OUTSIDE the container as well.
+
+??? Info " Mounts vs Volumes"
+
+	The `-v` or `--volume` flag was used for standalone containers and the `--mount` flag was used for swarm services. 
+    
+    However, starting with Docker 17.06, you can also use `--mount` with standalone containers. In general, `--mount` is more explicit and verbose. 
+    
+    The biggest difference is that the `-v` syntax combines all the options together in one field, while the `--mount` syntax separates them. 
+    
+    Here is a comparison of the syntax for each flag.
+
+    ```
+	$docker run --rm -v $(pwd):/work -p 8787:8787 -e PASSWORD=cc2022 rocker/verse:4.1.3
+    ```
+
+	In the Jupyter Lab example, we use the `-e` environmental flag to re-direct the URL of the container at the localhost
+
+    ```
+	$docker run --rm -v $(pwd):/work -p 8888:8888 -e REDIRECT_URL=http://localhost:8888 jupyter/base-notebook
+    ```
+
+---
+
 ## Working with Interactive Containers
 
 Let's go ahead and run some Integrated Development Environment images from "trusted" organizations on the Docker Hub Registry.
@@ -511,91 +596,6 @@ $ docker run --rm -d -p 8888:8888 jupyter/base-notebook
 Note, that your terminal is still active and you can use it to launch more containers. 
 
 To view the running container, use the `docker ps` command.
-
----
-
-## Managing Data in Docker
-
-It is possible to store data within the writable layer of a container, but there are some limitations:
-
-- The data doesn’t persist when that container is no longer running, and it can be difficult to get the data out of the container if another process needs it.
-- A container’s writable layer is tightly coupled to the host machine where the container is running. You can’t easily move the data somewhere else.
-- Its better to put your data into the container **AFTER** it is built - this keeps the container size smaller and easier to move across networks.
-
-Docker offers three different ways to mount data into a container from the Docker host:
-
-- **Volumes**
-- **Bind mounts**
-- **tmpfs volumes**
-
-When in doubt, volumes are almost always the right choice.
-
-### Volumes
-
-Volumes are often a better choice than persisting data in a container’s writable layer, because using a volume does not increase the size of containers using it, and the volume’s contents exist outside the lifecycle of a given container. While bind mounts (which we will see in the Advanced portion of the Camp) are dependent on the directory structure of the host machine, volumes are completely managed by Docker. Volumes have several advantages over bind mounts:
-
-- Volumes are easier to back up or migrate than bind mounts.
-- You can manage volumes using Docker CLI commands or the Docker API.
-- Volumes work on both Linux and Windows containers.
-- Volumes can be more safely shared among multiple containers.
-- A new volume’s contents can be pre-populated by a container.
-
-??? Tip "Using Temporary File System mounts"
-
-	If your container generates non-persistent state data, consider using a `tmpfs` mount to avoid storing the data anywhere permanently, and to increase the container’s performance by avoiding writing into the container’s writable layer.
-
-Choose the `-v` flag for mounting volumes
-
-`-v` or `--volume`: Consists of three fields, separated by colon characters (:). 
-
-The fields must be in the correct order, and the meaning of each field is not immediately obvious.
-
-- The first field is the path on your local machine that where the data are.
-- The second field is the path where the file or directory are mounted in the container.
-- The third field is optional, and is a comma-separated list of options, such as `ro`.
-
-```
--v /home/username/your_data_folder:/container_folder
-```
-
-```
-$ docker run -v /home/$USER/read_cleanup:/work alpine:latest ls -l /work
-```
-
-So what if we wanted to work interactively inside the container?
-
-```
-$ docker run -it -v /home/$USER/read_cleanup:/work alpine:latest sh
-```
-
-```
-$ ls -l 
-$ ls -l work
-```
-
-Once you're in the container, you will see that the `/work` directory is mounted in the working directory.
-
-Any data that you add to that folder outside the container will appear INSIDE the container. And any work you do inside the container saved in that folder will be saved OUTSIDE the container as well.
-
-??? Info " Mounts vs Volumes"
-
-	The `-v` or `--volume` flag was used for standalone containers and the `--mount` flag was used for swarm services. 
-    
-    However, starting with Docker 17.06, you can also use `--mount` with standalone containers. In general, `--mount` is more explicit and verbose. 
-    
-    The biggest difference is that the `-v` syntax combines all the options together in one field, while the `--mount` syntax separates them. 
-    
-    Here is a comparison of the syntax for each flag.
-
-    ```
-	$docker run --rm -v $(pwd):/work -p 8787:8787 -e PASSWORD=cc2022 rocker/verse:4.1.3
-    ```
-
-	In the Jupyter Lab example, we use the `-e` environmental flag to re-direct the URL of the container at the localhost
-
-    ```
-	$docker run --rm -v $(pwd):/work -p 8888:8888 -e REDIRECT_URL=http://localhost:8888 jupyter/base-notebook
-    ```
 
 ---
 
