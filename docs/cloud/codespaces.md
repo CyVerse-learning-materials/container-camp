@@ -1,22 +1,22 @@
-# GitHub CodeSpaces
+# GitHub :octicons-codespaces-16: CodeSpaces
 
-For this workshop, we are working in GitHub [CodeSpaces](https://docs.github.com/en/codespaces){target=_blank}. You will be given access to an organization where CodeSpaces have been enabled or the workshop. 
+For this workshop, we are working in GitHub [:octicons-codespaces-16: CodeSpaces](https://docs.github.com/en/codespaces){target=_blank}. You will be given access to an organization where CodeSpaces have been enabled for the duration of the workshop. 
 
 ??? Question "What is a 'Development Environment'?"
 
-    A development environment or `Dev Env` for short, is a place where software can be written and tested without impacting users or "production" environments.
+    A development environment or "dev environment" for short, is a place where software can be written and tested without impacting users or "production environments" as part of the software lifecycle.
     
-    Containers-within-containers is another way to think about this paradigm -- we can create a containerized Integrated Development Environment (IDE) container which has all of our favorite software tools and visual software.
+    Containers-within-containers are another way to think about this paradigm. We create a containerized Integrated Development Environment (IDE) container which has all of our favorite software development tools and visual software (e.g., :material-microsoft-visual-studio-code: VSCode) where we can write our program and try out new package installations.
     
     **Terminology:**
     
-    *Development Environment*: Environment for development tasks such as designing, programming, debugging, etc.
+    ***:material-dev-to: Development Environment***: Environment for development tasks such as designing, programming, debugging, etc.
 
-    *Test Environment*: an environment with the same configuration as the "production environment" where testing can be done without interrupting the main service, also called Q/A or Quality Assurance Environment. 
+    ***:material-test-tube-empty: Test Environment***: an environment with the same configuration as the "production environment" where testing can be done without interrupting the main service, also called Q/A or "Quality Assurance Environment". 
     
-    *Staging Environment*: Where the work from testing is merged into the built system before release. 
+    ***:material-test-tube: Staging Environment***: Where the work from testing is merged into the built system before public release. 
     
-    *Production Environment*: The environment where users interact with the now-public tools. 
+    ***:octicons-verified-16: Production Environment***: The environment where users interact with the now-public tools. 
     
 "CodeSpaces" are virtual services which provides "cloud-based development environment" for software programmers and data scientists. 
 
