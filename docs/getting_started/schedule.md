@@ -55,9 +55,9 @@
     | 09:55 | Break | |
     | 10:00 | [Building Docker Images :material-docker:](../docker/build.md )  | Carlos | |
     | 10:55 | Break | |
-    | 11:00 | [Building Docker Images :material-docker:](../docker/build.md ) | Michele | | 
+    | 11:00 | [Using Docker Compose :material-docker:](../docker/compose.md ) | Michele | | 
     | 11:55 | Break | | |
-    | 12:00 | [Integrating your containers into CyVerse](https://learning.cyverse.org/de/create_apps/){target=_blank} | Tyson | | 
+    | 12:00 | [Integrating your Containers into CyVerse](https://learning.cyverse.org/de/create_apps/){target=_blank} | Tyson | | 
     | 12:55 | Conclude | | |
 
 
@@ -85,6 +85,30 @@
 *We are offering the Container Basics course in-person on the day before the Advanced Camp begins. Registered Advanced Campers, please contact us if you are interested in attending this optional pre-session.*
 
 ### Day 1 (2022-05-17) Continuous Automation
+
+!!! Example "Activities"
+
+    | Time (PDT)| Activity | Instructor | Outcome | 
+    |-----------|----------|------------|-------|
+    | 09:00 | Welcome | All |
+    | 09:05 | Overview of Website | Michele | [Code of Conduct](../getting_started/code_conduct.md) |
+    | 09:15 | [Start CodeSpace :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | Using Dev Environments to create containers|
+    | 09:30 | [:material-docker: Building Docker images from Dockerfiles (refresh)](../docker/build.md) | Carlos | Writing Dockerfiles |
+    | 09:55 | Break | |
+    | 10:00 | [:material-docker: Continuous Integration with GitHub Actions](../docker/actions.md) | Carlos & Tyson | Writing GitHub Actions for Docker image creation | 
+    | 10:40 | Break | |
+    | 11:00 | [Getting Started on Jetstream-2 (Cloud)](../cloud/js2.md) | Tyson | Intro to Jetstream-2 Exosphere, start a VM | 
+    | 11:30 | [Getting Started on Jetstream-2 (Cloud)](../cloud/js2.md) | Tyson | Setting up a private Docker Registry | 
+    |12:00 | Lunch | | |
+    | 13:00 | [:material-docker: Build your own containers (hands on)](../docker/advanced.md)  | Michele & Tyson | Create your own containers with actions and push to registries | 
+    | 13:55 | Break |  | |
+    | 14:00 | [:material-docker: Build your own containers (presentations)](../docker/advanced.md) | All | time to show off what you've done or plan to do | 
+    | 14:55 | Break | | |
+    | 15:00 | [:material-docker: Docker-Compose on Jetstream-2](../docker/compose.md) | Michele | |
+    | 15:55 | Break | | |
+    | 16:00 | [:material-docker: Create and Deploy Tools and Apps in CyVerse]() | Tyson | || 
+    | 16:55 | Conclude for the day | All | push changes to your GitHub |
+
 
 **Activity:**
 
