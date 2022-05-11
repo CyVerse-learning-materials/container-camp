@@ -419,6 +419,8 @@ Docker offers three different ways to mount data into a container from the Docke
 - **tmpfs mounts**
 - **Bind mounts**
 
+![bind_mount](../assets/docker/bind_mount.png)
+
 When in doubt, volumes are almost always the right choice.
 
 ### Volumes
