@@ -470,26 +470,6 @@ Once you're in the container, you will see that the `/work` directory is mounted
 
 Any data that you add to that folder outside the container will appear INSIDE the container. And any work you do inside the container saved in that folder will be saved OUTSIDE the container as well.
 
-??? Info " Mounts vs Volumes"
-
-	The `-v` or `--volume` flag was used for standalone containers and the `--mount` flag was used for *swarm* services. 
-    
-    However, starting with Docker 17.06, you can also use `--mount` with standalone containers. In general, `--mount` is more explicit and verbose. 
-    
-    The biggest difference is that the `-v` syntax combines all the options together in one field, while the `--mount` syntax separates them. 
-    
-    Here is a comparison of the syntax for each flag.
-
-    ```
-	$docker run --rm -v $(pwd):/work -p 8787:8787 -e PASSWORD=cc2022 rocker/verse:4.1.3
-    ```
-
-	In the Jupyter Lab example, we use the `-e` environmental flag to re-direct the URL of the container at the localhost
-
-    ```
-	$docker run --rm -v $(pwd):/work -p 8888:8888 -e REDIRECT_URL=http://localhost:8888 jupyter/base-notebook
-    ```
-
 ---
 
 ## Working with Interactive Containers
