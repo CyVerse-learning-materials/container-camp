@@ -42,16 +42,17 @@ Let's now create a Docker Compose `.yml` that calls Jupyter Lab SciPy
 $ mkdir jupyter_compose && cd jupyter_compose
 ```
 
-We will also create `data/` and `notebooks/` folders to stage our future
+Create `data/` and `notebooks/` folders to stage our future
 data and notebook work
 
 ``` bash
-$ mkdir jupyter_compose/data
-$ mkdir jupyter_compose/notebooks
+$ mkdir data notebooks
 ```
 
-2\.  Copy or create a `entry.sh` and a `jupyter_notebook_config.json` in
+2\.  Copy or create an `entry.sh` file and a `jupyter_notebook_config.json` file in
     the `jupyter_compose/` directory
+
+```
 
 `entry.sh` creates an iRODS environment JSON with the user\'s name and
 CyVerse (iPlant) zone.
@@ -80,8 +81,9 @@ to add the token:
 }
 ```
 
-3\.  create your `docker-compose.yml` in the same directory
+3\.  Create your `docker-compose.yml` in the same directory
     `jupyter_compose/`
+
 4\.  Edit the contents of your `docker-compose.yml`
 
 ``` bash

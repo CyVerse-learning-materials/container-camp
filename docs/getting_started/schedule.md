@@ -72,11 +72,12 @@
 - Build Dockerfiles and push them to public registry
 - Use Version Control to set up automated container builds with GitHub Actions
 
-
 **Goals:**
 
 - Introduction to what Dockerfiles are and what you use them for
 - Start thinking about how to modify them for your own applications
+
+---
 
 ## :material-calendar: Advanced
 
