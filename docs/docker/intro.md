@@ -259,6 +259,58 @@ To remove all cached layers, images, and data you can use the `-af` flag for `al
 docker system prune -af
 ```
 
+### :material-docker: tag
+
+By default an image will recieve the tag `latest` when it is not specified during the `docker build` 
+
+Image names and tags can be created or changed using the `docker tag` command. 
+
+```
+docker tag imagename:oldtag imagename:newtag
+```
+
+You can also change the registry name used in the tag:
+
+```
+docker tag docker.io/username/imagename:oldtag harbor.cyverse.org/project/imagename:newtag
+```
+
+The cached image laters will not change their `sha256` and both image tags will still be present after the new tag name is generated. 
+
+### :material-docker: push
+
+By default `docker push` will upload your local container image to the [Docker Hub](){target=_blank}
+
+We will cover `push` in more detail at the end of Day 2, but the essential functionality is the same as pull.
+
+Also, make sure that your container has the appropriate [tag](./intro.md#tag)
+
+First, make sure to log into the Docker Hub, this will allow you to download private limages, to upload private/public images:
+
+```
+docker login
+```
+
+Alternately, you can [link GitHub / GitLab accounts](https://hub.docker.com/settings/linked-accounts){target=_blank} to the Docker Hub.
+
+To push the image to the Docker Hub:
+
+```
+docker push username/imagename:tag 
+```
+
+or
+
+```
+docker push docker.io/username/imagename:tag
+```
+
+or, to a private registry, here we push to CyVerse private `harbor.cyverse.org` registry which uses "project" sub folders:
+
+```
+docker push harbor.cyverse.org/project/imagename:newtag 
+```
+
 ---
 
 ## Entrypoints
@@ -602,3 +654,4 @@ Here is a compiled list of fundamental Docker Commands:
 | `rmi` | Delete an *image* from your cache |  `docker rmi hello-world:latest`  |
 | `stop` | Stop a running container | `docker stop alpine:latest` |
 | `system` | View system details, remove old images and containers with `prune` |`docker system prune` |
+| `push` | Uploads an image to the Docker Hub (or other private registry) | `docker push username/image:tag` |
