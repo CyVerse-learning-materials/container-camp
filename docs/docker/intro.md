@@ -610,6 +610,12 @@ Here are some examples to run basic RStudio and Jupyter Lab:
 $ docker run --rm -p 8787:8787 -e PASSWORD=cc2022 rocker/rstudio
 ```
 
+**note: on CodeSpaces, the reverse proxy for the DNS requires you to turn off authentication**
+
+```
+$ docker run --rm -p 8787:8787 -e DISABLE_AUTH=true rocker/rstudio
+```
+
 ```
 $ docker run --rm -p 8888:8888 jupyter/base-notebook
 ```
