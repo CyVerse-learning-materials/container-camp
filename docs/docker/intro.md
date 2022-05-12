@@ -313,19 +313,19 @@ docker push harbor.cyverse.org/project/imagename:newtag
 
 ---
 
-## Entrypoints
+## Commands & Entrypoints
 
-You can change the entrypoint of a container by making any statement after the `registry/containername:tagname`:
+We will cover the differences in `CMD` and `ENTRYPOINT` on Day 2 when we build our own images, but it is important to understand that a container can have a command appended to the `docker run` function.
+
+When a image has no commands or entrypoints specified in its Dockerfile, it will default to running a `/bin/sh` syntax. In those cases, you can add a command when the congtainer is run:
 
 ```
 $ docker run alpine echo "Hello world"
 ```
 
-In this case, the Docker client dutifully ran the ``echo`` command in our ``alpine`` container and then exited. If you've noticed, all of that happened pretty quickly. 
+the Docker client dutifully ran the ``echo`` command in our ``alpine`` container and then exited. 
 
-Imagine booting up a virtual machine, running a command and then killing it. 
-
-Now you know why they say containers are fast!
+If you've noticed, all of that happened pretty quickly.  Imagine booting up a virtual machine, running a command and then killing it. Now you know why they say containers are fast!
 
 ---
 
