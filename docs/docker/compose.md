@@ -201,3 +201,47 @@ To use WebODM:
 9\. A map will open; you can click on **3D** (bottom right) to see the 3D rendered model generated.
 
 ![webodm_3](../assets/docker/WebODM_03.png)
+
+## Example using Docker-Compose: RStudio & Jupyter
+
+1\. Create a folder `data` in your current directory:
+
+```
+mkdir data
+```
+
+2\. Create an empty `docker-compose.yml` file (e.g., touch docker-compose.yml)  and paste the following lines
+
+```
+version: "3"
+
+# All available services
+services:
+
+  # Computation
+  jupyter:
+    container_name: "jupyter_notebook"
+    image: "jupyter/datascience-notebook"
+    restart: "always"
+    #env_file:
+    #  - ./config/jupyter.env
+    volumes:
+      - ./data:/home/jovyan/work 
+    ports:
+      - 8888:8888
+
+  rstudio:
+    container_name: "rstudio"
+    image: "rocker/rstudio"
+    restart: "always"
+    environment:
+      - DISABLE_AUTH=true
+    #env_file:
+    #  - ./config/rstudio.env
+    volumes:
+      - ./data:/home/rstudio
+    ports:
+      - 8787:8787
+```
+
+3\. Run docker compose using `docker-compose up`.
