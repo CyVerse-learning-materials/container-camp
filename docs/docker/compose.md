@@ -34,75 +34,48 @@ Main advantages of Docker compose include:
 
 ## Creating a `docker-compose.yml`
 
-Let's now create a Docker Compose `.yml` that calls Jupyter Lab SciPy
+Let's now create a Docker Compose `.yml` that calls Jupyter Notebook and RStudio
 
-1\.  Copy or create the `jupyter_compose` directory
-
-``` bash
-$ mkdir jupyter_compose && cd jupyter_compose
-```
-
-Create `data/` and `notebooks/` folders to stage our future
-data and notebook work
-
-``` bash
-$ mkdir data notebooks
-```
-
-2\.  Copy or create an `entry.sh` file and a `jupyter_notebook_config.json` file in
-    the `jupyter_compose/` directory
+1\. Create a folder `shared_data` in your current directory:
 
 ```
-
-`entry.sh` creates an iRODS environment JSON with the user\'s name and
-CyVerse (iPlant) zone.
-
-``` bash
-#!/bin/bash
-
-echo '{"irods_host": "data.cyverse.org", "irods_port": 1247, "irods_user_name": "$IPLANT_USER", "irods_zone_name": "iplant"}' | envsubst > $HOME/.irods/irods_environment.json
-
-exec jupyter lab --no-browser
+mkdir shared_data
 ```
 
-`jupyter_notebook_config.json` starts the notebook without requiring you
-to add the token:
+2\. Create an empty `docker-compose.yml` file (e.g., touch docker-compose.yml) and paste the following lines
 
-``` bash
-{
-  "NotebookApp": {
-    "allow_origin" : "*",
-    "token":"",
-    "password":"",
-    "nbserver_extensions": {
-      "jupyterlab": true
-    }
-  }
-}
 ```
-
-3\.  Create your `docker-compose.yml` in the same directory
-    `jupyter_compose/`
-
-4\.  Edit the contents of your `docker-compose.yml`
-
-``` bash
 version: "3"
+
+# All available services
 services:
-  scipy-notebook:
-     build: .
-     image:    jupyter/scipy-notebook
-     volumes:
-      - "./notebooks:/notebooks"
-      - "./data:/data"
-      - ${LOCAL_WORKING_DIR}:/home/jovyan/work
-     ports:
-      - "8888:8888"
-     container_name:   jupyter_scipy
-     command: "entry.sh"
-     restart: always
+
+  # Computation
+  jupyter:
+    container_name: "jupyter_notebook"
+    image: "jupyter/minimal-notebook"
+    restart: "always"
+    environment:
+      - JUPYTER_TOKEN=mytoken
+    user: root
+    volumes:
+      - ./data:/home/jovyan/work/
+    ports:
+      - 8888:8888
+
+  rstudio:
+    container_name: "rstudio"
+    image: "rocker/rstudio"
+    restart: "always"
+    environment:
+      - DISABLE_AUTH=true
+    volumes:
+      - ./data:/home/rstudio
+    ports:
+      - 8787:8787
 ```
-4\.  Build the container with `docker-compose` instead of `docker build`
+
+3\. Run both Jupyter Lab and RStudio using `docker-compose up` instead of `docker run`.
 
 !!! Note
         Handling containers with Docker Compose is fairly simple
@@ -111,7 +84,7 @@ services:
         docker-compose up
         ```
 
-        mounts the directory and starts the container
+        attaches the volumes, opens ports, and starts the container
 
         ``` bash
         docker-compose down
@@ -123,29 +96,20 @@ A brief explanation of `docker-compose.yml` is as below:
 
 -   The web service builds from the Dockerfile in the current directory.
 -   Forwards the container's exposed port to port 8888 on the host.
--   Mounts the project directory on the host to /notebooks inside the
+-   Mounts the project directory on the host to `/work` or `/rstudio` inside the
     container (allowing you to modify code without having to rebuild the
     image).
 -   `restart: always` means that it will restart whenever it fails.
 
 ---
 
-## Running `docker-compose`
+## Running, shutting down, restarting `docker-compose`
 
-Run the container
+Run the containers with
 
-``` bash
+```
 $ docker-compose up -d
 ```
-
-And that's it! You should be able to see the application running on
-`http://localhost:8888` or `<ipaddress>:8888`
-
-![docker_compose](../assets/docker/dc-1.png)
-
----
-
-## Shutting down and restarting `docker-compose`
 
 To stop running a running `docker-compose` session, either press `CTRL + C` or use the command:
 
@@ -179,7 +143,7 @@ To use WebODM:
 !!! Note "Prerequisites"
     WebODM requires `docker`, `docker-compose` to function. Additionally, if you are on Windows, users will be required to have the [Docker Windows Application](https://docs.docker.com/desktop/windows/install/) installed as well as having the [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install) (Windows Subsystem for Linux) operational.
     
-1. Ensure your machine is up to date: `sudo apt-get update && sudo apt-get upgrade -y`
+1. Ensure your machine is up to date: `sudo apt-get update`
 2. Clone the WebODM repository: `git clone https://github.com/OpenDroneMap/WebODM --config core.autocrlf=input --depth 1`
 3. Move into the WebODM folder: `cd WebODM`
 4. Run WebODM: `sudo ./webodm.sh start`
@@ -201,47 +165,3 @@ To use WebODM:
 9\. A map will open; you can click on **3D** (bottom right) to see the 3D rendered model generated.
 
 ![webodm_3](../assets/docker/WebODM_03.png)
-
-## Example using Docker-Compose: RStudio & Jupyter
-
-1\. Create a folder `data` in your current directory:
-
-```
-mkdir data
-```
-
-2\. Create an empty `docker-compose.yml` file (e.g., touch docker-compose.yml)  and paste the following lines
-
-```
-version: "3"
-
-# All available services
-services:
-
-  # Computation
-  jupyter:
-    container_name: "jupyter_notebook"
-    image: "jupyter/datascience-notebook"
-    restart: "always"
-    #env_file:
-    #  - ./config/jupyter.env
-    volumes:
-      - ./data:/home/jovyan/work 
-    ports:
-      - 8888:8888
-
-  rstudio:
-    container_name: "rstudio"
-    image: "rocker/rstudio"
-    restart: "always"
-    environment:
-      - DISABLE_AUTH=true
-    #env_file:
-    #  - ./config/rstudio.env
-    volumes:
-      - ./data:/home/rstudio
-    ports:
-      - 8787:8787
-```
-
-3\. Run docker compose using `docker-compose up`.
