@@ -12,6 +12,8 @@
 
 [Rancher (K3s) Lightweight Kubernetes](https://rancher.com/docs/k3s/latest/en/){target=_blank} for Edge, IOT, CI deployments
 
+[KEDA](https://keda.sh/){target=_blank} - K8s event driven autoscaler.
+
 ## Useful resources related to Automation
 
 [Terraform by Hashicorp](https://www.terraform.io/){target=_blank}
