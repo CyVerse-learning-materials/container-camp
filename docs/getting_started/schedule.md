@@ -133,12 +133,38 @@
 
 ### Day 2 (2022-05-18) - Accelerate Analyses on Cloud and HPC/HTC
 
+!!! Example "Activities"
+
+    | Time (PDT)| Activity | Instructor | Outcome | 
+    |-----------|----------|------------|---------|
+    | 09:00 | Welcome back | All | |
+    | 09:05 | Answer questions about previous day | All |  |
+    | 09:10 |  [TACC HPC](https://containers-at-tacc.readthedocs.io/en/latest/singularity/02.singularity_batch.html) | John Fonner | Running Singularity on HPC 
+    | 09:55 | Break | |
+    | 10:00 | [TACC HPC continued] | | |
+    | 10:30 | [Open Science Grid (OSG)]() | Mats Rynge (USC ISI) | |
+    | 10:30 | Break | |
+    | 10:40 | OSG Demo | | |
+    | 11:10 | [Start CodeSpace :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | Using Dev Environments to create containers|
+    | 11:15 | Intro to Singularity CLI | Tyson | run Singularity commands from the shell | 
+    | 12:00 | Lunch | | |
+    | 13:00 | Writing Singularity files | Tyson | writing Singularity and building .sif images |  
+    | 13:55 | Break |  | |
+    | 14:00 | Building Singularity on Cloud | Mats | build `*.sif` images on SyLabs.io | 
+    | 14:55 | Break | | |
+    | 15:00 | BYOC with Singularity (Jetstream-2) |  | | |
+    | 15:55 | Break | | |
+    | 16:00 |  BYOC cont. | | | | 
+    | 16:55 | Conclude for the day | All | push changes to your GitHub |
+
+*  **BYOC = bring your own code**
+
 **Activity**
 
 - Hands on exercise using SingularityCE in [CodeSpaces](../cloud/codespaces.md)
 - Introduction to SingularityCE
 - Advanced uses of SingularityCE on HPC/HTC/Cloud
-- Guest Speaker(s) TBA
+- Guest Speaker(s): [Mats Rynge (USC)](https://ci-compass.org/people/mats-rynge/), [John Fonner (TACC)]()
 
 **Content**
 
@@ -155,6 +181,27 @@
 - Define use cases for OSG and/or NVIDIA acceleration of analyses
 
 ### Day 3 (2022-05-19) - Container Orchestration with Kubernetes
+
+!!! Example "Activities"
+
+    | Time (PDT)| Activity | Instructor | Outcome | 
+    |-----------|----------|------------|---------|
+    | 09:00 | Welcome back | All | |
+    | 09:05 | Answer questions about previous day |  |  |
+    | 09:10 |  [Introduction to Kubernetes (K8s)]() | Tyson | 
+    | 09:55 | Break | |
+    | 10:00 | [Working in K8s]() | Tyson | K3s on JS-2 |
+    | 10:45 | Break | |
+    | 11:00 | [Deploying containers in K3s]() | | |
+    | 12:00 | Lunch | | |
+    | 13:00 | [Creating K8s configs] | Tyson | |  
+    | 13:55 | Break |  | |
+    | 14:00 | [Introduction to CyVerse CACAO] | Edwin | | 
+    | 14:55 | Break | | |
+    | 15:00 | [Zero to JupyterHub]() |  | | |
+    | 15:55 | Break | | |
+    | 16:00 |  BYOC () | Tyson | GPU containers in JS-2 | 
+    | 16:55 | Conclude workshop | All | |
 
 **Activity**
 
