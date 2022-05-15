@@ -64,6 +64,11 @@ Project Jupyter maintains a lesson on deploying K8s and Helm with `minik8s` acro
 
 The closest example that you can attempt is the [Bare Metal example](https://zero-to-jupyterhub.readthedocs.io/en/latest/kubernetes/other-infrastructure/step-zero-microk8s.html){target=_blank} on JS-2
 
-## Configurations
+## Introduction to `kubectl`
+
+The Kubernetes API uses a command-line tool called `kubectl`
+
+Using K8s does not require you to own or maintain your own cluster. You can use the `kubectl` tool to connect to running clusters and start your containers.
+
 
 Kuberenetes uses combinations of JSON and YAML files for configuring a cluster. 

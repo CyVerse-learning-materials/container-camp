@@ -8,7 +8,7 @@
 
 ### Day 1 - Introduction to Docker
 
-!!! Example "Activities"
+??? Example "Activities"
 
     | Time (PDT)| Activity | Instructor | Outcome | 
     |-----------|----------|------------|-------|
@@ -44,7 +44,7 @@
 
 ### Day 2 (2022-05-13) - Building Docker Containers
 
-!!! Example "Activities"
+??? Example "Activities"
 
     | Time (PDT)| Activity | Instructor | Notes | 
     |-----------|----------|------------|-------|
@@ -93,23 +93,22 @@
     |-----------|----------|------------|-------|
     | 09:00 | Welcome | All |
     | 09:05 | Overview of Website | Michele | [Code of Conduct](../getting_started/code_conduct.md) |
-    | 09:15 | [Start CodeSpace :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | Using Dev Environments to create containers|
-    | 09:30 | [:material-docker: Building Docker images from Dockerfiles (refresh)](../docker/build.md) | Carlos | Writing Dockerfiles |
-    | 09:55 | Break | |
-    | 10:00 | [:material-docker: Continuous Integration with GitHub Actions](../docker/actions.md) | Carlos & Tyson | Writing GitHub Actions for Docker image creation | 
-    | 10:40 | Break | |
-    | 11:00 | [Getting Started on Jetstream-2 (Cloud)](../cloud/js2.md) | Tyson | Intro to Jetstream-2 Exosphere, start a VM | 
-    | 11:30 | [Getting Started on Jetstream-2 (Cloud)](../cloud/js2.md) | Tyson | Setting up a private Docker Registry | 
-    |12:00 | Lunch | | |
-    | 13:00 | [:material-docker: Build your own containers (hands on)](../docker/advanced.md)  | Michele & Tyson | Create your own containers with actions and push to registries | 
+    | 09:10 | [:material-microsoft-visual-studio-code:  (re)Start CodeSpace ](../cloud/codespaces.md) | Tyson | Using Dev Environments to create containers|
+    | 09:15| [:material-docker: Building Docker images from Dockerfiles (refresh)](../docker/build.md) | Carlos & Michele | Builder Stages, Compose, X11 |
+    | 09:55 | Break | 
+    | 10:00 | [:material-docker: Continuous Integration with GitHub Actions](../docker/actions.md) | Michele & Tyson | Writing GitHub Actions for Docker image creation | 
+    | 10:40 | Break | All | Coffee and Snacks in Galley Kitchen |
+    | 11:00 | [:fontawesome-solid-wind: Jetstream-2 Overview](../cloud/js2.md) | Tyson | XSEDE & JS-2 Cloud | 
+    | 11:30 | [:fontawesome-solid-wind: Getting Started on Jetstream-2 (Cloud)](../cloud/js2.md) | Tyson | Docker w/ GPUs | 
+    |12:00 | Lunch | | On your own |
+    | 13:00 | [:material-github: GitHub Actions](../docker/actions.md)  | Michele & Tyson | Intro to Actions | 
     | 13:55 | Break |  | |
-    | 14:00 | [:material-docker: Build your own containers (presentations)](../docker/advanced.md) | All | time to show off what you've done or plan to do | 
-    | 14:55 | Break | | |
-    | 15:00 | [:material-docker: Docker-Compose on Jetstream-2](../docker/compose.md) | Michele | |
+    | 14:00 | [:material-github: GitHub Actions ](../docker/actions.md) | Michele & Tyson | CI/CD with Actions to DockerHub | 
+    | 14:40 | Break | | Tea and Snacks in Galley Kitchen|
+    | 15:00 | [:material-rocket-launch: Intro to Discovery Environment in CyVerse](https://learning.cyverse.org/de/){target=_blank} | Tyson | |
     | 15:55 | Break | | |
-    | 16:00 | [:material-docker: Create and Deploy Tools and Apps in CyVerse]() | Tyson | || 
-    | 16:55 | Conclude for the day | All | push changes to your GitHub |
-
+    | 16:00 | [:material-rocket-launch: Create and Deploy Tools and Apps in CyVerse](https://learning.cyverse.org/de/create_apps/){target=_blank} | TBA | || 
+    | 16:55 | Conclude for the day | All | Push changes to GitHub, shut down apps |
 
 **Activity:**
 

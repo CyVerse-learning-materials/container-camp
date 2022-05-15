@@ -1,44 +1,95 @@
 # GitHub Actions and Docker
 
-**Actions** is a feature of [GitHub](https://github.com/) that allows the automation and execution of workflows invoved in the development of your software and code. Read more on GitHub Actions at the [offical GitHub Docs page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions).
+[GitHub Actions](https://github.com/features/actions?gclid=EAIaIQobChMI6JzCw9bf9wIVhD-tBh11sQ42EAAYASABEgKxrvD_BwE){target=_blank} is a feature that allows automation and execution of workflows invoved in the development of your software and code. Read more on GitHub Actions at the [offical GitHub Docs page](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions).
 
-GitHub Actions can also be used to create and manage your own Docker Images and Containers. Here we will learn how we can create a Docker Imange through GitHub Actions.
+Actions can also be used to create and manage your Docker Images. 
 
-In this example we are going to creat a small GitHub repository that will create and push your Docker Image.
+Here you will learn how to can create Actions which build and then push images from GitHub to a Docker Registry of your choice. 
 
 ---
 
-## Setting up a Docker Project
-
-A Docker project on GitHub requires 2 folders:
-
-- A `.github/workflows` folder: containing required necessary `yml` files that build the containers through GitHub;
-- A `Dockerfile`: file necessary to build containers.
-
 ### Prerequisites
 
-- A [GitHub](https://github.com/) account;
-- A [Docker](https://www.docker.com/) account.
+- A [GitHub](https://github.com/){target=_blank} account
+- A [Docker](https://hub.docker.com/){target=_blank} account
 
-### Creating your Docker Repository on GitHub
+## Setting up a Git Repository with Actions for Docker
 
-To create a GitHub Repository:
-1. Navigate to your GitHub Account and select **New**;
+??? Info "CI/CD Terminology"
+
+    * **:material-infinity: continuous integration** builds, tests, and automatically accepts changes to code in a repository 
+    * **:material-infinity: continuous delivery** delivers code changes to production-ready environments
+    *  **:material-infinity: continuous deployment** does just that, it deploys changes to the code
+    * **:material-pipe: CI pipeline** compiles code, tests it, and makes sure all of your changes work. It should run whenever there is a change (push) to the repository
+  
+    * **:material-pipe: CD pipeline** goes one step further and deploys new code into production.
+
+    We are focusing on GitHub, but there are other platforms which you can explore for building and pushing containers to registries
+
+    These include [GitLab Runners]() 
+
+    Other types of Continuous Integration are used on code repositories to ensure that code stays functional. 
+
+### Create a GitHub Repository
+
+Navigate to your GitHub Account and select **New**;
 
 ![Actions_01](../assets/docker/Actions_01.png)
 
-2\. Give your repository a unique name;
 
-??? Tip
-    It is also suggested to add `README` file as this will add structure to the repository
+??? Tip ":material-github: Creating README, LICENSE, & .gitignore"
 
-![Actions_02](../assets/docker/Actions_02.png)
+    When you create your new git repository you are asked to create a `README`, a `LICENCE`, and a `.gitignore` file.
 
-3\. Click **Create Repository**.
+    Go ahead and create all three of these, as they are useful and fundamental to making your repository reproducible. 
 
-Navigate to your new Repository. Either `clone` your repository to your own machine (suggested), or work directly within GitHub.
+    README -- we want to use the README to help future-us when we revisit this repository. Make sure to include detailed instructions 
 
-### Linking your GitHub and Docker accounts
+    LICENSE -- pick a license which is useful for your specific software use case.
+
+    `.gitignore` -- use a file which will keep docker project files isolated
+      
+    ??? info ":material-docker: `.gitignore` example"
+
+        ```
+            # Docker project generated files to ignore
+            #  if you want to ignore files created by your editor/tools,
+            #  please consider a global .gitignore https://help.github.com/articles/ignoring-files
+            .vagrant*
+            bin
+            docker/docker
+            .*.swp
+            a.out
+            *.orig
+            build_src
+            .flymake*
+            .idea
+            .DS_Store
+            docs/_build
+            docs/_static
+            docs/_templates
+            .gopath/
+            .dotcloud
+            *.test
+            bundles/
+            .hg/
+            .git/
+            vendor/pkg/
+            pyenv
+            Vagrantfile
+        ```
+
+In the repository, create two nested folders required for a Docker Actions project:
+
+- A `.github/workflows` folder: containing required necessary `yml` files that build the containers through GitHub;
+
+In the workflows folder, we're going to add a `.yml` 
+
+In the main repository, along with the `README` and `LICENCE` file, create another folder called `/docker`
+
+In the `/docker` folder we're going to put the `Dockerfile` file necessary to build the image.
+
+### Link your GitHub and Docker accounts
 
 Ensure you can access [Docker Hub](https://hub.docker.com/) from any workflows you create:
 
@@ -58,6 +109,7 @@ Ensure you can access [Docker Hub](https://hub.docker.com/) from any workflows y
 4. On GitHub, return to your repository secrets, and add the PAT as a secret with the name `DOCKER_HUB_ACCESS_TOKEN`.
 
 ![Actions_05](../assets/docker/Actions_05.png)
+
 
 ---
 
@@ -132,3 +184,12 @@ jobs:
 ![Actions_08](../assets/docker/Actions_08.png)
 
 ![Actions_09](../assets/docker/Actions_09.png)
+
+
+## Setting up your own
+
+[:material-github: GitHub Actions Runner](https://github.com/actions/runner){target=_blank}
+
+[:material-file-document-outline: Self-hosted Actions Runner Docs](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners){target=_blank}
+
+[:material-gitlab: GitLab Runner](https://docs.gitlab.com/runner/install/){target=_blank}
