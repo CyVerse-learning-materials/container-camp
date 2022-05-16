@@ -1,14 +1,14 @@
 ## Useful Resources related to Singularity
 
-[SyLabs Singularity Homepage](https://www.sylabs.io/){target=_blank}
+[SyLabs Singularity Community Edition (CE)](https://sylabs.io/singularity/){target=_blank}
 
-[Singularity Community Edition (CE) Official Documentation](https://sylabs.io/singularity/){target=_blank}
-
-[Singularity HPC](https://singularity-hpc.readthedocs.io/en/latest/){target=_blank}
+[Singularity-HPC](https://singularity-hpc.readthedocs.io/en/latest/){target=_blank}
 
 [:material-robot: Autamus Singularity Image Repository](https://singularityhub.github.io/singularity-hpc/){target=_blank}
 
-## Campus HPC resources
+[:material-alpha: Carpentries Singularity Incubator](https://carpentries-incubator.github.io/singularity-introduction/){target=_blank}
+
+## Campus HPC resources for Singularity
 
 [OpenScienceGrid Singularity Documentation](https://opensciencegrid.org/docs/worker-node/install-singularity/){target=_blank}
 

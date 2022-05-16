@@ -1,14 +1,25 @@
-## Building Singularity `.sif` image files
+## :octicons-terminal-24: Singularity CLI continued
 
-Similar to Docker, which uses a `Dockerfile` to build its images, Singularity uses a file called `Singularity`.
+### Build Singularity `.sif` images
 
-Singularity images use the `.sif` extension and appear as a single compressed file, versus Docker which uses many cached file layers to create a single image. 
+Similar to Docker which uses a `Dockerfile` to build its images, Singularity uses a file called `Singularity`.
+
+**Important**
+
+* Singularity images use the `.sif` extension and appear as a single compressed file, versus Docker which uses many cached file layers to create a single image. 
+* `.sif` files also use layers, but these are not apparent.
+* `.sif` images are cached in the folder where you build them, or designate them.
+* When building from `docker://` the Docker image layers are downloaded and cached by Singularity in a `/.Singularity` folder on your build environment.
+
+### :octicons-container-24: build
 
 ### Create a `.sif` image using a Docker image as the template
 
-As we've learned from the HPC and HTC groups, building Singularity images is not always the best practice. Most groups suggest that you build your containers with Docker, and host them on a Docker Registry first.
+As we've learned from the HPC and HTC groups, building Singularity images is not necessarily the most accessible and reproducible method for managing containers.
 
-The market dominance of Docker and its wide acceptance as a container format, has led us to use Singularity in collaboration with Docker in most cases.
+Most groups suggest that you build your containers with Docker, and host them on a Docker Registry first.
+
+The market dominance of Docker and its wide acceptance as a container format, has led us to use Singularity with Docker in most cases.
 
 We've already covered how you can pull an existing image from Docker Hub, but we can also build a Singularity image from the Docker Hub using the build command:
 
@@ -44,6 +55,21 @@ $ sudo singularity build ubuntu-latest.sif ubuntu-latest/
 
 ## Creating Singularity `.sif` from scratch
 
+The contents of the `Singularity` file differ from `Dockerfile`
+
+-   `%help` - create text for a help menu associated with your container
+-   `%setup` - executed on the host system outside of the container, after the base OS has been installed.
+-   `%files` - copy files from your host system into the container
+-   `%labels` - store metadata in the container
+-   `%environment` - loads environment variables at the time the container is run (not built)
+-   `%post` - set environment variables during the build
+-   `%runscript` - executes a script when the container runs
+-   `%test` - runs a test on the build of the container
+
+| Dockerfile | FROM | ARG | COPY | RUN | ENV | LABEL | CMD |
+|--------|------|-----|------|-----|-----|-------|-----|
+| Singularity | `Bootstrap:` | `%post` | `%files` | `%post` | `%environment` | `%label` | `%runscript` |
+
 ### Writing the `Singularity` file
 
 [SyLabs User-Guide](https://sylabs.io/guides/3.9/user-guide/)
@@ -59,31 +85,17 @@ Building your own containers requires that you have sudo privileges - therefore 
 The top of the file, selects the base OS for the container, just like
 `FROM` in Docker.
 
-Bootstrap: references another registry (e.g. `docker` for DockerHub,
-`debootstrap`, or `shub` for Singularity-Hub).
+`Bootstrap:` references another registry (e.g. `docker` for DockerHub,
+`debootstrap`, or `library` for Sylabs [Container Library](https://cloud.sylabs.io/library){target=_blank}).
 
 `From:` selects the tag name.
 
-```
-Bootstrap: shub
-From: vsoch/hello-world
-```
-
-Pulls a container from Singularity Hub (v2.6.1)
-
-Using debootstrap with a build that uses a mirror:
+Using `debootstrap` with a build that uses a mirror:
 
 ```
 BootStrap: debootstrap
-OSVersion: xenial
+OSVersion: jammy
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
-```
-
-Using a localimage to build:
-
-```
-Bootstrap: localimage
-From: /path/to/container/file/or/directory
 ```
 
 Using CentOS-like container:
@@ -95,27 +107,21 @@ MirrorURL: http://mirror.centos.org/centos-7/7/os/x86_64/
 Include:yum
 ```
 
-Note: to use yum to build a container you should be operating on a RHEL
-system, or an Ubuntu system with yum installed.
+Note: to use yum to build a container you should be operating on a RHEL system, or an Ubuntu system with yum installed.
+
+Using a localimage to build:
+
+```
+Bootstrap: localimage
+From: /path/to/container/file/or/directory
+```
+
 
 The container registries which Singularity uses are listed in the
 [Introduction Section 3.1](https://learning.cyverse.org/projects/container_camp_workshop_2019/en/latest/singularity/singularityintro.html#downloading-pre-built-images).
 
 -   The Singularity file uses sections to specify the dependencies,
     environmental settings, and runscripts when it builds.
-
-The additional sections of a Singularity file include:
-
--   `%help` - create text for a help menu associated with your container
--   `%setup` - executed on the host system outside of the container, after the base OS has been installed.
--   `%files` - copy files from your host system into the container
--   `%labels` - store metadata in the container
--   `%environment` - loads environment variables at the time the container is run (not built)
--   `%post` - set environment variables during the build
--   `%runscript` - executes a script when the container runs
--   `%test` - runs a test on the build of the container
-
-**Setting up Singularity file system**
 
 #### :material-layers-edit: **help**
 
@@ -138,27 +144,50 @@ during setup
 
 #### :material-layers-edit: **files**
 
-`%files` include any files that you want to copy from your localhost into
-the container.
+`%files` include any files that you want to copy from your localhost into the container.
 
 #### :material-layers-edit: **post**
 
-`%post` includes all of the environment variables and dependencies that
-you want to see installed into the container at build time.
+`%post` includes all of the environment variables and dependencies that you want to see installed into the container at build time.
+
+```
+
+```
 
 #### :material-layers-edit: **environment**
 
-`%environment` includes the environment variables which we want to be run
-when we start the container
+`%environment` includes the environment variables which we want to be run when we start the container
+
+```
+
+```
 
 #### :material-layers-edit: **runscript**
 
 `%runscript` does what it says, it executes a set of commands when the
 container is run.
 
-#### :materials-layers-edit: **label**
+```
 
-Example Singularity file bootstrapping an Ubuntu (22.04) image.
+```
+
+#### :material-layers-edit: **labels**
+
+`%labels` are used similar to Dockerfile which allow you to add metadata to the image file in key-value pairs
+
+```
+%labels
+Author Your Name
+Email email@address.org
+Version v2022
+CustomLabel statement here
+```
+
+Labels can be read using the `inspect` command
+
+#### Example File
+
+Example `Singularity` file bootstrapping an Ubuntu (22.04) image.
 
 ```
 Bootstrap: docker
@@ -192,9 +221,7 @@ Run the container:
 singularity run cowsay.sif
 ```
 
-!!! Warning "squashfs"
-      If you build a squashfs container, it is immutable (you cannot --writable edit it)
+## Sandbox
 
-**Cryptographic Security**
+Sandboxing is another approach to building up a container image.
 
-[Documentation](https://www.sylabs.io/guides/3.5/user-guide/signNverify.html)

@@ -116,7 +116,7 @@ RaawwWWWWWRRRR!! Avocado!
 
 ## Singularity CLI
 
-Singularity’s command line interface allows you to build and interact with containers transparently. You can run programs inside a container as if they were running on your host system. You can easily redirect IO, use pipes, pass arguments, and access files, sockets, and ports on the host system from within a container.
+Singularity’s [command line interface](https://sylabs.io/guides/3.9/user-guide/cli.html){target=_blank} allows you to build and interact with containers transparently. You can run programs inside a container as if they were running on your host system. You can easily redirect IO, use pipes, pass arguments, and access files, sockets, and ports on the host system from within a container.
 
 ### :octicons-container-24: help
 
@@ -180,13 +180,26 @@ Examples:
 For additional help or support, please visit https://www.sylabs.io/docs/
 ```
 
+
+### :octicons-container-24: search
+
+Just like with Docker, you can `search` the Singularity container registries for images.
+
+```
+singularity search tensorflow
+```
+
 ### :octicons-container-24: pull
 
 The easiest way to use a Singularity is to `pull` an existing container
 from one of the Registries.
 
 ```
-singularity pull library://godloved/cowsay
+singularity pull library://lolcow
+```
+
+```
+singularity pull docker://<yourusername>/cowsay
 ```
 
 #### Downloading pre-built images
@@ -300,7 +313,7 @@ $ sudo singularity run cowsay_latest.sif
         ||     ||
 ```
 
-### Shell
+### :octicons-container-24: shell
 
 The `shell` command allows you to spawn a new shell within your
 container and interact with it as though it were a small virtual
@@ -329,7 +342,7 @@ tswetnam
     exited.
 
 
-### Executing commands
+### :octicons-container-24: exec
 
 The exec command allows you to execute a custom command within a
 container by specifying the image file. For instance, to execute the
@@ -347,11 +360,15 @@ ______________________
                 ||     ||
 ```
 
-!!! Note
-    `exec` also works with the library://, docker://, and shub:// URIs. This
-    creates an ephemeral container that executes a command and disappears.
+`exec` also works with the library://, docker://, and shub:// URIs. 
 
-### Running a container
+```
+singularity exec library://lolcow container camp 2022
+```
+
+This  creates an ephemeral container that executes a command and disappears.
+
+### :octicons-container-24: run
 
 Singularity containers contain
 [runscripts](https://www.sylabs.io/guides/3.0/user-guide/definition_files.html#runscript).
@@ -378,15 +395,18 @@ singularity run lolcow_latest.sif
                 ||     ||
 ```
 
-#### Exercise - 1
+### :octicons-container-24: inspect
 
-Here are the brief steps:
-
-1.  Go to [DockerHub](https://hub.docker.com/) and select any image
-2.  Use `singularity pull` command to pull the Docker image and convert it to .sif
+The `inspect` command will provide information about labels, metadata, and environmental variables.
 
 ```
-singularity pull docker://hello-world:latest
+singularity inspect lolcow.sif
 ```
 
-3.  Use `singularity run` command to launch a container from the Docker image and check to see if you get the same output that as you get from running `docker run`
+```
+singularity inspect library://lolcow
+```
+
+### :octicons-container-24: build
+
+See [Next Section](../singularity/advanced.md) for details of `build`
