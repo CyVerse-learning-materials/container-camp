@@ -1,59 +1,58 @@
-# Introduction to SingularityCE
+In this section we're going to be working with [Singularity Community Edition (CE)](https://sylabs.io/guides/3.9/user-guide/index.html){target=_blank} 
 
-In this section we're going to be working with [Singularity Community Edition (CE)](https://sylabs.io/guides/3.9/user-guide/index.html){target=_blank} and with [Apptainer](https://apptainer.org/){target=_blank}
+??? Question "Wait, what is "Apptainer", and what is the difference between SingularityCE and Apptainer?"
 
-??? Question "Wait, what's the difference between Singularity and Apptainer?"
-
-    Singularity has gone through rapid expansion, evolution, and now a split since it was created in 2017.
+    The Singularity project was split into multiple projects managed by different organizations since it was created in 2017.
 
     In a nutshell:
 
-    - Greg Kurtzer founded "Singularity" while at Lawrence Berkeley National Laboratory
-    - Kurtzer created [Sylabs](https://sylabs.io/){target=_blank}, a private company, around Singularity
-    - Kurtzer left Sylabs to focus on HPC-2.0 and moved Singularity to [HPCng](https://hpcng.org/){target=_blank} (a Community Org)
-    - [Sylabs forked Singularity](https://sylabs.io/singularityce-community-update/){target=_blank} for control and professionially licensed support
-    - HPCng gave the official project to Linux Foundation and renamed it '[Apptainer](https://apptainer.org/){target=_blank}'
+    - Greg Kurtzer founded the Singularity project while at the Lawrence Berkeley National Laboratory
+    - Kurtzer created [Sylabs](https://sylabs.io/){target=_blank}, a private company, around Singularity 
+    - Kurtzer left Sylabs to focus on [CIQ](https://ciq.co/){target=_blank}, another private company, and moved Singularity to [HPCng](https://hpcng.org/){target=_blank} (a Community Org)
+    - [Sylabs forked Singularity](https://sylabs.io/singularityce-community-update/){target=_blank} for control and professionially licensed support creating Singularity Community Edition"
+    - HPCng gave the official project to Linux Foundation and renamed it "[Apptainer](https://apptainer.org/){target=_blank}
+    - Apptainer is being [marketed by CIQ](https://ciq.co/apptainer/){target=_blank}
 
-    At this time, Apptainer and Singularity CE have highly similar functionality and will run containers built with one another
+    At the present time, Apptainer and Singularity CE have highly similar syntax and will run Singularity `.sif` images interoperably
 
-There are no specific skills needed beyond a basic comfort with the command line and using a text editor. Prior experience installing Linux applications could be helpful but is not required.
+??? info "Docker vs SingularityCE & Apptainer"
 
-!!! info
+    **:material-open-source-initiative: Apptainer and SingularityCE are 100% compatible with Docker but they do have some distinct differences**
 
-    *Important*: :material-open-source-initiative: Apptainer and Singularity are 100% compatible with Docker but they do have some distinct differences
 
-    **:material-docker: Docker**:
+    **:material-docker: Docker**
+      
+    :octicons-container-24: Docker containers run as `root`
 
-    :octicons-container-24:  Inside a Docker container the user has escalated privileges, effectively making them root on that host system. This privilege is not supported by *most* administrators of High Performance Computing (HPC) centers. Meaning that Docker is not, and will likely never be, installed natively on your HPC.
+      -  This privilege is almost never supported by administrators of High Performance Computing (HPC) centers. Meaning Docker is not, and will likely never be, installed natively on your HPC cluster.
 
-    **:material-open-source-initiative: SingularityCE**:
+    :octicons-container-24: uses compressed layers to create one image
 
-    :octicons-container-24:  Same user inside as outside the container
+    **:material-open-source-initiative: SingularityCE & Apptainer**:
+
+    :octicons-container-24:  Same user and group identity inside as outside the container
     
-    :octicons-container-24:  User only has root privileges if elevated with sudo when
-      container is run
+    :octicons-container-24:  User only has `root` privileges if elevated with `sudo when` the container is run
     
-    :octicons-container-24:  Can run and it can modify an existing Docker image
+    :octicons-container-24:  Can run and modify any existing Docker image
 
-    These key differences allow Singularity to be installed on most HPC centers. Because you can run virtually all Docker containers in Singularity, you can effectively run Docker on an HPC. 
+      - These key differences allow Singularity to be installed on most HPC centers. Because you can run virtually all Docker containers in Singularity, you can effectively run Docker on an HPC. 
 
-## Singularity Installation
+## SingularityCE Installation
 
 Sylabs Singularity Community Edition (CE) homepage: [https://www.sylabs.io/docs/](https://www.sylabs.io/docs/){target=_blank}
 
 Apptainer Linux Foundation homepage: [https://apptainer.org/](https://apptainer.org/){target=_blank}
 
-### Install Singularity onto a Laptop
+### Install Locally
 
 To Install Singularity follow the instructions for your specific OS: <https://sylabs.io/guides/3.9/user-guide/quick_start.html>{target=_blank}
 
-### HPC
+### Module loading on HPC
 
-Load the Singularity module on HPC
+If you are interested in working with SingularityCE on HPC, you may need to contact your systems administrator and request they install [SingularityCE](https://sylabs.io/guides/3.9/user-guide/quick_start.html#installation-request){target=_blank}. Because SingularityCE ideally needs setuid, your admins may have some qualms about giving SingularityCE this privilege. If that is the case, you might consider forwarding [this letter](https://sylabs.io/guides/3.9/user-guide/quick_start.html#Singularity-on-a-shared-resource){target=_blank} to your admins.
 
-If you are interested in working on HPC, you may need to contact your systems administrator and request they install [Singularity](https://sylabs.io/guides/3.9/user-guide/quick_start.html#installation-request){target=_blank}. Because singularity ideally needs setuid, your admins may have some qualms about giving Singularity this privilege. If that is the case, you might consider forwarding [this letter](https://sylabs.io/guides/3.9/user-guide/quick_start.html#Singularity-on-a-shared-resource){target=_blank} to your admins.
-
-Most HPC systems are running Environment Modules with the simple command module.
+Most HPC systems are running Environment Modules with the simple command `module`.
 
 You can check to see what is available:
 
@@ -61,13 +60,13 @@ You can check to see what is available:
 $ module avail singularity
 ```
 
-If Singularity is installed, load a specific version, e.g.:
+If Singularity is listed as being installed, load a specific version, e.g.:
 
 ```
-$ module load singularity/3/3.7.2
+$ module load singularity/3/3.9
 ```
 
-### CodeSpaces
+### Install in CodeSpaces
 
 Follow the instructions for an Ubuntu installation: https://sylabs.io/guides/3.9/user-guide/quick_start.html#install-system-dependencies
 
@@ -105,10 +104,7 @@ export VERSION=3.9.5 && # adjust this as necessary \
     sudo make -C builddir install
 ```
 
-### 2.4 Check Installation
-
-Singularity should now be installed on your laptop or VM, or loaded on
-the HPC, you can check the installation with:
+Check the installation with:
 
 ```
 $ singularity pull shub://vsoch/hello-world
@@ -118,22 +114,14 @@ tswetnam@tysons-box:~$ singularity run hello-world_latest.sif
 RaawwWWWWWRRRR!! Avocado!
 ```
 
-Singularity’s command line interface allows you to build and interact
-with containers transparently. You can run programs inside a container
-as if they were running on your host system. You can easily redirect IO,
-use pipes, pass arguments, and access files, sockets, and ports on the
-host system from within a container.
+## Singularity CLI
 
-The help command gives an overview of Singularity options and
+Singularity’s command line interface allows you to build and interact with containers transparently. You can run programs inside a container as if they were running on your host system. You can easily redirect IO, use pipes, pass arguments, and access files, sockets, and ports on the host system from within a container.
+
+### :octicons-container-24: help
+
+The `help` command gives an overview of Singularity options and
 subcommands as follows:
-
-```
-./mconfig && \
-    make -C builddir && \
-    sudo make -C builddir install
-```
-
-Information about subcommand can also be viewed with the help command.
 
 ```
  $ singularity help pull
@@ -192,10 +180,16 @@ Examples:
 For additional help or support, please visit https://www.sylabs.io/docs/
 ```
 
-## Downloading pre-built images
+### :octicons-container-24: pull
 
 The easiest way to use a Singularity is to `pull` an existing container
 from one of the Registries.
+
+```
+singularity pull library://godloved/cowsay
+```
+
+#### Downloading pre-built images
 
 You can use the `pull` command to download pre-built images from a
 number of Container Registries, here we'll be focusing on the
@@ -205,7 +199,6 @@ number of Container Registries, here we'll be focusing on the
 Container Registries:
 
 -   `library://` - images hosted on Sylabs Cloud
--   `shub://` - images hosted on Singularity Hub
 -   `docker://` - images hosted on Docker Hub
 -   `localimage://` - images saved on your machine
 -   `yum://` - yum based systems such as CentOS and Scientific Linux
@@ -213,6 +206,8 @@ Container Registries:
 -   `arch://` - Arch Linux
 -   `busybox://` - BusyBox
 -   `zypper://` - zypper based systems such as Suse and OpenSuse
+
+-   `shub://` - (archived) images hosted on Singularity Hub, no longer maintained
 
 ### Pulling an image from Singularity Hub
 
