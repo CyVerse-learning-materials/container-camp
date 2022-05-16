@@ -1,0 +1,31 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: MIIDBjCCAe6gAwIBAgIBATANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwptaW5pa3ViZUNBMB4XDTIyMDUxNTE1NTkwN1oXDTMyMDUxMzE1NTkwN1owFTETMBEGA1UEAxMKbWluaWt1YmVDQTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAPDFlHmTEWmUSASUtyLLRt4Xs6B7ayYFWMAmbDD9Vss3r1VWlJZr63ODBYB5SthYcJcx/8BPkzpE5mrdTazd61BmQQtkEarEp8q5Taa01pjDwuEuLjZTP2/gKTEiIKtYsnYh5Vvt17A7AofswGQ6eP3G3rA6wc+BGAV3wh8Ys2QzuakTSxr6mWeP2s2PS0JtLQjskMW7QeuwLkBhfsUqbiFZtPiemXNey1ZhL3BB3ohjCNDWw9d0xYKC7il8lwHxRTZTsQMeihStENMYmc1AdzVK33dexGuOqGIbUC9qA6Wp9lx93jFhJtf1R1utRUxogso1jeIzxGFAW0SL2/i5to8CAwEAAaNhMF8wDgYDVR0PAQH/BAQDAgKkMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBSKIdlWHWa3QJhkSvF25caYmLUECzANBgkqhkiG9w0BAQsFAAOCAQEAEvQFhAe48piWdkWyzhaOUhulyBkpl9ssIEQwoZjSYFUnxsJtgJrayABkc5uIpDXPQnKXowDZFTPhzRPO7oKpe8zskt2J6DWojd8PZaUv9cwoTX+QB63vLhr9jBMAvAjMAY+lk3V/oBdsOWnYi8vqWHnIQTL8ZGsJQDtY8QrcjUoDQXuEIwzTScEpOsx4TrOECw4AhMefokU/hmgaaDa9yEUy+qrL4V/xE5CGUIplxT51g60Dx0uF52AbE8P7pqXK/FQVyfw407BOvkJJb8BONxQaFjzn4m+QauZxiEzhHeaMMDKWybl+OYTlyW/hjk8goZ7+N1N/JTOC+XfotBhFCg==
+    extensions:
+    - extension:
+        last-update: Mon, 16 May 2022 15:59:19 UTC
+        provider: minikube.sigs.k8s.io
+        version: v1.25.2
+      name: cluster_info
+    server: https://192.168.49.2:8443
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    extensions:
+    - extension:
+        last-update: Mon, 16 May 2022 15:59:19 UTC
+        provider: minikube.sigs.k8s.io
+        version: v1.25.2
+      name: context_info
+    namespace: default
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    token: MIIEpAIBAAKCAQEAwza1RG+0GxeVvs4vnPG02zEcJ1DhDQ85cugr7PmCJD+LQnsiSzsZ5169+JpWbQ2Gw018pG6ldd1AHsbaqmUdvYiAAyfpRfKnUkOEhuTJi59PUy8mm3YWY3KuwxgBPzf+k+pVj9uYtrI8XL06C3SaMecGHIXGmEJXQopX1QXcGUCLs/2EUlt4y7epJ+XCLYuA4ebTDGL4q8MPkPfeIHcEuF1VHRzHve8zPlofAEAbyOE5B2VDzGp805hWor082FM6m88CDWhSwsJFO0vwiY2DRlbffsQghnQHaQv9oXvd4OYB0etaKRN+SbTYPI/8AZQ7o+XT2QW1BZ9hOWZzaC0RbQIDAQABAoIBAQCvmV6lGPYiCK0i3cXmn2XYZey1UQOgA7nhqwcYO7jdcmuKecj3c0px3b91CSAFKM24kNM19nHP/B3ZkXbRH/QIsei07gngac4pKaLk1JiXh86LPTa1URwCiP67b7RvcacG1xvwM9DDRsEViwHTnCe4C+Brd8qU29gyes9XR9Ycv2hZ1cKtHRNv2mqkq14V5SEALi5V3/CRo5WYiBExGuSRy3e5xUEVvDQuwBvRBVPsQVVxGJ1HnKKJWegnzPQ3TS0P6IJA+a5c/idDo5wdN1gQzyE74WW25OgNr6I/I43LOGYDN+hfCLiA8el/ue/J9jfRoRHnD6RbdfV5vlAkGFPhAoGBANX2yyJEbDU6ohSJjWJ1QnDUF3RyTB/GNenc81kQjO1WlGmopXnWPeZBgRoxtBwMy5+Cua649k/7z5iP6MqY+NIOhRjDMpC+lz7V+EhxFW165tIkUQfiVpBEJf1Fh6n7wNlDMeWVIkMufoCXnpqn4SarmIOxjYG1J/BCWvwUmR1DAoGBAOmQ4GlWXm4RNxgLXk1w6kvjXHSk74c3PfpUY2M4XnI1ATEwvGPZC0TzK9zisPDkz8ylKSPkRLX4jz2zjN06hKsOowKky49n2kU7oEte309S27P0Mq5eqH/92hX5Du5iq0jihtLMN3FUEkWAuo/9TKkIc8oyF+LO11HonHaWI1OPAoGAEEc4aSD/goU1c46LfSQiq+bW6fsQI5K241X2BZ6muh/OJsO34y8TgoMVSWLiqwemLjqJ2eskgi1MO/Um5tMAiyqjoaCoJi753sP0ob5IvQ2OpgoxSAJGR6+HnF8/1QTcRStBjo/sDWRqJ2phnK6NCJ4helN1ypp3sWW6+lau13UCgYEArLhGO59zFVIFu/IsOnhVyujHZjrSJtvjKUtec/ErZqlryESSDARlIQfyV9YLoxiR0nQQiEo1xZuZ0bcFZFPx581bHolfPx09fBUr5JCz8qUDc4ASOoAlewDuVXFoaUDuCWf668e4+EWDfYJEdFaMajOl7NA+easb76Zkjg1Y8mECgYBhEzdaQJ6nE3B0ynZoBy2580ENklSw/fi6yMkSrBd+QM/1mIYkhew8NhvG8aoWniuGT9m57mvK4ItRaG0tG9MbK+Nney0XLg0dCKhThtaSMgd/4Bt1gqhRVEUj21JeE2+ng0fZhX9MfCK3YQ0g6Drh2wleNYVyh6rje8V1NA5CDg==

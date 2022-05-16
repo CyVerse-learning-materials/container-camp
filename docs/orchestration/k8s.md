@@ -1,18 +1,18 @@
 [:material-kubernetes: Kubernetes](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/){target=_blank}, often abbreviated as `K8s`, is an open-source system for automating deployment, scaling, and management of containerized applications.
 
-K8s is the most widely used platform for managing containerized applications in cloud.
+K8s is the most widely used platform for managing containerized applications at scale in Cloud computing.
 
-Leveraging K8s for your research is highly likely as you adopt containers into your research. 
+Leveraging a K8s Cluster is likely if you adopt containers into your research portfolio.
 
-??? Question ":material-scale-balance: Why build your own K8s? "
+In these introductory lessons we will be discussing how to leverage *existing* Kubernetes Clusters using `kubectl`
 
-    Learning about containerized applications and container orchestration is why you're here and we wanted to expose you to these technologies. 
+??? Question ":material-scale-balance: Why build your own K8s Cluster? "
 
-    With that said,
+    Learning about containerized applications and container orchestration is why you're here afterall. We want to at least expose you to the existence of these technologies and to help you understand how they fit within the roadmap of Cloud Native Computing. With that said,
 
     :warning: __Designing, deploying and running your own K8s cluster is very likely a bad idea__ :warning:
     
-    This is partly because there are so many other options out there for you to use, i.e., other managed K8s platforms, but also because the engineering and technological understanding of managing K8s requires a dedicated DevOps or software engineering team to keep your platform running.
+      - Partly because there are so many other existing platforms out there, i.e., other managed K8s services, but also because the engineering and technological understanding of managing K8s requires a dedicated DevOps or software engineering team to keep your platform running.
 
     Still not deterred?
 
@@ -30,8 +30,12 @@ Leveraging K8s for your research is highly likely as you adopt containers into y
 
 !!! Info "Kubernetes Terminology"
 
+    **:material-kubernetes: Kubernetes Cluster** is a set of nodes that run containerized applications.
+
+    **:octicons-terminal-24: kubectl** is the command line interface for connecting to K8s clusters
+
     **:octicons-container-24: Pod** is the smallest deployable unit of Kubernetes, can be one or more containers that talk to one another. *Pods* are run on *Nodes*
-    
+
     **:fontawesome-solid-share-nodes: Node**: typically run on a virtual machine (VM), a *Nodes* components include *kubelet*, *kube-proxy*, and *Container run-time*
     
     **Kubelet** is the *Node* agent that manages the *Pods* on each VM
@@ -48,27 +52,77 @@ Leveraging K8s for your research is highly likely as you adopt containers into y
     
     **Control Pane** is a node that controls/manages worker nodes. The components of the Control Pane are the *API server*, the *cluster store*, the *controller manager*, and the *scheduler*.
     
-## :material-ship-wheel: Helm
 
-[Helm](https://helm.sh/){target=_blank} is the package manager for Kubernetes. 
-
-## Deploy a Kubernetes cluster
-
-We are going to be using Jetstream-2 for this section and will rely on their [documentation for Kubernetes deployment](https://docs.jetstream-cloud.org/general/kubernetes/){target=_blank}
-
-### Zero to JupyterHub
-
-[JupyterHub for Kubernetes](https://zero-to-jupyterhub.readthedocs.io/en/latest/index.html){target=_blank}
-
-Project Jupyter maintains a lesson on deploying K8s and Helm with `minik8s` across a variety of commercial cloud solutions.
-
-The closest example that you can attempt is the [Bare Metal example](https://zero-to-jupyterhub.readthedocs.io/en/latest/kubernetes/other-infrastructure/step-zero-microk8s.html){target=_blank} on JS-2
-
-## Introduction to `kubectl`
+## Introduction to K8s CLI with `kubectl`
 
 The Kubernetes API uses a command-line tool called `kubectl`
 
 Using K8s does not require you to own or maintain your own cluster. You can use the `kubectl` tool to connect to running clusters and start your containers.
 
+### Install `kubectl`
+
+[Official Documentation](https://kubernetes.io/docs/tasks/tools/){target=_blank}
+
+`kubectl` is already installed in CodeSpaces.
+
+To install on Linux:
+
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+```
+
+### :material-kubernetes: kubconfig 
 
 Kuberenetes uses combinations of JSON and YAML files for configuring a cluster. 
+
+#### generating a `config` yaml
+
+To connect to a running K8s cluster that is managed by someone else, you need to create a `config.yaml` and place it in the `~/.kube/config` folder
+
+!!! info "config example"
+
+    Example of the `~/.kube/config` file used for minikube
+    
+    ```
+    apiVersion: v1
+    clusters:
+    - cluster:
+        certificate-authority: /home/exouser/.minikube/ca.crt
+        extensions:
+        - extension:
+            last-update: Mon, 16 May 2022 15:59:19 UTC
+            provider: minikube.sigs.k8s.io
+            version: v1.25.2
+        name: cluster_info
+        server: https://192.168.49.2:8443
+    name: minikube
+    contexts:
+    - context:
+        cluster: minikube
+        extensions:
+        - extension:
+            last-update: Mon, 16 May 2022 15:59:19 UTC
+            provider: minikube.sigs.k8s.io
+            version: v1.25.2
+        name: context_info
+        namespace: default
+        user: minikube
+    name: minikube
+    current-context: minikube
+    kind: Config
+    preferences: {}
+    users:
+    - name: minikube
+    user:
+        client-certificate: /home/exouser/.minikube/profiles/minikube/client.crt
+        client-key: /home/exouser/.minikube/profiles/minikube/client.key
+    ```
+
+### :material-kubernetes: pods
+
+#### Launching a Pod
+
+####
+

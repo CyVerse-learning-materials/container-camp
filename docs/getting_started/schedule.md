@@ -94,12 +94,11 @@
     | 09:00 | Welcome | All |
     | 09:05 | Overview of Website | Michele | [Code of Conduct](../getting_started/code_conduct.md) |
     | 09:10 | [:material-microsoft-visual-studio-code:  (re)Start CodeSpace ](../cloud/codespaces.md) | Tyson | Using Dev Environments to create containers|
-    | 09:15| [:material-docker: Building Docker images from Dockerfiles (refresh)](../docker/build.md) | Carlos & Michele | Builder Stages, Compose, X11 |
-    | 09:55 | Break | 
-    | 10:00 | [:material-docker: Continuous Integration with GitHub Actions](../docker/actions.md) | Michele & Tyson | Writing GitHub Actions for Docker image creation | 
+    | 09:15| [:material-docker: Building Docker images from Dockerfiles (refresh)](../docker/build.md) | Carlos & Michele | Builder Stages, Compose |
+    | 09:55 | Break |
+    | 10:00 | [:fontawesome-solid-wind: Jetstream-2 Overview](../cloud/js2.md) | Tyson | XSEDE & JS-2 Cloud | 
     | 10:40 | Break | All | Coffee and Snacks in Galley Kitchen |
-    | 11:00 | [:fontawesome-solid-wind: Jetstream-2 Overview](../cloud/js2.md) | Tyson | XSEDE & JS-2 Cloud | 
-    | 11:30 | [:fontawesome-solid-wind: Getting Started on Jetstream-2 (Cloud)](../cloud/js2.md) | Tyson | Docker w/ GPUs | 
+    | 11:30 | [:fontawesome-solid-wind: Getting Started on Jetstream-2 (Cloud)](../cloud/js2.md) | Tyson | Docker w/ GPUs, X11 | 
     |12:00 | Lunch | | On your own |
     | 13:00 | [:material-github: GitHub Actions](../docker/actions.md)  | Michele & Tyson | Intro to Actions | 
     | 13:55 | Break |  | |
