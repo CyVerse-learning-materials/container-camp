@@ -87,7 +87,7 @@
 
 ### Day 1 (2022-05-17) Continuous Automation
 
-**Dates**: May 12th and 13th 2022
+**Dates**: May 17th 2022
 
 **Time**: 09:00AM–13:00PM  US Pacific Daylight Time (GMT-7)
 
