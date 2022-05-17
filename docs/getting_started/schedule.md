@@ -87,6 +87,14 @@
 
 ### Day 1 (2022-05-17) Continuous Automation
 
+**Dates**: May 12th and 13th 2022
+
+**Time**: 09:00AM–13:00PM  US Pacific Daylight Time (GMT-7)
+
+**Location**: Health Sciences Informatio Building Room 444
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3374.711519066356!2d-110.94944564904455!3d32.238933218439946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86d671a7b5176c53%3A0x67880bc15138eb29!2sHealth%20Sciences%20Innovation%20Building%20(HSIB)!5e0!3m2!1sen!2sus!4v1650459271292!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 !!! Example "Activities"
 
     | Time (PDT)| Activity | Instructor | Outcome | 
