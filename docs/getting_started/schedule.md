@@ -148,15 +148,14 @@
     | 09:10 |  [TACC HPC](https://containers-at-tacc.readthedocs.io/en/latest/singularity/02.singularity_batch.html) | John Fonner | Running Singularity on HPC 
     | 09:55 | Break | |
     | 10:00 | [TACC HPC continued] | | |
-    | 10:30 | [Open Science Grid (OSG)]() | Mats Rynge (USC ISI) | |
     | 10:30 | Break | |
-    | 10:40 | OSG Demo | | |
-    | 11:10 | [Start CodeSpace :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | Using Dev Environments to create containers|
-    | 11:15 | Intro to Singularity CLI | Tyson | run Singularity commands from the shell | 
+    | 11:00 | [Open Science Grid (OSG)]() | Mats Rynge (USC ISI) | |
     | 12:00 | Lunch | | |
-    | 13:00 | Writing Singularity files | Tyson | writing Singularity and building .sif images |  
+    | 13:00 | [Start CodeSpace :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | Using Dev Environments to create containers|
+    | 13:15 | Intro to Singularity CLI | Tyson | run Singularity commands from the shell | 
     | 13:55 | Break |  | |
-    | 14:00 | Building Singularity on Cloud | Mats | build `*.sif` images on SyLabs.io | 
+    | 14:00 | Writing Singularity files | Tyson | writing Singularity and building .sif images |  
+    | 14:30 | Building Singularity on Cloud | Mats | build `*.sif` images on SyLabs.io | 
     | 14:55 | Break | | |
     | 15:00 | BYOC with Singularity (Jetstream-2) |  | | |
     | 15:55 | Break | | |
