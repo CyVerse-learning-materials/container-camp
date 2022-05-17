@@ -187,7 +187,7 @@ jobs:
 
 ---
 
-## Pushing Tagged Version
+## Tagging a Pushing an Image
 
 When updating your own Docker Images, you may want to tag the images with a version number.
 
