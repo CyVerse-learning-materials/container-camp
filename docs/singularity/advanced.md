@@ -151,7 +151,9 @@ during setup
 `%post` includes all of the environment variables and dependencies that you want to see installed into the container at build time.
 
 ```
-
+%post
+    apt-get -y update
+    apt-get -y install fortune cowsay lolcat
 ```
 
 #### :material-layers-edit: **environment**
@@ -159,7 +161,9 @@ during setup
 `%environment` includes the environment variables which we want to be run when we start the container
 
 ```
-
+%environment
+    export LC_ALL=C
+    export PATH=/usr/games:$PATH
 ```
 
 #### :material-layers-edit: **runscript**
@@ -168,7 +172,8 @@ during setup
 container is run.
 
 ```
-
+%runscript
+    fortune | cowsay | lolcat
 ```
 
 #### :material-layers-edit: **labels**
