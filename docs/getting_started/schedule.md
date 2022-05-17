@@ -89,7 +89,7 @@
 
 **Dates**: May 17th 2022
 
-**Time**: 09:00AM–13:00PM  US Pacific Daylight Time (GMT-7)
+**Time**: 09:00AM–17:00PM  US Pacific Daylight Time (GMT-7)
 
 **Location**: Health Sciences Informatio Building Room 444
 
