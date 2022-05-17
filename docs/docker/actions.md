@@ -118,7 +118,7 @@ Ensure you can access [Docker Hub](https://hub.docker.com/) from any workflows y
 Now that you have connected your GitHub repository with your Docker account, you are ready to add the necessary files to your repo.
 
 !!! Note
-        In this example, we will use the existing Docker image Alpine.
+        In this example, we will use the existing Docker Image Alpine.
 
 1\. In your GitHub repository, create a file and name in `Dockerfile`; In the first line of your `Dockerfile` paste:
 
@@ -167,7 +167,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale
 ```
 4\. Upon committing and pushing your changes, you can check your Workflows under the Actions tab on GitHub.
 
@@ -185,6 +185,49 @@ jobs:
 
 ![Actions_09](../assets/docker/Actions_09.png)
 
+---
+
+## Pushing Tagged Version
+
+When updating your own Docker Images, you may want to tag the images with a version number.
+
+In this example, we update our Alpine Docker Image to a newer version and adding a package.
+
+Navigate to your `Dockerfile` and modify it by adding the following lines:
+
+```
+FROM alpine:3.15
+
+LABEL author="<name>" 
+LABEL email="<email>"
+LABEL date_created="<date>"
+
+RUN apk update && apk upgrade --available
+RUN apk add vim fortune
+
+ENV PATH=/usr/games:${PATH}
+
+ENV LC_ALL=C
+
+ENTRYPOINT fortune
+```
+
+Save, and navigate to the github action (`.github/workflows/docker-image.yml`). The last line should be `tags`, edit the line to reflect the version you would like to add.
+
+```
+tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:v0.2
+```
+
+!!! Warning
+    - To correctoy add a tag, add a colon followed by a version number such as `<name of container>:<version number>`.
+    - If there is no tag, the version pushed will default to `latest`.
+    - **Remember** to update/change the tag line in future pushes. 
+
+Add, commit, push your changes; You will see your Docker Image being built with the added tagged version.
+
+![Actions_10](../assets/docker/Actions_10.png)
+
+---
 
 ## Setting up your own
 
