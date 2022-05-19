@@ -200,9 +200,159 @@ double check that its gone
 kubectl get pods
 ```
 
-### Create a Deployment
+## Create a Deployment
 
 While we can create and delete pods on our own, what we realy want is to make our containers have "high availability". 
 
 High availiability means that when a node dies or is restarted, the pod will "come back up" on its own.
 
+## Run a Dashboard
+
+[UpCloud instructions](https://upcloud.com/community/tutorials/deploy-kubernetes-dashboard/){target=_blank}
+
+Once the cluster is up and running, you may choose to create a Dashboard for it
+
+The Dashboard can only run from a `localhost` so we have to do an ssh tunnel to connect to it
+
+```
+ssh -L localhost:8001:127.0.0.1:8001 <user>@<master_public_IP>
+```
+
+start the dashboard
+
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+```
+
+check to see the dashboard pods are running
+
+```
+kubectl get pods -A
+```
+
+#### create an `admin` dashboard user
+
+```
+mkdir ~/dashboard && cd ~/dashboard
+```
+
+create a `dashboard-admin.yaml`
+
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+```
+
+deploy
+
+```
+kubectl apply -f dashboard-admin.yaml
+```
+
+print the `admin` token so you can log into the dashboard
+
+```
+kubectl get secret -n kubernetes-dashboard $(kubectl get serviceaccount admin-user -n kubernetes-dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
+```
+
+#### create a read-only `dashboard-read-only.yaml` user
+
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: read-only-user
+  namespace: kubernetes-dashboard
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  labels:
+  name: read-only-clusterrole
+  namespace: default
+rules:
+- apiGroups:
+  - ""
+  resources: ["*"]
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - extensions
+  resources: ["*"]
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources: ["*"]
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: read-only-binding
+roleRef:
+  kind: ClusterRole
+  name: read-only-clusterrole
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: read-only-user
+  namespace: kubernetes-dashboard
+```
+
+deploy it
+
+```
+kubectl apply -f dashboard-read-only.yaml
+```
+
+print read-only token
+
+```
+kubectl get secret -n kubernetes-dashboard $(kubectl get serviceaccount read-only-user -n kubernetes-dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
+```
+
+#### Start the dashboard
+
+```
+kubectl proxy
+```
+
+```
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+```
+
+Copy/Paste your admin or read-only token
+
+#### delete the dashboard
+
+```
+kubectl delete -f dashboard-admin.yaml
+kubectl delete -f dashboard-read-only.yaml
+kubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+```
