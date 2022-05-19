@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: centos:centos8
+    image: alpine:3.14
     resources:
       limits:
         memory: 100Mi

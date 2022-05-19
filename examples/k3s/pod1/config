@@ -1,0 +1,20 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: <REDACTED>
+    server: https://149.165.153.161:6443
+  name: k3s-tutorial
+contexts:
+- context:
+    cluster: k3s-tutorial
+    namespace: cc2022-tutorial
+    user: participant
+  name: k3s-tutorial
+current-context: k3s-tutorial
+kind: Config
+preferences: {}
+users:
+- name: participant
+  user:
+    client-certificate-data: <REDACTED>
+    client-key-data: <REDACTED>

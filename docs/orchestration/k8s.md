@@ -77,7 +77,7 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 
 K8s uses YAML files for configuring a cluster. 
 
-The `config` file is required to make the handshake between the K8s Cluster and external requests.
+The `config` file is required to make the handshake between the K8s Cluster and external requests, like the one you're making from your local computer or CodeSpace.
 
 #### `config` yaml
 
@@ -168,5 +168,41 @@ Try to connect to your running pod (container)
 kubectl exec -it pod-<yourusername> -- /bin/sh
 ```
 
-####
+#### Pod networking
+
+Let's check the networking inside the pod
+
+```
+# uncomment if ifconfig is not installed
+# apk add net-tools
+ifconfig -a
+```
+
+Exit the pod (`ctrl`^`D`)
+
+Check the IP with `kubectl`
+
+```
+kubectl get pod -o wide pod-<yourname>
+```
+
+#### Taking down a Pod
+
+Once you've exited the pod, delete it
+
+```
+kubectl delete -f pod1.yaml
+```
+
+double check that its gone
+
+```
+kubectl get pods
+```
+
+### Create a Deployment
+
+While we can create and delete pods on our own, what we realy want is to make our containers have "high availability". 
+
+High availiability means that when a node dies or is restarted, the pod will "come back up" on its own.
 
