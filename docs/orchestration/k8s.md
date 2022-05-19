@@ -73,56 +73,100 @@ chmod +x kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 
-### :material-kubernetes: kubconfig 
+### :material-kubernetes: kubeconfig 
 
-Kuberenetes uses combinations of JSON and YAML files for configuring a cluster. 
+K8s uses YAML files for configuring a cluster. 
 
-#### generating a `config` yaml
+The `config` file is required to make the handshake between the K8s Cluster and external requests.
 
-To connect to a running K8s cluster that is managed by someone else, you need to create a `config.yaml` and place it in the `~/.kube/config` folder
+#### `config` yaml
 
-!!! info "config example"
+To connect to a running K8s cluster, you need to create a `config` yaml and place it in the `~/.kube/` folder.
 
-    Example of the `~/.kube/config` file used for minikube
+??? info " example `config` file"
+
+    Example of the `~/.kube/config` file which is used for K3s
     
     ```
-    apiVersion: v1
-    clusters:
-    - cluster:
-        certificate-authority: /home/exouser/.minikube/ca.crt
-        extensions:
-        - extension:
-            last-update: Mon, 16 May 2022 15:59:19 UTC
-            provider: minikube.sigs.k8s.io
-            version: v1.25.2
-        name: cluster_info
-        server: https://192.168.49.2:8443
-    name: minikube
-    contexts:
-    - context:
-        cluster: minikube
-        extensions:
-        - extension:
-            last-update: Mon, 16 May 2022 15:59:19 UTC
-            provider: minikube.sigs.k8s.io
-            version: v1.25.2
-        name: context_info
-        namespace: default
-        user: minikube
-    name: minikube
-    current-context: minikube
-    kind: Config
-    preferences: {}
-    users:
-    - name: minikube
-    user:
-        client-certificate: /home/exouser/.minikube/profiles/minikube/client.crt
-        client-key: /home/exouser/.minikube/profiles/minikube/client.key
+   
     ```
+
+1. Copy the `~/.kube/config` file from your cluster or use our example here over to your localhost or VM and put it into a temporary directory.
+
+2. Make a second copy and put it into your own `~/.kube/config` folder
+
+By default, the `config` file is in the `~/.kube/` directory, but it can be put anywhere or given any name, use the `--kubeconfig` flag to tell `kubectl` where to get the config:
+
+```
+kubectl --kubeconfig /custom/path/kube.config get pods
+```
+
+#### Setting up the `namespace`
+
+`kubectl` needs to know what the `namespace` is of of the Cluster config you're working with. 
+
+In the first example today, we're going to be working with a cluster with a pre-set `namespace`
+
+To set the context and namespace of the cluster on your localhost:
+
+```
+kubectl config set-context cc2022 --namespace=containercamp2022
+```
+
+Once the config is set, you should be ready to launch "pods" i.e. containers on the cluster
 
 ### :material-kubernetes: pods
 
+We are going to launch pods (w/ containers) on the same K3s cluster which is already running in JS-2.
+
+Create a new file in your VM or localhost called `pod1.yaml` 
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-<change-this-to-your-username>
+spec:
+  containers:
+  - name: mypod
+    image: alpine:3.14
+    resources:
+      limits:
+        memory: 100Mi
+        cpu: 100m
+      requests:
+        memory: 100Mi
+        cpu: 100m
+    command: ["sh", "-c", "sleep infinity"]
+```
+
 #### Launching a Pod
+
+Try launching a pod on the cluster
+
+```
+kubectl create -f pod1.yaml
+```
+
+Check to see that it is running
+
+```
+kubectl get pods
+```
+
+Do you see any other pods?
+
+If the pod hasn't started yet, you can check the timestamp to see if it was created:
+
+```
+kubectl get events --sort-by=.metadata.creationTimestamp
+```
+
+Try to connect to your running pod (container)
+
+```
+kubectl exec -it pod-<yourusername> -- /bin/sh
+```
 
 ####
 
