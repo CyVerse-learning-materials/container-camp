@@ -45,6 +45,7 @@ nav:
     - 'Docker': resources/docker.md
     - 'Singularity': resources/singularity.md
     - 'Kubernetes': resources/k8s.md
+    - 'Camp Discussion and Notes': resources/post.md
 
 # JavaScript for Intercom Widget
 extra_javascript:
