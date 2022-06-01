@@ -7,6 +7,8 @@ TBD: pretty much everything, set up action, set GH Pages to DNS, build website, 
 
 htps://cyverse.org/cc
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6588581.svg)](https://doi.org/10.5281/zenodo.6588581)
+
 # Development
 
 ## Testing locally
