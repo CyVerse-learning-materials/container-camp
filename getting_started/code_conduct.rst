@@ -28,6 +28,8 @@ We expect participants to follow these rules at conference and workshop venues a
 
 See http://www.ashedryden.com/blog/codes-of-conduct-101-faq for more information on codes of conduct.
 
+To see the Diversity & Inclusion information for CyVerse, visit https://cyverse.org/diversity-and-inclusion.
+
 .. |CyVerse_logo2| image:: ../img/cyverse_learning.png
     :width: 500
 .. _CyVerse_logo2: http://learning.cyverse.org/
