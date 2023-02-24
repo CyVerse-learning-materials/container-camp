@@ -19,7 +19,7 @@ nav:
     - 'Home': index.md 
     - 'Code of Conduct': getting_started/code_conduct.md
     - 'Schedule': getting_started/schedule.md
-    - 'Setup': getting_started/setup.md
+    - 'Pre-Camp Setup': getting_started/setup.md
   - 'Docker':
     - 'Introduction to Docker': docker/intro.md
     - 'Finding the right container': docker/registry.md
@@ -31,19 +31,14 @@ nav:
     - 'Introduction to Singularity': singularity/intro.md
     - 'Advanced use of Singularity': singularity/advanced.md
     - 'Using Singularity on HPC/HTC': singularity/hpc.md
-  - 'Orchestration':
-    - 'Introduction to Kubernetes': orchestration/k8s.md
-    - 'Advanced use of Kubernetes': orchestration/advanced.md 
-    - 'CyVerse CACAO': orchestration/cacao.md
-    - 'Manage private container registry': orchestration/registry.md
-  - 'Cloud Services':
-    - 'Jetstream-2': cloud/js2.md
-    - 'GitHub CodeSpaces': cloud/codespaces.md
   - 'Useful Resources':
     - 'Docker': resources/docker.md
     - 'Singularity': resources/singularity.md
     - 'Kubernetes': resources/k8s.md
     - 'Camp Discussion and Notes': resources/post.md
+    - 'Cloud Services':
+      - 'Jetstream-2': cloud/js2.md
+      - 'GitHub CodeSpaces': cloud/codespaces.md
 
 # JavaScript for Intercom Widget
 extra_javascript:

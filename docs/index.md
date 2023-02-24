@@ -4,70 +4,32 @@
 
 ![boat](assets/cc_banner.png)
 
-## Getting Started
-
-[:material-scale-balance: Code of Conduct](getting_started/code_conduct.md)
-
-[:material-directions-fork: Logistics](getting_started/logistics.md)
-
-[:material-calendar: Schedule](getting_started/schedule.md)
-
-[:material-clipboard-check-multiple: Pre-Camp Setup](getting_started/setup.md)
-
 ## What you will learn about
 
 ### :material-docker: Docker Containers for scientific research
 
-#### Basics
 
 [:octicons-container-16: Introduction to Docker](docker/intro.md)
 
 [:octicons-container-16: Finding the right container](docker/registry.md)
 
-#### Advanced
-
-[:octicons-container-16: Extending Docker](docker/advanced.md)
-
-[:octicons-container-16: Building your own containers](docker/build.md)
-
 ### :material-run-fast: Containers on High Performance and High Throughput Computing
 
-#### Basics
 
 [:octicons-container-16: Basics of SingularityCE](singularity/intro.md)
 
 [:octicons-container-16: Using SingularityCE on HPC and HTC](singularity/advanced.md)
 
-#### Advanced
-
-[:octicons-container-16: Build Singularity Containers](singularity/advanced.md)
-
-### :material-cloud-braces: Containers on Cloud and with Orchestration
-
-#### Advanced
-
-[:fontawesome-solid-wind: Introduction to Jetstream-2](cloud/js2.md)
-
-[:material-microsoft-visual-studio-code: Building Containers with Development Environments](cloud/codespaces.md)
-
-[:material-kubernetes: Introduction to Kubernetes](orchestration/k8s.md)
-
-[:chocolate_bar: Introduction to CyVerse CACAO](orchestration/cacao.md)
-
-
 ## What you leave with
 
-:octicons-container-16: An understanding of development, maintenence, and deployment of containers within the research lifecycle.
+- :octicons-container-16: An understanding of development, maintenence, and deployment of containers within the research lifecycle.
+- :octicons-container-16: One year of free support and consultation on your container builds with CyVerse Research Software Engineers and Data Scientists.
+- :octicons-container-16: A better understanding of and access to the most powerful public research computing infrastructure in the world
+- :octicons-container-16: A better understanding of commercial cloud services and costs and how to best leverage them for your research
 
-:octicons-container-16: One year of free support and consultation on your container builds with CyVerse Research Software Engineers and Data Scientists.
+:material-twitter: Twitter hash tag: #cc2023
 
-:octicons-container-16: A better understanding of and access to the most powerful public research computing infrastructure in the world
-
-:octicons-container-16: A better understanding of commercial cloud services and costs and how to best leverage them for your research
-
-:material-twitter: Twitter hash tag: #cc2022
-
-<break>
+---
 
 **Funding and Citations:**
 

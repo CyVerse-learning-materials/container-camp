@@ -56,7 +56,7 @@
 
 ???+ Example "Activities"
 
-    | Time (PDT)| Activity | Instructor | Notes | 
+    | Time (MST/AZ)| Activity | Instructor | Notes | 
     |-----------|----------|------------|-------|
     | 09:00 | Welcome back | All | |
     | 09:05 | Discuss previous day, answer questions | | |
@@ -70,5 +70,17 @@
     | 12:00 | [Integrating your Containers into CyVerse](https://learning.cyverse.org/de/create_apps/){target=_blank} | Tyson | | 
     | 12:55 | Conclude | | |
 
-## Day 3 - Applications and BYOC (Bring Your Own Code)
+## Day 3 - Singularity and Containers on the HPC
 
+!!! Note "Content"
+
+        - Introduction to Singularity
+
+!!! Success "Goals"
+
+        - Being able to execute containers on the HPC
+
+???+ Example "Activities"
+
+    | Time (MST/AZ)| Activity | Instructor | Notes | 
+    |-----------|----------|------------|-------|
