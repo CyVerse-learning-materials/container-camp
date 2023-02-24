@@ -16,10 +16,8 @@ copyright: 'Copyright &copy; 2022 CyVerse'
 
 nav:
   - 'Home': 
-    - index.md 
-  - 'Getting Started': 
+    - 'Home': index.md 
     - 'Code of Conduct': getting_started/code_conduct.md
-    - 'Logistics': getting_started/logistics.md
     - 'Schedule': getting_started/schedule.md
     - 'Setup': getting_started/setup.md
   - 'Docker':
