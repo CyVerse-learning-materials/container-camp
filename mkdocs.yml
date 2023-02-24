@@ -90,7 +90,7 @@ theme:
     - navigation.top
   favicon: assets/favicon.png
   icon:
-    logo: octicons/container-24 
+    logo: material/truck-cargo-container 
 
 # Options
 extra:
@@ -113,7 +113,7 @@ extra:
 
 extra_css:
   - stylesheets/extra.css
-  
+
 # Extensions
 markdown_extensions:
   - admonition

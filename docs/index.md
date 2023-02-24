@@ -1,8 +1,8 @@
 [![!CyVerse Learning Center](assets/de/logos/cyverse_logo_2022.png "CyVerse Learning Center"){ width="400" }](https://learning.cyverse.org){target=_blank}
 
-# :octicons-container-24: Welcome to Spring Container Camp 2022 :material-campfire: 
+# :material-truck-cargo-container: Welcome to Container Camp 2023 :material-campfire: 
 
-![people](assets/people_science.png){ width="600" }
+![boat](assets/cc_banner.png)
 
 ## Getting Started
 
