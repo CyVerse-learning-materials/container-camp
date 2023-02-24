@@ -2,10 +2,10 @@ docs_dir: docs/
 repo_name: 'CyVerse-learning-materials/container-camp'
 repo_url: 'https://github.com/CyVerse-learning-materials/container-camp'
 
-site_name: 'Container Camp Spring 2022'
-site_description: 'Documentation for CyVerse Platforms and Education'
+site_name: 'Container Camp Spring 2023'
+site_description: 'Documentation for container related workshop.'
 site_author: 'CyVerse Science Team'
-site_url: 'https://learning.cyverse.org/container-camp/'
+site_url: 'https://container-camp.cyverse.org'
 
 edit_uri: edit/mkdocs/docs
 
@@ -60,23 +60,34 @@ theme:
     - navigation.instant
       #- navigation.expand
     - navigation.tracking
-      #- navigation.sections
+    - navigation.sections
     - navigation.indexes
     - toc.follow
   # Default values, taken from mkdocs_theme.yml
   language: en
   palette: 
     - scheme: default
+      primary: teal
+      accent: blue
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/brightness-3
         name: Switch to dark mode
-    - scheme: slate 
+    - scheme: slate
+      primary: black
+      accent: orange 
       toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-7
         name: Switch to light mode
   font:
     text: Roboto
     code: Regular
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.top
   favicon: assets/favicon.png
   icon:
     logo: octicons/container-24 
@@ -100,6 +111,9 @@ extra:
     provider: google
     property: UA-72224033-6
 
+extra_css:
+  - stylesheets/extra.css
+  
 # Extensions
 markdown_extensions:
   - admonition
@@ -141,3 +155,11 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
+plugins:
+    - search
+    - mkdocstrings
+    - git-revision-date
+    - mkdocs-jupyter:
+          include_source: True
+          ignore_h1_titles: True
