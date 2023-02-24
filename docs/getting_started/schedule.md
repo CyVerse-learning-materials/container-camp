@@ -70,17 +70,19 @@
     | 12:00 | [Integrating your Containers into CyVerse](https://learning.cyverse.org/de/create_apps/){target=_blank} | Tyson | | 
     | 12:55 | Conclude | | |
 
-## Day 3 - Singularity and Containers on the HPC
+## Day 3 - Singularity, Orchestration, and Containers on the HPC
 
 !!! Note "Content"
 
         - Introduction to Singularity
+        - Introduction to Kubernetes
 
 !!! Success "Goals"
 
         - Being able to execute containers on the HPC
+        - Create a small Kubernetes cluster
 
-???+ Example "Activities"
+??? Example "Activities"
 
     | Time (MST/AZ)| Activity | Instructor | Notes | 
     |-----------|----------|------------|-------|

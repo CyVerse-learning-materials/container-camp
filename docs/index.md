@@ -2,7 +2,7 @@
 
 # :material-truck-cargo-container: Welcome to Container Camp 2023 :material-campfire: 
 
-![boat](assets/cc_banner.png)
+![banner](assets/cc_banner_01.png)
 
 ## What you will learn about
 
