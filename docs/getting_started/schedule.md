@@ -1,6 +1,6 @@
 # :material-calendar: Container Camp Basics
 
-**Dates**: Mar 6th-9th 2023
+**Dates**: Mar 6th-8th 2023
 
 **Time**: 09:00AM–13:00PM  US Mountain Standard Time (8am-12pm PST; 9am-1pm MST/AZ; 10am-2pm CST; 11am-3pm EST)
 
