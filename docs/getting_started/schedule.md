@@ -86,3 +86,15 @@
 
     | Time (MST/AZ)| Activity | Instructor | Notes | 
     |-----------|----------|------------|-------|
+    | 09:00 | Welcome back | All | |
+    | 09:05 | Discuss previous day, answer questions | | |
+    | 09:15 | [(re(re))start Dev Environment :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | |
+    | 09:20 | "Obtaining" Singularity | |
+    | 09:30 | Obtaining Singularity Images | |
+    | 09:55 | Break | |
+    | 10:00 | Singularity Commands & Interacting with Singularity Images | |
+    | 10:55 | Break ||
+    | 11:00 | Running Singularity on the HPC | |
+    | 11:55 | Break ||
+    | 12:00 | Questions, inquiries | |
+    | 12:55 | Conclude | |
