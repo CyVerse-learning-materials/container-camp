@@ -82,19 +82,22 @@
         - Being able to execute containers on the HPC
         - Create a small Kubernetes cluster
 
-??? Example "Activities"
+???+ Example "Activities"
 
     | Time (MST/AZ)| Activity | Instructor | Notes | 
     |-----------|----------|------------|-------|
     | 09:00 | Welcome back | All | |
     | 09:05 | Discuss previous day, answer questions | | |
-    | 09:15 | [(re(re))start Dev Environment :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | |
-    | 09:20 | "Obtaining" Singularity | |
-    | 09:30 | Obtaining Singularity Images | |
+    | 09:15 | [(re(re))start Dev Environment :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) |  | |
+    | 09:20 | [Introduction to Singularity](https://container-camp.cyverse.org/singularity/intro/#build-singularity-sif-images) | |
+    | 09:30 | [Obtaining Singularity](https://container-camp.cyverse.org/singularity/intro/#singularityce-installation) and [the Singularity CLI](https://container-camp.cyverse.org/singularity/intro/#singularity-cli) | |
     | 09:55 | Break | |
-    | 10:00 | Singularity Commands & Interacting with Singularity Images | |
+    | 10:00 | [Singularity Commands & Interacting with Singularity Images](https://container-camp.cyverse.org/singularity/intro/#how-do-hpc-systems-fit-into-the-development-workflow) | |
     | 10:55 | Break ||
-    | 11:00 | Running Singularity on the HPC | |
+    | 11:00 | [Singularity Images Continued](hhttps://container-camp.cyverse.org/singularity/advanced/#singularity-cli-continued)* | |
     | 11:55 | Break ||
-    | 12:00 | Questions, inquiries | |
-    | 12:55 | Conclude | |
+    | 12:00 | [Integrating your Containers into CyVerse](https://learning.cyverse.org/de/create_apps/){target=_blank}, questions, inquiries | |
+    | 12:55 | Conclude** | |
+
+    * If we still have time, we will also discuss using [Singularity on the HPC](https://container-camp.cyverse.org/singularity/hpc/#how-do-hpc-systems-fit-into-the-development-workflow).
+    ** For additional questions and inquiries, we will make time for one-on-ones on either Thursday or Friday (flexible schedule).
