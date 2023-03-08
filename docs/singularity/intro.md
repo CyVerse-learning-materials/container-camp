@@ -10,7 +10,7 @@ In this section we're going to be working with [Singularity Community Edition (C
     - Kurtzer created [Sylabs](https://sylabs.io/){target=_blank}, a private company, around Singularity 
     - Kurtzer left Sylabs to focus on [CIQ](https://ciq.co/){target=_blank}, another private company, and moved Singularity to [HPCng](https://hpcng.org/){target=_blank} (a Community Org)
     - [Sylabs forked Singularity](https://sylabs.io/singularityce-community-update/){target=_blank} for control and professionially licensed support creating Singularity Community Edition"
-    - HPCng gave the official project to Linux Foundation and renamed it "[Apptainer](https://apptainer.org/){target=_blank}
+    - HPCng gave the official project to Linux Foundation and renamed it "[Apptainer](https://apptainer.org/){target=_blank}"
     - Apptainer is being [marketed by CIQ](https://ciq.co/apptainer/){target=_blank}
 
     At the present time, Apptainer and Singularity CE have highly similar syntax and will run Singularity `.sif` images interoperably
@@ -32,7 +32,7 @@ In this section we're going to be working with [Singularity Community Edition (C
 
     :octicons-container-24:  Same user and group identity inside as outside the container
     
-    :octicons-container-24:  User only has `root` privileges if elevated with `sudo when` the container is run
+    :octicons-container-24:  User only has `root` privileges if elevated with `sudo` when the container is run
     
     :octicons-container-24:  Can run and modify any existing Docker image
 
@@ -58,7 +58,9 @@ conda install -c conda-forge apptainer
 
 ### Install Locally
 
-To Install Singularity follow the instructions for your specific OS: [:simple-github: SingularityCE](https://github.com/sylabs/singularity/blob/main/INSTALL.md)>{target=_blank}
+To Install Singularity follow the instructions for your specific OS: 
+
+[:simple-github: SingularityCE](https://github.com/sylabs/singularity/blob/main/INSTALL.md){target=_blank}
 
 ### Module loading on HPC
 
