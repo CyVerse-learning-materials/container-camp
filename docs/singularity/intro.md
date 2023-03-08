@@ -44,9 +44,21 @@ Sylabs Singularity Community Edition (CE) homepage: [https://www.sylabs.io/docs/
 
 Apptainer Linux Foundation homepage: [https://apptainer.org/](https://apptainer.org/){target=_blank}
 
+### Conda
+
+[SingularityCE](https://anaconda.org/conda-forge/singularityce){target=_blank} or [Apptainer](https://anaconda.org/conda-forge/apptainer){target=_blank} can both be installed from Conda:
+
+```
+conda install -c conda-forge singularityce
+```
+
+```
+conda install -c conda-forge apptainer
+```
+
 ### Install Locally
 
-To Install Singularity follow the instructions for your specific OS: <https://sylabs.io/guides/3.9/user-guide/quick_start.html>{target=_blank}
+To Install Singularity follow the instructions for your specific OS: [:simple-github: SingularityCE](https://github.com/sylabs/singularity/blob/main/INSTALL.md)>{target=_blank}
 
 ### Module loading on HPC
 
@@ -68,51 +80,14 @@ $ module load singularity/3/3.9
 
 ### Install in CodeSpaces
 
-Follow the instructions for an Ubuntu installation: https://sylabs.io/guides/3.9/user-guide/quick_start.html#install-system-dependencies
-
-Type in the following in a web shell or `ssh` terminal.
+Let's use Conda (or optionally, Mamba)
 
 ```
-# Ensure repositories are up-to-date
-sudo apt-get update
-# Install debian packages for dependencies
-sudo apt-get install -y \
-   build-essential \
-   libseccomp-dev \
-   pkg-config \
-   squashfs-tools \
-   cryptsetup
+conda install -c conda-forge singularityce
+
+mamba install -c conda-forge singularityce
 ```
 
-`Go` lang is already installed on your CodeSpace, but you can check to be certain:
-
-```
-go --version
-```
-
-Install SingularityCE
-
-```
-export VERSION=3.9.5 && # adjust this as necessary \
-    wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-ce-${VERSION}.tar.gz && \
-    tar -xzf singularity-ce-${VERSION}.tar.gz && \
-    cd singularity-ce-${VERSION}
-
-# make build the installation
-./mconfig && \
-    make -C builddir && \
-    sudo make -C builddir install
-```
-
-Check the installation with:
-
-```
-$ singularity pull shub://vsoch/hello-world
-INFO:    Downloading shub image
- 59.75 MiB / 59.75 MiB [=====================================================================================================] 100.00% 49.24 MiB/s 1s
-tswetnam@tysons-box:~$ singularity run hello-world_latest.sif
-RaawwWWWWWRRRR!! Avocado!
-```
 
 ## Singularity CLI
 
