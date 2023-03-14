@@ -18,7 +18,7 @@ Follow the [Material for MKDocs instructions](https://squidfunk.github.io/mkdocs
 ```
 $ git clone https://github.com/cyverse-learning-materials/container-camp.git
 $ cd container-camp
-$ pip install mkdocs-material
+$ pip install -r requirements
 $ mkdocs serve
 ```
 

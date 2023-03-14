@@ -31,6 +31,15 @@ nav:
     - 'Introduction to Singularity': singularity/intro.md
     - 'Advanced use of Singularity': singularity/advanced.md
     - 'Using Singularity on HPC/HTC': singularity/hpc.md
+  - 'Orchestration':
+    - 'Introduction to Kubernetes': orchestration/k8s.md
+    - 'Advanced use of Kubernetes': orchestration/advk8s.md 
+    - 'Introduction to Terraform': orchestration/terra.md
+    - 'CyVerse CACAO': orchestration/cacao.md
+    - 'Manage private container registry': orchestration/registry.md
+  - 'Cloud Services':
+    - 'Jetstream-2': cloud/js2.md
+    - 'GitHub CodeSpaces': cloud/codespaces.md
   - 'Useful Resources':
     - 'Docker': resources/docker.md
     - 'Singularity': resources/singularity.md
