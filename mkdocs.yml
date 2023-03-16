@@ -35,7 +35,9 @@ nav:
     - 'Introduction to Kubernetes': orchestration/k8s.md
     - 'Advanced use of Kubernetes': orchestration/advk8s.md 
     - 'Introduction to Terraform': orchestration/terra.md
-    - 'CyVerse CACAO': orchestration/cacao.md
+    - 'Advanced use of Terraform': orchestration/advterra.md
+    - 'CyVerse CACAO Interface': orchestration/cacao.md
+    - 'CyVerse CACAO Terraform CLI': orchestration/cacao_terra.md
     - 'Manage private container registry': orchestration/registry.md
   - 'Cloud Services':
     - 'Jetstream-2': cloud/js2.md
