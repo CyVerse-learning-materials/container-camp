@@ -27,45 +27,37 @@ Terraform needs a dedicated resource to manage its deployments.
 
 Optional: [:simple-visualstudiocode: VS Code Terraform Extension](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform){target=_blank} - add VS Code extension
 
-Instructions for Ubuntu 22.04 installation
+??? Tip "Mac OS X Installation"
 
-```{bash}
-wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update && sudo apt install terraform
-```
+    Instructions for Mac OS X installation
 
-Install Ansible
+    If you're on OS X, you can use [brew](https://brew.sh/) to install with the following commands:
 
-```{bash}
-sudo pip install --upgrade ansible-core==2.13.8
-```
+    ```bash
+    # install terraform -- taken from https://learn.hashicorp.com/tutorials/terraform/install-cli
+    brew tap hashicorp/tap && brew install hashicorp/tap/terraform
 
-??? Info "Basic Operations"
+    # install ansible and jq (for processing terraform's statefile into an ansible inventory)
+    brew install ansible jq
+    ```
 
-    Setting up your server
+??? Tip "Linux Installation"
 
-    The basic setup is as follows:
+    Instructions for Ubuntu 22.04 installation
 
-    1. `git clone` a repository with a terraform plan, e.g. 
+    ```bash
+    wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    sudo apt update && sudo apt install terraform
+    ```
 
-    2. `cd` into the repository
+    Install Ansible & J Query
 
-    3. Download your Jetstream-2 or other OpenStack Cloud `openrc` file into the repo 
+    ```bash
+    sudo apt-add-repository ppa:ansible/ansible
+    sudo apt update & sudo apt install -y ansible jq
+    ```
 
-        Go to [https://js2.jetstream-cloud.org/project/](https://js2.jetstream-cloud.org/project/){target=_blank}
-
-    4. Run `source openrc.sh` in a CLI 
-
-    5. Initalize Terraform with `terraform init`
-
-    6. See what changes Terraform wants to make to your infrastructure with `terraform plan`
-
-    7. Apply the changes with `terraform apply`
-
-    **Terraform on Jetstream-2**
-
-    [Jetstream-2 Terraform Documentation](https://docs.jetstream-cloud.org/general/terraform/){target=_blank}
 
 ## CyVerse CACAO Browser UI
 
@@ -142,30 +134,6 @@ Before we start `terraform`, we need to create an SSH key to add to our newly de
 
 ## Running Terraform
 
-**Step 1** Create Authentication Credentials
-
-Generate an `openrc.sh` file in Jetstream2 Horizon Interface ([https://js2.jetstream-cloud.org](https://js2.jetstream-cloud.org)), 
-
-Open the "Application Credentials" option on bottom of of the Horizon menu (upper left)
-
-![open application credentials](../assets/terraform/open_app_cred.png){width=200}
-
-Select "+ Create Application Credential" button on right
-
-![create application credential](../assets/terraform/create_app_cred.png)
-
-Give your new credentials a name and description
-
-![create description application credential](../assets/terraform/description_app_cred.png)
-
-Download the new crededential `openrc` file 
-
-!!! Tip "**Important**" 
-    
-    Do not close the Application Credentials window without copying the `secret` or downloading the `
-
-![download credential](../assets/terraform/download_app_cred.png)
-
 **Step 2** Clone the CACAO z2jh repository
 
 
@@ -212,7 +180,7 @@ when done, with your cluster, run `terraform destroy -auto-approve` to take the 
         
     Based on the [Zero to JupyterHub with Kubernetes](https://z2jh.jupyter.org/en/stable/)
 
-    ```{yaml}
+    ```yaml
 
     ### Set the floating_ip address for DNS redirections ###
 
