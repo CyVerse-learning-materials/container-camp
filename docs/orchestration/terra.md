@@ -121,7 +121,7 @@ Confirm installation
 terraform
 ```
 
-## Generate OpenStack credential
+## Generate an OpenStack Credential for Terraform
 
 Log into OpenStack's Horizon Interface
 
@@ -147,10 +147,108 @@ Download the new crededential `openrc.sh` file to your local
 
     ![download credential](../assets/terraform/download_app_cred.png)
 
-## Initialize your Terraform project
+### Create an SSH keypair with OpenStack
+
+??? Tip "Creating a SSH key"
+
+    To create an SSH key on an Ubuntu 22.04 terminal, you can follow these steps:
+
+    **Step 1:** Open your terminal and type the following command to generate a new SSH key pair:
+
+    ```bash
+    ssh-keygen -t rsa -b 4096
+    ```
+
+    **Step 2:** When prompted, press "Enter" to save the key in the default location, or enter a different filename and location to save the key.
+
+    Enter a passphrase to secure your key. This passphrase will be required to use the key later.
+
+    Once the key is generated, you can add it to your SSH agent by running the following command:
+
+    ```bash
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_rsa
+    ```
+
+    **Step 3:** Copy the public key to your remote server by running the following command, replacing "user" and "server" with your username and server address:
+
+    ```bash
+    ssh-copy-id <user>@<server-ip>
+    ```
+
+    **create_ssh_script.sh:**
+
+    ```bash
+    #!/bin/bash
+
+    echo "Generating SSH key pair..."
+    ssh-keygen -t rsa -b 4096
+
+    echo "Adding key to SSH agent..."
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_rsa
+
+    read -p "Enter your remote server username: " username
+    read -p "Enter your remote server IP address: " server
+
+    echo "Ready to copy your new public key to a remote server:"
+
+    ssh-copy-id username@server
+
+    echo "SSH key setup complete!"
+    ```
+
+    Save the script to a file, make it executable with the following command:
+
+    ```bash
+    chmod +x create_ssh_script.sh
+    ```
+
+    run it with the following command:
+
+    ```bash
+    ./create_ssh_script.sh
+    ```
+
+Check to make sure you have a public key in the `~/.ssh/` directory, it should have the extension `.pub`
 
 ```bash
-mkdir terraform
+ls ~/.ssh/
+```
+
+Create the keypair to OpenStack
+
+```bash
+openstack keypair create --public-key ~/.ssh/id_rsa.pub tswetnam-terraform-key
+```
+
+You can now check in OpenStack for the new keypair here: [https://js2.jetstream-cloud.org/project/key_pairs](https://js2.jetstream-cloud.org/project/key_pairs){target=_blank}
+
+## Initialize your Terraform project
+
+Create a new project folder for our configuration files.
+
+```bash
+mkdir ~/terraform
+```
+
+Copy the `openrc.sh` file you downloaded from OpenStack into the new folder.
+
+```bash
+cp *-openrc.sh ~/terraform/
+```
+
+Change Directory into your new `terraform/` folder and `source` the `openrc.sh` file to create its environmental variables locally.
+
+By sourcing this file, you avoid placing sensitive information about yourself into your code. 
+
+```bash
+source *-openrc.sh
+```
+
+Now, you are ready to initialize the Terraform project
+
+```bash
 cd terraform
 terraform init
 ```
@@ -161,7 +259,7 @@ Expected output:
 
 `The directory has no Terraform configuration files. You may begin working with Terraform immediately by creating Terraform configuration files.`
 
-### Configurations
+### Configuration files
 
 Terraform code is written in HCL (Hashicorp Configuration Language), and its configuration files typically end in the `.tf` file extension. 
 
@@ -186,20 +284,21 @@ terraform-project/
         └── outputs.tf
 ```
 
-**Main Configuration File (`main.tf`):** - contains the primary infrastructure resources and configurations for virtual machines, networks, and storage.
+**:simple-terraform: Main Configuration File (`main.tf`):** - contains the primary infrastructure resources and configurations for virtual machines, networks, and storage.
 
-**Variables File (`variables.tf`):** - defines all the input variables used in the configuration. Declare variables with default values or leave them empty for required user input. Include descriptions for each variable to provide context.
+**:simple-terraform: Variables File (`variables.tf`):** - defines all the input variables used in the configuration. Declare variables with default values or leave them empty for required user input. Include descriptions for each variable to provide context.
 
-**Outputs File (`outputs.tf`):** - defines the outputs Terraform displays after applying the Main and Variables configuration. Includes: IP addresses, DNS names, or information for resources.
+**:simple-terraform: Outputs File (`outputs.tf`):** - defines the outputs Terraform displays after applying the Main and Variables configuration. Includes: IP addresses, DNS names, or information for resources.
 
-**Provider Configuration File (`provider.tf`):** - includes the provider(s) used in the configuration, such as OpenStack (on commerical cloud: Amazon Web Services (AWS), Azure, or Google Cloud Platform(GCP)) along with their authentication and regional settings.
+**:simple-terraform: Provider Configuration File (`provider.tf`):** - includes the provider(s) used in the configuration, such as OpenStack (on commerical cloud: Amazon Web Services (AWS), Azure, or Google Cloud Platform(GCP)) along with their authentication and regional settings.
 
-**Modules and Reusable Configurations:** - create separate `.tf` files for reusable modules and configurations. Reuse across multiple projects or within the same project on multiple VMs.
+**:simple-terraform: Modules and Reusable Configurations:** - create separate `.tf` files for reusable modules and configurations. Reuse across multiple projects or within the same project on multiple VMs.
 
+## Terraform configuration files.
 
-### File Examples
+Create the `main.tf` file in the `~/terraform/` directory
 
-#### `main.tf`
+#### :simple-terraform: `main.tf`
 
 ```bash
 terraform {
@@ -215,9 +314,11 @@ terraform {
 provider "openstack" { }
 ```
 
-#### `provider.tf`
+The `main.tf` file has just the basics for calling out to an OpenStack provider - we created the necessary configurations for this in the prior steps by sourcing the `*-openrc.sh` file and running `terraform init`. 
 
-the `provider.tf` is ued to configure the OpenStack or commercial cloud provider:
+#### :simple-terraform: `provider.tf`
+
+the `provider.tf` is used to configure the OpenStack or commercial cloud provider:
 
 ```bash
 terraform {
@@ -237,35 +338,156 @@ provider "openstack" {
 }
 ```
 
-#### `variables.tf`
+#### :simple-terraform: `variables.tf`
+
+`variables.tf` can also be called `inputs.tf` 
+
+Here we need to go back to OpenStack and get a couple of additional variables:
+
+(1) we need the name of your paired SSH key
 
 ```bash
 variable "vm_number" {
+  # specify the number of VMs you want to launch
   default = "1"
 }
 
 variable "public_key" {
   # replace this with the name of the public ssh key you uploaded to Jetstream 2
   # https://docs.jetstream-cloud.org/ui/cli/managing-ssh-keys/
-  default = "!!! REPLACE WITH YOUR SSH PUBLIC KEY NAME"
+  default = "[REPLACE-your-ssh-key-here]>"
 }
 
 variable "image_id" {
-  # replace this with the image id of the ubuntu iso you want to use
-  default = " !!! REPLACE WITH IMAGE NAME !! "
+  # replace with the OS image id of the ubuntu iso you want to use
+  # https://js2.jetstream-cloud.org/project/images select the 
+  default = "[REPLACE-WITH-VALID-ID]">
 }
 
 variable "network_id" {
-  # replace this with the id of the public interface on JS
-  default = "!!! REPLACE WITH INTERFACE !!!"
+  # replace this with the id of the public interface on JS2 in Project / Network / Networks / public 
+  # https://js2.jetstream-cloud.org/project/networks/ 
+  default = "[REPLACE-WITH-VALID-PUBLIC-ID]"
 }
 ```
 
-#### `terraform.tfvars`
+#### :simple-terraform: `network.tf`
 
- A `terraform.tfvars` file is used to define the values of input variables. 
+```bash
+################
+#Networking
+################
+#creating the virtual network
+resource "openstack_networking_network_v2" "terraform_network" {
+  name = "terraform_network"
+  admin_state_up  = "true"
+}
+
+#creating the virtual subnet
+resource "openstack_networking_subnet_v2" "terraform_subnet1" {
+  name = "terraform_subnet1"
+  network_id  = "${openstack_networking_network_v2.terraform_network.id}"
+  cidr  = "192.168.0.0/24"
+  ip_version  = 4
+}
+# setting up virtual router
+resource "openstack_networking_router_v2" "terraform_router" {
+  name = "terraform_router"
+  admin_state_up  = true
+  # id of public network at JS1/2
+  external_network_id = var.network_id
+}
+# setting up virtual router interface
+resource "openstack_networking_router_interface_v2" "terraform_router_interface_1" {
+  router_id = "${openstack_networking_router_v2.terraform_router.id}"
+  subnet_id = "${openstack_networking_subnet_v2.terraform_subnet1.id}"
+}
+```
+
+#### :simple-terraform: `security.tf`
+
+```bash
+################
+#Security section
+################
+#creating security group
+resource "openstack_compute_secgroup_v2" "terraform_ssh_ping_centos" {
+  name = "terraform_ssh_ping"
+  description = "Security group with SSH and PING open to 0.0.0.0/0"
+
+  #ssh rule
+  rule{
+    ip_protocol = "tcp"
+    from_port  =  "22"
+    to_port    =  "22"
+    cidr       = "0.0.0.0/0"
+  }
+  rule {
+    from_port   = -1
+    to_port     = -1
+    ip_protocol = "icmp"
+    cidr        = "0.0.0.0/0"
+  }
+
+}
+```
+
+#### :simple-terraform: `ubuntu.tf`
+
+```bash
+################
+#VMs
+################
+
+# creating Ubuntu20 instance
+resource "openstack_compute_instance_v2" "Ubuntu20" {
+  name = "terraform_Ubuntu20_${count.index}"
+  # ID of Featured-Ubuntu20
+  image_id  = var.image_id
+  # use the flavor names to specify the size of the VM
+  flavor_name   = m3.quad
+  # this public key is set above in security.tf section
+  key_pair  = var.public_key
+  security_groups   = ["terraform_ssh_ping", "default"]
+  count     = var.vm_number
+  metadata = {
+    terraform_controlled = "yes"
+  }
+  network {
+    name = "terraform_network"
+  }
+  depends_on = [openstack_networking_network_v2.terraform_network]
+
+}
+# creating floating ip from the public ip pool
+resource "openstack_networking_floatingip_v2" "terraform_floatip_ubuntu20" {
+  pool = "public"
+    count     = var.vm_number
+}
+
+# assigning floating ip from public pool to Ubuntu20 VM
+resource "openstack_compute_floatingip_associate_v2" "terraform_floatubntu20" {
+  floating_ip = "${openstack_networking_floatingip_v2.terraform_floatip_ubuntu20[count.index].address}"
+  instance_id = "${openstack_compute_instance_v2.Ubuntu20[count.index].id}"
+    count     = var.vm_number
+}
+
+################
+#Output
+################
+
+
+output "floating_ip_ubuntu20" {
+  value = openstack_networking_floatingip_v2.terraform_floatip_ubuntu20.*.address
+  description = "Public IP for Ubuntu 20"
+}
+```
+
+#### :simple-terraform: `terraform.tfvars`
+
+ A `terraform.tfvars` file is used to define the values of input variables. It can also be renamed `*.auto.tfvars`.
  
- It serves as a convenient way to store and manage variable values that you don't want to hardcode in your .tf files or provide via command-line arguments. 
+ It serves as a convenient way to store and manage variable values that you don't want to hardcode in your `.tf` files or provide via command-line arguments. 
  
  By using a `terraform.tfvars` file, you can easily customize and update the variable values for different environments or scenarios.
 
@@ -302,16 +524,20 @@ You can also create multiple `.tfvars` files and specify which one to use by pas
 terraform apply -var-file="custom.tfvars"
 ```
 
-## Commands
+## Terraform Commands
 
-### :simple-terraform: init
+#### :simple-terraform: init
 
-[`terraform init`](https://developer.hashicorp.com/terraform/cli/commands/init) - initializes a working directory containing terraform files
+[`terraform init`](https://developer.hashicorp.com/terraform/cli/commands/init) - initializes a working directory containing terraform `.tf` or `.tfvars` files
 
-### :simple-terraform: apply
+#### :simple-terraform: plan
 
-[`terraform apply`]
+[`terraform plan`]() - generates the configuration based on the `.tf` files in the initialized directory
 
-### :simple-terraform: destroy
+#### :simple-terraform: apply
 
-### :simple-terraform: plan
+[`terraform apply`]() - launches the deployment 
+
+#### :simple-terraform: destroy
+
+[`terraform destroy`]() - destroys the current deployment

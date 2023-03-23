@@ -65,6 +65,37 @@ Optional: [:simple-visualstudiocode: VS Code Terraform Extension](https://market
 
 ### CyVerse CACAO CLI
 
+### CACAO file structure
+
+```css
+terraform-project/
+├── main.tf
+├── inputs.tf
+├── outputs.tf
+├── output-ansible-inventory.tf
+├── metadata.json
+├── terraform.tfvars.example
+└── ansible/
+    ├── ansible.cfg
+    ├── find_connection.yaml
+    ├── playbook.yaml      
+    └── requirements.yaml
+```
+
+**:simple-terraform: Main Configuration File (`main.tf`):** - contains the primary infrastructure resources and configurations for virtual machines, networks, and storage.
+
+**:simple-terraform: Inputs File (`inputs.tf`):** - defines all the input variables used in the configuration. Declare variables with default values or leave them empty for required user input. Include descriptions for each variable to provide context.
+
+**:simple-terraform: Outputs File (`outputs.tf`):** - defines the outputs Terraform displays after applying the Main and Variables configuration. Includes: IP addresses, DNS names, or information for resources.
+
+**:simple-terraform: Provider Configuration File (`provider.tf`):** - 
+
+**:simple-terraform: Modules and Reusable Configurations:** - create separate `.tf` files for reusable modules and configurations. Reuse across multiple projects or within the same project on multiple VMs.
+
+### File Examples
+
+#### :simple-terraform: `main.tf`
+
 #### Start-up the Terraform Server
 
 We need to run `terraform` from somewhere, this should be a permanent instance which is not pre-emptable (suggest a tiny VM on Jetstream2)
