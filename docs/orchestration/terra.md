@@ -89,6 +89,10 @@ CyVerse is developing a User Interface for Jetstream2 called [CACAO (Cloud Autom
 
 [:simple-terraform: Official Documentation](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli#install-terraform){target=_blank}
 
+??? Tip "Windows Installation"
+
+    Download [Terraform](https://developer.hashicorp.com/terraform/downloads) using the appropriate distribution for your OS
+
 ??? Tip "Mac OS X Installation"
 
     Instructions for Mac OS X installation
