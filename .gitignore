@@ -3,3 +3,10 @@ _build/
 .ropeproject/
 *.DS_Store
 .venv
+
+.terraform/
+*.tfstate
+*.backup
+*.lock.hcl
+*.tfstate.lock.info
+*openrc.sh
