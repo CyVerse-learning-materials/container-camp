@@ -2,7 +2,7 @@ docs_dir: docs/
 repo_name: 'CyVerse-learning-materials/container-camp'
 repo_url: 'https://github.com/CyVerse-learning-materials/container-camp'
 
-site_name: 'Container Camp Spring 2023'
+site_name: 'Cloud Native Camp'
 site_description: 'Documentation for container related workshop.'
 site_author: 'CyVerse Science Team'
 site_url: 'https://container-camp.cyverse.org'
@@ -10,7 +10,7 @@ site_url: 'https://container-camp.cyverse.org'
 edit_uri: edit/mkdocs/docs
 
 # Copyright
-copyright: 'Copyright &copy; 2022 CyVerse'
+copyright: 'Copyright &copy; 2019-2023 CyVerse'
 
 # Navigation Page
 
