@@ -35,7 +35,7 @@
 
 **Funding and Citations:**
 
-CyVerse is generously funded by the National Science Foundation [![NSF](assets/nsf.png)](https://nsf.gov){width=25}. Here are our award numbers:
+CyVerse is generously funded by the National Science Foundation [![NSF](assets/nsf.png){width=25}](https://nsf.gov). Here are our award numbers:
 
 - [![NSF-0735191](https://img.shields.io/badge/NSF-0735191-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=0735191)
 - [![NSF-1265383](https://img.shields.io/badge/NSF-1265383-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1265383)
