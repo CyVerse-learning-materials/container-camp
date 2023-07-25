@@ -1,4 +1,4 @@
-[![CyVerse Learning Center](assets/de/logos/cyverse_logo_2022.png "CyVerse Learning Center")](https://learning.cyverse.org){target=_blank width=400}
+[![CyVerse Learning Center](assets/de/logos/cyverse_logo_2022.png "CyVerse Learning Center"){width="400"}](https://learning.cyverse.org){target=_blank}
 
 # Welcome to CyVerse Container & Cloud Native Camp Documentation 
 
@@ -35,7 +35,9 @@
 
 **Funding and Citations:**
 
-CyVerse is generously funded by the National Science Foundation [![NSF](assets/nsf.png){width=25}](https://nsf.gov). Here are our award numbers:
+CyVerse is generously funded by the National Science Foundation [![NSF](assets/nsf.png){width="25"}](https://nsf.gov){target=_blank}. 
+
+Here are our award numbers:
 
 - [![NSF-0735191](https://img.shields.io/badge/NSF-0735191-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=0735191)
 - [![NSF-1265383](https://img.shields.io/badge/NSF-1265383-blue.svg)](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1265383)
