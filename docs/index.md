@@ -4,6 +4,10 @@
 
 ![banner](assets/cc_banner_01.png)
 
+## [:material-run-fast: Go to 8/17/2023 Workshop Agenda](agenda.md)
+
+Welcome to our documentation on containers and orchestration in academic research and education.
+
 ## Basic Container Camp
 
 ### Docker Containers for Scientific Research
@@ -23,13 +27,21 @@
 - [Infrastructure as Code with Hashicorp Terraform](https://container-camp.cyverse.org/orchestration/terra/)
 - [CyVerse's Cloud Automation & Continuous Analysis Orchestration (CACAO)](https://container-camp.cyverse.org/orchestration/cacao/)
 
-## Key Takeaways
 
-- An understanding of the development, maintenance, and deployment of containers for scientific research.
-- Access to the most powerful public research computing infrastructure in the world via ACCESS-CI.
-- An understanding of container orchestration platforms in both production and testing environments.
-- The ability to launch and manage distributed resources using IaC templates on commercial (AWS, GCloud, Azure) or public research (OpenStack) clouds.
-- Insight into commercial cloud services, their costs, and how to best utilize them for scientific research.
+!!! Success "Learning Objectives"
+
+        After completing these two paired workshops, you should be able to:
+        
+        * Explain why containers and orchestration are used in research computing
+        * Create your own containers and deploy your own orchestrated frameworks
+        * Understand how and when to use containers and IaC in your daily work
+
+        You will also leave with
+
+        - Understanding of how to use the most powerful public research computing infrastructure in the world via [ACCESS-CI](https://access-ci.org).
+        - The ability to launch and manage distributed resources using IaC templates on commercial (AWS, GCloud, Azure) or public research (OpenStack) clouds.
+
+        - Insight into commercial cloud services, their costs, and how to best utilize them for scientific research.
 
 ---
 
