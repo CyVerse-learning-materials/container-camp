@@ -1,20 +1,14 @@
 # :material-calendar: Container Camp Basics
 
-**Dates**: Mar 6th-8th 2023
-
-**Time**: 09:00AM–13:00PM  US Mountain Standard Time (8am-12pm PST; 9am-1pm MST/AZ; 10am-2pm CST; 11am-3pm EST)
-
-**Location**: Virtual Zoom
-
 ## Day 1 - Introduction to Docker
 
-!!! Note "Content"
+??? Note "Content"
 
         - Introduction to Docker and its uses in reproducible science 
         - Launching development environments on CodeSpaces for container testing
         - Using Docker on the commandline.
 
-!!! Success "Goals"
+??? Success "Goals"
 
         - Introduction to containers & [where to find them](../docker/registry.md)
         - Command line containers with CodeSpaces (optional: run locally)
@@ -37,19 +31,19 @@
     | 12:00 | [:material-docker: Managing Docker and Data](../docker/intro.md)  | Michele & Tyson | | 
     | 12:55 | Conclude for the day | All | push changes to your GitHub |
 
-!!! Warning "Optional Homework"
+??? Warning "Optional Homework"
 
         - Test other Docker container images on CodeSpaces or locally
 
 ## Day 2 - Building Docker Containers
 
-!!! Note "Content"
+??? Note "Content"
 
         - Use GitHub to browse for public Dockerfiles
         - Build Dockerfiles and push them to public registry
         - Use Version Control to set up automated container builds with GitHub Actions
 
-!!! Success "Goals"
+??? Success "Goals"
 
         - Introduction to what Dockerfiles are and what you use them for
         - Start thinking about how to modify them for your own applications
@@ -72,12 +66,12 @@
 
 ## Day 3 - Singularity, Orchestration, and Containers on the HPC
 
-!!! Note "Content"
+??? Note "Content"
 
         - Introduction to Singularity
         - Introduction to Kubernetes
 
-!!! Success "Goals"
+??? Success "Goals"
 
         - Being able to execute containers on the HPC
         - Create a small Kubernetes cluster
