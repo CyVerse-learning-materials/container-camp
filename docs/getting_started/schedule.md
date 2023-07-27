@@ -1,96 +1,93 @@
 # :material-calendar: Container Camp Basics
 
-## Day 1 - Introduction to Docker
+## Day 1 - Container Orchestration
 
-??? Note "Content"
+!!! abstract "Content"
 
-        - Introduction to Docker and its uses in reproducible science 
-        - Launching development environments on CodeSpaces for container testing
-        - Using Docker on the commandline.
+    * Introduction to Kubernetes
+    * K8s CLI
+    * Deploying K8s clusters
 
-??? Success "Goals"
+!!! success "Learning Objectives"
 
-        - Introduction to containers & [where to find them](../docker/registry.md)
-        - Command line containers with CodeSpaces (optional: run locally)
-        - Find and use official Docker images
+    * Comfort working in the terminal with a remote K8s cluster
+    * Understanding of K8s as it is used to manage containers
+    * Start your own Zero2JupyterHub
 
-???+ Example "Activities"
+!!! Example "Agenda"
 
-    | Time (MST/AZ)| Activity | Instructor | Outcome | 
+    | Time ([PDT](https://time.is/PDT){target=_blank}) | Activity | Instructor | Outcome | 
     |-----------|----------|------------|-------|
     | 09:00 | Welcome | All |
     | 09:05 | Overview of Website | Michele | [Code of Conduct](../getting_started/code_conduct.md) |
-    | 09:10 | Why use Containers? | Carlos | What containers are used for in science |
-    | 09:25 | [Start CodeSpace :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | Using Dev Environments to create containers|
-    | 09:30 | [:material-docker: Docker Commands and Execution](../docker/intro.md#fundamental-docker-commands) | Carlos | Basic command line use of Docker |
+    | 09:10 | What is Kubernetes? | Carlos | overview of K8s ecosystem |
+    | 09:30 | [:simple-kubernetes: K8s CLI](../orchestration/k8s.md#introduction-to-k8s-cli-with-kubectl) | Carlos | Basic command line use of K8s |
     | 09:55 | Break | |
-    | 10:00 | [:material-docker: Docker Commands and Execution](../docker/intro.md#fundamental-docker-commands) | Carlos & Tyson | Basic command line use of Docker | 
+    | 10:00 | [:simple-kubernetes: K8s CLI cont.](../orchestration/k8s.md#introduction-to-k8s-cli-with-kubectl) | Carlos & Tyson | Connecting to a K8s cluster | 
     | 10:55 | Break | |
-    | 11:00 | [:material-docker: Managing Docker and Data](../docker/intro.md#managing-data-in-docker) | Michele | Volumes and Interactive Use inside containers | 
+    | 11:00 | [:material-docker: Deploying K8s clusters](../orchestration/advk8s.md) | Michele | Jero2JupyterHub | 
     | 11:55 | Break | | |
-    | 12:00 | [:material-docker: Managing Docker and Data](../docker/intro.md)  | Michele & Tyson | | 
-    | 12:55 | Conclude for the day | All | push changes to your GitHub |
+    | 12:00 | [:simple-kubernetes: Managing K8s clusters](../orchestration/advk8s.md)  | Michele & Tyson | | 
+    | 12:55 | Conclude for the day | All | push changes to GitHub |
 
-??? Warning "Optional Homework"
+??? alert "Homework"
 
-        - Test other Docker container images on CodeSpaces or locally
+    * Consider what type of hardware & container orchestration you're most interested in and come ready with your own ideas for deploying something with Terraform on Day 2.
 
-## Day 2 - Building Docker Containers
+## Day 2 - Infrastructure as Code 
 
-??? Note "Content"
+!!! abstract "Content"
 
-        - Use GitHub to browse for public Dockerfiles
-        - Build Dockerfiles and push them to public registry
-        - Use Version Control to set up automated container builds with GitHub Actions
+    * Use Terraform to provision hardware and deploy applications & containers
+    * Build Terraform templates
 
-??? Success "Goals"
+!!! success "Learning Objectives"
 
-        - Introduction to what Dockerfiles are and what you use them for
-        - Start thinking about how to modify them for your own applications
+    * Understanding of what IaC is and how it fits along with the orchestration of containers and cloud
+    * Ability to launch your own cloud instances on at least one cloud platform (OpenStack)
+    * Ability to provision your instances with Terraform and access them
 
-???+ Example "Activities"
+!!! Example "Agenda"
 
-    | Time (MST/AZ)| Activity | Instructor | Notes | 
+    | Time ([PDT](https://time.is/PDT){target=_blank}) | Activity | Instructor | Outcome | 
     |-----------|----------|------------|-------|
     | 09:00 | Welcome back | All | |
     | 09:05 | Discuss previous day, answer questions | | |
-    | 09:15 | [(re)start Dev Environment :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) | Tyson | |
-    | 09:20 | [Finding the right container :material-docker:](../docker/registry.md ) | Tyson | |
+    | 09:20 | [:simple-terraform: What is Terraform](../orchestration/terra.md ) | Tyson | |
     | 09:55 | Break | |
-    | 10:00 | [Building Docker Images :material-docker:](../docker/build.md )  | Carlos | |
+    | 10:00 | [:simple-terraform: Terraform CLI](../orchestration/terra.md )  | Carlos | |
     | 10:55 | Break | |
-    | 11:00 | [Using Docker Compose :material-docker:](../docker/compose.md ) | Michele | | 
+    | 11:00 | [:simple-terraform: Writing Terraform Templates](../orchestration/advterra.md ) | Michele | | 
     | 11:55 | Break | | |
-    | 12:00 | [Integrating your Containers into CyVerse](https://learning.cyverse.org/de/create_apps/){target=_blank} | Tyson | | 
+    | 12:00 | [:simple-terraform: Provisioning a K3s Cluster with Terraform](../orchestration/advterra.md) | Tyson | | 
     | 12:55 | Conclude | | |
 
-## Day 3 - Singularity, Orchestration, and Containers on the HPC
+## Day 3 - CACAO
 
-??? Note "Content"
+!!! abstract "Content"
 
-        - Introduction to Singularity
-        - Introduction to Kubernetes
+        - Introduction to CyVerse CACAO
+        - Writing advanced Terraform templates for CACAO
 
-??? Success "Goals"
+!!! success "Learning Objectives"
 
         - Being able to execute containers on the HPC
         - Create a small Kubernetes cluster
 
-???+ Example "Activities"
+!!! example "Agenda"
 
-    | Time (MST/AZ)| Activity | Instructor | Notes | 
+    | Time ([PDT](https://time.is/PDT){target=_blank}) | Activity | Instructor | Outcome | 
     |-----------|----------|------------|-------|
     | 09:00 | Welcome back | All | |
     | 09:05 | Discuss previous day, answer questions | | |
-    | 09:15 | [(re(re))start Dev Environment :material-microsoft-visual-studio-code: :material-github:](../cloud/codespaces.md) |  | |
-    | 09:20 | [Introduction to Singularity](https://container-camp.cyverse.org/singularity/intro/#build-singularity-sif-images) | |
-    | 09:30 | [Obtaining Singularity](https://container-camp.cyverse.org/singularity/intro/#singularityce-installation) and [the Singularity CLI](https://container-camp.cyverse.org/singularity/intro/#singularity-cli) | |
+    | 09:20 | [Introduction to CACAO](../orchestration/cacao.md) | Tyson |
+    | 09:30 | [Using the CACAO UI](../orchestration/cacao.md) | Tyson |
     | 09:55 | Break | |
-    | 10:00 | [Singularity Commands & Interacting with Singularity Images](https://container-camp.cyverse.org/singularity/intro/#how-do-hpc-systems-fit-into-the-development-workflow) | |
+    | 10:00 | [Overview of CACAO templates](../orchestration/cacao_terra.md)| Edwin |
     | 10:55 | Break ||
-    | 11:00 | [Singularity Images Continued](hhttps://container-camp.cyverse.org/singularity/advanced/#singularity-cli-continued)* | |
+    | 11:00 |  [Creating a CACAO template](../orchestration/cacao_terra.md) | Edwin |
     | 11:55 | Break ||
-    | 12:00 | [Integrating your Containers into CyVerse](https://learning.cyverse.org/de/create_apps/){target=_blank}, questions, inquiries | |
+    | 12:00 | Show and Tell - present your use cases | everyone |
     | 12:55 | Conclude** | |
 
     * If we still have time, we will also discuss using [Singularity on the HPC](https://container-camp.cyverse.org/singularity/hpc/#how-do-hpc-systems-fit-into-the-development-workflow).
