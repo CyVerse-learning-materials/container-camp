@@ -41,15 +41,17 @@ nav:
     - 'Manage private container registry': orchestration/registry.md
   - 'Cloud Services':
     - 'Jetstream-2': cloud/js2.md
+    - 'OpenStack': cloud/openstack.md
     - 'GitHub CodeSpaces': cloud/codespaces.md
+    - 'Amazon Web Services': cloud/aws.md
+    - 'Azure': cloud/azure.md
+    - 'Google Cloud Platform': cloud/gcp.md
   - 'Useful Resources':
+    - 'VSCode': resources/vscode.md
     - 'Docker': resources/docker.md
     - 'Singularity': resources/singularity.md
     - 'Kubernetes': resources/k8s.md
     - 'Camp Discussion and Notes': resources/post.md
-    - 'Cloud Services':
-      - 'Jetstream-2': cloud/js2.md
-      - 'GitHub CodeSpaces': cloud/codespaces.md
 
 # JavaScript for Intercom Widget
 extra_javascript:

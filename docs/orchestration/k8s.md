@@ -1,59 +1,75 @@
-[:material-kubernetes: Kubernetes](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/){target=_blank}, often abbreviated as `K8s`, is an open-source system for automating deployment, scaling, and management of containerized applications.
+# Lesson 1: Introduction to Kubernetes
 
-K8s is the most widely used platform for managing containerized applications at scale in Cloud computing.
+!!! info "Learning Objectives"
+    * Understand what Kubernetes is and its role in managing containerized applications
+    * Recognize the importance and benefits of using Kubernetes in cloud computing
+    * Identify reasons why you may need to use Kubernetes for your own research or projects
+    * Learn about the existence of Kubernetes clusters and how to leverage them using `kubectl`
 
-Leveraging a K8s Cluster is likely if you adopt containers into your research portfolio.
+[:material-kubernetes: Kubernetes](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/){target=_blank}, or `K8s` for short, is an open-source system designed to automate the deployment, scaling, and management of containerized applications. 
 
-In these introductory lessons we will be discussing how to leverage *existing* Kubernetes Clusters using `kubectl`
+K8s is the most prevalent platform for managing containerized applications at scale in the realm of cloud computing. If you're considering incorporating containers into your research or project portfolio, it's highly likely you'll interact with a K8s Cluster.
 
-??? Question ":material-scale-balance: Why build your own K8s Cluster? "
+In this introductory lesson, we'll focus on how to leverage *existing* Kubernetes Clusters using `kubectl`.
 
-    Learning about containerized applications and container orchestration is why you're here afterall. We want to at least expose you to the existence of these technologies and to help you understand how they fit within the roadmap of Cloud Native Computing. With that said,
+??? Question ":material-scale-balance: Why would you want to build your own K8s Cluster? "
 
-    :warning: __Designing, deploying and running your own K8s cluster is very likely a bad idea__ :warning:
+    You're here to learn about containerized applications and container orchestration. We aim to familiarize you with these technologies and help you understand their place in the roadmap of Cloud Native Computing. However, it's crucial to note,
+
+    :warning: __Designing, deploying, and maintaining your own K8s cluster can be a complex and challenging task__ :warning:
     
-      - Partly because there are so many other existing platforms out there, i.e., other managed K8s services, but also because the engineering and technological understanding of managing K8s requires a dedicated DevOps or software engineering team to keep your platform running.
+    - This is partly because there are numerous existing platforms out there, such as managed K8s services. Additionally, managing K8s requires a dedicated DevOps or software engineering team to ensure your platform operates smoothly.
 
-    Still not deterred?
+    Still interested in building your own cluster? Here are some reasons why you might need to use K8s for your research or project:
 
-    Reasons why you may need to use K8s for your research:
+    (1) Your applications consist of multiple services. The K8s API automates the tasks of managing numerous containers and allocating resources. 
 
-    (1) Your applications consist of multiple services. K8s API automates the tasks of managing many containers and provision resources. 
+    (2) Your work scales dynamically - if your computing needs fluctuate based on workloads, K8s can be useful. Using containers to scale your applications is more efficient than manually launching VMs.
 
-    (2) Your work scales dynamically - if you need more or less quantities of computing depending on workloads, K8s might be useful. The ability to use containers to scale your applications is easier than launching VMs by hand.
+    (3) You have too many containers to manage - K8s excels at its primary function: managing and maintaining containers. 
 
-    (3) You have too many containers to keep track of - K8s is good at what it was made for, managing and keeping containers up and running. 
+    (4) Your domain is transitioning to the cloud. If your field is moving towards being cloud-native, it's crucial to develop workflows in anticipation of this shift.
 
-    (4) Its all going to the cloud anyway. If your science domain is moving towards being cloud-native, you need to build your workflows for the time of migration.
-
-    (5) Its consistent. K8s declarative state describes exactly how everything is managed.
+    (5) Consistency is key. K8s' declarative state provides a clear description of how everything is managed.
 
 !!! Info "Kubernetes Terminology"
 
-    **:material-kubernetes: Kubernetes Cluster** is a set of nodes that run containerized applications.
+    **Kubernetes Cluster**: A collection of nodes that run containerized applications. This is the primary unit of organization in Kubernetes.
 
-    **:octicons-terminal-24: kubectl** is the command line interface for connecting to K8s clusters
+    **kubectl**: The command-line interface used for interacting with Kubernetes clusters. It enables users to manage various aspects of the cluster.
 
-    **:octicons-container-24: Pod** is the smallest deployable unit of Kubernetes, can be one or more containers that talk to one another. *Pods* are run on *Nodes*
+    **Pod**: The smallest deployable unit in Kubernetes, which can consist of one or more containers that communicate with each other. Pods are run on nodes.
 
-    **:fontawesome-solid-share-nodes: Node**: typically run on a virtual machine (VM), a *Nodes* components include *kubelet*, *kube-proxy*, and *Container run-time*
-    
-    **Kubelet** is the *Node* agent that manages the *Pods* on each VM
-    
-    **Kube-proxy** is used by a *Service* to run a network proxy on each *Node*
-    
-    **Container runtime** is the software responsible for running containers in the *Pods*. Example containers that K8s users are: `Docker`, `containerd` (native), and `CRI-O`.
-    
-    **Service** sets up a network address for an application, including a persistent IP address and a local DNS entry within the *cluster*. *Service* load balances across the *Pods* and can add or remove them.
+    **Node**: Typically a virtual machine (VM) that runs Kubernetes components, including the kubelet, kube-proxy, and container runtime.
 
-    **ReplicaSet** is a convenient way to build multiple pods at once.
+    **Kubelet**: The agent that runs on each node, responsible for managing the pods on its respective VM.
 
-    **Deployment** provides declarative updates for Pods and ReplicaSets (rolling updates)
-    
-    **Control Pane** is a node that controls/manages worker nodes. The components of the Control Pane are the *API server*, the *cluster store*, the *controller manager*, and the *scheduler*.
+    **Kube-proxy**: A network proxy that runs on each node, used by a Service to handle network communication.
+
+    **Container runtime**: The software that runs containers within pods. Examples include `Docker`, `containerd` (native to Kubernetes), and `CRI-O`.
+
+    **Service**: Assigns a network address to an application, including a persistent IP address and a DNS entry within the cluster. A Service also manages load balancing across pods and can dynamically add or remove them.
+
+    **ReplicaSet**: Allows for the creation of multiple pods simultaneously, ensuring that a specified number of identical pods are running at any given time.
+
+    **Deployment**: Provides declarative updates for Pods and ReplicaSets, allowing for rolling updates and rollbacks.
+
+    **Control Plane**: A node that manages worker nodes. It consists of the API server, cluster store, controller manager, and scheduler.
+
+    **Namespace**: A way to divide cluster resources between multiple users.
+
+    **Ingress**: An API object that manages external access to the services in a cluster, typically HTTP.
+
+    **Persistent Volume (PV)**: A piece of storage in the cluster that has been provisioned by an administrator.
+
+    **Persistent Volume Claim (PVC)**: A request for storage by a user.
+
+    **ConfigMap**: An API object used to store non-confidential data in key-value pairs.
+
+    **Secret**: An API object used to store sensitive data, like passwords and keys.
     
 
-## Introduction to K8s CLI with `kubectl`
+## K8s CLI `kubectl`
 
 The Kubernetes API uses a command-line tool called `kubectl`
 
@@ -87,8 +103,27 @@ To connect to a running K8s cluster, you need to create a `config` yaml and plac
 
     Example of the `~/.kube/config` file which is used for K3s
     
-    ```
-   
+    ```{yaml}
+    apiVersion: v1
+    clusters:
+    - cluster:
+        certificate-authority-data: DATA+OMITTED
+        server: https://127.0.0.1:6443
+      name: k3s-tutorial
+    contexts:
+    - context:
+        cluster: k3s-tutorial
+        namespace: cc2023
+        user: participant-name
+      name: k3s-tutorial
+    current-context: k3s-tutorial
+    kind: Config
+    preferences: {}
+    users:
+    - name: participant
+      user:
+        client-certificate-data: REDACTED
+        client-key-data: REDACTED
     ```
 
 1. Copy the `~/.kube/config` file from your cluster or use our example here over to your localhost or VM and put it into a temporary directory.

@@ -7,8 +7,8 @@ clusters:
 contexts:
 - context:
     cluster: k3s-tutorial
-    namespace: cc2022
-    user: participant
+    namespace: cc2023
+    user: participant-name
   name: k3s-tutorial
 current-context: k3s-tutorial
 kind: Config

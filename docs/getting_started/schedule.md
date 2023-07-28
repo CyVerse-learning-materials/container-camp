@@ -1,4 +1,4 @@
-# :material-calendar: Container Camp Basics
+# :material-calendar: Schedule
 
 ## Day 1 - Container Orchestration
 
@@ -88,7 +88,6 @@
     | 11:00 |  [Creating a CACAO template](../orchestration/cacao_terra.md) | Edwin |
     | 11:55 | Break ||
     | 12:00 | Show and Tell - present your use cases | everyone |
-    | 12:55 | Conclude** | |
+    | 12:55 | Conclude | |
 
-    * If we still have time, we will also discuss using [Singularity on the HPC](https://container-camp.cyverse.org/singularity/hpc/#how-do-hpc-systems-fit-into-the-development-workflow).
-    ** For additional questions and inquiries, we will make time for one-on-ones on either Thursday or Friday (flexible schedule).
+
