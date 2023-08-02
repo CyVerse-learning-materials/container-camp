@@ -4,7 +4,7 @@
 
 ![banner](assets/cc_banner_01.png)
 
-## [:material-run-fast: Go to 8/17/2023 Workshop Agenda](getting_started/schedule.md)
+## [:material-run-fast: Go to 8/16 - 8/18 Workshop Agenda](getting_started/schedule.md)
 
 Welcome to our documentation on containers and orchestration in academic research and education.
 
