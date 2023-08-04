@@ -21,11 +21,11 @@ Welcome to our documentation on containers and orchestration in academic researc
 ## Cloud Native Camp
 
 ### Orchestration
-- [Container Orchestration with Kubernetes](https://container-camp.cyverse.org/orchestration/k8s/)
+- [Container Orchestration with Kubernetes](orchestration/k8s.md)
 
 ### Infrastructure as Code
-- [Infrastructure as Code with Hashicorp Terraform](https://container-camp.cyverse.org/orchestration/terra/)
-- [CyVerse's Cloud Automation & Continuous Analysis Orchestration (CACAO)](https://container-camp.cyverse.org/orchestration/cacao/)
+- [Infrastructure as Code with Hashicorp Terraform](orchestration/terra.md)
+- [CyVerse's Cloud Automation & Continuous Analysis Orchestration (CACAO)](orchestration/cacao.md)
 
 
 !!! Success "Learning Objectives"
