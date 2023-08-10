@@ -568,7 +568,7 @@ In JSON:
 }         
 ```
 
-When you run `terraform apply` or `terraform plan`, Terraform will automatically load the values from the `terraform.tfvars` file if it exists in the working directory. 
+When you run `terraform apply`, Terraform will automatically load the values from the `terraform.tfvars` file if it exists in the working directory. 
 
 You can also create multiple `.tfvars` files and specify which one to use by passing the `-var-file` flag when executing Terraform commands:
 
@@ -576,9 +576,11 @@ You can also create multiple `.tfvars` files and specify which one to use by pas
 terraform apply -var-file="custom.tfvars"
 ```
 
+Variables can also be passed directly into the terraform command-line using the `-var`. You can also combine the use of terraform.tfvars, *.auto.tfvars, and command line flags to set input variables; however, you should understand the [rules for variable precedence before doing so](https://developer.hashicorp.com/terraform/language/values/variables#variable-definition-precedence){target=_blank}.
+
 ### :simple-terraform: Intermediate directories and files
 
-When `terraform plan` and `terraform apply` are executed, Terraform generates some new project files, notably
+When `terraform apply` are executed, Terraform generates some new project files, notably
 
 `.terraform/` - this directory will contain the `terraform-provider-openstack_version` and a `README.md`, `LICENCE`, and `CHANGELOG.md` 
 
@@ -619,180 +621,23 @@ terraform init
     commands will detect it and remind you to do so if necessary.
     ```
 
-### :simple-terraform: `plan`
-
-`plan` - generates the configuration based on the `.tf` files in the initialized directory
+### :simple-terraform: `validate`
+`validate` - scans your terraform directory and reports any syntax errors in your terraform
 
 ```bash
-terraform plan
+terraform validate
 ```
 
 ??? success "Expected Response"
 
     ```bash
-
-    Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
-      + create
-
-    Terraform will perform the following actions:
-
-      # openstack_compute_floatingip_associate_v2.terraform_floatip_ubuntu20[0] will be created
-      + resource "openstack_compute_floatingip_associate_v2" "terraform_floatip_ubuntu20" {
-          + floating_ip = (known after apply)
-          + id          = (known after apply)
-          + instance_id = (known after apply)
-          + region      = (known after apply)
-        }
-
-      # openstack_compute_instance_v2.Ubuntu20[0] will be created
-      + resource "openstack_compute_instance_v2" "Ubuntu20" {
-          + access_ip_v4        = (known after apply)
-          + access_ip_v6        = (known after apply)
-          + all_metadata        = (known after apply)
-          + all_tags            = (known after apply)
-          + availability_zone   = (known after apply)
-          + created             = (known after apply)
-          + flavor_id           = (known after apply)
-          + flavor_name         = "m3.tiny"
-          + force_delete        = false
-          + id                  = (known after apply)
-          + image_id            = (known after apply)
-          + image_name          = "Featured-Ubuntu20"
-          + key_pair            = "tswetnam-terraform-key"
-          + metadata            = {
-              + "terraform_controlled" = "yes"
-            }
-          + name                = "container_camp_Ubuntu20_0"
-          + power_state         = "active"
-          + region              = (known after apply)
-          + security_groups     = [
-              + "default",
-              + "terraform_ssh_ping",
-            ]
-          + stop_before_destroy = false
-          + updated             = (known after apply)
-
-          + network {
-              + access_network = false
-              + fixed_ip_v4    = (known after apply)
-              + fixed_ip_v6    = (known after apply)
-              + floating_ip    = (known after apply)
-              + mac            = (known after apply)
-              + name           = "auto_allocated_network"
-              + port           = (known after apply)
-              + uuid           = (known after apply)
-            }
-        }
-
-      # openstack_compute_secgroup_v2.terraform_ssh_ping will be created
-      + resource "openstack_compute_secgroup_v2" "terraform_ssh_ping" {
-          + description = "Security group with SSH and PING open to 0.0.0.0/0"
-          + id          = (known after apply)
-          + name        = "terraform_ssh_ping"
-          + region      = (known after apply)
-
-          + rule {
-              + cidr        = "0.0.0.0/0"
-              + from_port   = -1
-              + id          = (known after apply)
-              + ip_protocol = "icmp"
-              + self        = false
-              + to_port     = -1
-            }
-          + rule {
-              + cidr        = "0.0.0.0/0"
-              + from_port   = 22
-              + id          = (known after apply)
-              + ip_protocol = "tcp"
-              + self        = false
-              + to_port     = 22
-            }
-        }
-
-      # openstack_networking_floatingip_v2.terraform_floatip_ubuntu20[0] will be created
-      + resource "openstack_networking_floatingip_v2" "terraform_floatip_ubuntu20" {
-          + address    = (known after apply)
-          + all_tags   = (known after apply)
-          + dns_domain = (known after apply)
-          + dns_name   = (known after apply)
-          + fixed_ip   = (known after apply)
-          + id         = (known after apply)
-          + pool       = "public"
-          + port_id    = (known after apply)
-          + region     = (known after apply)
-          + subnet_id  = (known after apply)
-          + tenant_id  = (known after apply)
-        }
-
-      # openstack_networking_secgroup_rule_v2.http_rule will be created
-      + resource "openstack_networking_secgroup_rule_v2" "http_rule" {
-          + direction         = "ingress"
-          + ethertype         = "IPv4"
-          + id                = (known after apply)
-          + port_range_max    = 80
-          + port_range_min    = 80
-          + protocol          = "tcp"
-          + region            = (known after apply)
-          + remote_group_id   = (known after apply)
-          + remote_ip_prefix  = "0.0.0.0/0"
-          + security_group_id = (known after apply)
-          + tenant_id         = (known after apply)
-        }
-
-      # openstack_networking_secgroup_rule_v2.https_rule will be created
-      + resource "openstack_networking_secgroup_rule_v2" "https_rule" {
-          + direction         = "ingress"
-          + ethertype         = "IPv4"
-          + id                = (known after apply)
-          + port_range_max    = 443
-          + port_range_min    = 443
-          + protocol          = "tcp"
-          + region            = (known after apply)
-          + remote_group_id   = (known after apply)
-          + remote_ip_prefix  = "0.0.0.0/0"
-          + security_group_id = (known after apply)
-          + tenant_id         = (known after apply)
-        }
-
-      # openstack_networking_secgroup_rule_v2.service_rule will be created
-      + resource "openstack_networking_secgroup_rule_v2" "service_rule" {
-          + direction         = "ingress"
-          + ethertype         = "IPv4"
-          + id                = (known after apply)
-          + port_range_max    = 8080
-          + port_range_min    = 8080
-          + protocol          = "tcp"
-          + region            = (known after apply)
-          + remote_group_id   = (known after apply)
-          + remote_ip_prefix  = "0.0.0.0/0"
-          + security_group_id = (known after apply)
-          + tenant_id         = (known after apply)
-        }
-
-      # openstack_networking_secgroup_v2.terraform_tcp_1 will be created
-      + resource "openstack_networking_secgroup_v2" "terraform_tcp_1" {
-          + all_tags    = (known after apply)
-          + description = "Security group with TCP open to 0.0.0.0/0"
-          + id          = (known after apply)
-          + name        = "terraform_tcp_1"
-          + region      = (known after apply)
-          + tenant_id   = (known after apply)
-        }
-
-    Plan: 8 to add, 0 to change, 0 to destroy.
-
-    Changes to Outputs:
-      + floating_ip_ubuntu20 = [
-          + null,
-        ]
-
-    ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-    Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply"
-    now.
+    Success! The configuration is valid.
     ```
 
+
 ### :simple-terraform: apply
+
+Using `terraform apply` will output the changes that will occur to your cloud. You can review the changes and decide to continue. Using the flag `-auto-approve` will also output the changes that will occur but will continue with the execution of the terraform as though you entered `yes`.
 
 ```bash
 terraform apply
@@ -1007,6 +852,38 @@ The `floating_ip_ubuntu20` should be the new VM's IP address (yours will be diff
 `ssh ubuntu@<IP-ADDRESS>` 
 
 Make sure that 
+
+### :simple-terraform: `refresh`
+`refresh` - will update (refresh) the current terraform state
+
+This command is sometimes needed if haven't touched your terraform code in a while or there's a chance that your or other individuals manage your resources using horizon, exosphere, or the cli.
+
+```bash
+terraform refresh
+```
+
+??? success "Expected Response"
+
+    ```bash
+    
+    ```
+
+
+### :simple-terraform: `show`
+`show` - will show the current terraform state, as stored in your state file
+
+This command is useful when you 
+
+```bash
+terraform show
+```
+
+??? success "Expected Response"
+
+    ```bash
+    
+    ```
+
 
 ### :simple-terraform: destroy
 
