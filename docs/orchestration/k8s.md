@@ -93,6 +93,15 @@ In this introductory lesson, we'll focus on how to leverage *existing* Kubernete
         - **kubelet**: An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. [`kubelet`](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
         - **k-proxy** (kube-proxy): maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster. [`kube-proxy`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)
 
+!!! Question "We keep talking about Pods and Nodes, *what are Pods and Nodes?*"
+    
+    https://kubernetes.io/docs/concepts/workloads/pods/
+
+    [![pods](https://d33wubrfki0l68.cloudfront.net/fe03f68d8ede9815184852ca2a4fd30325e5d15a/98064/docs/tutorials/kubernetes-basics/public/images/module_03_pods.svg)](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/)
+
+    [![nodes](https://d33wubrfki0l68.cloudfront.net/5cb72d407cbe2755e581b6de757e0d81760d5b86/a9df9/docs/tutorials/kubernetes-basics/public/images/module_03_nodes.svg)](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/)
+
+
 
 ## K8s CLI `kubectl`
 
