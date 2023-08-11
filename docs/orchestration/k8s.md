@@ -10,6 +10,10 @@
 
 K8s is the most prevalent platform for managing containerized applications at scale in the realm of cloud computing. If you're considering incorporating containers into your research or project portfolio, it's highly likely you'll interact with a K8s Cluster.
 
+??? Info "What is container orchestration?"
+
+    [Container orchestration](https://www.redhat.com/en/topics/containers/what-is-container-orchestration) is the process of automating the deployment, scaling, management, and coordination of containerized applications. In the context of Kubernetes, container orchestration involves managing the lifecycle of containers within a cluster. This includes tasks such as deploying containers, ensuring high availability, distributing network traffic, scaling applications up or down based on demand, and handling updates seamlessly.
+
 In this introductory lesson, we'll focus on how to leverage *existing* Kubernetes Clusters using `kubectl`.
 
 ??? Question ":material-scale-balance: Why would you want to build your own K8s Cluster? "
@@ -69,9 +73,18 @@ In this introductory lesson, we'll focus on how to leverage *existing* Kubernete
     **Secret**: An API object used to store sensitive data, like passwords and keys.
     
 
+!!! Question "So, what does a K8s Cluster look like?"
+    
+    In short, this:
+    
+    [![k8s cluster](https://d33wubrfki0l68.cloudfront.net/2475489eaf20163ec0f54ddc1d92aa8d4c87c96b/e7c81/images/docs/components-of-kubernetes.svg)](https://kubernetes.io/docs/concepts/overview/components/)
+
+    The image above is taken from the official [K8s documentation](https://kubernetes.io/docs/concepts/overview/components/) and depics the relation between each component.
+
+
 ## K8s CLI `kubectl`
 
-The Kubernetes API uses a command-line tool called `kubectl`
+The Kubernetes API uses a command-line tool called `kubectl`.
 
 Using K8s does not require you to own or maintain your own cluster. You can use the `kubectl` tool to connect to running clusters and start your containers.
 
