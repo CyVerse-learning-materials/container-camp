@@ -81,6 +81,18 @@ In this introductory lesson, we'll focus on how to leverage *existing* Kubernete
 
     The image above is taken from the official [K8s documentation](https://kubernetes.io/docs/concepts/overview/components/) and depics the relation between each component.
 
+    A K8s cluster comprises of multiple elemets essentially groupable in 2 subsets:
+    
+    - The **Control Pane** components:
+        - **api** (K8s API): the front end of the control pane, it exposes the Kubernentes API. Command line tool: [`kube-apiserver`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
+        - **etcd**: a store used for backing cluster data (e.g., cluster cofiguration, state information). Controlled by the [`kube-apiserver`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) tool.
+        - **sched** (Scheduler): the component that watches for newly created Pods with no assigned node. Once a new Pod is detected, a node is assigned. Controlled by [`kube-scheduler`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/).
+        - **c-m** (Controller Manager): controls the [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) processes. Accessible through [`kube-controller-manager`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
+        - **c-c-m** (Cloud Controller Manager): lets you to link your cluster to your provider's API, allowing you to choose what components interact with the external platform and which components interact with the internal cluster. Read more on the cloud controller manager [here](https://kubernetes.io/docs/concepts/architecture/cloud-controller/).
+    - The **Node** components:
+        - **kubelet**: An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. [`kubelet`](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
+        - **k-proxy** (kube-proxy): maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster. [`kube-proxy`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)
+
 
 ## K8s CLI `kubectl`
 
