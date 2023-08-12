@@ -95,12 +95,24 @@ In this introductory lesson, we'll focus on how to leverage *existing* Kubernete
 
 !!! Question "We keep talking about Pods and Nodes, *what are Pods and Nodes?*"
     
-    https://kubernetes.io/docs/concepts/workloads/pods/
+    [**Pods**](https://kubernetes.io/docs/concepts/workloads/pods/)
 
     [![pods](https://d33wubrfki0l68.cloudfront.net/fe03f68d8ede9815184852ca2a4fd30325e5d15a/98064/docs/tutorials/kubernetes-basics/public/images/module_03_pods.svg)](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/)
 
+    A Pod is the smallest deployable unit in Kubernetes. It represents a single instance of a running process in a cluster and encapsulates one or more closely related containers. Containers within the same Pod share the same network namespace, IP address, and storage volumes, making them suitable for co-located and tightly coupled applications.
+
+    In the image above, we see 4 different Pods, each having at least one containerized app. Notice how each Pod has its own IP address, and apps within the same Pods share volumes for storage and IP address.
+
+    [**Nodes**](https://kubernetes.io/docs/concepts/architecture/nodes/)
+
     [![nodes](https://d33wubrfki0l68.cloudfront.net/5cb72d407cbe2755e581b6de757e0d81760d5b86/a9df9/docs/tutorials/kubernetes-basics/public/images/module_03_nodes.svg)](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/)
 
+    A Node is a physical or virtual machine that runs containers. Nodes are the worker machines in a Kubernetes cluster where Pods are scheduled and executed. Nodes collectively form the computational resources of the cluster, where containers are scheduled and executed. The interaction between Pods and Nodes forms the core of how Kubernetes manages and distributes workloads within a cluster.
+
+    In the image, the Node contains different Pods. Notice [`kubelet`](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) and Docker: 
+    
+    - [`kubelet`](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)  is a component that runs on each Node in a Kubernetes cluster and manages its life cycle, ensuring that the Node is healthy.
+    - Docker provides the runtime environment for containers, whilst K8s manages the orchestration.
 
 
 ## K8s CLI `kubectl`
