@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-<your-student-username>
+  labels:
+    purpose: ubuntu-2204-bash
+spec:
+  containers:
+  - name: student4-ubuntu
+    image: ubuntu:22.04
+    command: [ "/bin/bash", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
