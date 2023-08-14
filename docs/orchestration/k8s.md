@@ -10,6 +10,10 @@
 
 K8s is the most prevalent platform for managing containerized applications at scale in the realm of cloud computing. If you're considering incorporating containers into your research or project portfolio, it's highly likely you'll interact with a K8s Cluster.
 
+??? Info "What is container orchestration?"
+
+    [Container orchestration](https://www.redhat.com/en/topics/containers/what-is-container-orchestration) is the process of automating the deployment, scaling, management, and coordination of containerized applications. In the context of Kubernetes, container orchestration involves managing the lifecycle of containers within a cluster. This includes tasks such as deploying containers, ensuring high availability, distributing network traffic, scaling applications up or down based on demand, and handling updates seamlessly.
+
 In this introductory lesson, we'll focus on how to leverage *existing* Kubernetes Clusters using `kubectl`.
 
 ??? Question ":material-scale-balance: Why would you want to build your own K8s Cluster? "
@@ -69,9 +73,51 @@ In this introductory lesson, we'll focus on how to leverage *existing* Kubernete
     **Secret**: An API object used to store sensitive data, like passwords and keys.
     
 
+!!! Question "So, what does a K8s Cluster look like?"
+    
+    In short, this:
+    
+    [![k8s cluster](https://d33wubrfki0l68.cloudfront.net/2475489eaf20163ec0f54ddc1d92aa8d4c87c96b/e7c81/images/docs/components-of-kubernetes.svg)](https://kubernetes.io/docs/concepts/overview/components/)
+
+    The image above is taken from the official [K8s documentation](https://kubernetes.io/docs/concepts/overview/components/) and depics the relation between each component.
+
+    A K8s cluster comprises of multiple elemets essentially groupable in 2 subsets:
+    
+    - The **Control Pane** components:
+        - **api** (K8s API): the front end of the control pane, it exposes the Kubernentes API. Command line tool: [`kube-apiserver`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
+        - **etcd**: a store used for backing cluster data (e.g., cluster cofiguration, state information). Controlled by the [`kube-apiserver`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) tool.
+        - **sched** (Scheduler): the component that watches for newly created Pods with no assigned node. Once a new Pod is detected, a node is assigned. Controlled by [`kube-scheduler`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/).
+        - **c-m** (Controller Manager): controls the [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) processes. Accessible through [`kube-controller-manager`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
+        - **c-c-m** (Cloud Controller Manager): lets you to link your cluster to your provider's API, allowing you to choose what components interact with the external platform and which components interact with the internal cluster. Read more on the cloud controller manager [here](https://kubernetes.io/docs/concepts/architecture/cloud-controller/).
+    - The **Node** components:
+        - **kubelet**: An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. [`kubelet`](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
+        - **k-proxy** (kube-proxy): maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster. [`kube-proxy`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)
+
+!!! Question "We keep talking about Pods and Nodes, *what are Pods and Nodes?*"
+    
+    [**Pods**](https://kubernetes.io/docs/concepts/workloads/pods/)
+
+    [![pods](https://d33wubrfki0l68.cloudfront.net/fe03f68d8ede9815184852ca2a4fd30325e5d15a/98064/docs/tutorials/kubernetes-basics/public/images/module_03_pods.svg)](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/)
+
+    A Pod is the smallest deployable unit in Kubernetes. It represents a single instance of a running process in a cluster and encapsulates one or more closely related containers. Containers within the same Pod share the same network namespace, IP address, and storage volumes, making them suitable for co-located and tightly coupled applications.
+
+    In the image above, we see 4 different Pods, each having at least one containerized app. Notice how each Pod has its own IP address, and apps within the same Pods share volumes for storage and IP address.
+
+    [**Nodes**](https://kubernetes.io/docs/concepts/architecture/nodes/)
+
+    [![nodes](https://d33wubrfki0l68.cloudfront.net/5cb72d407cbe2755e581b6de757e0d81760d5b86/a9df9/docs/tutorials/kubernetes-basics/public/images/module_03_nodes.svg)](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/)
+
+    A Node is a physical or virtual machine that runs containers. Nodes are the worker machines in a Kubernetes cluster where Pods are scheduled and executed. Nodes collectively form the computational resources of the cluster, where containers are scheduled and executed. The interaction between Pods and Nodes forms the core of how Kubernetes manages and distributes workloads within a cluster.
+
+    In the image, the Node contains different Pods. Notice [`kubelet`](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) and Docker: 
+    
+    - [`kubelet`](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)  is a component that runs on each Node in a Kubernetes cluster and manages its life cycle, ensuring that the Node is healthy.
+    - Docker provides the runtime environment for containers, whilst K8s manages the orchestration.
+
+
 ## K8s CLI `kubectl`
 
-The Kubernetes API uses a command-line tool called `kubectl`
+The Kubernetes API uses a command-line tool called `kubectl`.
 
 Using K8s does not require you to own or maintain your own cluster. You can use the `kubectl` tool to connect to running clusters and start your containers.
 
