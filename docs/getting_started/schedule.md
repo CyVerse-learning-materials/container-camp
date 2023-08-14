@@ -25,7 +25,7 @@
     | 09:55 | Break | |
     | 10:00 | [:simple-kubernetes: K8s CLI cont.](../orchestration/k8s.md#introduction-to-k8s-cli-with-kubectl) | Carlos & Tyson | Connecting to a K8s cluster | 
     | 10:55 | Break | |
-    | 11:00 | [:material-docker: Deploying K8s clusters](../orchestration/advk8s.md) | Michele | Jero2JupyterHub | 
+    | 11:00 | [:material-docker: Deploying K8s clusters](../orchestration/advk8s.md) | Michele | Zero2JupyterHub | 
     | 11:55 | Break | | |
     | 12:00 | [:simple-kubernetes: Managing K8s clusters](../orchestration/advk8s.md)  | Michele & Tyson | | 
     | 12:55 | Conclude for the day | All | push changes to GitHub |

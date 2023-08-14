@@ -5,7 +5,9 @@ We are going to be using Jetstream-2 for this section and will rely on their [do
 
 ### :material-ship-wheel: Helm
 
-[Helm](https://helm.sh/){target=_blank} is the package manager for Kubernetes. 
+[Helm](https://helm.sh/){target=_blank} is the package manager that allows users to define, install, and manage K8s applications using [Helm Charts](https://helm.sh/docs/topics/charts/), which are packages of pre-configured Kubernetes resources.
+
+Similarly to how Docker users can create their own containers and share them collaborators through DockerHub, Helm Charts are built by users and shared through repositories such as [artifacthub](https://artifacthub.io/). This allows for streamlining deployment and management for complex K8s orchestrations.
 
 ### Zero to JupyterHub
 

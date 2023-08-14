@@ -96,7 +96,7 @@ theme:
     - navigation.top
   favicon: assets/favicon.png
   icon:
-    logo: material/truck-cargo-container 
+    logo: material/cloud-print-outline
 
 # Options
 extra:
