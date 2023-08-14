@@ -9,6 +9,49 @@ We are going to be using Jetstream-2 for this section and will rely on their [do
 
 Similarly to how Docker users can create their own containers and share them collaborators through DockerHub, Helm Charts are built by users and shared through repositories such as [artifacthub](https://artifacthub.io/). This allows for streamlining deployment and management for complex K8s orchestrations.
 
+#### Helm example: JupyterLab deployment
+
+1. Install Helm
+    - Users can install Helm on their own machines by following the [official documentation](https://helm.sh/docs/intro/install/). For this example, we are going to assume that students are using a Unix OS. In that case, the following commands should work:
+    ```
+    curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+    sudo apt-get install apt-transport-https --yes
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+    sudo apt-get update
+    sudo apt-get install helm
+    ```
+2. Add the JupyterHub Helm repository, which contains the charts needed to deploy JupyterLab.
+    ```
+    helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
+    helm repo update
+    ```
+3. Create a`config.yml` 
+    - Create a folder for the example (e.g., `helm_jh_deployment/`), and populate it with the following `config.yml` configuration file.
+    ```
+    # config.yml
+
+    # Configure the JupyterHub proxy
+    proxy:
+      secretToken: "<your own secret token>"
+
+    # Specify the single-user servers (Notebook servers) configuration
+    singleuser:
+      defaultUrl: "/lab"
+      image:
+        name: jupyter/datascience-notebook
+        tag: latest
+      storage:
+        type: dynamic
+        dynamic:
+          storageClass: standard
+    ```
+    - Generate the secret token with `openssl rand -hex 32`, copy the hex string and replace the `secretToken` line from the `config.yml` file. 
+4. From within the folder, deply the jupyterhub using the following command:
+    ```
+    helm install my-jupyterhub jupyterhub/jupyterhub --version 3.0.1-0.dev.git.6287.hbfb05cd6 --values=config.yaml
+    ```
+5. Obtain IP address by doing `kubectl --namespace=my-jupyterhub get svc proxy-public` and connecting with <IP ADDRESS>:8080
+
 ### Zero to JupyterHub
 
 [JupyterHub for Kubernetes](https://zero-to-jupyterhub.readthedocs.io/en/latest/index.html){target=_blank}
