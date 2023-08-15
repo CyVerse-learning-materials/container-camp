@@ -19,11 +19,11 @@
     | Time ([PDT](https://time.is/PDT){target=_blank}) | Activity | Instructor | Outcome | 
     |-----------|----------|------------|-------|
     | 09:00 | Welcome | All |
-    | 09:05 | Overview of Website | Michele | [Code of Conduct](../getting_started/code_conduct.md) |
-    | 09:10 | What is Kubernetes? | Carlos | overview of K8s ecosystem |
-    | 09:30 | [:simple-kubernetes: K8s CLI](../orchestration/k8s.md#introduction-to-k8s-cli-with-kubectl) | Carlos | Basic command line use of K8s |
+    | 09:05 | Overview of Website | Tyson | [Code of Conduct](../getting_started/code_conduct.md) |
+    | 09:10 | What is Kubernetes? | Tyson | overview of K8s ecosystem |
+    | 09:30 | [:simple-kubernetes: K8s CLI](../orchestration/k8s.md#introduction-to-k8s-cli-with-kubectl) | Tyson | Basic command line use of K8s |
     | 09:55 | Break | |
-    | 10:00 | [:simple-kubernetes: K8s CLI cont.](../orchestration/k8s.md#introduction-to-k8s-cli-with-kubectl) | Carlos & Tyson | Connecting to a K8s cluster | 
+    | 10:00 | [:simple-kubernetes: K8s CLI cont.](../orchestration/k8s.md#introduction-to-k8s-cli-with-kubectl) | Tyson & Michele | Connecting to a K8s cluster | 
     | 10:55 | Break | |
     | 11:00 | [:material-docker: Deploying K8s clusters](../orchestration/advk8s.md) | Michele | Zero2JupyterHub | 
     | 11:55 | Break | | |
@@ -53,13 +53,13 @@
     |-----------|----------|------------|-------|
     | 09:00 | Welcome back | All | |
     | 09:05 | Discuss previous day, answer questions | | |
-    | 09:20 | [:simple-terraform: What is Terraform](../orchestration/terra.md ) | Tyson | |
+    | 09:20 | [:simple-terraform: What is Terraform](../orchestration/terra.md ) | Edwin & Tyson | |
     | 09:55 | Break | |
-    | 10:00 | [:simple-terraform: Terraform CLI](../orchestration/terra.md )  | Carlos | |
+    | 10:00 | [:simple-terraform: Terraform CLI](../orchestration/terra.md )  | Tyson | |
     | 10:55 | Break | |
-    | 11:00 | [:simple-terraform: Writing Terraform Templates](../orchestration/advterra.md ) | Michele | | 
+    | 11:00 | [:simple-terraform: Writing Terraform Templates](../orchestration/advterra.md ) | Edwin & Michele | | 
     | 11:55 | Break | | |
-    | 12:00 | [:simple-terraform: Provisioning a K3s Cluster with Terraform](../orchestration/advterra.md) | Tyson | | 
+    | 12:00 | [:simple-terraform: Provisioning a K3s Cluster with Terraform](../orchestration/advterra.md) | Edwin & Tyson | | 
     | 12:55 | Conclude | | |
 
 ## Day 3 - CACAO
@@ -80,8 +80,8 @@
     |-----------|----------|------------|-------|
     | 09:00 | Welcome back | All | |
     | 09:05 | Discuss previous day, answer questions | | |
-    | 09:20 | [Introduction to CACAO](../orchestration/cacao.md) | Tyson |
-    | 09:30 | [Using the CACAO UI](../orchestration/cacao.md) | Tyson |
+    | 09:20 | [Introduction to CACAO](../orchestration/cacao.md) | Edwin |
+    | 09:30 | [Using the CACAO UI](../orchestration/cacao.md) | Edwin |
     | 09:55 | Break | |
     | 10:00 | [Overview of CACAO templates](../orchestration/cacao_terra.md)| Edwin |
     | 10:55 | Break ||
