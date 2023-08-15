@@ -83,8 +83,8 @@ In this introductory lesson, we'll focus on how to leverage *existing* Kubernete
 
     A K8s cluster comprises of multiple elemets essentially groupable in 2 subsets:
     
-    - The **Control Pane** components:
-        - **api** (K8s API): the front end of the control pane, it exposes the Kubernentes API. Command line tool: [`kube-apiserver`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
+    - The **Control Plane** components:
+        - **api** (K8s API): the front end of the control plane, it exposes the Kubernentes API. Command line tool: [`kube-apiserver`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
         - **etcd**: a store used for backing cluster data (e.g., cluster cofiguration, state information). Controlled by the [`kube-apiserver`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) tool.
         - **sched** (Scheduler): the component that watches for newly created Pods with no assigned node. Once a new Pod is detected, a node is assigned. Controlled by [`kube-scheduler`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/).
         - **c-m** (Controller Manager): controls the [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) processes. Accessible through [`kube-controller-manager`](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
