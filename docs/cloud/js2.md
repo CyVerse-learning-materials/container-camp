@@ -6,7 +6,7 @@
 
 **Step 1:** Navigate to the [ACCESS User Registration](https://identity.access-ci.org/new-user) page.
 
-**Step 2:** If you have an XSEDE Portal account, your ACCESS ID is the same. Do not create a new ACCESS ID. Instead, select the “ACCESS CI (XSEDE)” identity provider to log in using your XSEDE account.
+**Step 2:** If you had an XSEDE Portal account, your ACCESS ID is the same. Do not create a new ACCESS ID. Instead, select the “ACCESS CI (XSEDE)” identity provider to log in using your XSEDE account.
 
 **Step 3:** If you don't have an XSEDE or ACCESS account, you have two options:
 

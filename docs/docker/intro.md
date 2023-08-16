@@ -1,6 +1,6 @@
 # Introduction to Docker :material-docker:
 
-[![docker](../assets/docker/docker.png){ width="400" }]((https://hub.docker.com){target=_blank})
+[![docker](../assets/docker/docker.png){ width="400" }](https://hub.docker.com){target=_blank}
 
 ### Prerequisites
 

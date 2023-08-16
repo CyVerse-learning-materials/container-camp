@@ -10,6 +10,14 @@ spec:
   containers:
   - name: jupyter-lab-container
     image: jupyter/datascience-notebook:latest
+    imagePullPolicy: IfNotPresent
+    resources:
+      requests:
+        cpu: "1"
+        memory: "1Gi"
+      limits:
+        cpu: "2"
+        memory: "2Gi"
     ports:
     - containerPort: 8888
     command: ["start-notebook.sh"]
