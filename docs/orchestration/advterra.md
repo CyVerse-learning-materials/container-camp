@@ -47,25 +47,18 @@ This advanced tutorial will guide you through setting up a Terraform project and
 We will use VMs with Docker installed and learn how to launch containers in a declarative way, rather than using the `docker` command. Once you gain access to your VM, perform the following steps
 
 1. ssh into your VM (alternatively, you can declare use the Docker Terraform provider using ssh access)
-
 2. `git clone https://gitlab.com/stack0/terraform-docker-helloworld.git`
-
 3. `cd terraform-docker-hellow-world`
-
 4. Review `input.tf`, `main.tf`, and `terraform.tfvars.example` to get a sense of how to manage a Docker container using Terraform
     1. Review the concept of a Terraform `resource`
     2. How many resources are created?
     3. What is the relationship between the resources?
     4. Is there any question that comes to mind about the port property of `docker_container` resource
-
 5. `cp terraform.tfvars.example terraform.tfvars`
-
 6. edit `terraform.tfvars`
     1. feel free to edit the `image` or `container_name` with a container you prefer, but if you do, please select a container with a port that you can access
     2. if you are using local docker access, use the default value; if you are accessing the docker host remotely, use the string "ssh://myuser@1.2.3.4", where `myuser` is replaced with your vm username and `1.2.3.4` is replaced with your vm's ip address
-
 7. `terraform apply -auto-approve`
-
 ??? success "Expected Response"
 
     ```bash
@@ -127,13 +120,13 @@ We will use VMs with Docker installed and learn how to launch containers in a de
 
     Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
     ```
+8. `terraform destroy -auto-approve`
 
 ## Increasing the number of containers using count
 
 We will next update Terraform to create multiple containers of the same image.
 
 1. Modify the `input.tf` with a new variable
-
     ```
     variable "num_containers" {
         type = number
@@ -142,7 +135,6 @@ We will next update Terraform to create multiple containers of the same image.
     }
     ```
 2. Modify the `main.tf` with the following changes in red:
-
     <PRE><CODE>
     resource "docker_container" "mycontainer" {
         <SPAN style="color:red">count = var.num_containers</SPAN>
@@ -153,14 +145,12 @@ We will next update Terraform to create multiple containers of the same image.
             <SPAN style="color:red">external = "\${8080 + count.index}" # illustrates using count.index to indicate which port to use</SPAN>
         }
     }
-
     <SPAN style="color:red">output "docker_containers" {
         value = keys({
             for index, d in docker_container.mycontainer.* : "${format("%s,%s,%s", index, d.name,d.id)}" => d
         })
     }</SPAN>
     </CODE></PRE>
-
 3. Edit your `terraform.tfvars` to include a new `num_containers` input variable with a value `5`
 4. `terraform apply -auto-approve`
 ??? success "Expected Response"
@@ -425,13 +415,13 @@ We will next update Terraform to create multiple containers of the same image.
     "4,mycontainer04,46ab03a8cd2616f20d34058d20b298df8ecc84bf5e8cfaf8013086f21ba1f501",
     ]
     ```
-
 5. Notice some pieces of the codes that were introduced
     1. What is the `count.index`?
     2. What is the format function and why use it?
     3. What will index start at?
     4. Terraform supports math operations
     5. An example of using the keys() method and ad hoc dictionary construction
+6. `terraform destroy -auto-approve`
 
 ## When resources change outside of Terraform
 
@@ -450,9 +440,7 @@ In this exercise we'll discover how to use Terraform to handle change.
     c0bc456f847a4e403ee4bcd133f79a21f22b4ec8f94db8793160b28807789e06
     ```
 2. Execute a `terraform show` and count the number of instances in the state
-
 3. Execute a `terraform refresh` 
-
 ??? success "Expected Response"
 
     ```bash
@@ -474,11 +462,8 @@ In this exercise we'll discover how to use Terraform to handle change.
     "4,mycontainer04,46ab03a8cd2616f20d34058d20b298df8ecc84bf5e8cfaf8013086f21ba1f501",
     ]
     ```
-
 4. Execute a `terraform show` again and recount the instance in the state. Why doesn't the output variable change?
-
 5. Execute a `terraform apply` (without the `-auto-approve`) and review what will be updated. Once you are satisfied with the changes that will happen, enter `yes` at the prompt.
-
 ??? success "Expected Response"
 
     ```bash
@@ -596,6 +581,7 @@ In this exercise we'll discover how to use Terraform to handle change.
 
     Enter a value: 
     ```
+6. `terraform destroy -auto-approve`
 
 ## Increasing the number of containers using for_each
 
@@ -620,7 +606,62 @@ containers_map={
     2. Map keys do not need quoting. What about values?
     3. How would you compare the how ports are configured in between the use of `count` and `for_each`
     4. Why might you use `count` and `for_each`
+5. `terraform destroy -auto-approve`
 
+## Using dynamic blocks create repeatable nestable blocks in resources
+
+Next we will see an example of resource properties that can be repeated
+
+1. Copy `input.tf`, `main.tf` from `02a-using-ports` (overwrite your existing files)
+    2. Review the differences in `main.tf`
+2. Edit `input.tf` with a new variable
+```bash
+variable "container_ports" {
+    type = list(object({
+      internal=string,
+      external=string
+    }))
+    description = "map(object), port object as defined by https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs/resources/container#nestedblock--ports"
+    default = []
+}
+```
+3. edit the main.tf with the following `docker_container` resource definition
+```bash
+resource "docker_container" "mycontainer" {
+  image = docker_image.mydocker.image_id
+  name  = var.container_name
+
+  dynamic "ports" {
+    for_each = var.container_ports
+    content {
+      internal = ports.value.internal
+      external = ports.value.external
+    }
+  }
+}
+```
+4. Add the following variable in your `terraform.tfvars`
+```bash
+ports = [
+    {internal="80", external="8080"},
+    {internal="90", external="9090"}
+]
+```
+4. `terraform apply -auto-approve`
+5. Verify the ports were added when you use `docker ps`
+6. `terraform destroy -auto-approve`
+
+## Re-sizing the VMs while the Deployment is running
+
+```bash
+
+```
+
+## Adding / Removing VMs from the cluster while it is running
+
+```bash
+
+```
 
 ## Managing the K3s configuration
 
