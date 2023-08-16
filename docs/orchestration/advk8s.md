@@ -51,6 +51,11 @@ Similarly to how Docker users can create their own containers and share them col
     ```
     helm uninstall jupyterhub
     ```
+    If you also want to remove the repository do
+    ```
+    helm repo remove jupyterhub
+    ```
+    The names can get pretty confusing, please understand that the first is uninstalling the chart named `jupyterhub` and the second the repository named `jupyterhub` (and this is why you want to keep names unique :) ).
 
 ## Miniaturized versions of Kubernetes
 
