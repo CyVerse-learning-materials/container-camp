@@ -6,13 +6,13 @@ This advanced tutorial will guide you through setting up a Terraform project and
 
 !!! success "Goals"
 
-    :material-play: Understand select terraform advanced language concepts by orchestrating Docker containers
+    :material-play: Understand terraform advanced language concepts by orchestrating Docker containers
 
     :material-play: Understand how to install software and provision multiple VMs
 
     :material-play: Understand how Terraform is used to orchestrate VMs together
 
-    :material-play: Ability to create a Terraform deployment for a multi-node JupyterHub
+    :material-play: Undertand how Terraform is used to create a multi-node JupyterHub
 
     :material-play: Ability to re-provisioning an already deployed cluster on OpenStack through Terraform
 
@@ -161,15 +161,442 @@ We will next update Terraform to create multiple containers of the same image.
     }</SPAN>
     </CODE></PRE>
 
-3. Edit your `terraform.tfvars` to include a new `num_containers` input with a reasonable number of containers
+3. Edit your `terraform.tfvars` to include a new `num_containers` input variable with a value `5`
 4. `terraform apply -auto-approve`
+??? success "Expected Response"
+
+    ```bash
+    $ terraform apply -auto-approve
+
+    Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+    + create
+
+    Terraform will perform the following actions:
+
+    # docker_container.mycontainer[0] will be created
+    + resource "docker_container" "mycontainer" {
+        + attach                                      = false
+        + bridge                                      = (known after apply)
+        + command                                     = (known after apply)
+        + container_logs                              = (known after apply)
+        + container_read_refresh_timeout_milliseconds = 15000
+        + entrypoint                                  = (known after apply)
+        + env                                         = (known after apply)
+        + exit_code                                   = (known after apply)
+        + hostname                                    = (known after apply)
+        + id                                          = (known after apply)
+        + image                                       = (known after apply)
+        + init                                        = (known after apply)
+        + ipc_mode                                    = (known after apply)
+        + log_driver                                  = (known after apply)
+        + logs                                        = false
+        + must_run                                    = true
+        + name                                        = "mycontainer00"
+        + network_data                                = (known after apply)
+        + read_only                                   = false
+        + remove_volumes                              = true
+        + restart                                     = "no"
+        + rm                                          = false
+        + runtime                                     = (known after apply)
+        + security_opts                               = (known after apply)
+        + shm_size                                    = (known after apply)
+        + start                                       = true
+        + stdin_open                                  = false
+        + stop_signal                                 = (known after apply)
+        + stop_timeout                                = (known after apply)
+        + tty                                         = false
+        + wait                                        = false
+        + wait_timeout                                = 60
+
+        + ports {
+            + external = 8080
+            + internal = 80
+            + ip       = "0.0.0.0"
+            + protocol = "tcp"
+            }
+        }
+
+    # docker_container.mycontainer[1] will be created
+    + resource "docker_container" "mycontainer" {
+        + attach                                      = false
+        + bridge                                      = (known after apply)
+        + command                                     = (known after apply)
+        + container_logs                              = (known after apply)
+        + container_read_refresh_timeout_milliseconds = 15000
+        + entrypoint                                  = (known after apply)
+        + env                                         = (known after apply)
+        + exit_code                                   = (known after apply)
+        + hostname                                    = (known after apply)
+        + id                                          = (known after apply)
+        + image                                       = (known after apply)
+        + init                                        = (known after apply)
+        + ipc_mode                                    = (known after apply)
+        + log_driver                                  = (known after apply)
+        + logs                                        = false
+        + must_run                                    = true
+        + name                                        = "mycontainer01"
+        + network_data                                = (known after apply)
+        + read_only                                   = false
+        + remove_volumes                              = true
+        + restart                                     = "no"
+        + rm                                          = false
+        + runtime                                     = (known after apply)
+        + security_opts                               = (known after apply)
+        + shm_size                                    = (known after apply)
+        + start                                       = true
+        + stdin_open                                  = false
+        + stop_signal                                 = (known after apply)
+        + stop_timeout                                = (known after apply)
+        + tty                                         = false
+        + wait                                        = false
+        + wait_timeout                                = 60
+
+        + ports {
+            + external = 8081
+            + internal = 80
+            + ip       = "0.0.0.0"
+            + protocol = "tcp"
+            }
+        }
+
+    # docker_container.mycontainer[2] will be created
+    + resource "docker_container" "mycontainer" {
+        + attach                                      = false
+        + bridge                                      = (known after apply)
+        + command                                     = (known after apply)
+        + container_logs                              = (known after apply)
+        + container_read_refresh_timeout_milliseconds = 15000
+        + entrypoint                                  = (known after apply)
+        + env                                         = (known after apply)
+        + exit_code                                   = (known after apply)
+        + hostname                                    = (known after apply)
+        + id                                          = (known after apply)
+        + image                                       = (known after apply)
+        + init                                        = (known after apply)
+        + ipc_mode                                    = (known after apply)
+        + log_driver                                  = (known after apply)
+        + logs                                        = false
+        + must_run                                    = true
+        + name                                        = "mycontainer02"
+        + network_data                                = (known after apply)
+        + read_only                                   = false
+        + remove_volumes                              = true
+        + restart                                     = "no"
+        + rm                                          = false
+        + runtime                                     = (known after apply)
+        + security_opts                               = (known after apply)
+        + shm_size                                    = (known after apply)
+        + start                                       = true
+        + stdin_open                                  = false
+        + stop_signal                                 = (known after apply)
+        + stop_timeout                                = (known after apply)
+        + tty                                         = false
+        + wait                                        = false
+        + wait_timeout                                = 60
+
+        + ports {
+            + external = 8082
+            + internal = 80
+            + ip       = "0.0.0.0"
+            + protocol = "tcp"
+            }
+        }
+
+    # docker_container.mycontainer[3] will be created
+    + resource "docker_container" "mycontainer" {
+        + attach                                      = false
+        + bridge                                      = (known after apply)
+        + command                                     = (known after apply)
+        + container_logs                              = (known after apply)
+        + container_read_refresh_timeout_milliseconds = 15000
+        + entrypoint                                  = (known after apply)
+        + env                                         = (known after apply)
+        + exit_code                                   = (known after apply)
+        + hostname                                    = (known after apply)
+        + id                                          = (known after apply)
+        + image                                       = (known after apply)
+        + init                                        = (known after apply)
+        + ipc_mode                                    = (known after apply)
+        + log_driver                                  = (known after apply)
+        + logs                                        = false
+        + must_run                                    = true
+        + name                                        = "mycontainer03"
+        + network_data                                = (known after apply)
+        + read_only                                   = false
+        + remove_volumes                              = true
+        + restart                                     = "no"
+        + rm                                          = false
+        + runtime                                     = (known after apply)
+        + security_opts                               = (known after apply)
+        + shm_size                                    = (known after apply)
+        + start                                       = true
+        + stdin_open                                  = false
+        + stop_signal                                 = (known after apply)
+        + stop_timeout                                = (known after apply)
+        + tty                                         = false
+        + wait                                        = false
+        + wait_timeout                                = 60
+
+        + ports {
+            + external = 8083
+            + internal = 80
+            + ip       = "0.0.0.0"
+            + protocol = "tcp"
+            }
+        }
+
+    # docker_container.mycontainer[4] will be created
+    + resource "docker_container" "mycontainer" {
+        + attach                                      = false
+        + bridge                                      = (known after apply)
+        + command                                     = (known after apply)
+        + container_logs                              = (known after apply)
+        + container_read_refresh_timeout_milliseconds = 15000
+        + entrypoint                                  = (known after apply)
+        + env                                         = (known after apply)
+        + exit_code                                   = (known after apply)
+        + hostname                                    = (known after apply)
+        + id                                          = (known after apply)
+        + image                                       = (known after apply)
+        + init                                        = (known after apply)
+        + ipc_mode                                    = (known after apply)
+        + log_driver                                  = (known after apply)
+        + logs                                        = false
+        + must_run                                    = true
+        + name                                        = "mycontainer04"
+        + network_data                                = (known after apply)
+        + read_only                                   = false
+        + remove_volumes                              = true
+        + restart                                     = "no"
+        + rm                                          = false
+        + runtime                                     = (known after apply)
+        + security_opts                               = (known after apply)
+        + shm_size                                    = (known after apply)
+        + start                                       = true
+        + stdin_open                                  = false
+        + stop_signal                                 = (known after apply)
+        + stop_timeout                                = (known after apply)
+        + tty                                         = false
+        + wait                                        = false
+        + wait_timeout                                = 60
+
+        + ports {
+            + external = 8084
+            + internal = 80
+            + ip       = "0.0.0.0"
+            + protocol = "tcp"
+            }
+        }
+
+    # docker_image.mydocker will be created
+    + resource "docker_image" "mydocker" {
+        + id          = (known after apply)
+        + image_id    = (known after apply)
+        + name        = "nginx:latest"
+        + repo_digest = (known after apply)
+        }
+
+    Plan: 6 to add, 0 to change, 0 to destroy.
+
+    Changes to Outputs:
+    + docker_containers = (known after apply)
+    docker_image.mydocker: Creating...
+    docker_image.mydocker: Creation complete after 3s [id=sha256:89da1fb6dcb964dd35c3f41b7b93ffc35eaf20bc61f2e1335fea710a18424287nginx:latest]
+    docker_container.mycontainer[1]: Creating...
+    docker_container.mycontainer[4]: Creating...
+    docker_container.mycontainer[2]: Creating...
+    docker_container.mycontainer[0]: Creating...
+    docker_container.mycontainer[3]: Creating...
+    docker_container.mycontainer[1]: Creation complete after 1s [id=8c80b558394f62fe004ff156fa1fee06ce723f2b0721cfdfd0f4e64fb6fb28f8]
+    docker_container.mycontainer[3]: Creation complete after 1s [id=c0bc456f847a4e403ee4bcd133f79a21f22b4ec8f94db8793160b28807789e06]
+    docker_container.mycontainer[0]: Creation complete after 1s [id=4ce1d4e0617994ba225701e5e0ef243daa8762968c8d7202be2612ecaeaca064]
+    docker_container.mycontainer[2]: Creation complete after 1s [id=36cf1496a418395408a9d5630c8e1cf8b12fa948ab73fe95a3b1a3d8ce767e99]
+    docker_container.mycontainer[4]: Creation complete after 1s [id=46ab03a8cd2616f20d34058d20b298df8ecc84bf5e8cfaf8013086f21ba1f501]
+
+    Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+
+    Outputs:
+
+    docker_containers = [
+    "0,mycontainer00,4ce1d4e0617994ba225701e5e0ef243daa8762968c8d7202be2612ecaeaca064",
+    "1,mycontainer01,8c80b558394f62fe004ff156fa1fee06ce723f2b0721cfdfd0f4e64fb6fb28f8",
+    "2,mycontainer02,36cf1496a418395408a9d5630c8e1cf8b12fa948ab73fe95a3b1a3d8ce767e99",
+    "3,mycontainer03,c0bc456f847a4e403ee4bcd133f79a21f22b4ec8f94db8793160b28807789e06",
+    "4,mycontainer04,46ab03a8cd2616f20d34058d20b298df8ecc84bf5e8cfaf8013086f21ba1f501",
+    ]
+    ```
+
 5. Notice some pieces of the codes that were introduced
     1. What is the `count.index`?
     2. What is the format function and why use it?
     3. What will index start at?
     4. Terraform supports math operations
     5. An example of using the keys() method and ad hoc dictionary construction
-    
+
+## When resources change outside of Terraform
+
+In this exercise we'll discover how to use Terraform to handle change.
+
+1. Use `docker stop` and `docker rm` to stop and delete docker containers 2 and 3.
+
+??? success "Expected Response"
+
+    ```bash
+    $ docker stop 36cf1496a418395408a9d5630c8e1cf8b12fa948ab73fe95a3b1a3d8ce767e99 c0bc456f847a4e403ee4bcd133f79a21f22b4ec8f94db8793160b28807789e06
+    36cf1496a418395408a9d5630c8e1cf8b12fa948ab73fe95a3b1a3d8ce767e99
+    c0bc456f847a4e403ee4bcd133f79a21f22b4ec8f94db8793160b28807789e06
+    $ docker rm 36cf1496a418395408a9d5630c8e1cf8b12fa948ab73fe95a3b1a3d8ce767e99 c0bc456f847a4e403ee4bcd133f79a21f22b4ec8f94db8793160b28807789e06
+    36cf1496a418395408a9d5630c8e1cf8b12fa948ab73fe95a3b1a3d8ce767e99
+    c0bc456f847a4e403ee4bcd133f79a21f22b4ec8f94db8793160b28807789e06
+    ```
+2. Execute a `terraform show` and count the number of instances in the state
+
+3. Execute a `terraform refresh` 
+
+??? success "Expected Response"
+
+    ```bash
+    $ terraform refresh
+    docker_image.mydocker: Refreshing state... [id=sha256:89da1fb6dcb964dd35c3f41b7b93ffc35eaf20bc61f2e1335fea710a18424287nginx:latest]
+    docker_container.mycontainer[3]: Refreshing state... [id=c0bc456f847a4e403ee4bcd133f79a21f22b4ec8f94db8793160b28807789e06]
+    docker_container.mycontainer[2]: Refreshing state... [id=36cf1496a418395408a9d5630c8e1cf8b12fa948ab73fe95a3b1a3d8ce767e99]
+    docker_container.mycontainer[1]: Refreshing state... [id=8c80b558394f62fe004ff156fa1fee06ce723f2b0721cfdfd0f4e64fb6fb28f8]
+    docker_container.mycontainer[4]: Refreshing state... [id=46ab03a8cd2616f20d34058d20b298df8ecc84bf5e8cfaf8013086f21ba1f501]
+    docker_container.mycontainer[0]: Refreshing state... [id=4ce1d4e0617994ba225701e5e0ef243daa8762968c8d7202be2612ecaeaca064]
+
+    Outputs:
+
+    docker_containers = [
+    "0,mycontainer00,4ce1d4e0617994ba225701e5e0ef243daa8762968c8d7202be2612ecaeaca064",
+    "1,mycontainer01,8c80b558394f62fe004ff156fa1fee06ce723f2b0721cfdfd0f4e64fb6fb28f8",
+    "2,mycontainer02,36cf1496a418395408a9d5630c8e1cf8b12fa948ab73fe95a3b1a3d8ce767e99",
+    "3,mycontainer03,c0bc456f847a4e403ee4bcd133f79a21f22b4ec8f94db8793160b28807789e06",
+    "4,mycontainer04,46ab03a8cd2616f20d34058d20b298df8ecc84bf5e8cfaf8013086f21ba1f501",
+    ]
+    ```
+
+4. Execute a `terraform show` again and recount the instance in the state. Why doesn't the output variable change?
+
+5. Execute a `terraform apply` (without the `-auto-approve`) and review what will be updated. Once you are satisfied with the changes that will happen, enter `yes` at the prompt.
+
+??? success "Expected Response"
+
+    ```bash
+    $ terraform apply 
+    docker_image.mydocker: Refreshing state... [id=sha256:89da1fb6dcb964dd35c3f41b7b93ffc35eaf20bc61f2e1335fea710a18424287nginx:latest]
+    docker_container.mycontainer[0]: Refreshing state... [id=4ce1d4e0617994ba225701e5e0ef243daa8762968c8d7202be2612ecaeaca064]
+    docker_container.mycontainer[1]: Refreshing state... [id=8c80b558394f62fe004ff156fa1fee06ce723f2b0721cfdfd0f4e64fb6fb28f8]
+    docker_container.mycontainer[4]: Refreshing state... [id=46ab03a8cd2616f20d34058d20b298df8ecc84bf5e8cfaf8013086f21ba1f501]
+
+    Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+    + create
+
+    Terraform will perform the following actions:
+
+    # docker_container.mycontainer[2] will be created
+    + resource "docker_container" "mycontainer" {
+        + attach                                      = false
+        + bridge                                      = (known after apply)
+        + command                                     = (known after apply)
+        + container_logs                              = (known after apply)
+        + container_read_refresh_timeout_milliseconds = 15000
+        + entrypoint                                  = (known after apply)
+        + env                                         = (known after apply)
+        + exit_code                                   = (known after apply)
+        + hostname                                    = (known after apply)
+        + id                                          = (known after apply)
+        + image                                       = "sha256:89da1fb6dcb964dd35c3f41b7b93ffc35eaf20bc61f2e1335fea710a18424287"
+        + init                                        = (known after apply)
+        + ipc_mode                                    = (known after apply)
+        + log_driver                                  = (known after apply)
+        + logs                                        = false
+        + must_run                                    = true
+        + name                                        = "mycontainer02"
+        + network_data                                = (known after apply)
+        + read_only                                   = false
+        + remove_volumes                              = true
+        + restart                                     = "no"
+        + rm                                          = false
+        + runtime                                     = (known after apply)
+        + security_opts                               = (known after apply)
+        + shm_size                                    = (known after apply)
+        + start                                       = true
+        + stdin_open                                  = false
+        + stop_signal                                 = (known after apply)
+        + stop_timeout                                = (known after apply)
+        + tty                                         = false
+        + wait                                        = false
+        + wait_timeout                                = 60
+
+        + ports {
+            + external = 8082
+            + internal = 80
+            + ip       = "0.0.0.0"
+            + protocol = "tcp"
+            }
+        }
+
+    # docker_container.mycontainer[3] will be created
+    + resource "docker_container" "mycontainer" {
+        + attach                                      = false
+        + bridge                                      = (known after apply)
+        + command                                     = (known after apply)
+        + container_logs                              = (known after apply)
+        + container_read_refresh_timeout_milliseconds = 15000
+        + entrypoint                                  = (known after apply)
+        + env                                         = (known after apply)
+        + exit_code                                   = (known after apply)
+        + hostname                                    = (known after apply)
+        + id                                          = (known after apply)
+        + image                                       = "sha256:89da1fb6dcb964dd35c3f41b7b93ffc35eaf20bc61f2e1335fea710a18424287"
+        + init                                        = (known after apply)
+        + ipc_mode                                    = (known after apply)
+        + log_driver                                  = (known after apply)
+        + logs                                        = false
+        + must_run                                    = true
+        + name                                        = "mycontainer03"
+        + network_data                                = (known after apply)
+        + read_only                                   = false
+        + remove_volumes                              = true
+        + restart                                     = "no"
+        + rm                                          = false
+        + runtime                                     = (known after apply)
+        + security_opts                               = (known after apply)
+        + shm_size                                    = (known after apply)
+        + start                                       = true
+        + stdin_open                                  = false
+        + stop_signal                                 = (known after apply)
+        + stop_timeout                                = (known after apply)
+        + tty                                         = false
+        + wait                                        = false
+        + wait_timeout                                = 60
+
+        + ports {
+            + external = 8083
+            + internal = 80
+            + ip       = "0.0.0.0"
+            + protocol = "tcp"
+            }
+        }
+
+    Plan: 2 to add, 0 to change, 0 to destroy.
+
+    Changes to Outputs:
+    ~ docker_containers = [
+        - "0,mycontainer00,4ce1d4e0617994ba225701e5e0ef243daa8762968c8d7202be2612ecaeaca064",
+        - "1,mycontainer01,8c80b558394f62fe004ff156fa1fee06ce723f2b0721cfdfd0f4e64fb6fb28f8",
+        - "2,mycontainer02,36cf1496a418395408a9d5630c8e1cf8b12fa948ab73fe95a3b1a3d8ce767e99",
+        - "3,mycontainer03,c0bc456f847a4e403ee4bcd133f79a21f22b4ec8f94db8793160b28807789e06",
+        - "4,mycontainer04,46ab03a8cd2616f20d34058d20b298df8ecc84bf5e8cfaf8013086f21ba1f501",
+        ] -> (known after apply)
+
+    Do you want to perform these actions?
+    Terraform will perform the actions described above.
+    Only 'yes' will be accepted to approve.
+
+    Enter a value: 
+    ```
+
 ## Increasing the number of containers using for_each
 
 Next we will create multiple docker containers, but using a different method, `for_each`.
@@ -194,18 +621,6 @@ containers_map={
     3. How would you compare the how ports are configured in between the use of `count` and `for_each`
     4. Why might you use `count` and `for_each`
 
-
-## Re-sizing the VMs while the Deployment is running
-
-```bash
-
-```
-
-## Adding / Removing VMs from the cluster while it is running
-
-```bash
-
-```
 
 ## Managing the K3s configuration
 
