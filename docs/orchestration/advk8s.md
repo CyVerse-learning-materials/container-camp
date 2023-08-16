@@ -9,7 +9,7 @@ We are going to be using Jetstream-2 for this section and will rely on their [do
 
 Similarly to how Docker users can create their own containers and share them collaborators through DockerHub, Helm Charts are built by users and shared through repositories such as [artifacthub](https://artifacthub.io/). This allows for streamlining deployment and management for complex K8s orchestrations.
 
-#### Helm example: JupyterLab deployment
+#### Helm example: [Zero2JupyterHub](https://z2jh.jupyter.org/en/latest/index.html)
 
 1. Install Helm
     - Users can install Helm on their own machines by following the [official documentation](https://helm.sh/docs/intro/install/). For this example, we are going to assume that students are using a Unix OS. In that case, the following commands should work:
@@ -20,45 +20,37 @@ Similarly to how Docker users can create their own containers and share them col
     sudo apt-get update
     sudo apt-get install helm
     ```
+    !!! info
+        If you are using the Virtual Machines provided by the CyVerse team, Helm is already installed.
+
 2. Add the JupyterHub Helm repository, which contains the charts needed to deploy JupyterLab.
     ```
     helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
     helm repo update
     ```
-3. Create a`config.yml` 
-    - Create a folder for the example (e.g., `helm_jh_deployment/`), and populate it with the following `config.yml` configuration file.
+    You can check if the help repository list by doing `help repo list`. You should see something like 
     ```
-    # config.yml
-
-    # Configure the JupyterHub proxy
-    proxy:
-      secretToken: "<your own secret token>"
-
-    # Specify the single-user servers (Notebook servers) configuration
-    singleuser:
-      defaultUrl: "/lab"
-      image:
-        name: jupyter/datascience-notebook
-        tag: latest
-      storage:
-        type: dynamic
-        dynamic:
-          storageClass: standard
+    NAME            URL
+    jupyterhub      https://jupyterhub.github.io/helm-chart/
     ```
-    - Generate the secret token with `openssl rand -hex 32`, copy the hex string and replace the `secretToken` line from the `config.yml` file. 
-4. From within the folder, deply the jupyterhub using the following command:
+3. Obtain the `config.yaml`
+    - One can write their own config file, but these take extensive work and deep understanding of charts. What we can do instead, is to *pull* the values that we need from Jupyterhub and save its output to a file. We can do that with the following command:
     ```
-    helm install my-jupyterhub jupyterhub/jupyterhub --version 3.0.1-0.dev.git.6287.hbfb05cd6 --values=config.yaml
+    helm show values jupyterhub/jupyterhub > jupyter.yaml
     ```
-5. Obtain IP address by doing `kubectl --namespace=my-jupyterhub get svc proxy-public` and connecting with <IP ADDRESS>:8080
+    - If you were to look inside this yaml file, you will see a long list of configurable lines. These values need not to be changed to execute the jupyterhub, apart from `secretToken`.
+    - Generate the secret token with `openssl rand -hex 32`, copy the hex string and replace the `secretToken` line from the `jupyter.yml` file using a text editor (e.g., nano or vim). 
+4. From within the folder, deploy the jupyterhub using the following command (installation should only take a minute):
+    ```
+    helm install jupyterhub jupyterhub/jupyterhub --values jupyter.yaml
+    ```
+5. Access the JupyterHub through your VM IP address!
 
-### Zero to JupyterHub
-
-[JupyterHub for Kubernetes](https://zero-to-jupyterhub.readthedocs.io/en/latest/index.html){target=_blank}
-
-Project Jupyter maintains a lesson on deploying K8s and Helm with `minik8s` across a variety of commercial cloud solutions.
-
-The closest example that you can attempt is the [Bare Metal example](https://zero-to-jupyterhub.readthedocs.io/en/latest/kubernetes/other-infrastructure/step-zero-microk8s.html){target=_blank} on JS-2
+??? tip "Uninstalling the chart"
+    To uninstall the chart simply do
+    ```
+    helm uninstall jupyterhub
+    ```
 
 ## Miniaturized versions of Kubernetes
 
