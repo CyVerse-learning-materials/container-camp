@@ -2,11 +2,13 @@
 
 ## Overview
 
-This advanced tutorial will guide you through setting up a Terraform project and deploying virtual machines (VMs) with [Docker](https://www.docker.com/){target=_blank} & lightweight Kubernetes ([Rancher K3s](https://www.rancher.com/products/k3s){target=_blank}).
+This advanced tutorial will guide you through setting up a Terraform project with [Docker](https://www.docker.com/){target=_blank}.
 
 !!! success "Goals"
 
-    :material-play: Understand terraform advanced language concepts by orchestrating Docker containers
+    material-play: Understand how to use registry.terraform.io
+
+    :material-play: Understand practical terraform advanced language concepts by orchestrating Docker containers
 
     :material-play: Understand how to install software and provision multiple VMs
 
@@ -14,15 +16,28 @@ This advanced tutorial will guide you through setting up a Terraform project and
 
     :material-play: Undertand how Terraform is used to create a multi-node JupyterHub
 
-    :material-play: Ability to re-provisioning an already deployed cluster on OpenStack through Terraform
-
     ??? Failure "Things we won't cover"
 
         :material-play: Basic management of Kubernetes clusters (that is a different lesson)
         
         :material-play: All of Terraform's features
 
-## Prerequisites
+## Using registry.terraform.io
+
+Terraform maintains an active registry site located at [https://registry.terraform.io](https://registry.terraform.io).
+
+This is the Terraform's defacto catalog for
+- providers
+- modules
+- policies (enforcement rules via Terraform Cloud)
+- runtasks (integrations with other services via Terraform Cloud)
+
+Examples of providers:
+- https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest
+- https://registry.terraform.io/providers/kreuzwerker/docker/latest
+- https://registry.terraform.io/providers/hashicorp/kubernetes/latest
+
+## Prerequisites in doing Terraform exercises
 
 * Basic understanding of [:simple-openstack: OpenStack](https://www.openstack.org/){target=_blank} and [:simple-terraform: Terraform](https://terraform-docs.io/){target=_blank} as was covered in the [prior lesson](./terra.md)
 
@@ -34,13 +49,7 @@ This advanced tutorial will guide you through setting up a Terraform project and
 
     By the end of this tutorial, you will 
 
-    :material-play: have used Terraform to manage Docker containers
-    
-    :material-play: have launched a [lightweight Kubernetes (K3s)](https://www.rancher.com/products/k3s){target=_blank} cluster
-
-    :material-play: know how to modify the size of cluster to scale up and down with more or less resources
-
-    :material-play: started and stopped a [JupyterHub](https://jupyter.org/hub){target=_blank} using [a public Docker image](https://hub.docker.com/r/jupyter/datascience-notebook){target=_blank}
+    :material-play: have used Terraform to manage Docker containers while learning advanced Terraform concepts
 
 ## Using a Terraform to simply manage Docker
 
@@ -428,7 +437,6 @@ We will next update Terraform to create multiple containers of the same image.
 In this exercise we'll discover how to use Terraform to handle change.
 
 1. Use `docker stop` and `docker rm` to stop and delete docker containers 2 and 3.
-
 ??? success "Expected Response"
 
     ```bash
@@ -583,11 +591,90 @@ In this exercise we'll discover how to use Terraform to handle change.
     ```
 6. `terraform destroy -auto-approve`
 
+## Validating your input data
+
+Next we will show how to add validation to your inputs
+1. In your `input.tf`, add the following variable
+```bash
+variable "port_assignment_list" {
+  type = list(number)
+  description = "list of port assignments, size should = num_containers"
+  default = []
+  validation {
+    condition     = length(var.port_assignment_list) > 0
+    error_message = "Port assignment not > 0"
+  }
+}
+```
+2. In your `main.tf`, replace your docker_container resource to the following:
+```bash
+resource "docker_container" "mycontainer" {
+  count = var.num_containers
+  image = docker_image.mydocker.image_id
+  name = "${format("%s%02d", var.container_name, count.index)}"
+  ports {
+    internal = 80
+    external = var.port_assignment_list[count.index] # illustrates using count.index to indicate which port to use
+  }
+}
+
+```
+3. Add/update the following variables in your `terraform.tfvars`
+```bash
+num_containers=5
+port_assignment_list=[]
+```
+4. `terraform apply -auto-approve`
+5. What do you expect?
+    - Try updating the condition such that length must equal `num_containers`
+
+Now, let's figure out how to make our validation slightly more useful
+1. If necessary, restore your `input.tf` to include the original validation block
+```bash
+variable "port_assignment_list" {
+  type = list(number)
+  description = "list of port assignments, size should = num_containers"
+  default = []
+  validation {
+    condition     = length(var.port_assignment_list) > 0
+    error_message = "Port assignment not > 0"
+  }
+}
+```
+2. Update your `main.tf` to include a validation block like the following:
+```bash
+resource "docker_container" "mycontainer" {
+  count = var.num_containers
+  image = docker_image.mydocker.image_id
+  name = "${format("%s%02d", var.container_name, count.index)}"
+  ports {
+    internal = 80
+    external = var.port_assignment_list[count.index] # illustrates using count.index to indicate which port to use
+  }
+
+  lifecycle {
+    precondition {
+      condition = length(var.port_assignment_list) == num_containers
+      error_message = "length != num_containers"
+    }
+  }
+}
+```
+3. Update your `terraform.tfvars` with the following settings
+```bash
+num_containers=5
+port_assignment_list=[4040,5050,6060,7070]
+```
+4. `terraform apply -auto-approve`
+5. What do you expect?
+    - Try adding another port (or remove a port) so that `num_containers` and the length of the list is equal
+6. `terraform destroy -auto-approve`
+
 ## Increasing the number of containers using for_each
 
 Next we will create multiple docker containers, but using a different method, `for_each`.
 
-1. copy `input.tf`, `main.tf` from `01b-multiple-containers` (overwrite your existing files)
+1. copy `input.tf`, `main.tf` from `01c-multiple-containers` (overwrite your existing files)
     1. review the differences in `input.tf`
     2. review the differences in `main.tf`
 2. remove the `num_containers` from your `terraform.tfvars` and add a new variable called `containers_map`, something like
