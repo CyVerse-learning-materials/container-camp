@@ -650,25 +650,3 @@ ports = [
 4. `terraform apply -auto-approve`
 5. Verify the ports were added when you use `docker ps`
 6. `terraform destroy -auto-approve`
-
-## Re-sizing the VMs while the Deployment is running
-
-```bash
-
-```
-
-## Adding / Removing VMs from the cluster while it is running
-
-```bash
-
-```
-
-## Managing the K3s configuration
-
-
-```bash
-
-```
-
-## Restarting the JupyterHub
-

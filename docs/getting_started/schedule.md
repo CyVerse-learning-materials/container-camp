@@ -57,9 +57,9 @@
     | 09:55 | Break | |
     | 10:00 | [:simple-terraform: Terraform CLI](../orchestration/terra.md )  | Tyson | |
     | 10:55 | Break | |
-    | 11:00 | [:simple-terraform: Writing Terraform Templates](../orchestration/advterra.md ) | Edwin & Michele | | 
+    | 11:00 | [:simple-terraform: Using a Terraform to simply manage Docker](../orchestration/advterra.md#using-a-terraform-to-simply-manage-docker ) | Edwin & Michele | | 
     | 11:55 | Break | | |
-    | 12:00 | [:simple-terraform: Provisioning a K3s Cluster with Terraform](../orchestration/advterra.md) | Edwin & Tyson | | 
+    | 12:00 | [:simple-terraform: Terraform management continued](../orchestration/advterra.md) | Edwin & Tyson | | 
     | 12:55 | Conclude | | |
 
 ## Day 3 - CACAO
