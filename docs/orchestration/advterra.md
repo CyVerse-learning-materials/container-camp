@@ -655,6 +655,7 @@ resource "docker_container" "mycontainer" {
   lifecycle {
     precondition {
       condition = length(var.port_assignment_list) == num_containers
+      error_message = "length != num_containers"
     }
   }
 }
@@ -673,7 +674,7 @@ port_assignment_list=[4040,5050,6060,7070]
 
 Next we will create multiple docker containers, but using a different method, `for_each`.
 
-1. copy `input.tf`, `main.tf` from `01b-multiple-containers` (overwrite your existing files)
+1. copy `input.tf`, `main.tf` from `01c-multiple-containers` (overwrite your existing files)
     1. review the differences in `input.tf`
     2. review the differences in `main.tf`
 2. remove the `num_containers` from your `terraform.tfvars` and add a new variable called `containers_map`, something like
