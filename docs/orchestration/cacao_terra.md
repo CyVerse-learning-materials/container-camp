@@ -73,6 +73,11 @@ Details about the metadata and ui schemas can be found here: [https://docs.jetst
 !!! warn
     The UI metadata specification is currently in flux and will likely change in the near future, especially as we get feedback from the community.
 
+### Stop! If you want to fork the template, let's do it now.
+
+!!!+ info
+    This is an optional step. You do not need to fork a template for this part of the tutorial, but you may if you wish.
+
 ## Using the CACAO CLI
 
 ### Login to CACAO CLI
@@ -130,15 +135,18 @@ After pasting the "Bearer " + access_token, you should return to the shell promp
 
 Here are the values to enter for each:
 
-- `<source url>`: `https://gitlab.com/stack0/cacao-tf-hello-world`
+- `<source url>`: `https://github.com/cyverse/cacao-terraform-hello-world.git`
 - `<template name>`: "<your student name>-hello-world" (e.g. student0001-hello-world)
 - `<git branch>`: `main`
 - `<path to template>`: `.`
 
+!!!+ warn
+    If you forked the template, you will need to use your forked url.
+
 Putting this all together, your command will look similar to this: 
 
 ```bash
-cacao template create git https://gitlab.com/stack0/cacao-tf-hello-world  student0001-hello-world --branch main --path .
+cacao template create git https://github.com/cyverse/cacao-terraform-hello-world.git  student0001-hello-world --branch main --path .
 ```
 
 ???+ success "Expected Response"
@@ -171,7 +179,7 @@ cacao template create git https://gitlab.com/stack0/cacao-tf-hello-world  studen
 
 While you are waiting, questions or we can begin the next section, "What if you want to customize a template?"
 
-### Cleaning up
+### Cleaning up (if you didn't fork your template)
 !!!+ warn
     You will not be able to delete a template if there are any active deployments using it.
 1. Delete the deployment in the UI or cli (`cacao deployment delete <deployment id`).
@@ -193,6 +201,11 @@ Answer: You do not need to do anything. The CACAO UI will automatically detect c
 ### What if you make metadata changes  to a template (e.g. `.cacao/metadata.json` or `.cacao/ui.json`) and want to use it for new deployments?
 
 Answer: `cacao template sync <tid>`
+
+### For those of you who forked the repo, we can experiment with template modifications
+Here are a couple suggestions
+* change the name of the template
+* remove image (and/or size) from the template and set it
 
 ## What if you want to customize a template you don't own but is public?
 
