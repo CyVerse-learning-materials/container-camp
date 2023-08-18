@@ -17,18 +17,9 @@ By the end of this tutorial, you will have imported a terraform template into CA
 
 ## CyVerse CACAO Browser UI
 
-!!! Warning
-    DO NOT USE FOR TODAY'S WORKSHOP
-
-    The production site for CyVerse's CACAO is currently deployed to Jetstream2 located here: https://cacao.jetstream-cloud.org.
-    
-    However, do not use this site for today's workshop.
-
-    DO NOT USE FOR TODAY'S WORKSHOP
-
 One of CyVerse's test deployments for CACAO will be used for this exercise so that we can import a template using the newer metadata schemas, which will be deployed to production in the very near future.
 
-The url for the CACAO site that we will use today is [https://cacaotest.cyverse.org](https://cacaotest.cyverse.org){target=_blank}
+The url for the CACAO site that we will use today is [https://cacao.jetstream-cloud.org](https://cacao.jetstream-cloud.org){target=_blank}
 
 Please login to verify that your ACCESS credentials work with the CACAO test site.
 !!!+ warn
@@ -91,13 +82,13 @@ Details about the metadata and ui schemas can be found here: [https://docs.jetst
     Please provide address of Cacao API.
     Format Should be: http://<hostname>:<port>        or    <hostname>:<port> 
     (Developers: this should match the value of API_DOMAIN in install/config.yaml followed by "/api", e.g. ca.cyverse.local/api)
-    Cacao API address (http://ca.cyverse.local/api): https://cacaotest.cyverse.org/api
+    Cacao API address (http://ca.cyverse.local/api): https://cacao.jetstream-cloud.org/api
     ```
-2. Enter the CACAO API url: `https://cacaotest.cyverse.org/api`
+2. Enter the CACAO API url: `https://cacao.jetstream-cloud.org/api`
 ???+ success "Expected Response"
     ```bash linenums="4" hl_lines="2"
-    Cacao API address (http://ca.cyverse.local/api): https://cacaotest.cyverse.org/api
-    Please go to this URL in the browser: https://cacaotest.cyverse.org/api/user/login
+    Cacao API address (http://ca.cyverse.local/api): https://cacao.jetstream-cloud.org/api
+    Please go to this URL in the browser: https://cacao.jetstream-cloud.org/api/user/login
 
     After login, you should get a JSON response, the auth token could be the value of following properties:
     - "IDToken" or "id_token" if keycloak
@@ -105,7 +96,7 @@ Details about the metadata and ui schemas can be found here: [https://docs.jetst
 
     Enter the auth token you get from browser: 
     ```
-3. In your browser open the following URL (this is also echoed in the terminal, line #5): https://cacaotest.cyverse.org/api/user/login
+3. In your browser open the following URL (this is also echoed in the terminal, line #5): https://cacao.jetstream-cloud.org/api/user/login
 !!!+ warn
     For the workshop, use the "ACCESS CI (XSEDE)" identity provider when you login.
     ![](../assets/cacao/access-ci-select-identity-provider2.png)
@@ -162,7 +153,7 @@ cacao template create git https://github.com/cyverse/cacao-terraform-hello-world
 
 ### Launching a template using the CACAO UI
 
-1. Open the CACAO UI in your browser: [https://cacaotest.cyverse.org](https://cacaotest.cyverse.org){target=_blank}
+1. Open the CACAO UI in your browser: [https://cacao.jetstream-cloud.org](https://cacao.jetstream-cloud.org){target=_blank}
 2. Click on the "Deployments" tab on the left-hand side.
 3. Click on the "+ Add Deployment" button.
 4. Select the "edwin's hello world example"/"student0001-hello-world" template. (Note: the subname of the template will be different for you.)

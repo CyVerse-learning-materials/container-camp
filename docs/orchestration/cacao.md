@@ -1,16 +1,8 @@
 ## Log into CACAO (JS2)
 
 To start, you will need an ACCESS user account and have access to a project.
-!!! Warning
-    DO NOT USE FOR TODAY'S WORKSHOP
 
-    The production site for CyVerse's CACAO is currently deployed to Jetstream2 located here: https://cacao.jetstream-cloud.org.
-    
-    However, do not use this site for today's workshop.
-
-    DO NOT USE FOR TODAY'S WORKSHOP
-
-Go to [https://cacaotest.cyverse.org](https://cacaotest.cyverse.org){target=_blank} to log in to CACAO. You will be prompted to authenticate with ACCESS.
+Go to [https://cacao.jetstream-cloud.org](https://cacao.jetstream-cloud.org){target=_blank} to log in to CACAO. You will be prompted to authenticate with ACCESS.
 
 !!! info
     You should select "ACCESS CI (XSEDE)" as your identity provider unless you linked your other identities through CILogon. If in doubt, select "ACCESS CI (XSEDE)".
@@ -40,7 +32,7 @@ Again, click on the "+ Add Credential" button and this time select "Public SSH K
 
 Next, we will start a deployment onto Jetstream 2.
 
-Click on the [:material-rocket-launch: Deployments](https://cacaotest.jetstream-cloud.org/deployments) tab on the lefthand menu bar. You will see your cloud providers and projects, and if you have multiple providers or projects, you can select them here. You should have Jetstream 2 and a project selected.
+Click on the [:material-rocket-launch: Deployments](https://cacao.jetstream-cloud.org/deployments) tab on the lefthand menu bar. You will see your cloud providers and projects, and if you have multiple providers or projects, you can select them here. You should have Jetstream 2 and a project selected.
 
 Next, click the "+ Add Deployment" button. You will see several options for default templates to launch VMs, containers, or whole clusters. We will use the first template to launch a single VM.
 
