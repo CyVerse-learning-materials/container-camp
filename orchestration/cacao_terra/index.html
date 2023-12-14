@@ -1,0 +1,2147 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for container related workshop.">
+      
+      
+        <meta name="author" content="CyVerse Science Team">
+      
+      
+        <link rel="canonical" href="https://container-camp.cyverse.org/orchestration/cacao_terra/">
+      
+      
+        <link rel="prev" href="../cacao/">
+      
+      
+        <link rel="next" href="../registry/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>CyVerse CACAO Terraform CLI - Cloud Native Camp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRegular:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Regular"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","UA-72224033-6"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","UA-72224033-6",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=UA-72224033-6",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cacao-terraform-templates-on-the-cli" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cloud Native Camp" class="md-header__button md-logo" aria-label="Cloud Native Camp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15H9v-1h6v1m0 1H9v1h6v-1m0 2H9v1h6v-1m8-4.5c0 1.25-.44 2.31-1.31 3.19-.88.87-1.94 1.31-3.19 1.31H18v4H6v-4.05c-1.3-.1-2.43-.59-3.39-1.52C1.54 15.38 1 14.09 1 12.58c0-1.3.39-2.46 1.17-3.48S4 7.43 5.25 7.15c.42-1.53 1.25-2.77 2.5-3.72S10.42 2 12 2c1.95 0 3.6.68 4.96 2.04C18.32 5.4 19 7.05 19 9c1.15.13 2.1.63 2.86 1.5.76.85 1.14 1.85 1.14 3M6 15.95V11h11V9c0-1.38-.5-2.56-1.46-3.54C14.56 4.5 13.38 4 12 4s-2.56.5-3.54 1.46C7.5 6.44 7 7.62 7 9h-.5c-.97 0-1.79.34-2.47 1.03-.69.68-1.03 1.5-1.03 2.47s.34 1.79 1.03 2.5c.56.54 1.22.85 1.97.95M16 13H8v7h8v-7m5 .5c0-.7-.24-1.29-.73-1.77S19.2 11 18.5 11H18v5h.5c.7 0 1.29-.24 1.77-.72S21 14.2 21 13.5Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cloud Native Camp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CyVerse CACAO Terraform CLI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54 0 4.5-2.94 8.27-7 9.54.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CyVerse-learning-materials/container-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CyVerse-learning-materials/container-camp
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../docker/intro/" class="md-tabs__link">
+          
+  
+    
+  
+  Docker
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../singularity/intro/" class="md-tabs__link">
+          
+  
+    
+  
+  Singularity
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../k8s/" class="md-tabs__link">
+          
+  
+    
+  
+  Orchestration
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cloud/js2/" class="md-tabs__link">
+          
+  
+    
+  
+  Cloud Services
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../resources/vscode/" class="md-tabs__link">
+          
+  
+    
+  
+  Useful Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cloud Native Camp" class="md-nav__button md-logo" aria-label="Cloud Native Camp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15H9v-1h6v1m0 1H9v1h6v-1m0 2H9v1h6v-1m8-4.5c0 1.25-.44 2.31-1.31 3.19-.88.87-1.94 1.31-3.19 1.31H18v4H6v-4.05c-1.3-.1-2.43-.59-3.39-1.52C1.54 15.38 1 14.09 1 12.58c0-1.3.39-2.46 1.17-3.48S4 7.43 5.25 7.15c.42-1.53 1.25-2.77 2.5-3.72S10.42 2 12 2c1.95 0 3.6.68 4.96 2.04C18.32 5.4 19 7.05 19 9c1.15.13 2.1.63 2.86 1.5.76.85 1.14 1.85 1.14 3M6 15.95V11h11V9c0-1.38-.5-2.56-1.46-3.54C14.56 4.5 13.38 4 12 4s-2.56.5-3.54 1.46C7.5 6.44 7 7.62 7 9h-.5c-.97 0-1.79.34-2.47 1.03-.69.68-1.03 1.5-1.03 2.47s.34 1.79 1.03 2.5c.56.54 1.22.85 1.97.95M16 13H8v7h8v-7m5 .5c0-.7-.24-1.29-.73-1.77S19.2 11 18.5 11H18v5h.5c.7 0 1.29-.24 1.77-.72S21 14.2 21 13.5Z"/></svg>
+
+    </a>
+    Cloud Native Camp
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CyVerse-learning-materials/container-camp" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CyVerse-learning-materials/container-camp
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/code_conduct/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code of Conduct
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/schedule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schedule
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pre-Camp Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Docker
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/registry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Finding the right container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Building Docker Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced use of Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/actions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub Actions and Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/compose/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running multi-container Applications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Singularity
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Singularity
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../singularity/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Singularity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../singularity/advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced use of Singularity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../singularity/hpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Singularity on HPC/HTC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Orchestration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Orchestration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advk8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced use of Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Terraform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advterra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced use of Terraform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cacao/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CyVerse CACAO Interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CyVerse CACAO Terraform CLI
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CyVerse CACAO Terraform CLI
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cyverse-cacao-browser-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      CyVerse CACAO Browser UI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-of-the-cyverse-cacao-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation of the CyVerse CACAO CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reviewing-the-terraform-template-we-will-use-to-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reviewing the Terraform template we will use to import
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reviewing the Terraform template we will use to import">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stop-if-you-want-to-fork-the-template-lets-do-it-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stop! If you want to fork the template, let's do it now.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-cacao-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the CACAO CLI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the CACAO CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#login-to-cacao-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login to CACAO CLI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importing-a-terraform-template-into-cacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importing a Terraform template into CACAO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-a-template-using-the-cacao-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launching a template using the CACAO UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cleaning-up-if-you-didnt-fork-your-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleaning up (if you didn't fork your template)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-you-make-changes-to-a-template-and-want-to-use-it-for-new-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if you make changes to a template and want to use it for new deployments?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-you-make-metadata-changes-to-a-template-eg-cacaometadatajson-or-cacaouijson-and-want-to-use-it-for-new-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if you make metadata changes  to a template (e.g. .cacao/metadata.json or .cacao/ui.json) and want to use it for new deployments?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-those-of-you-who-forked-the-repo-we-can-experiment-with-template-modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      For those of you who forked the repo, we can experiment with template modifications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-if-you-want-to-customize-a-template-you-dont-own-but-is-public" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if you want to customize a template you don't own but is public?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../registry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manage private container registry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cloud Services
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Cloud Services
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/js2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jetstream-2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/openstack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenStack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/codespaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub CodeSpaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/aws/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amazon Web Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/azure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud/gcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Cloud Platform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Useful Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Useful Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VSCode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/singularity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Singularity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/post/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Camp Discussion and Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cyverse-cacao-browser-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      CyVerse CACAO Browser UI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-of-the-cyverse-cacao-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation of the CyVerse CACAO CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reviewing-the-terraform-template-we-will-use-to-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reviewing the Terraform template we will use to import
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reviewing the Terraform template we will use to import">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stop-if-you-want-to-fork-the-template-lets-do-it-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stop! If you want to fork the template, let's do it now.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-cacao-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the CACAO CLI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the CACAO CLI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#login-to-cacao-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login to CACAO CLI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importing-a-terraform-template-into-cacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importing a Terraform template into CACAO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-a-template-using-the-cacao-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launching a template using the CACAO UI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cleaning-up-if-you-didnt-fork-your-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleaning up (if you didn't fork your template)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-you-make-changes-to-a-template-and-want-to-use-it-for-new-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if you make changes to a template and want to use it for new deployments?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-you-make-metadata-changes-to-a-template-eg-cacaometadatajson-or-cacaouijson-and-want-to-use-it-for-new-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if you make metadata changes  to a template (e.g. .cacao/metadata.json or .cacao/ui.json) and want to use it for new deployments?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-those-of-you-who-forked-the-repo-we-can-experiment-with-template-modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      For those of you who forked the repo, we can experiment with template modifications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-if-you-want-to-customize-a-template-you-dont-own-but-is-public" class="md-nav__link">
+    <span class="md-ellipsis">
+      What if you want to customize a template you don't own but is public?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="cacao-terraform-templates-on-the-cli">CACAO Terraform templates on the CLI<a class="headerlink" href="#cacao-terraform-templates-on-the-cli" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This tutorial will guide you through the process importing a basic terraform template into CACAO.</p>
+<p>A more detailed version of this tutorial can be found here <a href="https://docs.jetstream-cloud.org/ui/cacao/import_terraform_template/" target="_blank">https://docs.jetstream-cloud.org/ui/cacao/import_terraform_template/</a></p>
+<p>By the end of this tutorial, you will have imported a terraform template into CACAO and deployed it using the UI to confirm that it works.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Basic understanding of Terraform, git, and the command line.</li>
+<li>An OpenStack environment with access to the API (if you need to validate any terraform changes).</li>
+<li>Terraform installed on your local machine or VM server (if you need to validate any terraform changes).</li>
+<li>An SSH key pair to access the VM server running Terraform (if you need to validate any terraform changes).</li>
+</ul>
+<h2 id="cyverse-cacao-browser-ui">CyVerse CACAO Browser UI<a class="headerlink" href="#cyverse-cacao-browser-ui" title="Permanent link">&para;</a></h2>
+<p>One of CyVerse's test deployments for CACAO will be used for this exercise so that we can import a template using the newer metadata schemas, which will be deployed to production in the very near future.</p>
+<p>The url for the CACAO site that we will use today is <a href="https://cacao.jetstream-cloud.org" target="_blank">https://cacao.jetstream-cloud.org</a></p>
+<p>Please login to verify that your ACCESS credentials work with the CACAO test site.
+!!!+ warn
+    For the workshop, use the "ACCESS CI (XSEDE)" identity provider when you login.
+    <img alt="" src="../../assets/cacao/access-ci-select-identity-provider2.png" /></p>
+<ol>
+<li></li>
+</ol>
+<h2 id="installation-of-the-cyverse-cacao-cli">Installation of the CyVerse CACAO CLI<a class="headerlink" href="#installation-of-the-cyverse-cacao-cli" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If you are using a VM provided by the workshop, the CACAO CLI is already installed. You can skip this installation section.</p>
+</div>
+<p>The CyVerse CACAO CLI is a command line tool interact with the CyVerse CACAO API. The first step is the install the cli on your local machine or to a vm.</p>
+<ul>
+<li><a href="https://gitlab.com/cyverse/cacao/-/package_files/88735155/download">Linux download for CACAO CLI</a></li>
+<li><a href="https://gitlab.com/cyverse/cacao/-/package_files/88735261/download">Windows download for CACAO CLI</a></li>
+<li><a href="https://gitlab.com/cyverse/cacao/-/package_files/88735323/download">MacOS (Intel) download for CACAO CLI</a></li>
+<li><a href="https://gitlab.com/cyverse/cacao/-/package_files/88735401/download">MacOS (ARM) download for CACAO CLI</a></li>
+</ul>
+<p>If you're using a VM provided by the workshop or a Linux system, you can use these instructions to install the CACAO CLI.</p>
+<ol>
+<li>If necessary, obtain a shell or terminal on the Linux system you wish to install the CACAO CLI.</li>
+<li>Copy link for "Linux download for CACAO CLI" from above.</li>
+<li><code>curl https://gitlab.com/cyverse/cacao/-/package_files/88735155/download --output cacao.zip</code></li>
+<li><code>unzip cacao.zip # this will create a file cacao_linux_amd64</code></li>
+<li><code>sudo mv cacao_linux_amd64 /usr/local/bin/cacao # optional; otherwise, add it into your path</code></li>
+<li><code>chmod +x /usr/local/bin/cacao</code></li>
+</ol>
+<h2 id="reviewing-the-terraform-template-we-will-use-to-import">Reviewing the Terraform template we will use to import<a class="headerlink" href="#reviewing-the-terraform-template-we-will-use-to-import" title="Permanent link">&para;</a></h2>
+<p>We will be using <a href="https://github.com/cyverse/cacao-terraform-hello-world" target="_blank">https://github.com/cyverse/cacao-terraform-hello-world</a> for this tutorial.</p>
+<p>You will find a directory called <code>.cacao</code> at the root of the template and two files:</p>
+<ul>
+<li><code>metadata.json</code>, which contains the CACAO-specific metadata for the template</li>
+<li><code>ui.json</code>, which contains the UI-specific hints for the template</li>
+</ul>
+<p>The <code>ui.json</code> file is optional, and if not present, then the CACAO UI will present a default naive rendering of the template.</p>
+<p>Details about the metadata and ui schemas can be found here: <a href="https://docs.jetstream-cloud.org/ui/cacao/import_terraform_template/" target="_blank">https://docs.jetstream-cloud.org/ui/cacao/import_terraform_template/</a></p>
+<div class="admonition warn">
+<p class="admonition-title">Warn</p>
+<p>The UI metadata specification is currently in flux and will likely change in the near future, especially as we get feedback from the community.</p>
+</div>
+<h3 id="stop-if-you-want-to-fork-the-template-lets-do-it-now">Stop! If you want to fork the template, let's do it now.<a class="headerlink" href="#stop-if-you-want-to-fork-the-template-lets-do-it-now" title="Permanent link">&para;</a></h3>
+<p>!!!+ info
+    This is an optional step. You do not need to fork a template for this part of the tutorial, but you may if you wish.</p>
+<h2 id="using-the-cacao-cli">Using the CACAO CLI<a class="headerlink" href="#using-the-cacao-cli" title="Permanent link">&para;</a></h2>
+<h3 id="login-to-cacao-cli">Login to CACAO CLI<a class="headerlink" href="#login-to-cacao-cli" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>cacao login --browser</code></li>
+</ol>
+<details class="trip">
+<summary>What to do if you encounter a login issue</summary>
+<p>Sometimes login using the command line will fail -- a typo happens, a copy-n-paste of a token happens, using the wrong api url happens, etc -- and you need to reset your login. To reset your login, you can use the following command:</p>
+<p><code>cacao logout</code></p>
+</details>
+<details class="success" open="open">
+<summary>Expected Response</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Please<span class="w"> </span>provide<span class="w"> </span>address<span class="w"> </span>of<span class="w"> </span>Cacao<span class="w"> </span>API.
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>Format<span class="w"> </span>Should<span class="w"> </span>be:<span class="w"> </span>http://&lt;hostname&gt;:&lt;port&gt;<span class="w">        </span>or<span class="w">    </span>&lt;hostname&gt;:&lt;port&gt;<span class="w"> </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="o">(</span>Developers:<span class="w"> </span>this<span class="w"> </span>should<span class="w"> </span>match<span class="w"> </span>the<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span>API_DOMAIN<span class="w"> </span><span class="k">in</span><span class="w"> </span>install/config.yaml<span class="w"> </span>followed<span class="w"> </span>by<span class="w"> </span><span class="s2">&quot;/api&quot;</span>,<span class="w"> </span>e.g.<span class="w"> </span>ca.cyverse.local/api<span class="o">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="hll">Cacao<span class="w"> </span>API<span class="w"> </span>address<span class="w"> </span><span class="o">(</span>http://ca.cyverse.local/api<span class="o">)</span>:<span class="w"> </span>https://cacao.jetstream-cloud.org/api
+</span></code></pre></div></td></tr></table></div>
+</details>
+<ol>
+<li>Enter the CACAO API url: <code>https://cacao.jetstream-cloud.org/api</code></li>
+</ol>
+<details class="success" open="open">
+<summary>Expected Response</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-4" name="__codelineno-1-4"></a>Cacao<span class="w"> </span>API<span class="w"> </span>address<span class="w"> </span><span class="o">(</span>http://ca.cyverse.local/api<span class="o">)</span>:<span class="w"> </span>https://cacao.jetstream-cloud.org/api
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="hll">Please<span class="w"> </span>go<span class="w"> </span>to<span class="w"> </span>this<span class="w"> </span>URL<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>browser:<span class="w"> </span>https://cacao.jetstream-cloud.org/api/user/login
+</span><a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>After<span class="w"> </span>login,<span class="w"> </span>you<span class="w"> </span>should<span class="w"> </span>get<span class="w"> </span>a<span class="w"> </span>JSON<span class="w"> </span>response,<span class="w"> </span>the<span class="w"> </span>auth<span class="w"> </span>token<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>the<span class="w"> </span>value<span class="w"> </span>of<span class="w"> </span>following<span class="w"> </span>properties:
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>-<span class="w"> </span><span class="s2">&quot;IDToken&quot;</span><span class="w"> </span>or<span class="w"> </span><span class="s2">&quot;id_token&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>keycloak
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>-<span class="w"> </span><span class="s2">&quot;access_token&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>other<span class="w"> </span>auth<span class="w"> </span>provider
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>Enter<span class="w"> </span>the<span class="w"> </span>auth<span class="w"> </span>token<span class="w"> </span>you<span class="w"> </span>get<span class="w"> </span>from<span class="w"> </span>browser:<span class="w"> </span>
+</code></pre></div></td></tr></table></div>
+</details>
+<ol>
+<li>In your browser open the following URL (this is also echoed in the terminal, line <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/5" title="GitHub Issue: squidfunk/mkdocs-material #5">#5</a>): <a href="https://cacao.jetstream-cloud.org/api/user/login">https://cacao.jetstream-cloud.org/api/user/login</a>
+!!!+ warn
+    For the workshop, use the "ACCESS CI (XSEDE)" identity provider when you login.
+    <img alt="" src="../../assets/cacao/access-ci-select-identity-provider2.png" /></li>
+<li>You will need to grab the the "access_token" that is returned from the browser and paste the following text into the terminal: "Bearer" followed by a space and then the access token. For example, if the access_token were GOOSE, the the string you enter will be: <code>Bearer GOOSE</code></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul>
+<li>Do not include the quotes around the token. </li>
+<li><code>Bearer</code> is case sensitive.</li>
+<li>There is one space between Bearer and the token.</li>
+</ul>
+</div>
+<p>Below are screenshots of what you might expect to see from Chrome and Firefox.</p>
+<p>Chrome:
+<img alt="" src="../../assets/cacao/access-token-chrome.png" />
+Firefox:
+<img alt="" src="../../assets/cacao/access-token-firefox.png" /></p>
+<p>After pasting the "Bearer " + access_token, you should return to the shell prompt.</p>
+<details class="success" open="open">
+<summary>Expected Response</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-11" name="__codelineno-2-11"></a>Enter<span class="w"> </span>the<span class="w"> </span>auth<span class="w"> </span>token<span class="w"> </span>you<span class="w"> </span>get<span class="w"> </span>from<span class="w"> </span>browser:<span class="w"> </span>Bearer<span class="w"> </span>NB2HI4DTHIXASDFUINASDKLFASDHFKASDFJASDFA23FNYTHI4Z5GE3DSMRTGMYDGNJWHE3TIJTWMVZHG2LPNY6XMMROGATGY2LGMV2GS3LFHU4TAMBQGAYA
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>$<span class="w"> </span>
+</code></pre></div></td></tr></table></div>
+</details>
+<ol>
+<li>To test a successful login, you can execute a cacao command, such as: <code>cacao provider get</code></li>
+</ol>
+<h3 id="importing-a-terraform-template-into-cacao">Importing a Terraform template into CACAO<a class="headerlink" href="#importing-a-terraform-template-into-cacao" title="Permanent link">&para;</a></h3>
+<p><code>cacao template create git &lt;source url&gt;  &lt;template name&gt; --branch &lt;git branch&gt; --path &lt;path to template&gt;</code></p>
+<p>Here are the values to enter for each:</p>
+<ul>
+<li><code>&lt;source url&gt;</code>: <code>https://github.com/cyverse/cacao-terraform-hello-world.git</code></li>
+<li><code>&lt;template name&gt;</code>: "<your student name>-hello-world" (e.g. student0001-hello-world)</li>
+<li><code>&lt;git branch&gt;</code>: <code>main</code></li>
+<li><code>&lt;path to template&gt;</code>: <code>.</code></li>
+</ul>
+<p>!!!+ warn
+    If you forked the template, you will need to use your forked url.</p>
+<p>Putting this all together, your command will look similar to this: </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cacao<span class="w"> </span>template<span class="w"> </span>create<span class="w"> </span>git<span class="w"> </span>https://github.com/cyverse/cacao-terraform-hello-world.git<span class="w">  </span>student0001-hello-world<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>--path<span class="w"> </span>.
+</code></pre></div>
+<details class="success" open="open">
+<summary>Expected Response</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">    </span><span class="s2">&quot;tid&quot;</span>:<span class="w"> </span><span class="s2">&quot;template-cjfepm8795ktgsth2750&quot;</span>,
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="s2">&quot;timestamp&quot;</span>:<span class="w"> </span><span class="s2">&quot;2023-08-18T04:00:28.179794071Z&quot;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="o">}</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<p>!!!+ note
+    Save the <code>tid</code> value for later use.</p>
+<h3 id="launching-a-template-using-the-cacao-ui">Launching a template using the CACAO UI<a class="headerlink" href="#launching-a-template-using-the-cacao-ui" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Open the CACAO UI in your browser: <a href="https://cacao.jetstream-cloud.org" target="_blank">https://cacao.jetstream-cloud.org</a></li>
+<li>Click on the "Deployments" tab on the left-hand side.</li>
+<li>Click on the "+ Add Deployment" button.</li>
+<li>Select the "edwin's hello world example"/"student0001-hello-world" template. (Note: the subname of the template will be different for you.)</li>
+<li>Click the "Next" button.</li>
+<li>Fill out the Parameters<ol>
+<li><code>Choose Region</code>: leave as default</li>
+<li><code>Instance name</code>: enter your student name (e.g. student0001) + date e.g. <code>student0001-2021-08-18</code></li>
+<li><code>Image</code>: select "Featured-Ubuntu22"</li>
+<li><code>Size</code>: leave as default
+<img alt="" src="../../assets/cacao/access-ci-select-identity-provider2.png" /></li>
+</ol>
+</li>
+<li>Click the "Next" button.</li>
+<li>After reviewing the summary, click the "Submit" button.</li>
+<li>You will be listed on the "Deployments" page. You can click on the deployment to see the status of the deployment.</li>
+</ol>
+<p>While you are waiting, questions or we can begin the next section, "What if you want to customize a template?"</p>
+<h3 id="cleaning-up-if-you-didnt-fork-your-template">Cleaning up (if you didn't fork your template)<a class="headerlink" href="#cleaning-up-if-you-didnt-fork-your-template" title="Permanent link">&para;</a></h3>
+<p>!!!+ warn
+    You will not be able to delete a template if there are any active deployments using it.
+1. Delete the deployment in the UI or cli (<code>cacao deployment delete &lt;deployment id</code>).
+2. <code>cacao template delete &lt;template id&gt;</code></p>
+<details class="success" open="open">
+<summary>Expected Response</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="o">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="s2">&quot;template-cjfepmuf95ktgsth2750&quot;</span>,
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="s2">&quot;tid&quot;</span>:<span class="w"> </span><span class="s2">&quot;template-cjfepmuf95ktgsth2750&quot;</span>,
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="s2">&quot;timestamp&quot;</span>:<span class="w"> </span><span class="s2">&quot;2023-08-18T04:36:07.420852435Z&quot;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="o">}</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<h3 id="what-if-you-make-changes-to-a-template-and-want-to-use-it-for-new-deployments">What if you make changes to a template and want to use it for new deployments?<a class="headerlink" href="#what-if-you-make-changes-to-a-template-and-want-to-use-it-for-new-deployments" title="Permanent link">&para;</a></h3>
+<p>Answer: You do not need to do anything. The CACAO UI will automatically detect changes to the template on the configure branch and will use the latest branch code new deployments.</p>
+<h3 id="what-if-you-make-metadata-changes-to-a-template-eg-cacaometadatajson-or-cacaouijson-and-want-to-use-it-for-new-deployments">What if you make metadata changes  to a template (e.g. <code>.cacao/metadata.json</code> or <code>.cacao/ui.json</code>) and want to use it for new deployments?<a class="headerlink" href="#what-if-you-make-metadata-changes-to-a-template-eg-cacaometadatajson-or-cacaouijson-and-want-to-use-it-for-new-deployments" title="Permanent link">&para;</a></h3>
+<p>Answer: <code>cacao template sync &lt;tid&gt;</code></p>
+<h3 id="for-those-of-you-who-forked-the-repo-we-can-experiment-with-template-modifications">For those of you who forked the repo, we can experiment with template modifications<a class="headerlink" href="#for-those-of-you-who-forked-the-repo-we-can-experiment-with-template-modifications" title="Permanent link">&para;</a></h3>
+<p>Here are a couple suggestions
+* change the name of the template
+* remove image (and/or size) from the template and set it</p>
+<h2 id="what-if-you-want-to-customize-a-template-you-dont-own-but-is-public">What if you want to customize a template you don't own but is public?<a class="headerlink" href="#what-if-you-want-to-customize-a-template-you-dont-own-but-is-public" title="Permanent link">&para;</a></h2>
+<p>If there is time, we can go through this section. Otherwise, you can try this on your own.</p>
+<ol>
+<li>Fork the template into your own github or gitlab account</li>
+<li>Add a <code>.cacao/metadata.json</code> and <code>.cacao/ui.json</code> to your forked template</li>
+<li>Import the template using the <code>cacao template create git</code> command.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    2023-12-14
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2019-2023 CyVerse
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://orcid.org/" target="_blank" rel="noopener" title="orcid.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M294.75 188.19h-45.92V342h47.47c67.62 0 83.12-51.34 83.12-76.91 0-41.64-26.54-76.9-84.67-76.9zM256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-80.79 360.76h-29.84v-207.5h29.84zm-14.92-231.14a19.57 19.57 0 1 1 19.57-19.57 19.64 19.64 0 0 1-19.57 19.57zM300 369h-81V161.26h80.6c76.73 0 110.44 54.83 110.44 103.85C410 318.39 368.38 369 300 369z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/cyverse-learning-material/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/cyverseorg" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/cyverse.org" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://harbor.cyverse.org/" target="_blank" rel="noopener" title="harbor.cyverse.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/c/CyverseOrgProject" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>
