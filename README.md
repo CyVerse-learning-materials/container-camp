@@ -1,4 +1,3 @@
-
 # CyVerse Container Camp 2023
 
 MKDocs website for Container Camp 2023 - both basic and advanced materials here 
@@ -7,7 +6,7 @@ TBD: pretty much everything, set up action, set GH Pages to DNS, build website, 
 
 htps://cc.cyverse.org/
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6588581.svg)](https://doi.org/10.5281/zenodo.6588581)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10385227.svg)](https://zenodo.org/records/10385227)
 
 # Development
 
