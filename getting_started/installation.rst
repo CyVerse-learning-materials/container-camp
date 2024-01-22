@@ -32,7 +32,7 @@ Please complete the minimum Setup Instructions to prepare for Container Camp at 
     * - Text Editor
       - Please ensure that you have a Text editor of your choice. Any decent text editor would be sufficient and
         recommended ones include Atom, Sublime, & VSCode
-      - Download Sublime at `https://www.sublimetext.com/ <https://www.sublimetext.com/>`_. Download Atom at `https://atom.io/ <https://atom.io/>`_. Download VSCode at `https://code.visualstudio.com/ <https://code.visualstudio.com/>`_
+      - Download Sublime at `https://www.sublimetext.com/ <https://www.sublimetext.com/>`_. Download Codelobster at `https://codelobster.com/ <https://codelobster.com/>`_. Download Atom at `https://atom.io/ <https://atom.io/>`_. Download VSCode at `https://code.visualstudio.com/ <https://code.visualstudio.com/>`_
     * - Slack for networking
       - We will be using Slack extensively for communication and networking purposes
       - Register for Slack at `https://slack.com/ <https://slack.com/>`_.
